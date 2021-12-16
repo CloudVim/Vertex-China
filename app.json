@@ -1,0 +1,26 @@
+{
+  "id": "878d0d0f-1288-45cc-a17a-35ed3ebe63d2",
+  "name": "Vertex China",
+  "publisher": "CBR Technology Corp.",
+  "version": "18.0.0.11",
+  "brief": "",
+  "description": "",
+  "privacyStatement": "",
+  "EULA": "",
+  "help": "",
+  "url": "",
+  "logo": "",
+  "dependencies": [],
+  "screenshots": [],
+  "platform": "1.0.0.0",
+  "application": "18.0.0.0",
+  "idRanges": [
+    {
+      "from": 50000,
+      "to": 99999
+    }
+  ],
+  "contextSensitiveHelpUrl": "https://VertexChina.com/help/",
+  "showMyCode": true,
+  "runtime": "7.0"
+}
