@@ -4,7 +4,7 @@ pageextension 50007 "ExtendSalesOrder" extends "Sales Order List"
     {
         addafter("External Document No.")
         {
-            field("Shipper Acct No.";Rec."Shipper Acct No.")
+            field("Shipper Acct No."; Rec."Shipper Acct No.")
             {
                 ApplicationArea = All;
                 Caption = 'Shipper Acct No.';
@@ -36,6 +36,28 @@ pageextension 50007 "ExtendSalesOrder" extends "Sales Order List"
                 PromotedCategory = Process;
             }
         }
+        addafter(AttachAsPDF)
+        {
+            action(packingslip)
+            {
+                ApplicationArea = Basic, Suite;
+                Caption = 'Packing Slip';
+                Image = PrintReport;
+                Promoted = true;
+                PromotedCategory = Category8;
+                Ellipsis = true;
+
+                trigger OnAction()
+                var
+                    salesHeader: Record "Sales Header";
+                begin
+                    salesHeader.Reset();
+                    CurrPage.SetSelectionFilter(salesHeader);
+                    Report.Run(50004, true, false, salesHeader);
+                end;
+            }
+        }
     }
-    var myInt: Integer;
+    var
+        myInt: Integer;
 }
