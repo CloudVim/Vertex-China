@@ -61,6 +61,8 @@ report 50001 "PackingSlip"
             { }
             column(Mode; "External Document No.")
             { }
+            column(OrderNoBarode; OrderNoBarode)
+            { }
             dataitem("Sales Line"; "Sales Line")
             {
                 DataItemLink = "Document Type" = FIELD("Document Type"), "Document No." = FIELD("No.");
@@ -86,11 +88,46 @@ report 50001 "PackingSlip"
                 {
                     IncludeCaption = true;
                 }
+                column(DimQty; DimQty)
+                { }
+                column(CubeAmount; CubeAmount)
+                { }
+                column(LBSWeight; LBSWeight)
+                { }
+                trigger OnAfterGetRecord()
+                var
+                    Item_L: Record Item;
+                begin
+                    DimQty := 0;
+                    CubeAmount := 0;
+                    LBSWeight := 0;
+                    If Type = Type::Item then begin
+                        If Item_L.get("No.") then
+                            if Item_L."Case Pack" <> 0 then
+                                DimQty := Quantity / Item_L."Case Pack"
+                            Else
+                                DimQty := Quantity;
+
+                        If Item_L."Unit Volume" <> 0 then
+                            CubeAmount := Quantity * "Unit Volume"
+                        else
+                            CubeAmount := Quantity;
+
+                        If Item_L."Gross Weight" <> 0 then
+                            LBSWeight := Quantity * Item_L."Gross Weight"
+                        Else
+                            LBSWeight := Quantity;
+                    end
+                end;
 
             }
-
             trigger OnAfterGetRecord()
+            var
+                BarcodeSymbology: Enum "Barcode Symbology";
+                BarcodeFontProvider: Interface "Barcode Font Provider";
+                BarcodeString: Code[30];
             begin
+                Clear(OrderNoBarode);
                 Clear(ShiptoAddr);
                 Clear(BilltoAddr);
                 ShiptoAddr[1] := "Ship-to Name";
@@ -105,6 +142,12 @@ report 50001 "PackingSlip"
                 BilltoAddr[4] := "Bill-to Address 2";
                 BilltoAddr[5] := "Bill-to City" + ' ' + "Bill-to Post Code" + ' ' + "Bill-to County";
                 CompressArray(BilltoAddr);
+                BarcodeFontProvider := Enum::"Barcode Font Provider"::IDAutomation1D;
+                BarcodeSymbology := Enum::"Barcode Symbology"::Code39;
+                BarcodeString := "No.";
+                BarcodeFontProvider.ValidateInput(BarcodeString, BarcodeSymbology);
+                OrderNoBarode := BarcodeFontProvider.EncodeFont(BarcodeString, BarcodeSymbology);
+
             end;
         }
     }
@@ -137,19 +180,23 @@ report 50001 "PackingSlip"
         DescriptionCaption = 'Description';
         QuantityCaption = 'Quantity';
         UnitCaption = 'Unit';
-        Dimqty = 'Dim Qty';
+        DimqtyCaption = 'Dim Qty';
         DimUOMcaption = 'Dim UOM';
         PackageIDcaption = 'PackageID:';
         Notescaption = 'Notes';
         PackingSlipCaption = 'Packing Slip';
-
-
+        CubeCaption = 'Cube';
+        LbsCaption = 'LBS';
     }
 
     var
         FormatAddr: Codeunit "Format Address";
         BilltoAddr: array[8] of Text[100];
         ShiptoAddr: array[8] of Text[100];
+        OrderNoBarode: Text;
+        DimQty: Decimal;
+        CubeAmount: Decimal;
+        LBSWeight: Decimal;
 
 }
 

@@ -102,7 +102,8 @@ Cstr(Fields!Customer.Value) + Chr(177) +
 Cstr(Fields!CustomerPO.Value) + Chr(177) + 
 Cstr(Fields!ShipVia.Value) + Chr(177) + 
 Cstr(Fields!Mode.Value)
-, 1)</Hidden>
+ + Chr(177) + 
+Cstr(Fields!OrderNoBarode.Value), 1)</Hidden>
                                             </Visibility>
                                             <Style>
                                               <Border>
@@ -505,7 +506,7 @@ Cstr(Fields!Mode.Value)
                                               <Paragraph>
                                                 <TextRuns>
                                                   <TextRun>
-                                                    <Value>=Parameters!Dimqty.Value</Value>
+                                                    <Value>=Parameters!DimqtyCaption.Value</Value>
                                                     <Style>
                                                       <FontSize>8pt</FontSize>
                                                     </Style>
@@ -573,7 +574,7 @@ Cstr(Fields!Mode.Value)
                                               <Paragraph>
                                                 <TextRuns>
                                                   <TextRun>
-                                                    <Value />
+                                                    <Value>=Parameters!CubeCaption.Value</Value>
                                                     <Style>
                                                       <FontSize>8pt</FontSize>
                                                     </Style>
@@ -607,7 +608,7 @@ Cstr(Fields!Mode.Value)
                                               <Paragraph>
                                                 <TextRuns>
                                                   <TextRun>
-                                                    <Value />
+                                                    <Value>=Parameters!LbsCaption.Value</Value>
                                                     <Style>
                                                       <FontSize>8pt</FontSize>
                                                     </Style>
@@ -1059,7 +1060,7 @@ Cstr(Fields!Mode.Value)
                                               <Paragraph>
                                                 <TextRuns>
                                                   <TextRun>
-                                                    <Value />
+                                                    <Value>=Fields!DimQty.Value</Value>
                                                     <Style>
                                                       <FontSize>8pt</FontSize>
                                                     </Style>
@@ -1093,7 +1094,7 @@ Cstr(Fields!Mode.Value)
                                               <Paragraph>
                                                 <TextRuns>
                                                   <TextRun>
-                                                    <Value />
+                                                    <Value>Case</Value>
                                                     <Style>
                                                       <FontSize>8pt</FontSize>
                                                     </Style>
@@ -1127,7 +1128,7 @@ Cstr(Fields!Mode.Value)
                                               <Paragraph>
                                                 <TextRuns>
                                                   <TextRun>
-                                                    <Value />
+                                                    <Value>=Fields!CubeAmount.Value</Value>
                                                     <Style>
                                                       <FontSize>8pt</FontSize>
                                                     </Style>
@@ -1161,7 +1162,7 @@ Cstr(Fields!Mode.Value)
                                               <Paragraph>
                                                 <TextRuns>
                                                   <TextRun>
-                                                    <Value />
+                                                    <Value>=Fields!LBSWeight.Value</Value>
                                                     <Style>
                                                       <FontSize>8pt</FontSize>
                                                     </Style>
@@ -1814,6 +1815,9 @@ Cstr(Fields!Mode.Value)
                     <GroupExpressions>
                       <GroupExpression>=Fields!No1_SalesHeader.Value</GroupExpression>
                     </GroupExpressions>
+                    <PageBreak>
+                      <BreakLocation>Between</BreakLocation>
+                    </PageBreak>
                   </Group>
                   <SortExpressions>
                     <SortExpression>
@@ -1889,14 +1893,15 @@ Cstr(Fields!Mode.Value)
                 <Paragraph>
                   <TextRuns>
                     <TextRun>
-                      <Value />
+                      <Value>=Code.GetData(19,1)</Value>
                       <Style>
-                        <FontSize>8pt</FontSize>
+                        <FontFamily>IDAutomationHC39M</FontFamily>
+                        <FontSize>9pt</FontSize>
                       </Style>
                     </TextRun>
                   </TextRuns>
                   <Style>
-                    <TextAlign>Left</TextAlign>
+                    <TextAlign>Center</TextAlign>
                   </Style>
                 </Paragraph>
               </Paragraphs>
@@ -3077,14 +3082,14 @@ Cstr(Fields!Mode.Value)
       </DefaultValue>
       <Prompt>UnitCaption</Prompt>
     </ReportParameter>
-    <ReportParameter Name="Dimqty">
+    <ReportParameter Name="DimqtyCaption">
       <DataType>String</DataType>
       <DefaultValue>
         <Values>
-          <Value>Dimqty</Value>
+          <Value>DimqtyCaption</Value>
         </Values>
       </DefaultValue>
-      <Prompt>Dimqty</Prompt>
+      <Prompt>DimqtyCaption</Prompt>
     </ReportParameter>
     <ReportParameter Name="DimUOMcaption">
       <DataType>String</DataType>
@@ -3121,6 +3126,24 @@ Cstr(Fields!Mode.Value)
         </Values>
       </DefaultValue>
       <Prompt>PackingSlipCaption</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="CubeCaption">
+      <DataType>String</DataType>
+      <DefaultValue>
+        <Values>
+          <Value>CubeCaption</Value>
+        </Values>
+      </DefaultValue>
+      <Prompt>CubeCaption</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="LbsCaption">
+      <DataType>String</DataType>
+      <DefaultValue>
+        <Values>
+          <Value>LbsCaption</Value>
+        </Values>
+      </DefaultValue>
+      <Prompt>LbsCaption</Prompt>
     </ReportParameter>
     <ReportParameter Name="No_SalesLineCaption">
       <DataType>String</DataType>
@@ -3171,7 +3194,7 @@ Cstr(Fields!Mode.Value)
   <ReportParametersLayout>
     <GridLayoutDefinition>
       <NumberOfColumns>1</NumberOfColumns>
-      <NumberOfRows>24</NumberOfRows>
+      <NumberOfRows>26</NumberOfRows>
       <CellDefinitions>
         <CellDefinition>
           <ColumnIndex>0</ColumnIndex>
@@ -3246,7 +3269,7 @@ Cstr(Fields!Mode.Value)
         <CellDefinition>
           <ColumnIndex>0</ColumnIndex>
           <RowIndex>14</RowIndex>
-          <ParameterName>Dimqty</ParameterName>
+          <ParameterName>DimqtyCaption</ParameterName>
         </CellDefinition>
         <CellDefinition>
           <ColumnIndex>0</ColumnIndex>
@@ -3271,26 +3294,36 @@ Cstr(Fields!Mode.Value)
         <CellDefinition>
           <ColumnIndex>0</ColumnIndex>
           <RowIndex>19</RowIndex>
-          <ParameterName>No_SalesLineCaption</ParameterName>
+          <ParameterName>CubeCaption</ParameterName>
         </CellDefinition>
         <CellDefinition>
           <ColumnIndex>0</ColumnIndex>
           <RowIndex>20</RowIndex>
-          <ParameterName>Description_SalesLineCaption</ParameterName>
+          <ParameterName>LbsCaption</ParameterName>
         </CellDefinition>
         <CellDefinition>
           <ColumnIndex>0</ColumnIndex>
           <RowIndex>21</RowIndex>
-          <ParameterName>Quantity_SalesLineCaption</ParameterName>
+          <ParameterName>No_SalesLineCaption</ParameterName>
         </CellDefinition>
         <CellDefinition>
           <ColumnIndex>0</ColumnIndex>
           <RowIndex>22</RowIndex>
-          <ParameterName>UnitofMeasure_SalesLineCaption</ParameterName>
+          <ParameterName>Description_SalesLineCaption</ParameterName>
         </CellDefinition>
         <CellDefinition>
           <ColumnIndex>0</ColumnIndex>
           <RowIndex>23</RowIndex>
+          <ParameterName>Quantity_SalesLineCaption</ParameterName>
+        </CellDefinition>
+        <CellDefinition>
+          <ColumnIndex>0</ColumnIndex>
+          <RowIndex>24</RowIndex>
+          <ParameterName>UnitofMeasure_SalesLineCaption</ParameterName>
+        </CellDefinition>
+        <CellDefinition>
+          <ColumnIndex>0</ColumnIndex>
+          <RowIndex>25</RowIndex>
           <ParameterName>Type_SalesLineCaption</ParameterName>
         </CellDefinition>
       </CellDefinitions>
@@ -3439,6 +3472,9 @@ End Function
         <Field Name="Mode">
           <DataField>Mode</DataField>
         </Field>
+        <Field Name="OrderNoBarode">
+          <DataField>OrderNoBarode</DataField>
+        </Field>
         <Field Name="No_SalesLine">
           <DataField>No_SalesLine</DataField>
         </Field>
@@ -3456,6 +3492,24 @@ End Function
         </Field>
         <Field Name="Type_SalesLine">
           <DataField>Type_SalesLine</DataField>
+        </Field>
+        <Field Name="DimQty">
+          <DataField>DimQty</DataField>
+        </Field>
+        <Field Name="DimQtyFormat">
+          <DataField>DimQtyFormat</DataField>
+        </Field>
+        <Field Name="CubeAmount">
+          <DataField>CubeAmount</DataField>
+        </Field>
+        <Field Name="CubeAmountFormat">
+          <DataField>CubeAmountFormat</DataField>
+        </Field>
+        <Field Name="LBSWeight">
+          <DataField>LBSWeight</DataField>
+        </Field>
+        <Field Name="LBSWeightFormat">
+          <DataField>LBSWeightFormat</DataField>
         </Field>
       </Fields>
       <Query>
