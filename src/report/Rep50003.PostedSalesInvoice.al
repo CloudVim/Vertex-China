@@ -104,9 +104,12 @@ report 50003 "PostedSalesInvoice"
                 { }
                 column(NoofRows; NoofRows)
                 { }
+                column(InvoiceNoBarode; InvoiceNoBarode)
+                { }
                 trigger OnAfterGetRecord()
                 var
                     SalesLine_L: Record "Sales Line";
+                    SalesLineArchive_L: Record "Sales Line Archive";
                     Item_L: Record Item;
                 begin
                     NoofRows := 0;
@@ -122,6 +125,16 @@ report 50003 "PostedSalesInvoice"
                     If SalesLine_L.FindFirst() then begin
                         BOQty := SalesLine_L.Quantity - SalesLine_L."Quantity Shipped";
                         OrderQty := SalesLine_L.Quantity;
+                    end else begin
+                        SalesLineArchive_L.Reset();
+                        SalesLineArchive_L.SetRange("Document Type", SalesLineArchive_L."Document Type"::Order);
+                        SalesLineArchive_L.SetRange("Document No.", "Order No.");
+                        SalesLineArchive_L.SetRange("Line No.", "Line No.");
+                        SalesLineArchive_L.SetRange("No.", "No.");
+                        If SalesLineArchive_L.FindFirst() then begin
+                            BOQty := SalesLineArchive_L.Quantity - SalesLineArchive_L."Quantity Shipped";
+                            OrderQty := SalesLineArchive_L.Quantity;
+                        end;
                     end;
                     Item_L.reset;
                     If Item_L.Get("No.") then begin
@@ -140,9 +153,13 @@ report 50003 "PostedSalesInvoice"
             trigger OnAfterGetRecord()
             var
                 Paymenterms_L: Record "Payment Terms";
+                BarcodeSymbology: Enum "Barcode Symbology";
+                BarcodeFontProvider: Interface "Barcode Font Provider";
+                BarcodeString: Code[30];
             begin
                 Clear(BillTo);
                 Clear(ShipTo);
+                Clear(InvoiceNoBarode);
                 BillTo[1] := "Bill-to Name";
                 BillTo[2] := "Bill-to Name 2";
                 BillTo[3] := "Bill-to Contact";
@@ -162,6 +179,14 @@ report 50003 "PostedSalesInvoice"
                 If "Payment Terms Code" <> '' then
                     if Paymenterms_L.get("Payment Terms Code") then
                         Paymenttermdiscount := Paymenterms_L."Discount %";
+
+
+                BarcodeFontProvider := Enum::"Barcode Font Provider"::IDAutomation1D;
+                BarcodeSymbology := Enum::"Barcode Symbology"::Code39;
+                BarcodeString := "No.";
+                BarcodeFontProvider.ValidateInput(BarcodeString, BarcodeSymbology);
+                InvoiceNoBarode := BarcodeFontProvider.EncodeFont(BarcodeString, BarcodeSymbology);
+
             end;
 
 
@@ -255,4 +280,5 @@ report 50003 "PostedSalesInvoice"
         ItemUOM: Text;
         Paymenttermdiscount: Decimal;
         NoofRows: Integer;
+        InvoiceNoBarode: Text;
 }

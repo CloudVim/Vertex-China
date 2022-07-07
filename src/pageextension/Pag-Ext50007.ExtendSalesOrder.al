@@ -56,6 +56,24 @@ pageextension 50007 "ExtendSalesOrder" extends "Sales Order List"
                     Report.Run(50004, true, false, salesHeader);
                 end;
             }
+            // action(packingsli_Workorder)
+            // {
+            //     ApplicationArea = Basic, Suite;
+            //     Caption = 'Packing Slip_Workorder';
+            //     Image = PrintReport;
+            //     Promoted = true;
+            //     PromotedCategory = Category8;
+            //     Ellipsis = true;
+
+            //     trigger OnAction()
+            //     var
+            //         salesHeader: Record "Sales Header";
+            //     begin
+            //         salesHeader.Reset();
+            //         CurrPage.SetSelectionFilter(salesHeader);
+            //         Report.Run(50001, true, false, salesHeader);
+            //     end;
+            // }
         }
     }
     var
