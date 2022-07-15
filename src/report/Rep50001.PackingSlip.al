@@ -14,6 +14,8 @@ report 50001 "PackingSlip"
             column(No1_SalesHeader; "Sales Header"."No.")
             {
             }
+            // column(Package_Tracking_No_;"Package Tracking No.")
+            // {}need to conform
             column(CompanyName; COMPANYPROPERTY.DisplayName)
             {
             }
@@ -51,15 +53,15 @@ report 50001 "PackingSlip"
             { }
             column(RefNo; "External Document No.")
             { }
-            column(Vendor; "External Document No.")
+            column(Vendor; '')//AGT_DS need to define
             { }
-            column(Customer; "External Document No.")
+            column(Customer; "Sell-to Customer No.")
             { }
-            column(CustomerPO; "External Document No.")
+            column(CustomerPO; "External Document No.")//AGT_DS need to define
             { }
-            column(ShipVia; "External Document No.")
+            column(ShipVia; "Shipping Agent Code")
             { }
-            column(Mode; "External Document No.")
+            column(Mode; "Shipping Agent Service Code")
             { }
             column(OrderNoBarode; OrderNoBarode)
             { }

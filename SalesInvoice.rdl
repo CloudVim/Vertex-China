@@ -438,7 +438,7 @@
                                 <Paragraph>
                                   <TextRuns>
                                     <TextRun>
-                                      <Value>=Fields!User_ID.Value</Value>
+                                      <Value />
                                       <Style>
                                         <FontSize>8pt</FontSize>
                                       </Style>
@@ -1491,6 +1491,7 @@
                                       <Value>=Fields!OrderQty.Value-Fields!BOQty.Value</Value>
                                       <Style>
                                         <FontSize>8pt</FontSize>
+                                        <Format>0.00;(0.00)</Format>
                                       </Style>
                                     </TextRun>
                                   </TextRuns>
@@ -1689,7 +1690,6 @@
                                       <Value>=Fields!Amount.Value</Value>
                                       <Style>
                                         <FontSize>8pt</FontSize>
-                                        <Format>0.00;(0.00)</Format>
                                       </Style>
                                     </TextRun>
                                   </TextRuns>
@@ -2433,6 +2433,7 @@
                                       <Value>=Parameters!QtyShippedTotalCaption.Value</Value>
                                       <Style>
                                         <FontSize>8pt</FontSize>
+                                        <Format>0.00;(0.00)</Format>
                                       </Style>
                                     </TextRun>
                                   </TextRuns>
@@ -4137,10 +4138,10 @@
                 </Paragraph>
               </Paragraphs>
               <rd:DefaultName>Textbox1</rd:DefaultName>
-              <Top>1.45203cm</Top>
-              <Left>13.62287cm</Left>
+              <Top>1.45204cm</Top>
+              <Left>12.68819cm</Left>
               <Height>0.52062cm</Height>
-              <Width>3.84938cm</Width>
+              <Width>5.94292cm</Width>
               <Style>
                 <Border>
                   <Style>None</Style>
@@ -5855,9 +5856,6 @@ End Function
         </Field>
         <Field Name="Sell_to_Customer_No_">
           <DataField>Sell_to_Customer_No_</DataField>
-        </Field>
-        <Field Name="User_ID">
-          <DataField>User_ID</DataField>
         </Field>
         <Field Name="Shipment_Method_Code">
           <DataField>Shipment_Method_Code</DataField>

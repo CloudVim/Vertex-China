@@ -53,7 +53,7 @@ pageextension 50007 "ExtendSalesOrder" extends "Sales Order List"
                 begin
                     salesHeader.Reset();
                     CurrPage.SetSelectionFilter(salesHeader);
-                    Report.Run(50004, true, false, salesHeader);
+                    Report.Run(50001, true, false, salesHeader);
                 end;
             }
             // action(packingsli_Workorder)
@@ -74,6 +74,24 @@ pageextension 50007 "ExtendSalesOrder" extends "Sales Order List"
             //         Report.Run(50001, true, false, salesHeader);
             //     end;
             // }
+            action(BillofLading)
+            {
+                ApplicationArea = Basic, Suite;
+                Caption = 'Bill Of Lading';
+                Image = PrintReport;
+                Promoted = true;
+                PromotedCategory = Category8;
+                Ellipsis = true;
+
+                trigger OnAction()
+                var
+                    salesHeader: Record "Sales Header";
+                begin
+                    salesHeader.Reset();
+                    CurrPage.SetSelectionFilter(salesHeader);
+                    Report.Run(50002, true, false, salesHeader);
+                end;
+            }
         }
     }
     var

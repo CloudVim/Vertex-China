@@ -30,7 +30,25 @@ pageextension 50008 "ExtendSalesOrder_CBR" extends "Sales Order"
                 begin
                     salesHeader.Reset();
                     CurrPage.SetSelectionFilter(salesHeader);
-                    Report.Run(50004, true, false, salesHeader);
+                    Report.Run(50001, true, false, salesHeader);
+                end;
+            }
+            action(BillofLading)
+            {
+                ApplicationArea = Basic, Suite;
+                Caption = 'Bill Of Lading';
+                Image = PrintReport;
+                Promoted = true;
+                PromotedCategory = Category11;
+                Ellipsis = true;
+
+                trigger OnAction()
+                var
+                    salesHeader: Record "Sales Header";
+                begin
+                    salesHeader.Reset();
+                    CurrPage.SetSelectionFilter(salesHeader);
+                    Report.Run(50002, true, false, salesHeader);
                 end;
             }
         }
