@@ -1,9 +1,10 @@
-report 50004 "SalesInvoice"
+report 50004 "SalesOrderConfirmation"
 {
     UsageCategory = ReportsAndAnalysis;
     ApplicationArea = All;
     DefaultLayout = RDLC;
-    RDLCLayout = './SalesInvoice.rdl';
+    Caption = 'Sales Order Confirmation';
+    RDLCLayout = './SalesOrderConfirmation.rdl';
 
 
     dataset
@@ -106,6 +107,10 @@ report 50004 "SalesInvoice"
                 { }
                 column(InvoiceNoBarode; InvoiceNoBarode)
                 { }
+                column(LBSWeight; LBSWeight)
+                { }
+                column(CubeAmount; CubeAmount)
+                { }
                 trigger OnAfterGetRecord()
                 var
                     SalesLine_L: Record "Sales Line";
@@ -146,7 +151,25 @@ report 50004 "SalesInvoice"
                             ItemUOM := Item_L."Base Unit of Measure";
                         end;
                     end;
+                    //AGT_DS
 
+                    CubeAmount := 0;
+                    LBSWeight := 0;
+                    If Type = Type::Item then begin
+                        If Item_L.get("No.") then begin
+                            If Item_L."Unit Volume" <> 0 then
+                                CubeAmount := Quantity * "Unit Volume"
+                            else
+                                CubeAmount := Quantity;
+
+                            If Item_L."Gross Weight" <> 0 then
+                                LBSWeight := Quantity * Item_L."Gross Weight"
+                            Else
+                                LBSWeight := Quantity;
+                        end;
+                    end
+
+                    //AGT_DS
                 end;
 
             }
@@ -281,4 +304,6 @@ report 50004 "SalesInvoice"
         Paymenttermdiscount: Decimal;
         NoofRows: Integer;
         InvoiceNoBarode: Text;
+        LBSWeight: Decimal;
+        CubeAmount: Decimal;
 }

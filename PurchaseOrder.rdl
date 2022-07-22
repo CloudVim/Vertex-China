@@ -11,103 +11,6 @@
       <rd:DataSourceID>71f07aa2-4a0f-4b03-b0a0-b9fab89eebce</rd:DataSourceID>
     </DataSource>
   </DataSources>
-  <DataSets>
-    <DataSet Name="DataSet_Result">
-      <Query>
-        <DataSourceName>DataSource</DataSourceName>
-        <CommandText />
-      </Query>
-      <Fields>
-        <Field Name="No_">
-          <DataField>No_</DataField>
-        </Field>
-        <Field Name="Order_Date">
-          <DataField>Order_Date</DataField>
-        </Field>
-        <Field Name="Payment_Terms_Code">
-          <DataField>Payment_Terms_Code</DataField>
-        </Field>
-        <Field Name="CompanyInfo_Picture">
-          <DataField>CompanyInfo_Picture</DataField>
-        </Field>
-        <Field Name="CompanyInfo_Phone">
-          <DataField>CompanyInfo_Phone</DataField>
-        </Field>
-        <Field Name="CompanyInfo_FaxNo">
-          <DataField>CompanyInfo_FaxNo</DataField>
-        </Field>
-        <Field Name="CompanyInfoAdd1">
-          <DataField>CompanyInfoAdd1</DataField>
-        </Field>
-        <Field Name="CompanyInfoAdd2">
-          <DataField>CompanyInfoAdd2</DataField>
-        </Field>
-        <Field Name="CompanyInfoAdd3">
-          <DataField>CompanyInfoAdd3</DataField>
-        </Field>
-        <Field Name="ShipToAdd1">
-          <DataField>ShipToAdd1</DataField>
-        </Field>
-        <Field Name="ShipToAdd2">
-          <DataField>ShipToAdd2</DataField>
-        </Field>
-        <Field Name="ShipToAdd3">
-          <DataField>ShipToAdd3</DataField>
-        </Field>
-        <Field Name="ShipToAdd4">
-          <DataField>ShipToAdd4</DataField>
-        </Field>
-        <Field Name="ShipToAdd5">
-          <DataField>ShipToAdd5</DataField>
-        </Field>
-        <Field Name="PurchaseFrom1">
-          <DataField>PurchaseFrom1</DataField>
-        </Field>
-        <Field Name="PurchaseFrom2">
-          <DataField>PurchaseFrom2</DataField>
-        </Field>
-        <Field Name="PurchaseFrom3">
-          <DataField>PurchaseFrom3</DataField>
-        </Field>
-        <Field Name="PurchaseFrom4">
-          <DataField>PurchaseFrom4</DataField>
-        </Field>
-        <Field Name="PurchaseFrom5">
-          <DataField>PurchaseFrom5</DataField>
-        </Field>
-        <Field Name="ItemNo">
-          <DataField>ItemNo</DataField>
-        </Field>
-        <Field Name="Quantity">
-          <DataField>Quantity</DataField>
-        </Field>
-        <Field Name="QuantityFormat">
-          <DataField>QuantityFormat</DataField>
-        </Field>
-        <Field Name="Unit_of_Measure">
-          <DataField>Unit_of_Measure</DataField>
-        </Field>
-        <Field Name="Unit_Price__LCY_">
-          <DataField>Unit_Price__LCY_</DataField>
-        </Field>
-        <Field Name="Unit_Price__LCY_Format">
-          <DataField>Unit_Price__LCY_Format</DataField>
-        </Field>
-        <Field Name="Line_Discount_Amount">
-          <DataField>Line_Discount_Amount</DataField>
-        </Field>
-        <Field Name="Line_Discount_AmountFormat">
-          <DataField>Line_Discount_AmountFormat</DataField>
-        </Field>
-        <Field Name="Amount">
-          <DataField>Amount</DataField>
-        </Field>
-        <Field Name="AmountFormat">
-          <DataField>AmountFormat</DataField>
-        </Field>
-      </Fields>
-    </DataSet>
-  </DataSets>
   <ReportSections>
     <ReportSection>
       <Body>
@@ -3507,12 +3410,6 @@
       </Page>
     </ReportSection>
   </ReportSections>
-  <ReportParametersLayout>
-    <GridLayoutDefinition>
-      <NumberOfColumns>4</NumberOfColumns>
-      <NumberOfRows>2</NumberOfRows>
-    </GridLayoutDefinition>
-  </ReportParametersLayout>
   <Code>Public Function BlankZero(ByVal Value As Decimal)
     if Value = 0 then
         Return ""
@@ -3552,4 +3449,104 @@ End Function
   <ConsumeContainerWhitespace>true</ConsumeContainerWhitespace>
   <rd:ReportUnitType>Cm</rd:ReportUnitType>
   <rd:ReportID>0eeb6585-38ae-40f1-885b-8d50088d51b4</rd:ReportID>
+  <DataSets>
+    <DataSet Name="DataSet_Result">
+      <Fields>
+        <Field Name="No_">
+          <DataField>No_</DataField>
+        </Field>
+        <Field Name="Order_Date">
+          <DataField>Order_Date</DataField>
+        </Field>
+        <Field Name="Payment_Terms_Code">
+          <DataField>Payment_Terms_Code</DataField>
+        </Field>
+        <Field Name="CompanyInfo_Picture">
+          <DataField>CompanyInfo_Picture</DataField>
+        </Field>
+        <Field Name="CompanyInfo_Phone">
+          <DataField>CompanyInfo_Phone</DataField>
+        </Field>
+        <Field Name="CompanyInfo_FaxNo">
+          <DataField>CompanyInfo_FaxNo</DataField>
+        </Field>
+        <Field Name="CompanyInfoAdd1">
+          <DataField>CompanyInfoAdd1</DataField>
+        </Field>
+        <Field Name="CompanyInfoAdd2">
+          <DataField>CompanyInfoAdd2</DataField>
+        </Field>
+        <Field Name="CompanyInfoAdd3">
+          <DataField>CompanyInfoAdd3</DataField>
+        </Field>
+        <Field Name="ShipToAdd1">
+          <DataField>ShipToAdd1</DataField>
+        </Field>
+        <Field Name="ShipToAdd2">
+          <DataField>ShipToAdd2</DataField>
+        </Field>
+        <Field Name="ShipToAdd3">
+          <DataField>ShipToAdd3</DataField>
+        </Field>
+        <Field Name="ShipToAdd4">
+          <DataField>ShipToAdd4</DataField>
+        </Field>
+        <Field Name="ShipToAdd5">
+          <DataField>ShipToAdd5</DataField>
+        </Field>
+        <Field Name="PurchaseFrom1">
+          <DataField>PurchaseFrom1</DataField>
+        </Field>
+        <Field Name="PurchaseFrom2">
+          <DataField>PurchaseFrom2</DataField>
+        </Field>
+        <Field Name="PurchaseFrom3">
+          <DataField>PurchaseFrom3</DataField>
+        </Field>
+        <Field Name="PurchaseFrom4">
+          <DataField>PurchaseFrom4</DataField>
+        </Field>
+        <Field Name="PurchaseFrom5">
+          <DataField>PurchaseFrom5</DataField>
+        </Field>
+        <Field Name="ItemNo">
+          <DataField>ItemNo</DataField>
+        </Field>
+        <Field Name="Description">
+          <DataField>Description</DataField>
+        </Field>
+        <Field Name="Quantity">
+          <DataField>Quantity</DataField>
+        </Field>
+        <Field Name="QuantityFormat">
+          <DataField>QuantityFormat</DataField>
+        </Field>
+        <Field Name="Unit_of_Measure">
+          <DataField>Unit_of_Measure</DataField>
+        </Field>
+        <Field Name="Unit_Price__LCY_">
+          <DataField>Unit_Price__LCY_</DataField>
+        </Field>
+        <Field Name="Unit_Price__LCY_Format">
+          <DataField>Unit_Price__LCY_Format</DataField>
+        </Field>
+        <Field Name="Line_Discount_Amount">
+          <DataField>Line_Discount_Amount</DataField>
+        </Field>
+        <Field Name="Line_Discount_AmountFormat">
+          <DataField>Line_Discount_AmountFormat</DataField>
+        </Field>
+        <Field Name="Amount">
+          <DataField>Amount</DataField>
+        </Field>
+        <Field Name="AmountFormat">
+          <DataField>AmountFormat</DataField>
+        </Field>
+      </Fields>
+      <Query>
+        <DataSourceName>DataSource</DataSourceName>
+        <CommandText />
+      </Query>
+    </DataSet>
+  </DataSets>
 </Report>

@@ -1922,7 +1922,7 @@
                                 <Paragraph>
                                   <TextRuns>
                                     <TextRun>
-                                      <Value />
+                                      <Value>=Fields!LBSWeight.Value</Value>
                                       <Style>
                                         <FontSize>8pt</FontSize>
                                       </Style>
@@ -1932,6 +1932,9 @@
                                 </Paragraph>
                               </Paragraphs>
                               <rd:DefaultName>Textbox93</rd:DefaultName>
+                              <Visibility>
+                                <Hidden>true</Hidden>
+                              </Visibility>
                               <Style>
                                 <Border>
                                   <Style>None</Style>
@@ -1953,7 +1956,7 @@
                                 <Paragraph>
                                   <TextRuns>
                                     <TextRun>
-                                      <Value />
+                                      <Value>=Fields!CubeAmount.Value</Value>
                                       <Style>
                                         <FontSize>8pt</FontSize>
                                       </Style>
@@ -1963,6 +1966,9 @@
                                 </Paragraph>
                               </Paragraphs>
                               <rd:DefaultName>Textbox94</rd:DefaultName>
+                              <Visibility>
+                                <Hidden>true</Hidden>
+                              </Visibility>
                               <Style>
                                 <Border>
                                   <Style>None</Style>
@@ -3320,7 +3326,7 @@
                                 <Paragraph>
                                   <TextRuns>
                                     <TextRun>
-                                      <Value />
+                                      <Value>=Sum(Fields!CubeAmount.Value)</Value>
                                       <Style>
                                         <FontSize>8pt</FontSize>
                                       </Style>
@@ -3419,13 +3425,15 @@
                                 <Paragraph>
                                   <TextRuns>
                                     <TextRun>
-                                      <Value />
+                                      <Value>=Sum(Fields!LBSWeight.Value)</Value>
                                       <Style>
                                         <FontSize>8pt</FontSize>
                                       </Style>
                                     </TextRun>
                                   </TextRuns>
-                                  <Style />
+                                  <Style>
+                                    <TextAlign>Right</TextAlign>
+                                  </Style>
                                 </Paragraph>
                               </Paragraphs>
                               <rd:DefaultName>Textbox110</rd:DefaultName>
@@ -5943,6 +5951,18 @@ End Function
         </Field>
         <Field Name="InvoiceNoBarode">
           <DataField>InvoiceNoBarode</DataField>
+        </Field>
+        <Field Name="LBSWeight">
+          <DataField>LBSWeight</DataField>
+        </Field>
+        <Field Name="LBSWeightFormat">
+          <DataField>LBSWeightFormat</DataField>
+        </Field>
+        <Field Name="CubeAmount">
+          <DataField>CubeAmount</DataField>
+        </Field>
+        <Field Name="CubeAmountFormat">
+          <DataField>CubeAmountFormat</DataField>
         </Field>
       </Fields>
       <Query>
