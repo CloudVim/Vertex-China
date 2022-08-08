@@ -71,30 +71,10 @@
                                 <Border>
                                   <Style>Solid</Style>
                                 </Border>
-                                <TopBorder>
-                                  <Color>Black</Color>
-                                  <Style>Solid</Style>
-                                  <Width>1pt</Width>
-                                </TopBorder>
-                                <BottomBorder>
-                                  <Color>Black</Color>
-                                  <Style>Solid</Style>
-                                  <Width>1pt</Width>
-                                </BottomBorder>
-                                <LeftBorder>
-                                  <Color>Black</Color>
-                                  <Style>Solid</Style>
-                                  <Width>1pt</Width>
-                                </LeftBorder>
-                                <RightBorder>
-                                  <Color>Black</Color>
-                                  <Style>Solid</Style>
-                                  <Width>1pt</Width>
-                                </RightBorder>
                                 <VerticalAlign>Top</VerticalAlign>
                                 <PaddingLeft>0.5pt</PaddingLeft>
                                 <PaddingRight>0.5pt</PaddingRight>
-                                <PaddingTop>0.5pt</PaddingTop>
+                                <PaddingTop>2pt</PaddingTop>
                                 <PaddingBottom>0.5pt</PaddingBottom>
                               </Style>
                             </Textbox>
@@ -148,7 +128,7 @@
                                 <VerticalAlign>Top</VerticalAlign>
                                 <PaddingLeft>0.5pt</PaddingLeft>
                                 <PaddingRight>0.5pt</PaddingRight>
-                                <PaddingTop>0.5pt</PaddingTop>
+                                <PaddingTop>2pt</PaddingTop>
                                 <PaddingBottom>0.5pt</PaddingBottom>
                               </Style>
                             </Textbox>
@@ -202,7 +182,7 @@
                                 <VerticalAlign>Top</VerticalAlign>
                                 <PaddingLeft>0.5pt</PaddingLeft>
                                 <PaddingRight>0.5pt</PaddingRight>
-                                <PaddingTop>0.5pt</PaddingTop>
+                                <PaddingTop>2pt</PaddingTop>
                                 <PaddingBottom>0.5pt</PaddingBottom>
                               </Style>
                             </Textbox>
@@ -256,7 +236,7 @@
                                 <VerticalAlign>Top</VerticalAlign>
                                 <PaddingLeft>0.5pt</PaddingLeft>
                                 <PaddingRight>0.5pt</PaddingRight>
-                                <PaddingTop>0.5pt</PaddingTop>
+                                <PaddingTop>2pt</PaddingTop>
                                 <PaddingBottom>0.5pt</PaddingBottom>
                               </Style>
                             </Textbox>
@@ -310,7 +290,7 @@
                                 <VerticalAlign>Top</VerticalAlign>
                                 <PaddingLeft>0.5pt</PaddingLeft>
                                 <PaddingRight>0.5pt</PaddingRight>
-                                <PaddingTop>0.5pt</PaddingTop>
+                                <PaddingTop>2pt</PaddingTop>
                                 <PaddingBottom>0.5pt</PaddingBottom>
                               </Style>
                             </Textbox>
@@ -364,7 +344,7 @@
                                 <VerticalAlign>Top</VerticalAlign>
                                 <PaddingLeft>0.5pt</PaddingLeft>
                                 <PaddingRight>0.5pt</PaddingRight>
-                                <PaddingTop>0.5pt</PaddingTop>
+                                <PaddingTop>2pt</PaddingTop>
                                 <PaddingBottom>0.5pt</PaddingBottom>
                               </Style>
                             </Textbox>
@@ -418,7 +398,7 @@
                                 <VerticalAlign>Top</VerticalAlign>
                                 <PaddingLeft>0.5pt</PaddingLeft>
                                 <PaddingRight>0.5pt</PaddingRight>
-                                <PaddingTop>0.5pt</PaddingTop>
+                                <PaddingTop>2pt</PaddingTop>
                                 <PaddingBottom>0.5pt</PaddingBottom>
                               </Style>
                             </Textbox>
@@ -457,7 +437,7 @@
                                 <VerticalAlign>Top</VerticalAlign>
                                 <PaddingLeft>0.5pt</PaddingLeft>
                                 <PaddingRight>0.5pt</PaddingRight>
-                                <PaddingTop>0.5pt</PaddingTop>
+                                <PaddingTop>2pt</PaddingTop>
                                 <PaddingBottom>0.5pt</PaddingBottom>
                               </Style>
                             </Textbox>
@@ -511,7 +491,7 @@
                                 <VerticalAlign>Top</VerticalAlign>
                                 <PaddingLeft>0.5pt</PaddingLeft>
                                 <PaddingRight>0.5pt</PaddingRight>
-                                <PaddingTop>0.5pt</PaddingTop>
+                                <PaddingTop>2pt</PaddingTop>
                                 <PaddingBottom>0.5pt</PaddingBottom>
                               </Style>
                             </Textbox>
@@ -565,7 +545,7 @@
                                 <VerticalAlign>Top</VerticalAlign>
                                 <PaddingLeft>0.5pt</PaddingLeft>
                                 <PaddingRight>0.5pt</PaddingRight>
-                                <PaddingTop>0.5pt</PaddingTop>
+                                <PaddingTop>2pt</PaddingTop>
                                 <PaddingBottom>0.5pt</PaddingBottom>
                               </Style>
                             </Textbox>
@@ -599,7 +579,7 @@
                                 <VerticalAlign>Top</VerticalAlign>
                                 <PaddingLeft>0.5pt</PaddingLeft>
                                 <PaddingRight>0.5pt</PaddingRight>
-                                <PaddingTop>0.5pt</PaddingTop>
+                                <PaddingTop>2pt</PaddingTop>
                                 <PaddingBottom>0.5pt</PaddingBottom>
                               </Style>
                             </Textbox>
@@ -633,7 +613,7 @@
                                 <VerticalAlign>Top</VerticalAlign>
                                 <PaddingLeft>0.5pt</PaddingLeft>
                                 <PaddingRight>0.5pt</PaddingRight>
-                                <PaddingTop>0.5pt</PaddingTop>
+                                <PaddingTop>2pt</PaddingTop>
                                 <PaddingBottom>0.5pt</PaddingBottom>
                               </Style>
                             </Textbox>
@@ -688,7 +668,7 @@
                                 <VerticalAlign>Top</VerticalAlign>
                                 <PaddingLeft>0.5pt</PaddingLeft>
                                 <PaddingRight>0.5pt</PaddingRight>
-                                <PaddingTop>0.5pt</PaddingTop>
+                                <PaddingTop>2pt</PaddingTop>
                                 <PaddingBottom>0.5pt</PaddingBottom>
                               </Style>
                             </Textbox>
@@ -742,7 +722,7 @@
                                 <VerticalAlign>Top</VerticalAlign>
                                 <PaddingLeft>0.5pt</PaddingLeft>
                                 <PaddingRight>0.5pt</PaddingRight>
-                                <PaddingTop>0.5pt</PaddingTop>
+                                <PaddingTop>2pt</PaddingTop>
                                 <PaddingBottom>0.5pt</PaddingBottom>
                               </Style>
                             </Textbox>
@@ -885,7 +865,7 @@
                                 <VerticalAlign>Top</VerticalAlign>
                                 <PaddingLeft>0.5pt</PaddingLeft>
                                 <PaddingRight>0.5pt</PaddingRight>
-                                <PaddingTop>0.5pt</PaddingTop>
+                                <PaddingTop>2pt</PaddingTop>
                                 <PaddingBottom>0.5pt</PaddingBottom>
                               </Style>
                             </Textbox>
@@ -939,7 +919,7 @@
                                 <VerticalAlign>Top</VerticalAlign>
                                 <PaddingLeft>0.5pt</PaddingLeft>
                                 <PaddingRight>0.5pt</PaddingRight>
-                                <PaddingTop>0.5pt</PaddingTop>
+                                <PaddingTop>2pt</PaddingTop>
                                 <PaddingBottom>0.5pt</PaddingBottom>
                               </Style>
                             </Textbox>
@@ -993,7 +973,7 @@
                                 <VerticalAlign>Top</VerticalAlign>
                                 <PaddingLeft>0.5pt</PaddingLeft>
                                 <PaddingRight>0.5pt</PaddingRight>
-                                <PaddingTop>0.5pt</PaddingTop>
+                                <PaddingTop>2pt</PaddingTop>
                                 <PaddingBottom>0.5pt</PaddingBottom>
                               </Style>
                             </Textbox>
@@ -1047,7 +1027,7 @@
                                 <VerticalAlign>Top</VerticalAlign>
                                 <PaddingLeft>0.5pt</PaddingLeft>
                                 <PaddingRight>0.5pt</PaddingRight>
-                                <PaddingTop>0.5pt</PaddingTop>
+                                <PaddingTop>2pt</PaddingTop>
                                 <PaddingBottom>0.5pt</PaddingBottom>
                               </Style>
                             </Textbox>
@@ -1101,7 +1081,7 @@
                                 <VerticalAlign>Top</VerticalAlign>
                                 <PaddingLeft>0.5pt</PaddingLeft>
                                 <PaddingRight>0.5pt</PaddingRight>
-                                <PaddingTop>0.5pt</PaddingTop>
+                                <PaddingTop>2pt</PaddingTop>
                                 <PaddingBottom>0.5pt</PaddingBottom>
                               </Style>
                             </Textbox>
@@ -1155,7 +1135,7 @@
                                 <VerticalAlign>Top</VerticalAlign>
                                 <PaddingLeft>0.5pt</PaddingLeft>
                                 <PaddingRight>0.5pt</PaddingRight>
-                                <PaddingTop>0.5pt</PaddingTop>
+                                <PaddingTop>2pt</PaddingTop>
                                 <PaddingBottom>0.5pt</PaddingBottom>
                               </Style>
                             </Textbox>
@@ -1209,7 +1189,7 @@
                                 <VerticalAlign>Top</VerticalAlign>
                                 <PaddingLeft>0.5pt</PaddingLeft>
                                 <PaddingRight>0.5pt</PaddingRight>
-                                <PaddingTop>0.5pt</PaddingTop>
+                                <PaddingTop>2pt</PaddingTop>
                                 <PaddingBottom>0.5pt</PaddingBottom>
                               </Style>
                             </Textbox>
@@ -1263,7 +1243,7 @@
                                 <VerticalAlign>Top</VerticalAlign>
                                 <PaddingLeft>0.5pt</PaddingLeft>
                                 <PaddingRight>0.5pt</PaddingRight>
-                                <PaddingTop>0.5pt</PaddingTop>
+                                <PaddingTop>2pt</PaddingTop>
                                 <PaddingBottom>0.5pt</PaddingBottom>
                               </Style>
                             </Textbox>
@@ -1317,7 +1297,7 @@
                                 <VerticalAlign>Top</VerticalAlign>
                                 <PaddingLeft>0.5pt</PaddingLeft>
                                 <PaddingRight>0.5pt</PaddingRight>
-                                <PaddingTop>0.5pt</PaddingTop>
+                                <PaddingTop>2pt</PaddingTop>
                                 <PaddingBottom>0.5pt</PaddingBottom>
                               </Style>
                             </Textbox>
@@ -1371,7 +1351,7 @@
                                 <VerticalAlign>Top</VerticalAlign>
                                 <PaddingLeft>0.5pt</PaddingLeft>
                                 <PaddingRight>0.5pt</PaddingRight>
-                                <PaddingTop>0.5pt</PaddingTop>
+                                <PaddingTop>2pt</PaddingTop>
                                 <PaddingBottom>0.5pt</PaddingBottom>
                               </Style>
                             </Textbox>
@@ -1409,7 +1389,7 @@
                                 </Border>
                                 <PaddingLeft>0.5pt</PaddingLeft>
                                 <PaddingRight>0.5pt</PaddingRight>
-                                <PaddingTop>0.5pt</PaddingTop>
+                                <PaddingTop>1.5pt</PaddingTop>
                                 <PaddingBottom>0.5pt</PaddingBottom>
                               </Style>
                             </Textbox>
@@ -1440,7 +1420,7 @@
                                 </Border>
                                 <PaddingLeft>0.5pt</PaddingLeft>
                                 <PaddingRight>0.5pt</PaddingRight>
-                                <PaddingTop>0.5pt</PaddingTop>
+                                <PaddingTop>1.5pt</PaddingTop>
                                 <PaddingBottom>0.5pt</PaddingBottom>
                               </Style>
                             </Textbox>
@@ -1458,6 +1438,7 @@
                                       <Value>=Fields!OrderQty.Value</Value>
                                       <Style>
                                         <FontSize>8pt</FontSize>
+                                        <Format>0.00;(0.00)</Format>
                                       </Style>
                                     </TextRun>
                                   </TextRuns>
@@ -1472,8 +1453,8 @@
                                   <Style>None</Style>
                                 </Border>
                                 <PaddingLeft>0.5pt</PaddingLeft>
-                                <PaddingRight>0.5pt</PaddingRight>
-                                <PaddingTop>0.5pt</PaddingTop>
+                                <PaddingRight>1.5pt</PaddingRight>
+                                <PaddingTop>1.5pt</PaddingTop>
                                 <PaddingBottom>0.5pt</PaddingBottom>
                               </Style>
                             </Textbox>
@@ -1506,8 +1487,8 @@
                                   <Style>None</Style>
                                 </Border>
                                 <PaddingLeft>0.5pt</PaddingLeft>
-                                <PaddingRight>0.5pt</PaddingRight>
-                                <PaddingTop>0.5pt</PaddingTop>
+                                <PaddingRight>1.5pt</PaddingRight>
+                                <PaddingTop>1.5pt</PaddingTop>
                                 <PaddingBottom>0.5pt</PaddingBottom>
                               </Style>
                             </Textbox>
@@ -1525,6 +1506,7 @@
                                       <Value>=Fields!BOQty.Value</Value>
                                       <Style>
                                         <FontSize>8pt</FontSize>
+                                        <Format>0.00;(0.00)</Format>
                                       </Style>
                                     </TextRun>
                                   </TextRuns>
@@ -1539,8 +1521,8 @@
                                   <Style>None</Style>
                                 </Border>
                                 <PaddingLeft>0.5pt</PaddingLeft>
-                                <PaddingRight>2pt</PaddingRight>
-                                <PaddingTop>0.5pt</PaddingTop>
+                                <PaddingRight>1.5pt</PaddingRight>
+                                <PaddingTop>1.5pt</PaddingTop>
                                 <PaddingBottom>0.5pt</PaddingBottom>
                               </Style>
                             </Textbox>
@@ -1571,9 +1553,9 @@
                                 <Border>
                                   <Style>None</Style>
                                 </Border>
-                                <PaddingLeft>1pt</PaddingLeft>
+                                <PaddingLeft>0.5pt</PaddingLeft>
                                 <PaddingRight>0.5pt</PaddingRight>
-                                <PaddingTop>0.5pt</PaddingTop>
+                                <PaddingTop>1.5pt</PaddingTop>
                                 <PaddingBottom>0.5pt</PaddingBottom>
                               </Style>
                             </Textbox>
@@ -1605,8 +1587,8 @@
                                   <Style>None</Style>
                                 </Border>
                                 <PaddingLeft>0.5pt</PaddingLeft>
-                                <PaddingRight>2pt</PaddingRight>
-                                <PaddingTop>0.5pt</PaddingTop>
+                                <PaddingRight>1.5pt</PaddingRight>
+                                <PaddingTop>1.5pt</PaddingTop>
                                 <PaddingBottom>0.5pt</PaddingBottom>
                               </Style>
                             </Textbox>
@@ -1637,9 +1619,9 @@
                                 <Border>
                                   <Style>None</Style>
                                 </Border>
-                                <PaddingLeft>1pt</PaddingLeft>
-                                <PaddingRight>0.5pt</PaddingRight>
-                                <PaddingTop>0.5pt</PaddingTop>
+                                <PaddingLeft>0.5pt</PaddingLeft>
+                                <PaddingRight>1.5pt</PaddingRight>
+                                <PaddingTop>1.5pt</PaddingTop>
                                 <PaddingBottom>0.5pt</PaddingBottom>
                               </Style>
                             </Textbox>
@@ -1671,8 +1653,8 @@
                                   <Style>None</Style>
                                 </Border>
                                 <PaddingLeft>0.5pt</PaddingLeft>
-                                <PaddingRight>0.5pt</PaddingRight>
-                                <PaddingTop>0.5pt</PaddingTop>
+                                <PaddingRight>1.5pt</PaddingRight>
+                                <PaddingTop>1.5pt</PaddingTop>
                                 <PaddingBottom>0.5pt</PaddingBottom>
                               </Style>
                             </Textbox>
@@ -1704,8 +1686,8 @@
                                   <Style>None</Style>
                                 </Border>
                                 <PaddingLeft>0.5pt</PaddingLeft>
-                                <PaddingRight>1pt</PaddingRight>
-                                <PaddingTop>0.5pt</PaddingTop>
+                                <PaddingRight>1.5pt</PaddingRight>
+                                <PaddingTop>1.5pt</PaddingTop>
                                 <PaddingBottom>0.5pt</PaddingBottom>
                               </Style>
                             </Textbox>
@@ -1805,8 +1787,8 @@
                                   <Style>None</Style>
                                 </Border>
                                 <PaddingLeft>0.5pt</PaddingLeft>
-                                <PaddingRight>0.5pt</PaddingRight>
-                                <PaddingTop>0.5pt</PaddingTop>
+                                <PaddingRight>1.5pt</PaddingRight>
+                                <PaddingTop>1.5pt</PaddingTop>
                                 <PaddingBottom>0.5pt</PaddingBottom>
                               </Style>
                             </Textbox>
@@ -1839,8 +1821,8 @@
                                   <Style>None</Style>
                                 </Border>
                                 <PaddingLeft>0.5pt</PaddingLeft>
-                                <PaddingRight>0.5pt</PaddingRight>
-                                <PaddingTop>0.5pt</PaddingTop>
+                                <PaddingRight>1.5pt</PaddingRight>
+                                <PaddingTop>1.5pt</PaddingTop>
                                 <PaddingBottom>0.5pt</PaddingBottom>
                               </Style>
                             </Textbox>
@@ -1873,8 +1855,8 @@
                                   <Style>None</Style>
                                 </Border>
                                 <PaddingLeft>0.5pt</PaddingLeft>
-                                <PaddingRight>2pt</PaddingRight>
-                                <PaddingTop>0.5pt</PaddingTop>
+                                <PaddingRight>1.5pt</PaddingRight>
+                                <PaddingTop>1.5pt</PaddingTop>
                                 <PaddingBottom>0.5pt</PaddingBottom>
                               </Style>
                             </Textbox>
@@ -1940,8 +1922,8 @@
                                   <Style>None</Style>
                                 </Border>
                                 <PaddingLeft>0.5pt</PaddingLeft>
-                                <PaddingRight>2pt</PaddingRight>
-                                <PaddingTop>0.5pt</PaddingTop>
+                                <PaddingRight>1.5pt</PaddingRight>
+                                <PaddingTop>1.5pt</PaddingTop>
                                 <PaddingBottom>0.5pt</PaddingBottom>
                               </Style>
                             </Textbox>
@@ -1973,9 +1955,9 @@
                                 <Border>
                                   <Style>None</Style>
                                 </Border>
-                                <PaddingLeft>1pt</PaddingLeft>
-                                <PaddingRight>0.5pt</PaddingRight>
-                                <PaddingTop>0.5pt</PaddingTop>
+                                <PaddingLeft>0.5pt</PaddingLeft>
+                                <PaddingRight>1.5pt</PaddingRight>
+                                <PaddingTop>1.5pt</PaddingTop>
                                 <PaddingBottom>0.5pt</PaddingBottom>
                               </Style>
                             </Textbox>
@@ -2005,8 +1987,8 @@
                                   <Style>None</Style>
                                 </Border>
                                 <PaddingLeft>0.5pt</PaddingLeft>
-                                <PaddingRight>0.5pt</PaddingRight>
-                                <PaddingTop>0.5pt</PaddingTop>
+                                <PaddingRight>1.5pt</PaddingRight>
+                                <PaddingTop>1.5pt</PaddingTop>
                                 <PaddingBottom>0.5pt</PaddingBottom>
                               </Style>
                             </Textbox>
@@ -2036,8 +2018,8 @@
                                   <Style>None</Style>
                                 </Border>
                                 <PaddingLeft>0.5pt</PaddingLeft>
-                                <PaddingRight>2pt</PaddingRight>
-                                <PaddingTop>0.5pt</PaddingTop>
+                                <PaddingRight>1.5pt</PaddingRight>
+                                <PaddingTop>1.5pt</PaddingTop>
                                 <PaddingBottom>0.5pt</PaddingBottom>
                               </Style>
                             </Textbox>
@@ -2134,8 +2116,8 @@
                                   <Style>None</Style>
                                 </Border>
                                 <PaddingLeft>0.5pt</PaddingLeft>
-                                <PaddingRight>0.5pt</PaddingRight>
-                                <PaddingTop>0.5pt</PaddingTop>
+                                <PaddingRight>1.5pt</PaddingRight>
+                                <PaddingTop>1.5pt</PaddingTop>
                                 <PaddingBottom>0.5pt</PaddingBottom>
                               </Style>
                             </Textbox>
@@ -2165,8 +2147,8 @@
                                   <Style>None</Style>
                                 </Border>
                                 <PaddingLeft>0.5pt</PaddingLeft>
-                                <PaddingRight>0.5pt</PaddingRight>
-                                <PaddingTop>0.5pt</PaddingTop>
+                                <PaddingRight>1.5pt</PaddingRight>
+                                <PaddingTop>1.5pt</PaddingTop>
                                 <PaddingBottom>0.5pt</PaddingBottom>
                               </Style>
                             </Textbox>
@@ -2196,8 +2178,8 @@
                                   <Style>None</Style>
                                 </Border>
                                 <PaddingLeft>0.5pt</PaddingLeft>
-                                <PaddingRight>2pt</PaddingRight>
-                                <PaddingTop>0.5pt</PaddingTop>
+                                <PaddingRight>1.5pt</PaddingRight>
+                                <PaddingTop>1.5pt</PaddingTop>
                                 <PaddingBottom>0.5pt</PaddingBottom>
                               </Style>
                             </Textbox>
@@ -2454,8 +2436,8 @@
                                   <Style>None</Style>
                                 </Border>
                                 <PaddingLeft>0.5pt</PaddingLeft>
-                                <PaddingRight>0.5pt</PaddingRight>
-                                <PaddingTop>0.5pt</PaddingTop>
+                                <PaddingRight>1.5pt</PaddingRight>
+                                <PaddingTop>1.5pt</PaddingTop>
                                 <PaddingBottom>0.5pt</PaddingBottom>
                               </Style>
                             </Textbox>
@@ -2490,8 +2472,8 @@
                                   <Style>None</Style>
                                 </Border>
                                 <PaddingLeft>0.5pt</PaddingLeft>
-                                <PaddingRight>2pt</PaddingRight>
-                                <PaddingTop>0.5pt</PaddingTop>
+                                <PaddingRight>1.5pt</PaddingRight>
+                                <PaddingTop>1.5pt</PaddingTop>
                                 <PaddingBottom>0.5pt</PaddingBottom>
                               </Style>
                             </Textbox>
@@ -2619,8 +2601,8 @@
                                   <Style>None</Style>
                                 </Border>
                                 <PaddingLeft>0.5pt</PaddingLeft>
-                                <PaddingRight>1pt</PaddingRight>
-                                <PaddingTop>0.5pt</PaddingTop>
+                                <PaddingRight>1.5pt</PaddingRight>
+                                <PaddingTop>1.5pt</PaddingTop>
                                 <PaddingBottom>0.5pt</PaddingBottom>
                               </Style>
                             </Textbox>
@@ -2719,8 +2701,8 @@
                                   <Style>None</Style>
                                 </Border>
                                 <PaddingLeft>0.5pt</PaddingLeft>
-                                <PaddingRight>0.5pt</PaddingRight>
-                                <PaddingTop>0.5pt</PaddingTop>
+                                <PaddingRight>1.5pt</PaddingRight>
+                                <PaddingTop>1.5pt</PaddingTop>
                                 <PaddingBottom>0.5pt</PaddingBottom>
                               </Style>
                             </Textbox>
@@ -2752,8 +2734,8 @@
                                   <Style>None</Style>
                                 </Border>
                                 <PaddingLeft>0.5pt</PaddingLeft>
-                                <PaddingRight>0.5pt</PaddingRight>
-                                <PaddingTop>0.5pt</PaddingTop>
+                                <PaddingRight>1.5pt</PaddingRight>
+                                <PaddingTop>1.5pt</PaddingTop>
                                 <PaddingBottom>0.5pt</PaddingBottom>
                               </Style>
                             </Textbox>
@@ -2786,8 +2768,8 @@
                                   <Style>None</Style>
                                 </Border>
                                 <PaddingLeft>0.5pt</PaddingLeft>
-                                <PaddingRight>2pt</PaddingRight>
-                                <PaddingTop>0.5pt</PaddingTop>
+                                <PaddingRight>1.5pt</PaddingRight>
+                                <PaddingTop>1.5pt</PaddingTop>
                                 <PaddingBottom>0.5pt</PaddingBottom>
                               </Style>
                             </Textbox>
@@ -2915,8 +2897,8 @@
                                   <Style>None</Style>
                                 </Border>
                                 <PaddingLeft>0.5pt</PaddingLeft>
-                                <PaddingRight>1pt</PaddingRight>
-                                <PaddingTop>0.5pt</PaddingTop>
+                                <PaddingRight>1.5pt</PaddingRight>
+                                <PaddingTop>1.5pt</PaddingTop>
                                 <PaddingBottom>0.5pt</PaddingBottom>
                               </Style>
                             </Textbox>
@@ -3015,8 +2997,8 @@
                                   <Style>None</Style>
                                 </Border>
                                 <PaddingLeft>0.5pt</PaddingLeft>
-                                <PaddingRight>0.5pt</PaddingRight>
-                                <PaddingTop>0.5pt</PaddingTop>
+                                <PaddingRight>1.5pt</PaddingRight>
+                                <PaddingTop>1.5pt</PaddingTop>
                                 <PaddingBottom>0.5pt</PaddingBottom>
                               </Style>
                             </Textbox>
@@ -3048,8 +3030,8 @@
                                   <Style>None</Style>
                                 </Border>
                                 <PaddingLeft>0.5pt</PaddingLeft>
-                                <PaddingRight>0.5pt</PaddingRight>
-                                <PaddingTop>0.5pt</PaddingTop>
+                                <PaddingRight>1.5pt</PaddingRight>
+                                <PaddingTop>1.5pt</PaddingTop>
                                 <PaddingBottom>0.5pt</PaddingBottom>
                               </Style>
                             </Textbox>
@@ -3081,8 +3063,8 @@
                                   <Style>None</Style>
                                 </Border>
                                 <PaddingLeft>0.5pt</PaddingLeft>
-                                <PaddingRight>2pt</PaddingRight>
-                                <PaddingTop>0.5pt</PaddingTop>
+                                <PaddingRight>1.5pt</PaddingRight>
+                                <PaddingTop>1.5pt</PaddingTop>
                                 <PaddingBottom>0.5pt</PaddingBottom>
                               </Style>
                             </Textbox>
@@ -3210,8 +3192,8 @@
                                   <Style>None</Style>
                                 </Border>
                                 <PaddingLeft>0.5pt</PaddingLeft>
-                                <PaddingRight>1pt</PaddingRight>
-                                <PaddingTop>0.5pt</PaddingTop>
+                                <PaddingRight>1.5pt</PaddingRight>
+                                <PaddingTop>1.5pt</PaddingTop>
                                 <PaddingBottom>0.5pt</PaddingBottom>
                               </Style>
                             </Textbox>
@@ -3310,8 +3292,8 @@
                                   <Style>None</Style>
                                 </Border>
                                 <PaddingLeft>0.5pt</PaddingLeft>
-                                <PaddingRight>0.5pt</PaddingRight>
-                                <PaddingTop>0.5pt</PaddingTop>
+                                <PaddingRight>1.5pt</PaddingRight>
+                                <PaddingTop>1.5pt</PaddingTop>
                                 <PaddingBottom>0.5pt</PaddingBottom>
                               </Style>
                             </Textbox>
@@ -3343,8 +3325,8 @@
                                   <Style>None</Style>
                                 </Border>
                                 <PaddingLeft>0.5pt</PaddingLeft>
-                                <PaddingRight>0.5pt</PaddingRight>
-                                <PaddingTop>0.5pt</PaddingTop>
+                                <PaddingRight>1.5pt</PaddingRight>
+                                <PaddingTop>1.5pt</PaddingTop>
                                 <PaddingBottom>0.5pt</PaddingBottom>
                               </Style>
                             </Textbox>
@@ -3376,8 +3358,8 @@
                                   <Style>None</Style>
                                 </Border>
                                 <PaddingLeft>0.5pt</PaddingLeft>
-                                <PaddingRight>2pt</PaddingRight>
-                                <PaddingTop>0.5pt</PaddingTop>
+                                <PaddingRight>1.5pt</PaddingRight>
+                                <PaddingTop>1.5pt</PaddingTop>
                                 <PaddingBottom>0.5pt</PaddingBottom>
                               </Style>
                             </Textbox>
@@ -4281,7 +4263,7 @@
                         </TextRun>
                       </TextRuns>
                       <Style>
-                        <TextAlign>Left</TextAlign>
+                        <TextAlign>Center</TextAlign>
                       </Style>
                     </Paragraph>
                   </Paragraphs>
@@ -4528,7 +4510,7 @@
                       <Style>Solid</Style>
                     </Border>
                     <VerticalAlign>Top</VerticalAlign>
-                    <PaddingLeft>0.5pt</PaddingLeft>
+                    <PaddingLeft>2pt</PaddingLeft>
                     <PaddingRight>0.5pt</PaddingRight>
                     <PaddingTop>0.5pt</PaddingTop>
                     <PaddingBottom>0.5pt</PaddingBottom>
@@ -4562,28 +4544,8 @@
                     <Border>
                       <Style>Solid</Style>
                     </Border>
-                    <TopBorder>
-                      <Color>Black</Color>
-                      <Style>Solid</Style>
-                      <Width>1pt</Width>
-                    </TopBorder>
-                    <BottomBorder>
-                      <Color>Black</Color>
-                      <Style>Solid</Style>
-                      <Width>1pt</Width>
-                    </BottomBorder>
-                    <LeftBorder>
-                      <Color>Black</Color>
-                      <Style>Solid</Style>
-                      <Width>1pt</Width>
-                    </LeftBorder>
-                    <RightBorder>
-                      <Color>Black</Color>
-                      <Style>Solid</Style>
-                      <Width>1pt</Width>
-                    </RightBorder>
                     <VerticalAlign>Top</VerticalAlign>
-                    <PaddingLeft>0.5pt</PaddingLeft>
+                    <PaddingLeft>2pt</PaddingLeft>
                     <PaddingRight>0.5pt</PaddingRight>
                     <PaddingTop>0.5pt</PaddingTop>
                     <PaddingBottom>0.5pt</PaddingBottom>
@@ -4603,7 +4565,7 @@
                         </TextRun>
                       </TextRuns>
                       <Style>
-                        <TextAlign>Left</TextAlign>
+                        <TextAlign>Center</TextAlign>
                       </Style>
                     </Paragraph>
                   </Paragraphs>

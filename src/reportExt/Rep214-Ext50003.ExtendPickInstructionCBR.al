@@ -4,10 +4,10 @@ reportextension 50003 "ExtendPickInstruction_CBR" extends "Pick Instruction" //2
     {
         add("Sales Line")
         {
-            column(No__of_Cases;"Sales Line"."No. of Cases")
+            column(No__of_Cases; "Sales Line"."No. of Cases")
             {
             }
-            column(No__of_Cases_Ship;"No. of Cases Ship")
+            column(No__of_Cases_Ship; "No. of Cases Ship")
             {
             }
         }
