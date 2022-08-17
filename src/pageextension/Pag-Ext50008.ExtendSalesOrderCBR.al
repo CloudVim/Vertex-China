@@ -10,6 +10,13 @@ pageextension 50008 "ExtendSalesOrder_CBR" extends "Sales Order"
                 Caption = 'Shipper Acct No.';
             }
         }
+        addbefore(Status)
+        {
+            field("Commission Rate"; Rec."Commission Rate")
+            {
+                ApplicationArea = All;
+            }
+        }
     }
     actions
     {
