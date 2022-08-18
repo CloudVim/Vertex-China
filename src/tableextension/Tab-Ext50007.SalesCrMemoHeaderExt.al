@@ -1,4 +1,4 @@
-tableextension 50006 "MyExtension" extends "Sales Shipment Header"
+tableextension 50007 "SalesCrMemoHeader_Ext" extends "Sales Cr.Memo Header"
 {
     fields
     {
