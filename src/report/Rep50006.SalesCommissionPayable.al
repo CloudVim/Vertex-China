@@ -1,9 +1,9 @@
-//Task_ID= CAS-02422-V7C5H9
 report 50006 "Sales Commission Payable"
 {
     UsageCategory = ReportsAndAnalysis;
     ApplicationArea = All;
     DefaultLayout = RDLC;
+    Caption = 'Sales Commission Payable';
     RDLCLayout = './SalesCommissionPayable.rdl';
 
     dataset
@@ -15,113 +15,107 @@ report 50006 "Sales Commission Payable"
             column(CompanyInfo_Picture; CompanyInfo.Picture) { }
             column(StartDate; StartDate) { }
             column(EndDate; EndDate) { }
-            dataitem(Customer; Customer)
+
+            dataitem(Records; Integer)
             {
-                DataItemLinkReference = SalespersonPurchaser;
-                DataItemLink = "Salesperson Code" = field(Code);
+                DataItemTableView = SORTING(Number);
+                column(Customer_No; Customer_No) { }
+                column(Customer_Name; Customer_Name) { }
+                column(InvoiceNo; InvoiceNo) { }
+                column(Document_Date; Document_Date) { }
+                column(ItemNo; ItemNo) { }
+                column(Description; Description) { }
+                column(Quantity; Quantity) { }
+                column(Unit_Price; Unit_Price) { }
+                column(Unit_Cost; CommissionPercentage) { }
+                column(Comission; Comission) { }
+                column(ExtPriceVal; ExtPriceVal) { }
+                column(Rate; Rate) { }
 
-                dataitem(Records; Integer)
-                {
-                    DataItemTableView = SORTING(Number);
-                    column(Customer_No; Customer_No) { }
-                    column(Customer_Name; Customer_Name) { }
-                    column(InvoiceNo; InvoiceNo) { }
-                    column(Document_Date; Document_Date) { }
-                    column(ItemNo; ItemNo) { }
-                    column(Description; Description) { }
-                    column(Quantity; Quantity) { }
-                    column(Unit_Price; Unit_Price) { }
-                    column(Unit_Cost; Customer."Commission Percentage") { }
-                    column(Comission; Comission) { }
-                    column(ExtPriceVal; ExtPriceVal) { }
-                    column(Rate; Rate) { }
+                trigger OnPreDataItem()
+                var
+                begin
+                    TotalNoOfRecord := 0;
+                    TotalNoOfRecord := NoOfRecords();
+                    Message('%1', TotalNoOfRecord);
+                    SetFilter(Number, '%1..%2', 1, TotalNoOfRecord);
 
-                    trigger OnPreDataItem()
-                    var
-                    begin
-                        TotalNoOfRecord := 0;
-                        TotalNoOfRecord := NoOfRecords();
-                        SetFilter(Number, '%1..%2', 1, TotalNoOfRecord);
+                    SalesInvoiceLine_G.MarkedOnly(true);
+                    if SalesInvoiceLine_G.FindSet() then;
 
-                        SalesInvLine.Reset();
-                        SalesCrMemoLine.Reset();
-                        SalesInvLine.SetRange("Posting Date", StartDate, EndDate);
-                        SalesInvLine.SetRange("Sell-to Customer No.", Customer."No.");
-                        IF SalesInvLine.FindSet() then;
+                    SalesCrMemoLine_G.MarkedOnly(true);
+                    if SalesCrMemoLine_G.FindSet() then;
+                end;
 
-                        SalesCrMemoLine.SetRange("Posting Date", StartDate, EndDate);
-                        SalesCrMemoLine.SetRange("Sell-to Customer No.", Customer."No.");
-                        If SalesCrMemoLine.FindSet() then;
+                trigger OnAfterGetRecord()
+                var
+                    Item_L: Record Item;
+                    Customer_L: Record Customer;
+                    SalesPersonPurchaser_L: Record "Salesperson/Purchaser";
+                begin
+                    ClearVariable();
+                    If Number <= NoOfSI then begin
+                        If SalesInvHeader.get(SalesInvoiceLine_G."Document No.") then;
+                        Customer_No := SalesInvHeader."Sell-to Customer No.";
+                        Customer_Name := SalesInvHeader."Sell-to Customer Name";
+                        InvoiceNo := SalesInvHeader."No.";
+                        Document_Date := SalesInvHeader."Document Date";
+                        CommissionPercentage := SalesInvoiceLine_G."Commission Rate";
+                        If SalesInvoiceLine_G.Type = SalesInvoiceLine_G.Type::Item then
+                            ItemNo := SalesInvoiceLine_G."No.";
+                        Description := SalesInvoiceLine_G.Description;
+                        Quantity := SalesInvoiceLine_G.Quantity;
+                        Unit_Price := SalesInvoiceLine_G."Unit Price";
+                        ExtPriceVal := SalesInvoiceLine_G.Quantity * SalesInvoiceLine_G."Unit Price";
+                        // If SalesInvoiceLine_G."Commission Rate" <> 0 then
+                        //    Rate := SalesInvoiceLine_G."Commission Rate"
+                        //Else
+                        if SalesInvHeader."Commission Rate" <> 0 then
+                            Rate := SalesInvHeader."Commission Rate"
+                        //  Else
+                        //    if Item_L.Get(SalesInvoiceLine_G."No.") then
+                        //      Rate := Item_L."Commission Percentage"
+                        //else
+                        //  If Customer_L.get(SalesInvHeader."Sell-to Customer No.") then
+                        //    Rate := Customer_L."Commission Percentage"
+                        //else
+                        //  IF SalesPersonPurchaser_L.Get(SalesInvHeader."Salesperson Code") then
+                        // Rate := SalesPersonPurchaser_L."Commission %"
+                        Else
+                            Rate := 0;
+                        If ExtPriceVal <> 0 then
+                            Comission := (ExtPriceVal / 100) * Rate;
+                        SalesInvoiceLine_G.Next();
+                    end else begin
+                        if SalesCrMemoHeader.get(SalesCrMemoLine_G."Document No.") then;
+                        Customer_No := SalesCrMemoHeader."Sell-to Customer No.";
+                        Customer_Name := SalesCrMemoHeader."Sell-to Customer Name";
+                        InvoiceNo := SalesCrMemoHeader."No.";
+                        Document_Date := SalesCrMemoHeader."Document Date";
+                        // CommissionPercentage := SalesCrMemoLine_G.c need to be add
+                        if SalesCrMemoLine_G.Type = SalesCrMemoLine_G.Type::Item then
+                            ItemNo := SalesCrMemoLine_G."No.";
+                        Description := SalesCrMemoLine_G.Description;
+                        Quantity := -SalesCrMemoLine_G.Quantity;
+                        Unit_Price := SalesCrMemoLine_G."Unit Price";
+                        ExtPriceVal := -(SalesCrMemoLine_G.Quantity * SalesCrMemoLine_G."Unit Price");
+                        // if Item_L.Get(SalesCrMemoLine_G."No.") then
+                        //     Rate := Item_L."Commission Percentage"
+                        // else
+                        //     If Customer_L.get(SalesCrMemoHeader."Sell-to Customer No.") then
+                        //         Rate := Customer_L."Commission Percentage"
+                        //     else
+                        //         IF SalesPersonPurchaser_L.Get(SalesCrMemoHeader."Salesperson Code") then
+                        //         Rate := SalesPersonPurchaser_L."Commission %"
+                        If SalesCrMemoHeader."Commission Rate" <> 0 then
+                            Rate := SalesCrMemoHeader."Commission Rate"
+                        Else
+                            Rate := 0;
+                        SalesCrMemoLine_G.Next();
+                        If ExtPriceVal <> 0 then
+                            Comission := (ExtPriceVal / 100) * Rate;
                     end;
-
-                    trigger OnAfterGetRecord()
-                    var
-                        Item_L: Record Item;
-                        Customer_L: Record Customer;
-                        SalesPersonPurchaser_L: Record "Salesperson/Purchaser";
-                    begin
-                        ClearVariable();
-                        If Number <= NoOfSI then begin
-                            If SalesInvHeader.get(SalesInvLine."Document No.") then;
-                            Customer_No := SalesInvHeader."Sell-to Customer No.";
-                            Customer_Name := SalesInvHeader."Sell-to Customer Name";
-                            InvoiceNo := SalesInvHeader."No.";
-                            Document_Date := SalesInvHeader."Document Date";
-                            If SalesInvLine.Type = SalesInvLine.Type::Item then
-                                ItemNo := SalesInvLine."No.";
-                            Description := SalesInvLine.Description;
-                            Quantity := SalesInvLine.Quantity;
-                            Unit_Price := SalesInvLine."Unit Price";
-                            ExtPriceVal := SalesInvLine.Quantity * SalesInvLine."Unit Price";
-                            // If SalesInvLine."Commission Rate" <> 0 then
-                            //     Rate := SalesInvLine."Commission Rate"
-                            // Else
-                            if SalesInvHeader."Commission Rate" <> 0 then
-                                Rate := SalesInvHeader."Commission Rate"
-                            //     Else
-                            //         if Item_L.Get(SalesInvLine."No.") then
-                            //             Rate := Item_L."Commission Percentage"
-                            //         else
-                            //             If Customer_L.get(SalesInvHeader."Sell-to Customer No.") then
-                            //                 Rate := Customer_L."Commission Percentage"
-                            //             else
-                            // IF SalesPersonPurchaser_L.Get(SalesInvHeader."Salesperson Code") then
-                            //     Rate := SalesPersonPurchaser_L."Commission %"
-                            Else
-                                Rate := 0;
-                            If ExtPriceVal <> 0 then
-                                Comission := (ExtPriceVal / 100) * Rate;
-                            SalesInvLine.Next();
-                        end else begin
-                            if SalesCrMemoHeader.get(SalesCrMemoLine."Document No.") then;
-                            Customer_No := SalesCrMemoHeader."Sell-to Customer No.";
-                            Customer_Name := SalesCrMemoHeader."Sell-to Customer Name";
-                            InvoiceNo := SalesCrMemoHeader."No.";
-                            Document_Date := SalesCrMemoHeader."Document Date";
-                            if SalesCrMemoLine.Type = SalesCrMemoLine.Type::Item then
-                                ItemNo := SalesCrMemoLine."No.";
-                            Description := SalesCrMemoLine.Description;
-                            Quantity := -SalesCrMemoLine.Quantity;
-                            Unit_Price := SalesCrMemoLine."Unit Price";
-                            ExtPriceVal := -(SalesCrMemoLine.Quantity * SalesCrMemoLine."Unit Price");
-                            // if Item_L.Get(SalesCrMemoLine."No.") then
-                            //     Rate := Item_L."Commission Percentage"
-                            // else
-                            //     If Customer_L.get(SalesCrMemoHeader."Sell-to Customer No.") then
-                            //         Rate := Customer_L."Commission Percentage"
-                            //     else
-                            // IF SalesPersonPurchaser_L.Get(SalesCrMemoHeader."Salesperson Code") then
-                            //     Rate := SalesPersonPurchaser_L."Commission %"
-                            If SalesCrMemoHeader."Commission Rate" <> 0 then
-                                Rate := SalesCrMemoHeader."Commission Rate"
-                            Else
-                                Rate := 0;
-                            SalesCrMemoLine.Next();
-                            If ExtPriceVal <> 0 then
-                                Comission := (ExtPriceVal / 100) * Rate;
-                        end;
-                    end;
-                }
+                end;
             }
         }
     }
@@ -195,32 +189,58 @@ report 50006 "Sales Commission Payable"
         Unit_Cost: Decimal;
         Comission: Decimal;
         Rate: Decimal;
+        CommissionPercentage: Decimal;
+        SalesInvoiceLine_G: Record "Sales Invoice Line";
+        SalesCrMemoLine_G: Record "Sales Cr.Memo Line";
 
     local procedure NoOfRecords() myInteger: Integer;
     var
         TotalNo: Integer;
         SIH: Record "Sales Invoice Header";
         SIL: Record "Sales Invoice Line";
-        SCM: Record "Sales Cr.Memo Header";
-        SCL: Record "Sales Cr.Memo Line";
+        SCMH: Record "Sales Cr.Memo Header";
+        SCML: Record "Sales Cr.Memo Line";
     begin
         NoOfSI := 0;
         NoOfCM := 0;
         TotalNo := 0;
-        SIL.Reset();
-        SIL.SetRange("Sell-to Customer No.", Customer."No.");
-        SIL.SetRange("Posting Date", StartDate, EndDate);
-        NoOfSI := SIL.Count;
+        SIH.Reset();
+        SIH.SetRange("Posting Date", StartDate, EndDate);
+        SIH.SetRange("Salesperson Code", SalespersonPurchaser.Code);
+        SIH.SetCurrentKey("Sell-to Customer No.", "No.");
+        If SIH.FindSet() then
+            repeat
+                SIL.Reset();
+                SIL.SetRange("Document No.", SIH."No.");
+                //SIL.SetRange(Type, SIL.Type::Item);
+                NoOfSI += SIL.Count;
+                If SIL.FindSet() then
+                    repeat
+                        If SalesInvoiceLine_G.get(SIL."Document No.", SIL."Line No.") then
+                            SalesInvoiceLine_G.Mark(true);
+                    until SIL.Next() = 0;
+            Until SIH.Next() = 0;
 
-        SCL.Reset();
-        SCL.SetRange("Sell-to Customer No.", Customer."No.");
-        SCL.SetRange("Posting Date", StartDate, EndDate);
-        NoOfCM := SCL.Count;
+
+        SCMH.Reset();
+        SCMH.SetRange("Posting Date", StartDate, EndDate);
+        SCMH.SetRange("Salesperson Code", SalespersonPurchaser.Code);
+        SCMH.SetCurrentKey("Sell-to Customer No.", "No.");
+        If SCMH.FindSet() then
+            repeat
+                SCML.Reset();
+                SCML.SetRange("Document No.", SCMH."No.");
+                NoOfCM += SCML.Count;
+                If SCML.FindSet() then
+                    repeat
+                        If SalesCrMemoLine_G.get(SCML."Document No.", SCML."Line No.") then
+                            SalesCrMemoLine_G.Mark(true);
+                    until SCML.Next() = 0;
+            Until SCMH.Next() = 0;
 
         TotalNo := NoOfSI + NoOfCM;
         exit(TotalNo);
-
-    end;
+    End;
 
     local procedure ClearVariable()
     begin
@@ -236,5 +256,6 @@ report 50006 "Sales Commission Payable"
         Comission := 0;
         ExtPriceVal := 0;
         Rate := 0;
+        CommissionPercentage := 0;
     end;
 }

@@ -9,6 +9,12 @@ pageextension 50007 "ExtendSalesOrder" extends "Sales Order List"
                 ApplicationArea = All;
                 Caption = 'Shipper Acct No.';
             }
+            field("Commission Rate"; Rec."Commission Rate")
+            {
+                ApplicationArea = All;
+                ToolTip = 'Specifies the value of the Commission Rate field.';
+            }
+
         }
     }
     actions

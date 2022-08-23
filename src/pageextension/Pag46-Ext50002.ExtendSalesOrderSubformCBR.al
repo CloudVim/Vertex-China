@@ -10,6 +10,15 @@ pageextension 50002 "ExtendSalesOrderSubform_CBR" extends "Sales Order Subform" 
                 ApplicationArea = All;
             }
         }
+        addafter(Quantity)
+        {
+
+            field("Commission Rate"; Rec."Commission Rate")
+            {
+                ApplicationArea = All;
+                ToolTip = 'Specifies the value of the Commission Rate field.';
+            }
+        }
         modify(Quantity)
         {
             trigger OnAfterValidate()
@@ -62,6 +71,6 @@ pageextension 50002 "ExtendSalesOrderSubform_CBR" extends "Sales Order Subform" 
     }
     trigger OnAfterGetRecord()
     begin
-        Rec.GetItemDataFosSales(Rec."No.");
+        // Rec.GetItemDataFosSales(Rec."No.", Rec."Sell-to Customer No.");
     end;
 }

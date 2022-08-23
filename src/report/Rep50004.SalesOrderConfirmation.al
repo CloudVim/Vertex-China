@@ -226,25 +226,7 @@ report 50004 "SalesOrderConfirmation"
             end;
         }
     }
-    requestpage
-    {
-        layout
-        {
-            area(Content)
-            {
-                group(GroupName)
-                {
-                    // field(Name; SourceExpression)
-                    // {
-                    //     ApplicationArea = All;
 
-                    // }
-                }
-            }
-        }
-
-
-    }
 
 
     labels

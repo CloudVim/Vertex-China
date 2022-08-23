@@ -1,5 +1,17 @@
 pageextension 50005 "ExtendPostedSalesInvoices" extends "Posted Sales Invoices"
 {
+    layout
+    {
+        addafter("Salesperson Code")
+        {
+
+            field("Commission Rate"; Rec."Commission Rate")
+            {
+                ApplicationArea = All;
+                ToolTip = 'Specifies the value of the Commission Rate field.';
+            }
+        }
+    }
     actions
     {
         addafter("&Invoice")
@@ -16,5 +28,6 @@ pageextension 50005 "ExtendPostedSalesInvoices" extends "Posted Sales Invoices"
             }
         }
     }
-    var myInt: Integer;
+    var
+        myInt: Integer;
 }

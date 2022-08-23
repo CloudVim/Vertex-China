@@ -58,29 +58,55 @@ tableextension 50001 "ExtendSalesLine_CBR" extends "Sales Line" //37
         {
             DataClassification = ToBeClassified;
         }
-        modify(Quantity)
+        field(50009; "Commission Rate"; Decimal)
         {
-            trigger OnAfterValidate()
-            begin
-                GetItemDataFosSales("No.");
-            end;
+            DataClassification = ToBeClassified;
+            Editable = false;
         }
+        // modify(Quantity)
+        // {
+        //     trigger OnAfterValidate()
+        //     begin
+        //         GetItemDataFosSales("No.", "Sell-to Customer No.");
+        //     end;
+        // }
         modify("No.")
         {
             trigger OnAfterValidate()
             begin
-                GetItemDataFosSales("No.");
+                GetItemDataFosSales("No.", "Sell-to Customer No.");
             end;
         }
     }
-    procedure GetItemDataFosSales(ItemNo: Code[20])
+    procedure GetItemDataFosSales(ItemNo: Code[20]; CustomerNo: Code[20])
+    var
+        //Item_L: Record Item;
+        Customer_L: Record Customer;
+        CustomerDiscountGroup: Record "Customer Discount Group";
     begin
-        if recItem.Get(ItemNo) then begin
-            recItem.CalcFields(Inventory, "Qty. on Sales Order");
-            "Qty Available" := (recItem.Inventory - recItem."Qty. on Sales Order");
-        end;
-    end;
+        if RecItem.Get(ItemNo) then begin
+            If RecItem."Group Code" <> 0 then begin
+                If Customer_L.get(CustomerNo) then
+                    if Customer_L."Customer Disc. Group" <> '' then begin
+                        CustomerDiscountGroup.SetRange(Code, Customer_L."Customer Disc. Group");
+                        if CustomerDiscountGroup.FindFirst() then begin
+                            if RecItem."Group Code" = 1 then
+                                "Commission Rate" := CustomerDiscountGroup."Group 1 Commission"
+                            Else
+                                if RecItem."Group Code" = 2 then
+                                    "Commission Rate" := CustomerDiscountGroup."Group 2 Commission"
+                                Else
+                                    if RecItem."Group Code" = 3 then
+                                        "Commission Rate" := CustomerDiscountGroup."Group 3 Commission";
+                        end;
+                    end;
+            end;
+        end else
+            "Commission Rate" := 0;
+    End;
+
 
     var
-        recItem: Record Item;
+        RecItem: Record Item;
+        CustomerDiscGroup: Record "Customer Discount Group";
 }

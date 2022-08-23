@@ -23,6 +23,11 @@ pageextension 50000 "ExtendItemList_CBR" extends "Item List" //31
                 ApplicationArea = All;
                 Caption = 'Factory';
             }
+            field("Group Code"; Rec."Group Code")
+            {
+                ApplicationArea = All;
+                ToolTip = 'Specifies the value of the Group Code field.';
+            }
         }
     }
     actions
