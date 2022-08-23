@@ -4,112 +4,157 @@ report 50001 "PackingSlip"
     RDLCLayout = './PackingSlip.rdl';
     Caption = 'Packing Slip';
 
+
     dataset
     {
-        dataitem("Sales Header"; "Sales Header")
+        dataitem(SalesHeader; "Sales Header")
         {
-            DataItemTableView = SORTING("Document Type", "No.") WHERE("Document Type" = CONST(Order));
-            RequestFilterFields = "No.", "Sell-to Customer No.";
-            RequestFilterHeading = 'Sales Order';
-            column(No1_SalesHeader; "Sales Header"."No.")
-            {
-            }
-            // column(Package_Tracking_No_;"Package Tracking No.")
-            // {}need to conform
-            column(CompanyName; COMPANYPROPERTY.DisplayName)
-            {
-            }
-            column(BilltoAddr1; BilltoAddr[1])
-            {
-            }
-            column(BilltoAddr2; BilltoAddr[2])
-            {
-            }
-            column(BilltoAddr3; BilltoAddr[3])
-            {
-            }
-            column(BilltoAddr4; BilltoAddr[4])
-            {
-            }
-            column(BilltoAddr5; BilltoAddr[5])
-            {
-            }
-            column(ShiptoAddr1; ShiptoAddr[1])
-            {
-            }
-            column(ShiptoAddr2; ShiptoAddr[2])
-            {
-            }
-            column(ShiptoAddr3; ShiptoAddr[3])
-            {
-            }
-            column(ShiptoAddr4; ShiptoAddr[4])
-            {
-            }
-            column(ShiptoAddr5; ShiptoAddr[5])
-            {
-            }
+            column(CompanyInfo_Picture; CompanyInfo.Picture)
+            { }
+            column(OrderNo; "No.")
+            { }
+            column(CompanyInfoAdd1; CompanyInfoAdd[1])
+            { }
+            column(CompanyInfoAdd2; CompanyInfoAdd[2])
+            { }
+            column(CompanyInfoAdd3; CompanyInfoAdd[3])
+            { }
+            column(CompanyInfoAdd4; CompanyInfoAdd[4])
+            { }
+            column(CompanyInfoAdd5; CompanyInfoAdd[5])
+            { }
+            column(BillTo1; BillTo[1])
+            { }
+            column(BillTo2; BillTo[2])
+            { }
+            column(BillTo3; BillTo[3])
+            { }
+            column(BillTo4; BillTo[4])
+            { }
+            column(BillTo5; BillTo[5])
+            { }
+            column(BillTo6; BillTo[6])
+            { }
+            column(ShipTo1; ShipTo[1])
+            { }
+            column(ShipTo2; ShipTo[2])
+            { }
+            column(ShipTo3; ShipTo[3])
+            { }
+            column(ShipTo4; ShipTo[4])
+            { }
+            column(ShipTo5; ShipTo[5])
+            { }
+            column(ShipTo6; ShipTo[6])
+            { }
+            column(Payment_Terms_Code; "Payment Terms Code")
+            { }
+            column(PONumber; "External Document No.")
+            { }
             column(Order_Date; "Order Date")
             { }
-            column(RefNo; "External Document No.")
+            column(Shipment_Date; "Shipment Date")
             { }
-            column(Vendor; '')//AGT_DS need to define
+            column(Salesperson_Code; "Salesperson Code")
             { }
-            column(Customer; "Sell-to Customer No.")
+            column(Sell_to_Customer_No_; "Sell-to Customer No.")
             { }
-            column(CustomerPO; "External Document No.")//AGT_DS need to define
+            // column(User_ID; "User ID")
+            // { }
+            column(Shipment_Method_Code; "Shipment Method Code")
             { }
-            column(ShipVia; "Shipping Agent Code")
+            column(Shipping_Agent_Code; "Shipping Agent Code")
             { }
-            column(Mode; "Shipping Agent Service Code")
+            column(Invoice_Discount_Amount; "Invoice Discount Amount")
             { }
-            column(OrderNoBarode; OrderNoBarode)
+            column(Paymenttermdiscount; Paymenttermdiscount)
             { }
-            dataitem("Sales Line"; "Sales Line")
+            column(Posting_Date; "Posting Date")
+            { }
+            dataitem(SalesLine; "Sales Line")
             {
-                DataItemLink = "Document Type" = FIELD("Document Type"), "Document No." = FIELD("No.");
-                DataItemLinkReference = "Sales Header";
-                DataItemTableView = SORTING("Document Type", "Document No.", "Line No.");
-                column(No_SalesLine; "No.")
-                {
-                    IncludeCaption = true;
-                }
-                column(Description_SalesLine; Description)
-                {
-                    IncludeCaption = true;
-                }
-                column(Quantity_SalesLine; Quantity)
-                {
-                    IncludeCaption = true;
-                }
-                column(UnitofMeasure_SalesLine; "Unit of Measure")
-                {
-                    IncludeCaption = true;
-                }
-                column(Type_SalesLine; Type)
-                {
-                    IncludeCaption = true;
-                }
-                column(DimQty; DimQty)
+                DataItemLink = "Document No." = FIELD("No.");
+                DataItemLinkReference = SalesHeader;
+                DataItemTableView = SORTING("Document No.", "Line No.");
+
+                column(ItemNo; "No.")
                 { }
-                column(CubeAmount; CubeAmount)
+                column(Description; Description)
+                { }
+                column(Quantity; Quantity)
+                { }
+                column(Unit_of_Measure; "Unit of Measure")
+                { }
+                column(Unit_Price; "Unit Price")
+                { }
+                column(Line_Discount__; "Line Discount %")
+                { }
+                column(Amount; Amount)
+                { }
+                column(BOQtycasepack; BOQtycasepack)
+                { }
+                column(BOQty; BOQty)
+                { }
+                column(ItemUOM; ItemUOM)
+                { }
+                column(Qtycasepack; Qtycasepack)
+                { }
+                column(OrderQty; OrderQty)
+                { }
+                column(NoofRows; NoofRows)
+                { }
+                column(InvoiceNoBarode; InvoiceNoBarode)
                 { }
                 column(LBSWeight; LBSWeight)
                 { }
+                column(CubeAmount; CubeAmount)
+                { }
                 trigger OnAfterGetRecord()
                 var
+                    SalesLine_L: Record "Sales Line";
+                    SalesLineArchive_L: Record "Sales Line Archive";
                     Item_L: Record Item;
                 begin
-                    DimQty := 0;
+                    NoofRows := 0;
+                    NoofRows := Count;
+                    BOQtycasepack := 0;
+                    Qtycasepack := 0;
+                    BOQty := 0;
+                    OrderQty := 0;
+                    Clear(ItemUOM);
+                    SalesLine_L.Reset();
+                    SalesLine_L.SetRange("Document No.", "Document No.");
+                    SalesLine_L.SetRange("Line No.", "Line No.");
+                    If SalesLine_L.FindFirst() then begin
+                        BOQty := SalesLine_L.Quantity - SalesLine_L."Quantity Shipped";
+                        OrderQty := SalesLine_L.Quantity;
+                    end else begin
+                        SalesLineArchive_L.Reset();
+                        SalesLineArchive_L.SetRange("Document Type", SalesLineArchive_L."Document Type"::Order);
+                        SalesLineArchive_L.SetRange("Document No.", "Document No.");
+                        SalesLineArchive_L.SetRange("Line No.", "Line No.");
+                        SalesLineArchive_L.SetRange("No.", "No.");
+                        If SalesLineArchive_L.FindFirst() then begin
+                            BOQty := SalesLineArchive_L.Quantity - SalesLineArchive_L."Quantity Shipped";
+                            OrderQty := SalesLineArchive_L.Quantity;
+                        end;
+                    end;
+                    Item_L.reset;
+                    If Item_L.Get("No.") then begin
+                        If Item_L."Case Pack" <> 0 then begin
+                            If OrderQty <> 0 then
+                                Qtycasepack := OrderQty / Item_L."Case Pack";
+                            IF BOQty <> 0 then
+                                BOQtycasepack := BOQty / Item_L."Case Pack";
+                            ItemUOM := Item_L."Base Unit of Measure";
+                        end;
+                    end;
+                    //AGT_DS
+
                     CubeAmount := 0;
                     LBSWeight := 0;
                     If Type = Type::Item then begin
                         If Item_L.get("No.") then begin
-                            if Item_L."Case Pack" <> 0 then
-                                DimQty := Quantity / Item_L."Case Pack"
-                            Else
-                                DimQty := Quantity;
-
                             If Item_L."Unit Volume" <> 0 then
                                 CubeAmount := Quantity * "Unit Volume"
                             else
@@ -119,87 +164,119 @@ report 50001 "PackingSlip"
                                 LBSWeight := Quantity * Item_L."Gross Weight"
                             Else
                                 LBSWeight := Quantity;
-                        end
-                    end;
+                        end;
+                    end
+
+                    //AGT_DS
                 end;
 
             }
             trigger OnAfterGetRecord()
             var
+                Paymenterms_L: Record "Payment Terms";
                 BarcodeSymbology: Enum "Barcode Symbology";
                 BarcodeFontProvider: Interface "Barcode Font Provider";
                 BarcodeString: Code[30];
             begin
-                Clear(OrderNoBarode);
-                Clear(ShiptoAddr);
-                Clear(BilltoAddr);
-                ShiptoAddr[1] := "Ship-to Name";
-                ShiptoAddr[2] := "Ship-to Name 2";
-                ShiptoAddr[3] := "Ship-to Contact";
-                ShiptoAddr[4] := "Ship-to Address 2";
-                ShiptoAddr[5] := "Ship-to City" + ' ' + "Ship-to Post Code" + ' ' + "Ship-to County";
-                CompressArray(ShiptoAddr);
-                BilltoAddr[1] := "Bill-to Name";
-                BilltoAddr[2] := "Bill-to Name 2";
-                BilltoAddr[3] := "Bill-to Contact";
-                BilltoAddr[4] := "Bill-to Address 2";
-                BilltoAddr[5] := "Bill-to City" + ' ' + "Bill-to Post Code" + ' ' + "Bill-to County";
-                CompressArray(BilltoAddr);
+                Clear(BillTo);
+                Clear(ShipTo);
+                Clear(InvoiceNoBarode);
+                BillTo[1] := "Bill-to Name";
+                BillTo[2] := "Bill-to Name 2";
+                BillTo[3] := "Bill-to Contact";
+                BillTo[4] := "Bill-to Address";
+                BillTo[5] := "Bill-to Address 2";
+                BillTo[6] := "Bill-to City" + ' ' + "Bill-to County" + ' ' + "Bill-to Post Code";
+                CompressArray(BillTo);
+
+                ShipTo[1] := "Ship-to Name";
+                ShipTo[2] := "Ship-to Name 2";
+                ShipTo[3] := "Ship-to Contact";
+                ShipTo[4] := "Ship-to Name";
+                ShipTo[5] := "Ship-to Name 2";
+                ShipTo[6] := "Ship-to City" + ' ' + "Ship-to County" + ' ' + "Ship-to Post Code";
+                CompressArray(ShipTo);
+
+                If "Payment Terms Code" <> '' then
+                    if Paymenterms_L.get("Payment Terms Code") then
+                        Paymenttermdiscount := Paymenterms_L."Discount %";
+
+
                 BarcodeFontProvider := Enum::"Barcode Font Provider"::IDAutomation1D;
                 BarcodeSymbology := Enum::"Barcode Symbology"::Code39;
                 BarcodeString := "No.";
                 BarcodeFontProvider.ValidateInput(BarcodeString, BarcodeSymbology);
-                OrderNoBarode := BarcodeFontProvider.EncodeFont(BarcodeString, BarcodeSymbology);
+                InvoiceNoBarode := BarcodeFontProvider.EncodeFont(BarcodeString, BarcodeSymbology);
 
+            end;
+
+
+            trigger OnPreDataItem()
+            var
+            begin
+                Clear(CompanyInfoAdd);
+                CompanyInfoAdd[1] := CompanyInfo.Name;
+                CompanyInfoAdd[2] := CompanyInfo."Name 2";
+                CompanyInfoAdd[3] := CompanyInfo.Address;
+                CompanyInfoAdd[4] := CompanyInfo."Address 2";
+                CompanyInfoAdd[5] := CompanyInfo.City + ' ' + CompanyInfo.County + ' ' + CompanyInfo."Post Code";
+                CompressArray(CompanyInfoAdd);
             end;
         }
     }
 
-    requestpage
-    {
 
-        layout
-        {
-        }
-
-        actions
-        {
-        }
-    }
 
     labels
     {
-        OrderCaption = 'Order#';
-        OrderDateCaption = 'Order Date';
-        RefNumberCaption = 'Ref. Number';
-        VendorCaption = 'Vendor#';
-        CustomerCaption = 'Customer#';
-        CustPoCaption = 'CustPo#';
-        ShippedViaCaption = 'Shipped Via';
-        ModeCaption = 'Mode';
-        ShipToCaption = 'Ship To:';
-        BillToCaption = 'Bill To:';
-        SKUCaption = 'SKU';
-        DescriptionCaption = 'Description';
-        QuantityCaption = 'Quantity';
-        UnitCaption = 'Unit';
-        DimqtyCaption = 'Dim Qty';
-        DimUOMcaption = 'Dim UOM';
-        PackageIDcaption = 'PackageID:';
-        Notescaption = 'Notes';
-        PackingSlipCaption = 'Packing Slip';
-        CubeCaption = 'Cube';
-        LbsCaption = 'LBS';
+
+        UPCCaption = 'UPC';
+        InvoiceDateInvoiceCaption = 'ORDER DATE';
+        ORDERNOCaption = 'ORDER NO.';
+        PODateCaption = 'P.O.DATE';
+        PONumberCaption = 'P.O.Number';
+        PageNoCaption = 'PAGE NO.';
+        CustCaption = 'CUST #:';
+        BilltoCaption = 'BILL TO:';
+        ShiptoCaption = 'SHIP TO:';
+        ProductDescriptionCaption = 'PRODUCT AND DESCRIPTION';
+        OrderedCaption = 'ORDERED';
+        BOCaption = 'BO';
+        UMCaption = 'UM';
+        PriceCaption = 'PRICE';
+        DiscountCaption = 'DISCOUNT';
+        NetAmountCaption = 'NET AMOUNT';
+        QtyShippedTotalCaption = 'Qty Shipped Total';
+        //Dozens = 'Dozens';
+        TotalCaption = 'Total';
+        OrderDiscountCaption = 'Order Discount';
+        InvoiceTotalCaption = 'Invoice Total';
+        TotalCubesCaption = 'Total Cubes';
+        TotalWeightCaption = 'Total Weight';
+        CashDiscountCaption = 'Cash Discount';
     }
+    trigger OnPreReport()
+    var
+        myInt: Integer;
+    begin
+        CompanyInfo.get();
+        CompanyInfo.CalcFields(Picture);
+    end;
 
     var
-        FormatAddr: Codeunit "Format Address";
-        BilltoAddr: array[8] of Text[100];
-        ShiptoAddr: array[8] of Text[100];
-        OrderNoBarode: Text;
-        DimQty: Decimal;
-        CubeAmount: Decimal;
+        myInt: Integer;
+        BillTo: array[6] of Text;
+        ShipTo: array[6] of Text;
+        CompanyInfo: Record "Company Information";
+        CompanyInfoAdd: array[5] of Text;
+        Qtycasepack: Decimal;
+        BOQtycasepack: Decimal;
+        OrderQty: Decimal;
+        BOQty: Decimal;
+        ItemUOM: Text;
+        Paymenttermdiscount: Decimal;
+        NoofRows: Integer;
+        InvoiceNoBarode: Text;
         LBSWeight: Decimal;
-
+        CubeAmount: Decimal;
 }
-

@@ -37,7 +37,6 @@ report 50006 "Sales Commission Payable"
                 begin
                     TotalNoOfRecord := 0;
                     TotalNoOfRecord := NoOfRecords();
-                    Message('%1', TotalNoOfRecord);
                     SetFilter(Number, '%1..%2', 1, TotalNoOfRecord);
 
                     SalesInvoiceLine_G.MarkedOnly(true);
