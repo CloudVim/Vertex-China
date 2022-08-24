@@ -109,6 +109,8 @@ report 50001 "PackingSlip"
                 { }
                 column(CubeAmount; CubeAmount)
                 { }
+                column(Bin_Code; "Bin Code")
+                { }
                 trigger OnAfterGetRecord()
                 var
                     SalesLine_L: Record "Sales Line";

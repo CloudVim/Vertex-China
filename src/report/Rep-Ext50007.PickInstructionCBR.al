@@ -110,6 +110,7 @@ report 50007 PickInstruction_CBR
                 { }
                 column(CubeAmount; CubeAmount)
                 { }
+                column(Bin_Code; "Bin Code") { }
                 trigger OnAfterGetRecord()
                 var
                     SalesLine_L: Record "Sales Line";
