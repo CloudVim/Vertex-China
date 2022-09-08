@@ -61,7 +61,7 @@ tableextension 50001 "ExtendSalesLine_CBR" extends "Sales Line" //37
         field(50009; "Commission Rate"; Decimal)
         {
             DataClassification = ToBeClassified;
-            Editable = false;
+            //Editable = false;
         }
         // modify(Quantity)
         // {
