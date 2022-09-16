@@ -39,6 +39,13 @@ pageextension 50002 "ExtendSalesOrderSubform_CBR" extends "Sales Order Subform" 
                 end;
             end;
         }
+        addafter("Location Code")
+        {
+            field("Salesperson Code"; Rec."Salesperson Code")
+            {
+                ApplicationArea = all;
+            }
+        }
         addafter(Quantity)
         {
             field("No. of Cases"; Rec."No. of Cases")

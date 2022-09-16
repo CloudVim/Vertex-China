@@ -4,11 +4,19 @@ pageextension 50003 "ExtendPostedsalesline_CBR" extends "Posted Sales Invoice Su
     {
         addafter(Quantity)
         {
-            field("No. of Cases";Rec."No. of Cases")
+            field("No. of Cases"; Rec."No. of Cases")
             {
                 ApplicationArea = All;
                 Caption = 'No. of Cases';
             }
         }
+        addafter("Location Code")
+        {
+            field("Salesperson Code"; Rec."Salesperson Code")
+            {
+                ApplicationArea = all;
+            }
+        }
+
     }
 }

@@ -63,6 +63,11 @@ tableextension 50001 "ExtendSalesLine_CBR" extends "Sales Line" //37
             DataClassification = ToBeClassified;
             //Editable = false;
         }
+        field(50010; "Salesperson Code"; Code[20])
+        {
+            Caption = 'Salesperson Code';
+            TableRelation = "Salesperson/Purchaser";
+        }
         // modify(Quantity)
         // {
         //     trigger OnAfterValidate()
@@ -75,6 +80,7 @@ tableextension 50001 "ExtendSalesLine_CBR" extends "Sales Line" //37
             trigger OnAfterValidate()
             begin
                 GetItemDataFosSales("No.", "Sell-to Customer No.");
+                UpdatedSalesperson();
             end;
         }
     }
@@ -104,6 +110,15 @@ tableextension 50001 "ExtendSalesLine_CBR" extends "Sales Line" //37
         end else
             "Commission Rate" := 0;
     End;
+
+    procedure UpdatedSalesperson()
+    var
+        Salesheader_L: Record "Sales Header";
+    begin
+        If (rec."Salesperson Code" = '') AND (Rec.Type <> Type::" ") then
+            If Salesheader_L.Get(Rec."Document Type", Rec."Document No.") then
+                rec."Salesperson Code" := Salesheader_L."Salesperson Code";
+    end;
 
 
     var

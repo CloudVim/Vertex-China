@@ -12,6 +12,13 @@ pageextension 50012 ExtendSalesQuoteSubform_CBR extends "Sales Quote Subform"
                 ToolTip = 'Specifies the value of the Commission Rate field.';
             }
         }
+        addafter("Location Code")
+        {
+            field("Salesperson Code"; Rec."Salesperson Code")
+            {
+                ApplicationArea = all;
+            }
+        }
 
     }
 

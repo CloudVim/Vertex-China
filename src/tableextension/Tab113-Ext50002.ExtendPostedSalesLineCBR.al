@@ -16,6 +16,10 @@ tableextension 50002 "ExtendPostedSalesLine_CBR" extends "Sales Invoice Line" //
         {
             DataClassification = ToBeClassified;
         }
+        field(50010; "Salesperson Code"; Code[20])
+        {
+            Caption = 'Salesperson Code';
+        }
 
 
     }

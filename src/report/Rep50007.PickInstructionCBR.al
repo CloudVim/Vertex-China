@@ -1,4 +1,4 @@
-report 50007 PickInstruction_CBR
+report 50007 "PickInstruction_CBR"
 {
     UsageCategory = ReportsAndAnalysis;
     ApplicationArea = All;
