@@ -137,6 +137,7 @@ report 50008 "CBR Stub/Stub/Check"
                 column(CheckNoText; CheckNoText)
                 {
                 }
+                column(VendorNo; VendorNo) { }
                 column(PageNo; PageNo)
                 {
                 }
@@ -177,6 +178,10 @@ report 50008 "CBR Stub/Stub/Check"
                     column(PostingDesc; PostingDesc)
                     {
                     }
+                    column(InvoiceNo; InvoiceNo) { }
+
+                    column(InvoiceDate; InvoiceDate) { }
+                    column(InvoiceType; InvoiceType) { }
                     column(PrintSettledLoop_Number; Number)
                     {
                     }
@@ -304,6 +309,7 @@ report 50008 "CBR Stub/Stub/Check"
                                                             CustLedgEntry.Find('-');
                                                             CustUpdateAmounts(CustLedgEntry, CurrentLineAmount);
                                                             LineAmount := CurrentLineAmount;
+                                                            InvoiceDate := CustLedgEntry."Due Date";
                                                         end;
                                                     BalancingType::Vendor:
                                                         begin
@@ -315,6 +321,7 @@ report 50008 "CBR Stub/Stub/Check"
                                                             VendLedgEntry.Find('-');
                                                             VendUpdateAmounts(VendLedgEntry, CurrentLineAmount);
                                                             LineAmount := CurrentLineAmount;
+                                                            InvoiceDate := VendLedgEntry."Due Date";//AGT_DS
                                                         end;
                                                     BalancingType::"Bank Account":
                                                         begin
@@ -356,6 +363,10 @@ report 50008 "CBR Stub/Stub/Check"
                             LineAmount := 0;
                             LineDiscount := 0;
                             PostingDesc := '';
+                            InvoiceDate := 0D;
+                            Clear(InvoiceNo);
+                            Clear(InvoiceType);
+
                         end;
 
                         if DocNo = '' then
@@ -812,13 +823,19 @@ report 50008 "CBR Stub/Stub/Check"
                     column(BankCurrencyCode; BankCurrencyCode)
                     {
                     }
-                    column(DollarSignBefore_CheckAmountText_DollarSignAfter; DollarSignBefore + CheckAmountText + DollarSignAfter)
+                    column(DollarSignBefore_CheckAmountText_DollarSignAfter; CheckAmountText)//DollarSignBefore + CheckAmountText + DollarSignAfter)
                     {
                     }
-                    column(DescriptionLine_1__; DescriptionLine[1])
+                    // column(DescriptionLine_1__; DescriptionLine[1])
+                    // {
+                    // }
+                    // column(DescriptionLine_2__; DescriptionLine[2] + '**************') //DescriptionLine[2]
+                    // {
+                    // }
+                    column(DescriptionLine_2__; DescriptionLine[1] + '**************')
                     {
                     }
-                    column(DescriptionLine_2__; DescriptionLine[2])
+                    column(DescriptionLine_1__; DescriptionLine[2] + '**************') //DescriptionLine[2]
                     {
                     }
                     column(DateIndicator; DateIndicator)
@@ -1564,6 +1581,10 @@ report 50008 "CBR Stub/Stub/Check"
         USText014: Label 'Discount';
         USText015: Label 'Net Amount';
         PostingDesc: Text[100];
+        InvoiceDate: Date;//AGT_DS
+        InvoiceType: Text[10];//AGT_DS
+        InvoiceNo: Text[30];//AGT_DS
+        VendorNo: Text[20];//AGT_DS
         USText017: Label 'Posting Description';
         StartingLen: Integer;
         ControlLen: Integer;
@@ -1601,6 +1622,9 @@ report 50008 "CBR Stub/Stub/Check"
         CurrencyCode2 := CustLedgEntry2."Currency Code";
         CustLedgEntry2.CalcFields("Remaining Amount");
         PostingDesc := CustLedgEntry2.Description;
+        InvoiceNo := CustLedgEntry2."Document No.";
+        InvoiceType := CopyStr(Format(CustLedgEntry2."Document Type"), 1, 2);
+        InvoiceDate := CustLedgEntry2."Due Date";
 
         LineAmount := -(CustLedgEntry2."Remaining Amount" - CustLedgEntry2."Remaining Pmt. Disc. Possible" -
                         CustLedgEntry2."Accepted Payment Tolerance");
@@ -1655,6 +1679,10 @@ report 50008 "CBR Stub/Stub/Check"
         DocDate := VendLedgEntry2."Document Date";
         CurrencyCode2 := VendLedgEntry2."Currency Code";
         PostingDesc := VendLedgEntry2.Description;
+        InvoiceNo := VendLedgEntry2."Document No.";
+        VendorNo := VendLedgEntry2."Vendor No.";
+        InvoiceType := CopyStr(Format(VendLedgEntry2."Document Type"), 1, 2);
+        InvoiceDate := VendLedgEntry2."Due Date";
         VendLedgEntry2.CalcFields("Remaining Amount");
         LineAmount := -(VendLedgEntry2."Remaining Amount" - VendLedgEntry2."Remaining Pmt. Disc. Possible" -
                         VendLedgEntry2."Accepted Payment Tolerance");
