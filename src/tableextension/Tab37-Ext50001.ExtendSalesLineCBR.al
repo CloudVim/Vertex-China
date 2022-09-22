@@ -68,6 +68,14 @@ tableextension 50001 "ExtendSalesLine_CBR" extends "Sales Line" //37
             Caption = 'Salesperson Code';
             TableRelation = "Salesperson/Purchaser";
         }
+        //AGT_YK_200922++
+        field(50015; "Case Pack"; Integer)
+        {
+            DataClassification = ToBeClassified;
+            Caption = 'Case Pack';
+            Editable = false;
+        }
+        //AGT_YK_200922--
         // modify(Quantity)
         // {
         //     trigger OnAfterValidate()
@@ -78,11 +86,21 @@ tableextension 50001 "ExtendSalesLine_CBR" extends "Sales Line" //37
         modify("No.")
         {
             trigger OnAfterValidate()
+            var
+                ItemL: Record Item;         //AGT_YK_200922
+
             begin
                 GetItemDataFosSales("No.", "Sell-to Customer No.");
                 UpdatedSalesperson();
+                //AGT_YK_200922++
+                if (Rec."Document Type" = Rec."Document Type"::Quote) OR (Rec."Document Type" = Rec."Document Type"::Order) then begin
+                    if ItemL.Get(Rec."No.") then
+                        Rec."Case Pack" := ItemL."Case Pack";
+                end;
+                //AGT_YK_200922--
             end;
         }
+
     }
     procedure GetItemDataFosSales(ItemNo: Code[20]; CustomerNo: Code[20])
     var

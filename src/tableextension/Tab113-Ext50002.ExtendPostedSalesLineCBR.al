@@ -20,6 +20,14 @@ tableextension 50002 "ExtendPostedSalesLine_CBR" extends "Sales Invoice Line" //
         {
             Caption = 'Salesperson Code';
         }
+        //AGT_YK_200922++
+        field(50015; "Case Pack"; Integer)
+        {
+            DataClassification = ToBeClassified;
+            Caption = 'Case Pack';
+            Editable = false;
+        }
+        //AGT_YK_200922--
 
 
     }

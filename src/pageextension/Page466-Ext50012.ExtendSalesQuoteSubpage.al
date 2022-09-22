@@ -19,6 +19,17 @@ pageextension 50012 ExtendSalesQuoteSubform_CBR extends "Sales Quote Subform"
                 ApplicationArea = all;
             }
         }
+        //AGT_YK_200922++
+        addafter("Unit of Measure")
+        {
+
+            field("Case Pack"; Rec."Case Pack")
+            {
+                ApplicationArea = All;
+                ToolTip = 'Specifies the value of the Case Pack field.';
+            }
+        }
+        //AGT_YK_200922--
 
     }
 

@@ -1537,7 +1537,7 @@
                                 <Paragraph>
                                   <TextRuns>
                                     <TextRun>
-                                      <Value>=Fields!Unit_of_Measure.Value</Value>
+                                      <Value>Cases</Value>
                                       <Style>
                                         <FontSize>8pt</FontSize>
                                       </Style>
@@ -1871,7 +1871,7 @@
                                 <Paragraph>
                                   <TextRuns>
                                     <TextRun>
-                                      <Value>=Fields!ItemUOM.Value</Value>
+                                      <Value>CS</Value>
                                       <Style>
                                         <FontSize>8pt</FontSize>
                                       </Style>
