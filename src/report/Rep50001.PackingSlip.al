@@ -189,7 +189,7 @@ report 50001 "PackingSlip"
                 BillTo[4] := "Bill-to Address";
                 BillTo[5] := "Bill-to Address 2";
                 BillTo[6] := "Bill-to City" + ' ' + "Bill-to County" + ' ' + "Bill-to Post Code";
-                CompressArray(BillTo);
+                //CompressArray(BillTo);//AGT_DS_09232022 Because they need the 3 lines
 
                 ShipTo[1] := "Ship-to Name";
                 ShipTo[2] := "Ship-to Name 2";
@@ -197,7 +197,7 @@ report 50001 "PackingSlip"
                 ShipTo[4] := "Ship-to Name";
                 ShipTo[5] := "Ship-to Name 2";
                 ShipTo[6] := "Ship-to City" + ' ' + "Ship-to County" + ' ' + "Ship-to Post Code";
-                CompressArray(ShipTo);
+                //CompressArray(ShipTo);//AGT_DS_09232022 Because they need the 3 lines
 
                 If "Payment Terms Code" <> '' then
                     if Paymenterms_L.get("Payment Terms Code") then
