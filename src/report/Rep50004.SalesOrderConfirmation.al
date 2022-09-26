@@ -73,11 +73,12 @@ report 50004 "SalesOrderConfirmation"
             { }
             column(Posting_Date; "Posting Date")
             { }
+            column(TotalNoofRows; TotalNoofRows) { }
             dataitem(SalesLine; "Sales Line")
             {
                 DataItemLink = "Document No." = FIELD("No.");
                 DataItemLinkReference = SalesHeader;
-                DataItemTableView = SORTING("Document No.", "Line No.");
+                DataItemTableView = SORTING("Document Type", "Document No.", "No.", "Line No.");
 
                 column(ItemNo; "No.")
                 { }
@@ -105,6 +106,7 @@ report 50004 "SalesOrderConfirmation"
                 { }
                 column(NoofRows; NoofRows)
                 { }
+
                 column(InvoiceNoBarode; InvoiceNoBarode)
                 { }
                 column(LBSWeight; LBSWeight)
@@ -114,16 +116,25 @@ report 50004 "SalesOrderConfirmation"
                 trigger OnAfterGetRecord()
                 var
                     SalesLine_L: Record "Sales Line";
+                    SalesLine_L1: Record "Sales Line";
                     SalesLineArchive_L: Record "Sales Line Archive";
                     Item_L: Record Item;
                 begin
-                    NoofRows := 0;
-                    NoofRows := Count;
                     BOQtycasepack := 0;
                     Qtycasepack := 0;
                     BOQty := 0;
                     OrderQty := 0;
                     Clear(ItemUOM);
+                    If Type <> Type::" " then
+                        NoofRows += 1;
+
+                    SalesLine_L1.Reset();
+                    SalesLine_L1.SetRange("Document Type", "Document Type");
+                    SalesLine_L1.SetRange("Document No.", "Document No.");
+                    SalesLine_L1.SetFilter(Type, '<>%1', Type::" ");
+                    If SalesLine_L1.FindSet() then
+                        TotalNoofRows := SalesLine_L1.Count;
+
                     SalesLine_L.Reset();
                     SalesLine_L.SetRange("Document No.", "Document No.");
                     SalesLine_L.SetRange("Line No.", "Line No.");
@@ -170,6 +181,14 @@ report 50004 "SalesOrderConfirmation"
                     end
 
                     //AGT_DS
+                end;
+
+                trigger OnPreDataItem()
+                var
+                    myInt: Integer;
+                begin
+                    NoofRows := 0;
+                    TotalNoofRows := 0;
                 end;
 
             }
@@ -285,6 +304,7 @@ report 50004 "SalesOrderConfirmation"
         ItemUOM: Text;
         Paymenttermdiscount: Decimal;
         NoofRows: Integer;
+        TotalNoofRows: Integer;
         InvoiceNoBarode: Text;
         LBSWeight: Decimal;
         CubeAmount: Decimal;

@@ -56,6 +56,7 @@ report 50007 "PickInstruction_CBR"
             { }
             column(Shipment_Date; "Shipment Date")
             { }
+            column(Requested_ShipmentDate; "Requested Delivery Date") { }
             column(Salesperson_Code; "Salesperson Code")
             { }
             column(Sell_to_Customer_No_; "Sell-to Customer No.")
@@ -76,7 +77,7 @@ report 50007 "PickInstruction_CBR"
             {
                 DataItemLink = "Document No." = FIELD("No.");
                 DataItemLinkReference = SalesHeader;
-                DataItemTableView = SORTING("Document No.", "Line No.");
+                DataItemTableView = SORTING("Document Type", "Document No.", "No.", "Line No.");
 
                 column(ItemNo; "No.")
                 { }
@@ -117,13 +118,13 @@ report 50007 "PickInstruction_CBR"
                     SalesLineArchive_L: Record "Sales Line Archive";
                     Item_L: Record Item;
                 begin
-                    NoofRows := 0;
-                    NoofRows := Count;
                     BOQtycasepack := 0;
                     Qtycasepack := 0;
                     BOQty := 0;
                     OrderQty := 0;
                     Clear(ItemUOM);
+                    If Type <> Type::" " then
+                        NoofRows += 1;
                     SalesLine_L.Reset();
                     SalesLine_L.SetRange("Document No.", "Document No.");
                     SalesLine_L.SetRange("Line No.", "Line No.");
@@ -170,6 +171,13 @@ report 50007 "PickInstruction_CBR"
                     end
 
                     //AGT_DS
+                end;
+
+                trigger OnPreDataItem()
+                var
+                    myInt: Integer;
+                begin
+                    NoofRows := 0;
                 end;
 
             }

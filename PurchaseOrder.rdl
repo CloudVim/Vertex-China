@@ -1102,7 +1102,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>=RowNumber(Nothing)</Value>
+                                  <Value>=Fields!NoofRows.Value</Value>
                                   <Style />
                                 </TextRun>
                               </TextRuns>
@@ -1802,11 +1802,6 @@
                       <GroupExpression>=Fields!ItemNo.Value</GroupExpression>
                     </GroupExpressions>
                   </Group>
-                  <SortExpressions>
-                    <SortExpression>
-                      <Value>=Fields!ItemNo.Value</Value>
-                    </SortExpression>
-                  </SortExpressions>
                   <TablixMembers>
                     <TablixMember>
                       <Group Name="Details" />
@@ -3541,6 +3536,9 @@ End Function
         </Field>
         <Field Name="AmountFormat">
           <DataField>AmountFormat</DataField>
+        </Field>
+        <Field Name="NoofRows">
+          <DataField>NoofRows</DataField>
         </Field>
       </Fields>
       <Query>

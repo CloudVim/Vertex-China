@@ -1360,7 +1360,7 @@
                       </TablixCells>
                     </TablixRow>
                     <TablixRow>
-                      <Height>0.44125cm</Height>
+                      <Height>0.57354cm</Height>
                       <TablixCells>
                         <TablixCell>
                           <CellContents>
@@ -1371,9 +1371,10 @@
                                 <Paragraph>
                                   <TextRuns>
                                     <TextRun>
-                                      <Value>=RowNumber(Nothing)</Value>
+                                      <Value>=Fields!NoofRows.Value</Value>
                                       <Style>
                                         <FontSize>8pt</FontSize>
+                                        <Format>0;(0);''</Format>
                                       </Style>
                                     </TextRun>
                                   </TextRuns>
@@ -1418,9 +1419,10 @@
                                 <Border>
                                   <Style>None</Style>
                                 </Border>
+                                <VerticalAlign>Middle</VerticalAlign>
                                 <PaddingLeft>0.5pt</PaddingLeft>
                                 <PaddingRight>0.5pt</PaddingRight>
-                                <PaddingTop>1.5pt</PaddingTop>
+                                <PaddingTop>2pt</PaddingTop>
                                 <PaddingBottom>0.5pt</PaddingBottom>
                               </Style>
                             </Textbox>
@@ -1448,6 +1450,9 @@
                                 </Paragraph>
                               </Paragraphs>
                               <rd:DefaultName>Textbox73</rd:DefaultName>
+                              <Visibility>
+                                <Hidden>=IIF(Fields!ItemNo.Value&lt;&gt;"",false,True)</Hidden>
+                              </Visibility>
                               <Style>
                                 <Border>
                                   <Style>None</Style>
@@ -1482,6 +1487,9 @@
                                 </Paragraph>
                               </Paragraphs>
                               <rd:DefaultName>Textbox77</rd:DefaultName>
+                              <Visibility>
+                                <Hidden>=IIF(Fields!ItemNo.Value&lt;&gt;"",false,True)</Hidden>
+                              </Visibility>
                               <Style>
                                 <Border>
                                   <Style>None</Style>
@@ -1516,6 +1524,9 @@
                                 </Paragraph>
                               </Paragraphs>
                               <rd:DefaultName>Textbox79</rd:DefaultName>
+                              <Visibility>
+                                <Hidden>=IIF(Fields!ItemNo.Value&lt;&gt;"",false,True)</Hidden>
+                              </Visibility>
                               <Style>
                                 <Border>
                                   <Style>None</Style>
@@ -1549,6 +1560,9 @@
                                 </Paragraph>
                               </Paragraphs>
                               <rd:DefaultName>Textbox75</rd:DefaultName>
+                              <Visibility>
+                                <Hidden>=IIF(Fields!ItemNo.Value&lt;&gt;"",false,True)</Hidden>
+                              </Visibility>
                               <Style>
                                 <Border>
                                   <Style>None</Style>
@@ -1582,6 +1596,9 @@
                                 </Paragraph>
                               </Paragraphs>
                               <rd:DefaultName>Textbox81</rd:DefaultName>
+                              <Visibility>
+                                <Hidden>=IIF(Fields!ItemNo.Value&lt;&gt;"",false,True)</Hidden>
+                              </Visibility>
                               <Style>
                                 <Border>
                                   <Style>None</Style>
@@ -1615,6 +1632,9 @@
                                 </Paragraph>
                               </Paragraphs>
                               <rd:DefaultName>Textbox71</rd:DefaultName>
+                              <Visibility>
+                                <Hidden>=IIF(Fields!ItemNo.Value&lt;&gt;"",false,True)</Hidden>
+                              </Visibility>
                               <Style>
                                 <Border>
                                   <Style>None</Style>
@@ -1648,6 +1668,9 @@
                                 </Paragraph>
                               </Paragraphs>
                               <rd:DefaultName>Textbox83</rd:DefaultName>
+                              <Visibility>
+                                <Hidden>=IIF(Fields!ItemNo.Value&lt;&gt;"",false,True)</Hidden>
+                              </Visibility>
                               <Style>
                                 <Border>
                                   <Style>None</Style>
@@ -1681,6 +1704,9 @@
                                 </Paragraph>
                               </Paragraphs>
                               <rd:DefaultName>Textbox69</rd:DefaultName>
+                              <Visibility>
+                                <Hidden>=IIF(Fields!ItemNo.Value&lt;&gt;"",false,True)</Hidden>
+                              </Visibility>
                               <Style>
                                 <Border>
                                   <Style>None</Style>
@@ -1696,7 +1722,7 @@
                       </TablixCells>
                     </TablixRow>
                     <TablixRow>
-                      <Height>0.44125cm</Height>
+                      <Height>0.57354cm</Height>
                       <TablixCells>
                         <TablixCell>
                           <CellContents>
@@ -1752,6 +1778,7 @@
                                 <Border>
                                   <Style>None</Style>
                                 </Border>
+                                <VerticalAlign>Middle</VerticalAlign>
                                 <PaddingLeft>0.5pt</PaddingLeft>
                                 <PaddingRight>0.5pt</PaddingRight>
                                 <PaddingTop>0.5pt</PaddingTop>
@@ -1782,6 +1809,9 @@
                                 </Paragraph>
                               </Paragraphs>
                               <rd:DefaultName>Textbox89</rd:DefaultName>
+                              <Visibility>
+                                <Hidden>=IIF(Fields!ItemNo.Value&lt;&gt;"",false,True)</Hidden>
+                              </Visibility>
                               <Style>
                                 <Border>
                                   <Style>None</Style>
@@ -1816,6 +1846,9 @@
                                 </Paragraph>
                               </Paragraphs>
                               <rd:DefaultName>Textbox90</rd:DefaultName>
+                              <Visibility>
+                                <Hidden>=IIF(Fields!ItemNo.Value&lt;&gt;"",false,True)</Hidden>
+                              </Visibility>
                               <Style>
                                 <Border>
                                   <Style>None</Style>
@@ -1850,6 +1883,9 @@
                                 </Paragraph>
                               </Paragraphs>
                               <rd:DefaultName>Textbox91</rd:DefaultName>
+                              <Visibility>
+                                <Hidden>=IIF(Fields!ItemNo.Value&lt;&gt;"",false,True)</Hidden>
+                              </Visibility>
                               <Style>
                                 <Border>
                                   <Style>None</Style>
@@ -1883,6 +1919,9 @@
                                 </Paragraph>
                               </Paragraphs>
                               <rd:DefaultName>Textbox92</rd:DefaultName>
+                              <Visibility>
+                                <Hidden>=IIF(Fields!ItemNo.Value&lt;&gt;"",false,True)</Hidden>
+                              </Visibility>
                               <Style>
                                 <Border>
                                   <Style>None</Style>
@@ -2354,9 +2393,10 @@
                                 <Paragraph>
                                   <TextRuns>
                                     <TextRun>
-                                      <Value>=Fields!NoofRows.Value</Value>
+                                      <Value>=Fields!TotalNoofRows.Value</Value>
                                       <Style>
                                         <FontSize>8pt</FontSize>
+                                        <Format>0;(0);''</Format>
                                       </Style>
                                     </TextRun>
                                   </TextRuns>
@@ -3878,16 +3918,15 @@
                           <GroupExpression>=Fields!ItemNo.Value</GroupExpression>
                         </GroupExpressions>
                       </Group>
-                      <SortExpressions>
-                        <SortExpression>
-                          <Value>=Fields!ItemNo.Value</Value>
-                        </SortExpression>
-                      </SortExpressions>
                       <TablixMembers>
                         <TablixMember>
                           <Group Name="Details" />
                           <TablixMembers>
-                            <TablixMember />
+                            <TablixMember>
+                              <Visibility>
+                                <Hidden>=IIF(Fields!ItemNo.Value&lt;&gt;"",false,true)</Hidden>
+                              </Visibility>
+                            </TablixMember>
                             <TablixMember />
                           </TablixMembers>
                         </TablixMember>
@@ -3915,7 +3954,7 @@
                 </TablixRowHierarchy>
                 <Top>1.64371cm</Top>
                 <Left>0.01323cm</Left>
-                <Height>4.28875cm</Height>
+                <Height>4.55333cm</Height>
                 <Width>19.34674cm</Width>
                 <ZIndex>1</ZIndex>
                 <Style>
@@ -4074,7 +4113,7 @@
                     <TablixMember />
                   </TablixMembers>
                 </TablixRowHierarchy>
-                <Top>6.03802cm</Top>
+                <Top>6.35552cm</Top>
                 <Left>0cm</Left>
                 <Height>0.52062cm</Height>
                 <Width>16.24916cm</Width>
@@ -4089,7 +4128,7 @@
             <KeepTogether>true</KeepTogether>
             <Top>0cm</Top>
             <Left>0.13876cm</Left>
-            <Height>6.70681cm</Height>
+            <Height>6.87614cm</Height>
             <Width>19.38887cm</Width>
             <Style>
               <Border>
@@ -4098,7 +4137,7 @@
             </Style>
           </Rectangle>
         </ReportItems>
-        <Height>6.70681cm</Height>
+        <Height>6.87614cm</Height>
         <Style />
       </Body>
       <Width>19.67284cm</Width>
@@ -5847,6 +5886,9 @@ End Function
         </Field>
         <Field Name="Posting_Date">
           <DataField>Posting_Date</DataField>
+        </Field>
+        <Field Name="TotalNoofRows">
+          <DataField>TotalNoofRows</DataField>
         </Field>
         <Field Name="ItemNo">
           <DataField>ItemNo</DataField>

@@ -51,7 +51,7 @@ report 50005 "PurchaseOrder"
             {
                 DataItemLink = "Document No." = FIELD("No.");
                 DataItemLinkReference = PurchaseHeader;
-                DataItemTableView = SORTING("Document No.", "Line No.");
+                DataItemTableView = SORTING("Document Type", "Document No.", "No.", "Line No.");
 
                 column(ItemNo; "No.")
                 { }
@@ -67,6 +67,21 @@ report 50005 "PurchaseOrder"
                 { }
                 column(Amount; Amount)
                 { }
+                column(NoofRows; NoofRows) { }
+                trigger OnAfterGetRecord()
+                var
+                    myInt: Integer;
+                begin
+                    If Type <> Type::" " then
+                        NoofRows += 1;
+                end;
+
+                trigger OnPreDataItem()
+                var
+                    myInt: Integer;
+                begin
+                    NoofRows := 0;
+                end;
             }
 
 
@@ -146,4 +161,6 @@ report 50005 "PurchaseOrder"
         CompanyInfoAdd: array[3] of Text;
         ShipToAdd: array[5] of Text;
         PurchaseFrom: array[5] of Text;
+
+        NoofRows: Integer;
 }
