@@ -44,6 +44,24 @@ pageextension 50007 "ExtendSalesOrder" extends "Sales Order List"
         }
         addafter(AttachAsPDF)
         {
+            action(ProFormaInvoice)
+            {
+                ApplicationArea = Basic, Suite;
+                Caption = 'Pro Forma Invoice';
+                Image = PrintReport;
+                Promoted = true;
+                PromotedCategory = Category8;
+                Ellipsis = true;
+
+                trigger OnAction()
+                var
+                    salesHeader: Record "Sales Header";
+                begin
+                    salesHeader.Reset();
+                    CurrPage.SetSelectionFilter(salesHeader);
+                    Report.Run(50009, true, false, salesHeader);
+                end;
+            }
             action(packingslip)
             {
                 ApplicationArea = Basic, Suite;

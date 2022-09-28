@@ -20,6 +20,26 @@ pageextension 50008 "ExtendSalesOrder_CBR" extends "Sales Order"
     }
     actions
     {
+        addafter("Print Confirmation")
+        {
+            action(CBR_ProFormaInvoice)
+            {
+                ApplicationArea = Basic, Suite;
+                Caption = 'Pro Forma Invoice';
+                Ellipsis = true;
+                Image = PrintReport;
+                Promoted = true;
+                PromotedCategory = Category11;
+                trigger OnAction()
+                var
+                    salesHeader: Record "Sales Header";
+                begin
+                    salesHeader.Reset();
+                    CurrPage.SetSelectionFilter(salesHeader);
+                    Report.Run(50009, true, false, salesHeader);
+                end;
+            }
+        }
         addafter(AttachAsPDF)
         {
             action(packingslip)

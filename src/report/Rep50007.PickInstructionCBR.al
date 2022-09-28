@@ -73,6 +73,8 @@ report 50007 "PickInstruction_CBR"
             { }
             column(Posting_Date; "Posting Date")
             { }
+            column(Location_Name; Location_G.Name) { }
+
             dataitem(SalesLine; "Sales Line")
             {
                 DataItemLink = "Document No." = FIELD("No.");
@@ -111,13 +113,19 @@ report 50007 "PickInstruction_CBR"
                 { }
                 column(CubeAmount; CubeAmount)
                 { }
+                column(CheckNonInventoryItem; CheckNonInventoryItem) { }
                 column(Bin_Code; "Bin Code") { }
                 trigger OnAfterGetRecord()
                 var
                     SalesLine_L: Record "Sales Line";
                     SalesLineArchive_L: Record "Sales Line Archive";
                     Item_L: Record Item;
+                    Item_L1: Record Item;
                 begin
+                    CheckNonInventoryItem := false;
+                    If Item_L1.Get("No.") then
+                        If Item_L1.Type = Item_L1.Type::"Non-Inventory" then
+                            CheckNonInventoryItem := True;
                     BOQtycasepack := 0;
                     Qtycasepack := 0;
                     BOQty := 0;
@@ -192,20 +200,20 @@ report 50007 "PickInstruction_CBR"
                 Clear(ShipTo);
                 Clear(InvoiceNoBarode);
                 BillTo[1] := "Bill-to Name";
-                BillTo[2] := "Bill-to Name 2";
-                BillTo[3] := "Bill-to Contact";
-                BillTo[4] := "Bill-to Address";
-                BillTo[5] := "Bill-to Address 2";
-                BillTo[6] := "Bill-to City" + ' ' + "Bill-to County" + ' ' + "Bill-to Post Code";
-                //CompressArray(BillTo);//AGT_DS_09232022 Because they need the 3 lines
+                // BillTo[2] := "Bill-to Name 2";
+                // BillTo[3] := "Bill-to Contact";
+                BillTo[2] := "Bill-to Address";
+                BillTo[3] := "Bill-to Address 2";
+                BillTo[4] := "Bill-to City" + ', ' + "Bill-to County" + ', ' + "Bill-to Post Code";
+                CompressArray(BillTo);//AGT_DS_09232022 Because they need the 3 lines
 
                 ShipTo[1] := "Ship-to Name";
-                ShipTo[2] := "Ship-to Name 2";
-                ShipTo[3] := "Ship-to Contact";
-                ShipTo[4] := "Ship-to Name";
-                ShipTo[5] := "Ship-to Name 2";
-                ShipTo[6] := "Ship-to City" + ' ' + "Ship-to County" + ' ' + "Ship-to Post Code";
-                //CompressArray(ShipTo);//AGT_DS_09232022 Because they need the 3 lines
+                // ShipTo[2] := "Ship-to Name 2";
+                // ShipTo[3] := "Ship-to Contact";
+                ShipTo[2] := "Ship-to Address";
+                ShipTo[3] := "Ship-to Address 2";
+                ShipTo[4] := "Ship-to City" + ', ' + "Ship-to County" + ', ' + "Ship-to Post Code";
+                CompressArray(ShipTo);//AGT_DS_09232022 Because they need the 3 lines
 
                 If "Payment Terms Code" <> '' then
                     if Paymenterms_L.get("Payment Terms Code") then
@@ -218,6 +226,7 @@ report 50007 "PickInstruction_CBR"
                 BarcodeFontProvider.ValidateInput(BarcodeString, BarcodeSymbology);
                 InvoiceNoBarode := BarcodeFontProvider.EncodeFont(BarcodeString, BarcodeSymbology);
 
+                if Location_G.Get("Location Code") then;
             end;
 
 
@@ -289,4 +298,6 @@ report 50007 "PickInstruction_CBR"
         InvoiceNoBarode: Text;
         LBSWeight: Decimal;
         CubeAmount: Decimal;
+        Location_G: Record Location;
+        CheckNonInventoryItem: Boolean;
 }

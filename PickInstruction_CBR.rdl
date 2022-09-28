@@ -1750,6 +1750,9 @@
                       </TablixMembers>
                     </TablixMember>
                   </TablixMembers>
+                  <Visibility>
+                    <Hidden>=IIf(Fields!CheckNonInventoryItem.Value=False,False,True)</Hidden>
+                  </Visibility>
                 </TablixMember>
                 <TablixMember>
                   <KeepWithGroup>Before</KeepWithGroup>
@@ -1760,7 +1763,7 @@
             <Top>0cm</Top>
             <Left>0cm</Left>
             <Height>2.34708cm</Height>
-            <Width>19.52766cm</Width>
+            <Width>19.52764cm</Width>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -1778,7 +1781,7 @@
       <Width>19.52766cm</Width>
       <Page>
         <PageHeader>
-          <Height>10.06391cm</Height>
+          <Height>10.97667cm</Height>
           <PrintOnFirstPage>true</PrintOnFirstPage>
           <PrintOnLastPage>true</PrintOnLastPage>
           <ReportItems>
@@ -2315,7 +2318,7 @@
                 <Paragraph>
                   <TextRuns>
                     <TextRun>
-                      <Value>=Fields!ShipTo6.Value</Value>
+                      <Value>=Fields!ShipTo3.Value</Value>
                       <Style>
                         <FontSize>8pt</FontSize>
                       </Style>
@@ -2350,19 +2353,7 @@
                 <Paragraph>
                   <TextRuns>
                     <TextRun>
-                      <Value>=Fields!ShipTo4.Value</Value>
-                      <Style>
-                        <FontSize>8pt</FontSize>
-                      </Style>
-                    </TextRun>
-                    <TextRun>
-                      <Value xml:space="preserve"> </Value>
-                      <Style>
-                        <FontSize>8pt</FontSize>
-                      </Style>
-                    </TextRun>
-                    <TextRun>
-                      <Value>=Fields!ShipTo5.Value</Value>
+                      <Value>=Fields!ShipTo2.Value</Value>
                       <Style>
                         <FontSize>8pt</FontSize>
                       </Style>
@@ -2403,25 +2394,7 @@
                       </Style>
                     </TextRun>
                     <TextRun>
-                      <Value xml:space="preserve"> </Value>
-                      <Style>
-                        <FontSize>8pt</FontSize>
-                      </Style>
-                    </TextRun>
-                    <TextRun>
-                      <Value>=Fields!ShipTo2.Value</Value>
-                      <Style>
-                        <FontSize>8pt</FontSize>
-                      </Style>
-                    </TextRun>
-                    <TextRun>
-                      <Value xml:space="preserve"> </Value>
-                      <Style>
-                        <FontSize>8pt</FontSize>
-                      </Style>
-                    </TextRun>
-                    <TextRun>
-                      <Value>=Fields!ShipTo3.Value</Value>
+                      <Value xml:space="preserve">  </Value>
                       <Style>
                         <FontSize>8pt</FontSize>
                       </Style>
@@ -2491,7 +2464,7 @@
                 <Paragraph>
                   <TextRuns>
                     <TextRun>
-                      <Value>=Fields!BillTo6.Value</Value>
+                      <Value>=Fields!BillTo3.Value</Value>
                       <Style>
                         <FontSize>8pt</FontSize>
                       </Style>
@@ -2526,19 +2499,7 @@
                 <Paragraph>
                   <TextRuns>
                     <TextRun>
-                      <Value>=Fields!BillTo4.Value</Value>
-                      <Style>
-                        <FontSize>8pt</FontSize>
-                      </Style>
-                    </TextRun>
-                    <TextRun>
-                      <Value xml:space="preserve"> </Value>
-                      <Style>
-                        <FontSize>8pt</FontSize>
-                      </Style>
-                    </TextRun>
-                    <TextRun>
-                      <Value>=Fields!BillTo5.Value</Value>
+                      <Value>=Fields!BillTo2.Value</Value>
                       <Style>
                         <FontSize>8pt</FontSize>
                       </Style>
@@ -2579,25 +2540,7 @@
                       </Style>
                     </TextRun>
                     <TextRun>
-                      <Value xml:space="preserve"> </Value>
-                      <Style>
-                        <FontSize>8pt</FontSize>
-                      </Style>
-                    </TextRun>
-                    <TextRun>
-                      <Value>=Fields!BillTo2.Value</Value>
-                      <Style>
-                        <FontSize>8pt</FontSize>
-                      </Style>
-                    </TextRun>
-                    <TextRun>
-                      <Value xml:space="preserve"> </Value>
-                      <Style>
-                        <FontSize>8pt</FontSize>
-                      </Style>
-                    </TextRun>
-                    <TextRun>
-                      <Value>=Fields!BillTo3.Value</Value>
+                      <Value xml:space="preserve">  </Value>
                       <Style>
                         <FontSize>8pt</FontSize>
                       </Style>
@@ -2975,7 +2918,7 @@
                 </Paragraph>
               </Paragraphs>
               <rd:DefaultName>Textbox34</rd:DefaultName>
-              <Top>7.88522cm</Top>
+              <Top>8.83772cm</Top>
               <Left>6.77601cm</Left>
               <Height>0.49417cm</Height>
               <Width>2.5cm</Width>
@@ -3007,7 +2950,7 @@
                 </Paragraph>
               </Paragraphs>
               <rd:DefaultName>Textbox34</rd:DefaultName>
-              <Top>7.88522cm</Top>
+              <Top>8.83772cm</Top>
               <Left>12.81894cm</Left>
               <Height>0.49417cm</Height>
               <Width>2.5cm</Width>
@@ -3041,7 +2984,7 @@
                 </Paragraph>
               </Paragraphs>
               <rd:DefaultName>Textbox32</rd:DefaultName>
-              <Top>8.55931cm</Top>
+              <Top>9.51181cm</Top>
               <Left>2.32558cm</Left>
               <Height>0.44125cm</Height>
               <Width>4.04383cm</Width>
@@ -3096,7 +3039,7 @@
                 </Paragraph>
               </Paragraphs>
               <rd:DefaultName>Textbox32</rd:DefaultName>
-              <Top>9.00056cm</Top>
+              <Top>9.95306cm</Top>
               <Left>2.32558cm</Left>
               <Height>0.44125cm</Height>
               <Width>4.04383cm</Width>
@@ -3151,7 +3094,7 @@
                 </Paragraph>
               </Paragraphs>
               <rd:DefaultName>Textbox32</rd:DefaultName>
-              <Top>8.55931cm</Top>
+              <Top>9.51181cm</Top>
               <Left>6.36941cm</Left>
               <Height>0.44125cm</Height>
               <Width>3.23673cm</Width>
@@ -3194,7 +3137,7 @@
                 <Paragraph>
                   <TextRuns>
                     <TextRun>
-                      <Value>=Fields!Shipment_Method_Code.Value</Value>
+                      <Value>=Fields!Location_Name.Value</Value>
                       <Style>
                         <FontSize>8pt</FontSize>
                       </Style>
@@ -3206,7 +3149,7 @@
                 </Paragraph>
               </Paragraphs>
               <rd:DefaultName>Textbox32</rd:DefaultName>
-              <Top>9.00056cm</Top>
+              <Top>9.95306cm</Top>
               <Left>6.36941cm</Left>
               <Height>0.44125cm</Height>
               <Width>3.23673cm</Width>
@@ -3261,7 +3204,7 @@
                 </Paragraph>
               </Paragraphs>
               <rd:DefaultName>Textbox32</rd:DefaultName>
-              <Top>8.55931cm</Top>
+              <Top>9.51181cm</Top>
               <Left>9.60614cm</Left>
               <Height>0.44125cm</Height>
               <Width>3.24953cm</Width>
@@ -3316,7 +3259,7 @@
                 </Paragraph>
               </Paragraphs>
               <rd:DefaultName>Textbox32</rd:DefaultName>
-              <Top>9.00056cm</Top>
+              <Top>9.95306cm</Top>
               <Left>9.60614cm</Left>
               <Height>0.44125cm</Height>
               <Width>3.24953cm</Width>
@@ -3371,7 +3314,7 @@
                 </Paragraph>
               </Paragraphs>
               <rd:DefaultName>Textbox32</rd:DefaultName>
-              <Top>8.55959cm</Top>
+              <Top>9.51209cm</Top>
               <Left>12.85567cm</Left>
               <Height>0.44125cm</Height>
               <Width>2.00611cm</Width>
@@ -3427,7 +3370,7 @@
                 </Paragraph>
               </Paragraphs>
               <rd:DefaultName>Textbox32</rd:DefaultName>
-              <Top>9.00056cm</Top>
+              <Top>9.95306cm</Top>
               <Left>12.85567cm</Left>
               <Height>0.44125cm</Height>
               <Width>2.00611cm</Width>
@@ -3482,7 +3425,7 @@
                 </Paragraph>
               </Paragraphs>
               <rd:DefaultName>Textbox32</rd:DefaultName>
-              <Top>8.55959cm</Top>
+              <Top>9.51209cm</Top>
               <Left>14.86178cm</Left>
               <Height>0.44125cm</Height>
               <Width>2.20014cm</Width>
@@ -3538,7 +3481,7 @@
                 </Paragraph>
               </Paragraphs>
               <rd:DefaultName>Textbox32</rd:DefaultName>
-              <Top>9.00056cm</Top>
+              <Top>9.95306cm</Top>
               <Left>14.86178cm</Left>
               <Height>0.44125cm</Height>
               <Width>2.20014cm</Width>
@@ -3593,7 +3536,7 @@
                 </Paragraph>
               </Paragraphs>
               <rd:DefaultName>Textbox32</rd:DefaultName>
-              <Top>8.55959cm</Top>
+              <Top>9.51209cm</Top>
               <Left>17.06192cm</Left>
               <Height>0.44125cm</Height>
               <Width>2.46574cm</Width>
@@ -3648,7 +3591,7 @@
                 </Paragraph>
               </Paragraphs>
               <rd:DefaultName>Textbox32</rd:DefaultName>
-              <Top>9.00084cm</Top>
+              <Top>9.95334cm</Top>
               <Left>17.06192cm</Left>
               <Height>0.44125cm</Height>
               <Width>2.46574cm</Width>
@@ -3681,6 +3624,76 @@
                 <PaddingLeft>0.5pt</PaddingLeft>
                 <PaddingRight>0.5pt</PaddingRight>
                 <PaddingTop>2pt</PaddingTop>
+                <PaddingBottom>0.5pt</PaddingBottom>
+              </Style>
+            </Textbox>
+            <Textbox Name="Textbox29">
+              <CanGrow>true</CanGrow>
+              <KeepTogether>true</KeepTogether>
+              <Paragraphs>
+                <Paragraph>
+                  <TextRuns>
+                    <TextRun>
+                      <Value>=Fields!BillTo4.Value</Value>
+                      <Style>
+                        <FontSize>8pt</FontSize>
+                      </Style>
+                    </TextRun>
+                  </TextRuns>
+                  <Style>
+                    <TextAlign>Left</TextAlign>
+                  </Style>
+                </Paragraph>
+              </Paragraphs>
+              <rd:DefaultName>Textbox1</rd:DefaultName>
+              <Top>7.47181cm</Top>
+              <Left>1.70193cm</Left>
+              <Height>0.52062cm</Height>
+              <Width>7.02765cm</Width>
+              <ZIndex>34</ZIndex>
+              <Style>
+                <Border>
+                  <Style>None</Style>
+                </Border>
+                <VerticalAlign>Top</VerticalAlign>
+                <PaddingLeft>0.5pt</PaddingLeft>
+                <PaddingRight>0.5pt</PaddingRight>
+                <PaddingTop>0.5pt</PaddingTop>
+                <PaddingBottom>0.5pt</PaddingBottom>
+              </Style>
+            </Textbox>
+            <Textbox Name="Textbox31">
+              <CanGrow>true</CanGrow>
+              <KeepTogether>true</KeepTogether>
+              <Paragraphs>
+                <Paragraph>
+                  <TextRuns>
+                    <TextRun>
+                      <Value>=Fields!ShipTo4.Value</Value>
+                      <Style>
+                        <FontSize>8pt</FontSize>
+                      </Style>
+                    </TextRun>
+                  </TextRuns>
+                  <Style>
+                    <TextAlign>Left</TextAlign>
+                  </Style>
+                </Paragraph>
+              </Paragraphs>
+              <rd:DefaultName>Textbox1</rd:DefaultName>
+              <Top>7.47181cm</Top>
+              <Left>11.15896cm</Left>
+              <Height>0.52062cm</Height>
+              <Width>7.02765cm</Width>
+              <ZIndex>35</ZIndex>
+              <Style>
+                <Border>
+                  <Style>None</Style>
+                </Border>
+                <VerticalAlign>Top</VerticalAlign>
+                <PaddingLeft>0.5pt</PaddingLeft>
+                <PaddingRight>0.5pt</PaddingRight>
+                <PaddingTop>0.5pt</PaddingTop>
                 <PaddingBottom>0.5pt</PaddingBottom>
               </Style>
             </Textbox>
@@ -5355,6 +5368,9 @@ End Function
         <Field Name="Posting_Date">
           <DataField>Posting_Date</DataField>
         </Field>
+        <Field Name="Location_Name">
+          <DataField>Location_Name</DataField>
+        </Field>
         <Field Name="ItemNo">
           <DataField>ItemNo</DataField>
         </Field>
@@ -5432,6 +5448,9 @@ End Function
         </Field>
         <Field Name="CubeAmountFormat">
           <DataField>CubeAmountFormat</DataField>
+        </Field>
+        <Field Name="CheckNonInventoryItem">
+          <DataField>CheckNonInventoryItem</DataField>
         </Field>
         <Field Name="Bin_Code">
           <DataField>Bin_Code</DataField>

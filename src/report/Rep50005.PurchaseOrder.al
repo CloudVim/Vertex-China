@@ -91,17 +91,17 @@ report 50005 "PurchaseOrder"
                 Clear(ShipToAdd);
                 Clear(PurchaseFrom);
                 ShipToAdd[1] := "Ship-to Name";
-                ShipToAdd[2] := "Ship-to Name 2";
-                ShipToAdd[3] := "Ship-to Address";
-                ShipToAdd[4] := "Ship-to Address 2";
-                ShipToAdd[5] := "Ship-to City" + ' ' + "Ship-to County" + ' ' + "Ship-to Post Code";
+                //ShipToAdd[2] := "Ship-to Name 2";
+                ShipToAdd[2] := "Ship-to Address";
+                ShipToAdd[3] := "Ship-to Address 2";
+                ShipToAdd[4] := "Ship-to City" + ', ' + "Ship-to County" + ', ' + "Ship-to Post Code";
                 CompressArray(ShipToAdd);
 
                 PurchaseFrom[1] := "Buy-from Vendor Name";
-                PurchaseFrom[2] := "Buy-from Vendor Name 2";
-                PurchaseFrom[3] := "Buy-from Address";
-                PurchaseFrom[4] := "Buy-from Address 2";
-                PurchaseFrom[5] := "Buy-from City" + ' ' + "Buy-from County" + ' ' + "Buy-from Post Code";
+                // PurchaseFrom[2] := "Buy-from Vendor Name 2";
+                PurchaseFrom[2] := "Buy-from Address";
+                PurchaseFrom[3] := "Buy-from Address 2";
+                PurchaseFrom[4] := "Buy-from City" + ', ' + "Buy-from County" + ', ' + "Buy-from Post Code";
                 CompressArray(PurchaseFrom);
 
             end;

@@ -161,19 +161,19 @@ report 50003 "PostedSalesInvoice"
                 Clear(ShipTo);
                 Clear(InvoiceNoBarode);
                 BillTo[1] := "Bill-to Name";
-                BillTo[2] := "Bill-to Name 2";
-                BillTo[3] := "Bill-to Contact";
-                BillTo[4] := "Bill-to Address";
-                BillTo[5] := "Bill-to Address 2";
-                BillTo[6] := "Bill-to City" + ' ' + "Bill-to County" + ' ' + "Bill-to Post Code";
+                // BillTo[2] := "Bill-to Name 2";
+                // BillTo[3] := "Bill-to Contact";
+                BillTo[2] := "Bill-to Address";
+                BillTo[3] := "Bill-to Address 2";
+                BillTo[4] := "Bill-to City" + ', ' + "Bill-to County" + ', ' + "Bill-to Post Code";
                 CompressArray(BillTo);
 
                 ShipTo[1] := "Ship-to Name";
-                ShipTo[2] := "Ship-to Name 2";
-                ShipTo[3] := "Ship-to Contact";
-                ShipTo[4] := "Ship-to Name";
-                ShipTo[5] := "Ship-to Name 2";
-                ShipTo[6] := "Ship-to City" + ' ' + "Ship-to County" + ' ' + "Ship-to Post Code";
+                // ShipTo[2] := "Ship-to Name 2";
+                // ShipTo[3] := "Ship-to Contact";
+                ShipTo[2] := "Ship-to Address";
+                ShipTo[3] := "Ship-to Address 2";
+                ShipTo[4] := "Ship-to City" + ', ' + "Ship-to County" + ', ' + "Ship-to Post Code";
                 CompressArray(ShipTo);
 
                 If "Payment Terms Code" <> '' then

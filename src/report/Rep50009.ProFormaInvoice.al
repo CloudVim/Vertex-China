@@ -1,10 +1,10 @@
-report 50004 "SalesOrderConfirmation"
+report 50009 "Pro Forma Invoice"
 {
     UsageCategory = ReportsAndAnalysis;
     ApplicationArea = All;
     DefaultLayout = RDLC;
-    Caption = 'Sales Order Confirmation';
-    RDLCLayout = './SalesOrderConfirmation.rdl';
+    Caption = 'Pro Forma Invoice';
+    RDLCLayout = './ProFormaInvoice.rdl';
 
 
     dataset
@@ -116,6 +116,7 @@ report 50004 "SalesOrderConfirmation"
                 column(CubeAmount; CubeAmount)
                 { }
                 column(CheckNonInventoryItem; CheckNonInventoryItem) { }
+
                 trigger OnAfterGetRecord()
                 var
                     SalesLine_L: Record "Sales Line";
@@ -240,6 +241,7 @@ report 50004 "SalesOrderConfirmation"
                 InvoiceNoBarode := BarcodeFontProvider.EncodeFont(BarcodeString, BarcodeSymbology);
 
                 if Location_G.Get("Location Code") then;
+
             end;
 
 
@@ -261,7 +263,7 @@ report 50004 "SalesOrderConfirmation"
 
     labels
     {
-        InvoiceCaption = 'ACKNOWLEDGEMENT';
+        InvoiceCaption = 'Pro Forma Invoice';
         UPCCaption = 'UPC';
         InvoiceDateInvoiceCaption = 'ORDER DATE';
         InvoiceNoInvoiceCaption = 'ORDER NO.';
