@@ -203,7 +203,7 @@ report 50001 "PackingSlip"
                 // BillTo[3] := "Bill-to Contact";
                 BillTo[2] := "Bill-to Address";
                 BillTo[3] := "Bill-to Address 2";
-                BillTo[4] := "Bill-to City" + ', ' + "Bill-to County" + ', ' + "Bill-to Post Code";
+                BillTo[4] := "Bill-to City" + ', ' + "Bill-to County" + ' ' + "Bill-to Post Code";
                 CompressArray(BillTo);//AGT_DS_09232022 Because they need the 3 lines
 
                 ShipTo[1] := "Ship-to Name";
@@ -211,7 +211,7 @@ report 50001 "PackingSlip"
                 // ShipTo[3] := "Ship-to Contact";
                 ShipTo[2] := "Ship-to Address";
                 ShipTo[3] := "Ship-to Address 2";
-                ShipTo[4] := "Ship-to City" + ', ' + "Ship-to County" + ', ' + "Ship-to Post Code";
+                ShipTo[4] := "Ship-to City" + ', ' + "Ship-to County" + ' ' + "Ship-to Post Code";
                 CompressArray(ShipTo);//AGT_DS_09232022 Because they need the 3 lines
 
                 If "Payment Terms Code" <> '' then
@@ -237,7 +237,7 @@ report 50001 "PackingSlip"
                 CompanyInfoAdd[2] := CompanyInfo."Name 2";
                 CompanyInfoAdd[3] := CompanyInfo.Address;
                 CompanyInfoAdd[4] := CompanyInfo."Address 2";
-                CompanyInfoAdd[5] := CompanyInfo.City + ' ' + CompanyInfo.County + ' ' + CompanyInfo."Post Code";
+                CompanyInfoAdd[5] := CompanyInfo.City + ', ' + CompanyInfo.County + ' ' + CompanyInfo."Post Code";
                 CompressArray(CompanyInfoAdd);
             end;
         }

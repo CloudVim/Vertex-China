@@ -9,6 +9,11 @@ pageextension 50003 "ExtendPostedsalesline_CBR" extends "Posted Sales Invoice Su
                 ApplicationArea = All;
                 Caption = 'No. of Cases';
             }
+            field("Commission Rate"; Rec."Commission Rate")
+            {
+                ApplicationArea = All;
+                Caption = 'Commission Rate';
+            }
         }
         addafter("Location Code")
         {
