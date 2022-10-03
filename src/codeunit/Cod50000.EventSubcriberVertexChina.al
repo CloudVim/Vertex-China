@@ -21,4 +21,5 @@ codeunit 50000 "EventSubcriber_VertexChina"
         SalesHeader."Ship-to Fax No." := ShipToAddress."Fax No.";
         SalesHeader."Ship-to E-Mail" := ShipToAddress."E-Mail";
     end;
+
 }

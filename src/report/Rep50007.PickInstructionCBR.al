@@ -167,7 +167,7 @@ report 50007 "PickInstruction_CBR"
                     If Type = Type::Item then begin
                         If Item_L.get("No.") then begin
                             If Item_L."Unit Volume" <> 0 then
-                                CubeAmount := Quantity * "Unit Volume"
+                                CubeAmount := Quantity * Item_L."Unit Volume"
                             else
                                 CubeAmount := Quantity;
 
