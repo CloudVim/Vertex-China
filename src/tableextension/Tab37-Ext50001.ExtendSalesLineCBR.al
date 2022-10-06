@@ -75,6 +75,20 @@ tableextension 50001 "ExtendSalesLine_CBR" extends "Sales Line" //37
             Caption = 'Case Pack';
             Editable = false;
         }
+        field(50016; "CBR_Unit Price Line Discount"; Decimal)
+        {
+            Caption = 'Unit Price Line Discount';
+            Editable = false;
+
+        }
+        modify("Line Discount %")
+        {
+            trigger OnAfterValidate()
+            begin
+                if ("Line Discount %" > 0) AND ("Unit Price" > 0) AND ("CBR_Unit Price Line Discount" = 0) then
+                    "CBR_Unit Price Line Discount" := "Unit Price" - ("Unit Price" * "Line Discount %") / 100;
+            End;
+        }
         //AGT_YK_200922--
         // modify(Quantity)
         // {
@@ -138,6 +152,44 @@ tableextension 50001 "ExtendSalesLine_CBR" extends "Sales Line" //37
                 rec."Salesperson Code" := Salesheader_L."Salesperson Code";
     end;
 
+    procedure UpdateTotalWeightForOrder(DocNo: Code[20])
+    var
+        recItem: Record Item;
+        recSalesLine: Record "Sales Line";
+    begin
+        //Clear("Total Gross Weight");
+        recSalesLine.Reset();
+        recSalesLine.SetRange("Document Type", "Document Type"::Order);
+        recSalesLine.SetRange("Document No.", DocNo);
+        if recSalesLine.FindSet() then Begin
+            //AGT-SS 11-Aug-22++
+            if ("Line Discount %" > 0) AND ("Unit Price" > 0) then
+                "CBR_Unit Price Line Discount" := "Unit Price" - ("Unit Price" * "Line Discount %") / 100;
+            if "Line Discount %" = 0 then
+                "CBR_Unit Price Line Discount" := "Unit Price";
+            //AGT-SS 11-Aug-22--
+            Modify();
+        End
+    end;
+
+    procedure UpdateTotalWeightforQuote(DocNo: Code[20])
+    var
+        recItem: Record Item;
+        recSalesLine: Record "Sales Line";
+    begin
+        recSalesLine.Reset();
+        recSalesLine.SetRange("Document Type", "Document Type"::Quote);
+        recSalesLine.SetRange("Document No.", DocNo);
+        if recSalesLine.FindSet() then begin
+            //AGT-SS 11-Aug-22++
+            if ("Line Discount %" > 0) AND ("Unit Price" > 0) then
+                "CBR_Unit Price Line Discount" := "Unit Price" - ("Unit Price" * "Line Discount %") / 100;
+            if "Line Discount %" = 0 then
+                "CBR_Unit Price Line Discount" := "Unit Price";
+            //AGT-SS 11-Aug-22--
+            Modify();
+        end;
+    end;
 
     var
         RecItem: Record Item;

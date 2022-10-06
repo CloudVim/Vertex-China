@@ -28,7 +28,11 @@ tableextension 50002 "ExtendPostedSalesLine_CBR" extends "Sales Invoice Line" //
             Editable = false;
         }
         //AGT_YK_200922--
-
+        field(50016; "CBR_Unit Price Line Discount"; Decimal)
+        {
+            Caption = 'Unit Price Line Discount';
+            Editable = false;
+        }
 
     }
     var

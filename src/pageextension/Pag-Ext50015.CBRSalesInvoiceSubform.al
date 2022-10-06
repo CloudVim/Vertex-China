@@ -9,6 +9,15 @@ pageextension 50015 "CBR_SalesInvoiceSubform" extends "Sales Invoice Subform"
                 ApplicationArea = all;
             }
         }
+        addafter("Salesperson Code")
+        {
+
+            field("Commission Rate"; Rec."Commission Rate")
+            {
+                ApplicationArea = All;
+                ToolTip = 'Specifies the value of the Commission Rate field.';
+            }
+        }
     }
 
     actions

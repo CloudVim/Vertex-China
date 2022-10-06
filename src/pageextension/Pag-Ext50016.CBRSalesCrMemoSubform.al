@@ -1,15 +1,8 @@
-pageextension 50014 "CBR_PostedSalesCrMemoSubform" extends "Posted Sales Cr. Memo Subform"
+pageextension 50016 "CBR_SalesCrMemoSubform" extends "Sales Cr. Memo Subform"
 {
     layout
     {
-        addafter("Line Discount Amount")
-        {
-            field("Salesperson Code"; Rec."Salesperson Code")
-            {
-                ApplicationArea = all;
-            }
-        }
-        addafter("Salesperson Code")
+        addafter(Quantity)
         {
 
             field("Commission Rate"; Rec."Commission Rate")

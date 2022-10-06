@@ -37,6 +37,8 @@ pageextension 50002 "ExtendSalesOrderSubform_CBR" extends "Sales Order Subform" 
                 RecItem: Record Item;
                 CaseQty: Decimal;
             begin
+                UpdateTotalWeightForOrder(Rec."Document No.");
+                CurrPage.Update(false);
                 clear(CaseQty);
                 If RecItem.Get(Rec."No.") then begin
                     if RecItem."Case Pack" <> 0 then begin
@@ -86,9 +88,23 @@ pageextension 50002 "ExtendSalesOrderSubform_CBR" extends "Sales Order Subform" 
                 end;
             end;
         }
+        addafter("Line Discount %")
+        {
+            field("Unit Price Line Discount"; Rec."CBR_Unit Price Line Discount")
+            {
+                ApplicationArea = All;
+                Caption = 'Unit Price after Discount';
+                ToolTip = 'Specifies the value of the Unit Price Line Discount field.';
+            }
+        }
     }
+    // trigger OnAfterGetRecord()
+    // begin
+    //     // Rec.GetItemDataFosSales(Rec."No.", Rec."Sell-to Customer No.");
+    // end;
+
     trigger OnAfterGetRecord()
     begin
-        // Rec.GetItemDataFosSales(Rec."No.", Rec."Sell-to Customer No.");
+        UpdateTotalWeightForOrder(Rec."Document No.");
     end;
 }
