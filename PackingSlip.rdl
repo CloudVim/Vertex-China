@@ -28,16 +28,16 @@
                   <Width>2.17018cm</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>1.87885cm</Width>
+                  <Width>1.879cm</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>2.12084cm</Width>
+                  <Width>1.94562cm</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>2.12732cm</Width>
+                  <Width>1.86337cm</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>1.92585cm</Width>
+                  <Width>2.36502cm</Width>
                 </TablixColumn>
                 <TablixColumn>
                   <Width>1.82815cm</Width>
@@ -758,7 +758,13 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>Cases</Value>
+                                  <Value>CS</Value>
+                                  <Style>
+                                    <FontSize>8pt</FontSize>
+                                  </Style>
+                                </TextRun>
+                                <TextRun>
+                                  <Value>=Fields!ItemCasePack.Value</Value>
                                   <Style>
                                     <FontSize>8pt</FontSize>
                                   </Style>
@@ -1640,7 +1646,7 @@
             <Top>0cm</Top>
             <Left>0cm</Left>
             <Height>2.32062cm</Height>
-            <Width>19.52764cm</Width>
+            <Width>19.52779cm</Width>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -1655,7 +1661,7 @@
           </Border>
         </Style>
       </Body>
-      <Width>19.52766cm</Width>
+      <Width>19.52779cm</Width>
       <Page>
         <PageHeader>
           <Height>10.98613cm</Height>
@@ -5281,6 +5287,12 @@ End Function
         </Field>
         <Field Name="QtycasepackFormat">
           <DataField>QtycasepackFormat</DataField>
+        </Field>
+        <Field Name="ItemCasePack">
+          <DataField>ItemCasePack</DataField>
+        </Field>
+        <Field Name="ItemCasePackFormat">
+          <DataField>ItemCasePackFormat</DataField>
         </Field>
         <Field Name="OrderQty">
           <DataField>OrderQty</DataField>

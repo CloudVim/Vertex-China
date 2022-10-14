@@ -101,6 +101,7 @@ report 50001 "PackingSlip"
                 { }
                 column(Qtycasepack; Qtycasepack)
                 { }
+                column(ItemCasePack; ItemCasePack) { }
                 column(OrderQty; OrderQty)
                 { }
                 column(NoofRows; NoofRows)
@@ -127,6 +128,7 @@ report 50001 "PackingSlip"
                             CheckNonInventoryItem := True;
                     BOQtycasepack := 0;
                     Qtycasepack := 0;
+                    ItemCasePack := 0;
                     BOQty := 0;
                     OrderQty := 0;
                     Clear(ItemUOM);
@@ -150,8 +152,10 @@ report 50001 "PackingSlip"
                         end;
                     end;
                     Item_L.reset;
+
                     If Item_L.Get("No.") then begin
                         If Item_L."Case Pack" <> 0 then begin
+                            ItemCasePack := Item_L."Case Pack";
                             If OrderQty <> 0 then
                                 Qtycasepack := OrderQty / Item_L."Case Pack";
                             IF BOQty <> 0 then
@@ -289,6 +293,7 @@ report 50001 "PackingSlip"
         CompanyInfoAdd: array[5] of Text;
         Qtycasepack: Decimal;
         BOQtycasepack: Decimal;
+        ItemCasePack: Decimal;
         OrderQty: Decimal;
         BOQty: Decimal;
         ItemUOM: Text;

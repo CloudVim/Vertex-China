@@ -49,7 +49,7 @@ report 50004 "SalesOrderConfirmation"
             { }
             column(ShipTo6; ShipTo[6])
             { }
-            column(Payment_Terms_Code; "Payment Terms Code")
+            column(Payment_Terms_Code; PaymentTermsDesription)// "Payment Terms Code"
             { }
             column(Order_No_; "External Document No.")
             { }
@@ -94,7 +94,9 @@ report 50004 "SalesOrderConfirmation"
                 { }
                 column(Line_Discount__; "Line Discount %")
                 { }
-                column(Amount; Amount)
+                column(UnitPriceafterDiscount; "CBR_Unit Price Line Discount") { }
+                column(Amount;
+                Amount)
                 { }
                 column(BOQtycasepack; BOQtycasepack)
                 { }
@@ -226,11 +228,14 @@ report 50004 "SalesOrderConfirmation"
                 ShipTo[2] := "Ship-to Address";
                 ShipTo[3] := "Ship-to Address 2";
                 ShipTo[4] := "Ship-to City" + ', ' + "Ship-to County" + ' ' + "Ship-to Post Code";
+                ShipTo[5] := "Ship-to Contact";
                 CompressArray(ShipTo);//AGT_DS_09232022 Because they need the 3 lines
 
                 If "Payment Terms Code" <> '' then
-                    if Paymenterms_L.get("Payment Terms Code") then
+                    if Paymenterms_L.get("Payment Terms Code") then begin
+                        PaymentTermsDesription := Paymenterms_L.Description;
                         Paymenttermdiscount := Paymenterms_L."Discount %";
+                    end;
 
 
                 BarcodeFontProvider := Enum::"Barcode Font Provider"::IDAutomation1D;
@@ -321,4 +326,5 @@ report 50004 "SalesOrderConfirmation"
         CubeAmount: Decimal;
         Location_G: Record Location;
         CheckNonInventoryItem: Boolean;
+        PaymentTermsDesription: Text;
 }
