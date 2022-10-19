@@ -152,43 +152,18 @@ tableextension 50001 "ExtendSalesLine_CBR" extends "Sales Line" //37
                 rec."Salesperson Code" := Salesheader_L."Salesperson Code";
     end;
 
-    procedure UpdateTotalWeightForOrder(DocNo: Code[20])
+    procedure UpdateTotalWeightForOrder(var RecSalesLine: Record "Sales Line")
     var
         recItem: Record Item;
-        recSalesLine: Record "Sales Line";
+    // recSalesLine: Record "Sales Line";
     begin
-        //Clear("Total Gross Weight");
-        recSalesLine.Reset();
-        recSalesLine.SetRange("Document Type", "Document Type"::Order);
-        recSalesLine.SetRange("Document No.", DocNo);
-        if recSalesLine.FindSet() then Begin
-            //AGT-SS 11-Aug-22++
-            if ("Line Discount %" > 0) AND ("Unit Price" > 0) then
-                "CBR_Unit Price Line Discount" := "Unit Price" - ("Unit Price" * "Line Discount %") / 100;
-            if "Line Discount %" = 0 then
-                "CBR_Unit Price Line Discount" := "Unit Price";
-            //AGT-SS 11-Aug-22--
-            Modify();
-        End
-    end;
-
-    procedure UpdateTotalWeightforQuote(DocNo: Code[20])
-    var
-        recItem: Record Item;
-        recSalesLine: Record "Sales Line";
-    begin
-        recSalesLine.Reset();
-        recSalesLine.SetRange("Document Type", "Document Type"::Quote);
-        recSalesLine.SetRange("Document No.", DocNo);
-        if recSalesLine.FindSet() then begin
-            //AGT-SS 11-Aug-22++
-            if ("Line Discount %" > 0) AND ("Unit Price" > 0) then
-                "CBR_Unit Price Line Discount" := "Unit Price" - ("Unit Price" * "Line Discount %") / 100;
-            if "Line Discount %" = 0 then
-                "CBR_Unit Price Line Discount" := "Unit Price";
-            //AGT-SS 11-Aug-22--
-            Modify();
-        end;
+        //AGT-DS 10192022++
+        if (RecSalesLine."Line Discount %" > 0) AND (recSalesLine."Unit Price" > 0) then
+            recSalesLine."CBR_Unit Price Line Discount" := recSalesLine."Unit Price" - (recSalesLine."Unit Price" * recSalesLine."Line Discount %") / 100;
+        if recSalesLine."Line Discount %" = 0 then
+            recSalesLine."CBR_Unit Price Line Discount" := recSalesLine."Unit Price";
+        //AGT-SS 11-Aug-22--
+        //AGT-DS 10192022--
     end;
 
     var

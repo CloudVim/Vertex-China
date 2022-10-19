@@ -37,7 +37,7 @@ pageextension 50002 "ExtendSalesOrderSubform_CBR" extends "Sales Order Subform" 
                 RecItem: Record Item;
                 CaseQty: Decimal;
             begin
-                UpdateTotalWeightForOrder(Rec."Document No.");
+                UpdateTotalWeightForOrder(Rec);
                 CurrPage.Update(false);
                 clear(CaseQty);
                 If RecItem.Get(Rec."No.") then begin
@@ -105,6 +105,6 @@ pageextension 50002 "ExtendSalesOrderSubform_CBR" extends "Sales Order Subform" 
 
     trigger OnAfterGetRecord()
     begin
-        UpdateTotalWeightForOrder(Rec."Document No.");
+        UpdateTotalWeightForOrder(Rec);//AGT_DS_10192022
     end;
 }
