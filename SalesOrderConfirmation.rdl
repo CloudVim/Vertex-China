@@ -1569,7 +1569,6 @@
                                 <PaddingBottom>0.5pt</PaddingBottom>
                               </Style>
                             </Textbox>
-                            <rd:Selected>true</rd:Selected>
                           </CellContents>
                         </TablixCell>
                         <TablixCell>
@@ -1797,6 +1796,12 @@
                                   <TextRuns>
                                     <TextRun>
                                       <Value>CS</Value>
+                                      <Style>
+                                        <FontSize>8pt</FontSize>
+                                      </Style>
+                                    </TextRun>
+                                    <TextRun>
+                                      <Value>=Fields!ItemCasePack.Value</Value>
                                       <Style>
                                         <FontSize>8pt</FontSize>
                                       </Style>
@@ -5672,6 +5677,9 @@ End Function
         </Field>
         <Field Name="QtycasepackFormat">
           <DataField>QtycasepackFormat</DataField>
+        </Field>
+        <Field Name="ItemCasePack">
+          <DataField>ItemCasePack</DataField>
         </Field>
         <Field Name="OrderQty">
           <DataField>OrderQty</DataField>

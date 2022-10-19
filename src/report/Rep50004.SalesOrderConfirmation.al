@@ -106,6 +106,7 @@ report 50004 "SalesOrderConfirmation"
                 { }
                 column(Qtycasepack; Qtycasepack)
                 { }
+                column(ItemCasePack; ItemCasePack) { }
                 column(OrderQty; OrderQty)
                 { }
                 column(NoofRows; NoofRows)
@@ -156,7 +157,9 @@ report 50004 "SalesOrderConfirmation"
                         end;
                     end;
                     Item_L.reset;
+                    ItemCasePack := 0;
                     If Item_L.Get("No.") then begin
+                        ItemCasePack := Item_L."Case Pack";
                         If Item_L."Case Pack" <> 0 then begin
                             If OrderQty <> 0 then
                                 Qtycasepack := OrderQty / Item_L."Case Pack";
@@ -288,7 +291,7 @@ report 50004 "SalesOrderConfirmation"
         BOCaption = 'BO';
         UMCaption = 'UM';
         PriceCaption = 'PRICE';
-        DiscountCaption = 'DISCOUNT';
+        DiscountCaption = 'Unit Price';
         NetAmountCaption = 'NET AMOUNT';
         QtyShippedTotalCaption = 'Qty Shipped Total';
         //Dozens = 'Dozens';
@@ -327,4 +330,5 @@ report 50004 "SalesOrderConfirmation"
         Location_G: Record Location;
         CheckNonInventoryItem: Boolean;
         PaymentTermsDesription: Text;
+        ItemCasePack: Integer;
 }
