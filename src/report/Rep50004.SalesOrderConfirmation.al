@@ -129,7 +129,7 @@ report 50004 "SalesOrderConfirmation"
                 begin
                     CheckNonInventoryItem := false;
                     If Item_L1.Get("No.") then
-                        If Item_L1.Type = Item_L1.Type::"Non-Inventory" then
+                        If Item_L1.Type = Item_L1.Type::Service then //AGT_DS_10202022 First we are using Non inventory now we are using Service
                             CheckNonInventoryItem := True;
                     BOQtycasepack := 0;
                     Qtycasepack := 0;
