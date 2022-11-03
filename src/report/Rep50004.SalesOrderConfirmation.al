@@ -203,7 +203,7 @@ report 50004 "SalesOrderConfirmation"
                     If SalesLine_L1.FindSet() then
                         repeat
                             If Item_L1.Get(SalesLine_L1."No.") then
-                                If Item_L1.Type <> Item_L1.Type::"Non-Inventory" then
+                                If Item_L1.Type <> Item_L1.Type::Service then//Change NonInventory 11032022
                                     TotalNoofRows += 1;
                         Until SalesLine_L1.Next() = 0;
                 end;

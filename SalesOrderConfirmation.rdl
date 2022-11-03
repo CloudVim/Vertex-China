@@ -2950,7 +2950,7 @@
                                 <Paragraph>
                                   <TextRuns>
                                     <TextRun>
-                                      <Value>=Sum(Fields!Amount.Value)-Fields!Invoice_Discount_Amount.Value</Value>
+                                      <Value>=Sum(Fields!Amount.Value)+Fields!Invoice_Discount_Amount.Value</Value>
                                       <Style>
                                         <FontSize>8pt</FontSize>
                                         <Format>0.00;(0.00)</Format>

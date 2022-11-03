@@ -127,8 +127,10 @@ report 50009 "Pro Forma Invoice"
                 begin
                     CheckNonInventoryItem := false;
                     If Item_L1.Get("No.") then
-                        If Item_L1.Type = Item_L1.Type::"Non-Inventory" then
+                        If Item_L1.Type = Item_L1.Type::Service then //AGT_DS_11032022 First we are using Non inventory now we are using Service
                             CheckNonInventoryItem := True;
+                    // If Item_L1.Type = Item_L1.Type::"Non-Inventory" then
+                    //     CheckNonInventoryItem := True;
                     BOQtycasepack := 0;
                     Qtycasepack := 0;
                     BOQty := 0;
@@ -199,7 +201,7 @@ report 50009 "Pro Forma Invoice"
                     If SalesLine_L1.FindSet() then
                         repeat
                             If Item_L1.Get(SalesLine_L1."No.") then
-                                If Item_L1.Type <> Item_L1.Type::"Non-Inventory" then
+                                If Item_L1.Type <> Item_L1.Type::Service then//Change NonInventory 11032022
                                     TotalNoofRows += 1;
                         Until SalesLine_L1.Next() = 0;
                 end;
