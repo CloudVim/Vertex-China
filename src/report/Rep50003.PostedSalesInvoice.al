@@ -86,11 +86,11 @@ report 50003 "PostedSalesInvoice"
                 { }
                 column(Unit_of_Measure; "Unit of Measure")
                 { }
-                column(Unit_Price; "Unit Price")
+                column(Unit_Price; UnitPrice)
                 { }
                 column(Line_Discount__; "Line Discount %")
                 { }
-                column(Amount; Amount)
+                column(Amount; NetAmount)
                 { }
                 column(BOQtycasepack; BOQtycasepack)
                 { }
@@ -106,25 +106,49 @@ report 50003 "PostedSalesInvoice"
                 { }
                 column(InvoiceNoBarode; InvoiceNoBarode)
                 { }
+                column(SLType; SLType) { }
+                column(TotalCube; TotalCube) { }
+                column(TotalWeight; TotalWeight) { }
                 trigger OnAfterGetRecord()
                 var
                     SalesLine_L: Record "Sales Line";
                     SalesLineArchive_L: Record "Sales Line Archive";
                     Item_L: Record Item;
+                    Item_L1: Record Item;
                 begin
+                    UnitPrice := 0;
+                    NetAmount := 0;
                     NoofRows := 0;
                     NoofRows := Count;
                     BOQtycasepack := 0;
                     Qtycasepack := 0;
                     BOQty := 0;
                     OrderQty := 0;
+                    TotalCube := 0;
+                    TotalWeight := 0;
+                    CLear(SLType);
                     Clear(ItemUOM);
                     SalesLine_L.Reset();
                     SalesLine_L.SetRange("Document No.", "Order No.");
                     SalesLine_L.SetRange("Line No.", "Order Line No.");
                     If SalesLine_L.FindFirst() then begin
-                        BOQty := SalesLine_L.Quantity - SalesLine_L."Quantity Shipped";
-                        OrderQty := SalesLine_L.Quantity;
+                        SLType := Format(SalesLine_L.Type);
+                        Item_L1.Reset();
+                        If Item_L1.Get(SalesLine_L."No.") then begin
+                            If Item_L1.Type <> Item_L1.Type::Inventory then begin
+                                BOQty := 0;
+                                OrderQty := 0;
+                                UnitPrice := 0;
+                                NetAmount := 0;
+                            end Else Begin
+                                NetAmount := SalesLine_L.Amount;
+                                UnitPrice := SalesLine_L."Unit Price";
+                                TotalCube := Item_L1."Unit Volume" * SalesInvoiceLine.Quantity;
+                                TotalWeight := Item_L1."Gross Weight" * SalesInvoiceLine.Quantity;
+                                BOQty := SalesLine_L.Quantity - SalesLine_L."Quantity Shipped";
+                                OrderQty := SalesLine_L.Quantity;
+                            End;
+                        end;
                     end else begin
                         SalesLineArchive_L.Reset();
                         SalesLineArchive_L.SetRange("Document Type", SalesLineArchive_L."Document Type"::Order);
@@ -132,8 +156,23 @@ report 50003 "PostedSalesInvoice"
                         SalesLineArchive_L.SetRange("Line No.", "Line No.");
                         SalesLineArchive_L.SetRange("No.", "No.");
                         If SalesLineArchive_L.FindFirst() then begin
-                            BOQty := SalesLineArchive_L.Quantity - SalesLineArchive_L."Quantity Shipped";
-                            OrderQty := SalesLineArchive_L.Quantity;
+                            SLType := Format(SalesLineArchive_L.Type);
+                            Item_L1.Reset();
+                            IF Item_L1.Get(SalesLineArchive_L."No.") then begin
+                                If Item_L1.Type <> Item_L1.Type::Inventory then begin
+                                    BOQty := 0;
+                                    OrderQty := 0;
+                                    UnitPrice := 0;
+                                    NetAmount := 0;
+                                end else Begin
+                                    NetAmount := SalesLineArchive_L.Amount;
+                                    UnitPrice := SalesLineArchive_L."Unit Price";
+                                    TotalCube := Item_L1."Unit Volume" * SalesInvoiceLine.Quantity;
+                                    TotalWeight := Item_L1."Gross Weight" * SalesInvoiceLine.Quantity;
+                                    BOQty := SalesLineArchive_L.Quantity - SalesLineArchive_L."Quantity Shipped";
+                                    OrderQty := SalesLineArchive_L.Quantity;
+                                End;
+                            end
                         end;
                     end;
                     Item_L.reset;
@@ -281,4 +320,9 @@ report 50003 "PostedSalesInvoice"
         Paymenttermdiscount: Decimal;
         NoofRows: Integer;
         InvoiceNoBarode: Text;
+        SLType: Text;
+        TotalCube: Decimal;
+        TotalWeight: Decimal;
+        UnitPrice: Decimal;
+        NetAmount: Decimal;
 }

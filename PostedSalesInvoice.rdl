@@ -1458,6 +1458,7 @@
                                       <Value>=Fields!OrderQty.Value</Value>
                                       <Style>
                                         <FontSize>8pt</FontSize>
+                                        <Format>0.00;(0.00);''</Format>
                                       </Style>
                                     </TextRun>
                                   </TextRuns>
@@ -1467,6 +1468,9 @@
                                 </Paragraph>
                               </Paragraphs>
                               <rd:DefaultName>Textbox73</rd:DefaultName>
+                              <Visibility>
+                                <Hidden>=IIF(Fields!SLType.Value&lt;&gt;" " ,False,true)</Hidden>
+                              </Visibility>
                               <Style>
                                 <Border>
                                   <Style>None</Style>
@@ -1491,6 +1495,7 @@
                                       <Value>=Fields!OrderQty.Value-Fields!BOQty.Value</Value>
                                       <Style>
                                         <FontSize>8pt</FontSize>
+                                        <Format>0.00;(0.00);''</Format>
                                       </Style>
                                     </TextRun>
                                   </TextRuns>
@@ -1500,6 +1505,9 @@
                                 </Paragraph>
                               </Paragraphs>
                               <rd:DefaultName>Textbox77</rd:DefaultName>
+                              <Visibility>
+                                <Hidden>=IIF(Fields!SLType.Value&lt;&gt;" " ,False,true)</Hidden>
+                              </Visibility>
                               <Style>
                                 <Border>
                                   <Style>None</Style>
@@ -1524,6 +1532,7 @@
                                       <Value>=Fields!BOQty.Value</Value>
                                       <Style>
                                         <FontSize>8pt</FontSize>
+                                        <Format>0.00;(0.00);''</Format>
                                       </Style>
                                     </TextRun>
                                   </TextRuns>
@@ -1533,6 +1542,9 @@
                                 </Paragraph>
                               </Paragraphs>
                               <rd:DefaultName>Textbox79</rd:DefaultName>
+                              <Visibility>
+                                <Hidden>=IIF(Fields!SLType.Value&lt;&gt;" " ,False,true)</Hidden>
+                              </Visibility>
                               <Style>
                                 <Border>
                                   <Style>None</Style>
@@ -1590,6 +1602,7 @@
                                       <Value>=Fields!Unit_Price.Value</Value>
                                       <Style>
                                         <FontSize>8pt</FontSize>
+                                        <Format>0.00;(0.00);''</Format>
                                       </Style>
                                     </TextRun>
                                   </TextRuns>
@@ -1599,6 +1612,9 @@
                                 </Paragraph>
                               </Paragraphs>
                               <rd:DefaultName>Textbox81</rd:DefaultName>
+                              <Visibility>
+                                <Hidden>=IIF(Fields!SLType.Value&lt;&gt;" " ,False,true)</Hidden>
+                              </Visibility>
                               <Style>
                                 <Border>
                                   <Style>None</Style>
@@ -1623,6 +1639,7 @@
                                       <Value>=Fields!Unit_of_Measure.Value</Value>
                                       <Style>
                                         <FontSize>8pt</FontSize>
+                                        <Format>0.00;(0.00);''</Format>
                                       </Style>
                                     </TextRun>
                                   </TextRuns>
@@ -1656,6 +1673,7 @@
                                       <Value>=Fields!Line_Discount__.Value</Value>
                                       <Style>
                                         <FontSize>8pt</FontSize>
+                                        <Format>0.00;(0.00);''</Format>
                                       </Style>
                                     </TextRun>
                                   </TextRuns>
@@ -1665,6 +1683,9 @@
                                 </Paragraph>
                               </Paragraphs>
                               <rd:DefaultName>Textbox83</rd:DefaultName>
+                              <Visibility>
+                                <Hidden>=IIF(Fields!SLType.Value&lt;&gt;" " ,False,true)</Hidden>
+                              </Visibility>
                               <Style>
                                 <Border>
                                   <Style>None</Style>
@@ -1689,7 +1710,7 @@
                                       <Value>=Fields!Amount.Value</Value>
                                       <Style>
                                         <FontSize>8pt</FontSize>
-                                        <Format>0.00;(0.00)</Format>
+                                        <Format>0.00;(0.00);''</Format>
                                       </Style>
                                     </TextRun>
                                   </TextRuns>
@@ -1699,6 +1720,9 @@
                                 </Paragraph>
                               </Paragraphs>
                               <rd:DefaultName>Textbox69</rd:DefaultName>
+                              <Visibility>
+                                <Hidden>=IIF(Fields!SLType.Value&lt;&gt;" " ,False,true)</Hidden>
+                              </Visibility>
                               <Style>
                                 <Border>
                                   <Style>None</Style>
@@ -1790,7 +1814,7 @@
                                       <Value>=Fields!Qtycasepack.Value</Value>
                                       <Style>
                                         <FontSize>8pt</FontSize>
-                                        <Format>0.00;(0.00)</Format>
+                                        <Format>0.00;(0.00);''</Format>
                                       </Style>
                                     </TextRun>
                                   </TextRuns>
@@ -1800,6 +1824,9 @@
                                 </Paragraph>
                               </Paragraphs>
                               <rd:DefaultName>Textbox89</rd:DefaultName>
+                              <Visibility>
+                                <Hidden>=IIF(Fields!SLType.Value&lt;&gt;" " ,False,true)</Hidden>
+                              </Visibility>
                               <Style>
                                 <Border>
                                   <Style>None</Style>
@@ -1824,7 +1851,7 @@
                                       <Value>=Fields!Qtycasepack.Value-Fields!BOQtycasepack.Value</Value>
                                       <Style>
                                         <FontSize>8pt</FontSize>
-                                        <Format>0.00;(0.00)</Format>
+                                        <Format>0.00;(0.00);''</Format>
                                       </Style>
                                     </TextRun>
                                   </TextRuns>
@@ -1834,6 +1861,9 @@
                                 </Paragraph>
                               </Paragraphs>
                               <rd:DefaultName>Textbox90</rd:DefaultName>
+                              <Visibility>
+                                <Hidden>=IIF(Fields!SLType.Value&lt;&gt;" " ,False,true)</Hidden>
+                              </Visibility>
                               <Style>
                                 <Border>
                                   <Style>None</Style>
@@ -1858,7 +1888,7 @@
                                       <Value>=Fields!BOQtycasepack.Value</Value>
                                       <Style>
                                         <FontSize>8pt</FontSize>
-                                        <Format>0.00;(0.00)</Format>
+                                        <Format>0.00;(0.00);''</Format>
                                       </Style>
                                     </TextRun>
                                   </TextRuns>
@@ -1868,6 +1898,9 @@
                                 </Paragraph>
                               </Paragraphs>
                               <rd:DefaultName>Textbox91</rd:DefaultName>
+                              <Visibility>
+                                <Hidden>=IIF(Fields!SLType.Value&lt;&gt;" " ,False,true)</Hidden>
+                              </Visibility>
                               <Style>
                                 <Border>
                                   <Style>None</Style>
@@ -1922,7 +1955,7 @@
                                 <Paragraph>
                                   <TextRuns>
                                     <TextRun>
-                                      <Value />
+                                      <Value>=Fields!TotalCube.Value</Value>
                                       <Style>
                                         <FontSize>8pt</FontSize>
                                       </Style>
@@ -1932,6 +1965,9 @@
                                 </Paragraph>
                               </Paragraphs>
                               <rd:DefaultName>Textbox93</rd:DefaultName>
+                              <Visibility>
+                                <Hidden>true</Hidden>
+                              </Visibility>
                               <Style>
                                 <Border>
                                   <Style>None</Style>
@@ -1953,7 +1989,7 @@
                                 <Paragraph>
                                   <TextRuns>
                                     <TextRun>
-                                      <Value />
+                                      <Value>=Fields!TotalWeight.Value</Value>
                                       <Style>
                                         <FontSize>8pt</FontSize>
                                       </Style>
@@ -1963,6 +1999,9 @@
                                 </Paragraph>
                               </Paragraphs>
                               <rd:DefaultName>Textbox94</rd:DefaultName>
+                              <Visibility>
+                                <Hidden>true</Hidden>
+                              </Visibility>
                               <Style>
                                 <Border>
                                   <Style>None</Style>
@@ -3185,7 +3224,7 @@
                                 <Paragraph>
                                   <TextRuns>
                                     <TextRun>
-                                      <Value>=Sum(Fields!Amount.Value)+Fields!Invoice_Discount_Amount.Value</Value>
+                                      <Value>=Sum(Fields!Amount.Value)-Fields!Invoice_Discount_Amount.Value</Value>
                                       <Style>
                                         <FontSize>8pt</FontSize>
                                         <Format>0.00;(0.00)</Format>
@@ -3208,7 +3247,6 @@
                                 <PaddingBottom>0.5pt</PaddingBottom>
                               </Style>
                             </Textbox>
-                            <rd:Selected>true</rd:Selected>
                           </CellContents>
                         </TablixCell>
                       </TablixCells>
@@ -3320,9 +3358,10 @@
                                 <Paragraph>
                                   <TextRuns>
                                     <TextRun>
-                                      <Value />
+                                      <Value>=Sum(Fields!TotalCube.Value)</Value>
                                       <Style>
                                         <FontSize>8pt</FontSize>
+                                        <Format>0.00;(0.00)</Format>
                                       </Style>
                                     </TextRun>
                                   </TextRuns>
@@ -3419,13 +3458,17 @@
                                 <Paragraph>
                                   <TextRuns>
                                     <TextRun>
-                                      <Value />
+                                      <Value>=Sum(Fields!TotalWeight.Value)</Value>
                                       <Style>
+                                        <FontFamily />
                                         <FontSize>8pt</FontSize>
+                                        <Format>0.00;(0.00)</Format>
                                       </Style>
                                     </TextRun>
                                   </TextRuns>
-                                  <Style />
+                                  <Style>
+                                    <TextAlign>Right</TextAlign>
+                                  </Style>
                                 </Paragraph>
                               </Paragraphs>
                               <rd:DefaultName>Textbox110</rd:DefaultName>
@@ -4273,7 +4316,7 @@
                         </TextRun>
                       </TextRuns>
                       <Style>
-                        <TextAlign>Left</TextAlign>
+                        <TextAlign>Center</TextAlign>
                       </Style>
                     </Paragraph>
                   </Paragraphs>
@@ -4328,7 +4371,7 @@
                         </TextRun>
                       </TextRuns>
                       <Style>
-                        <TextAlign>Left</TextAlign>
+                        <TextAlign>Center</TextAlign>
                       </Style>
                     </Paragraph>
                   </Paragraphs>
@@ -4505,7 +4548,7 @@
                         </TextRun>
                       </TextRuns>
                       <Style>
-                        <TextAlign>Left</TextAlign>
+                        <TextAlign>Center</TextAlign>
                       </Style>
                     </Paragraph>
                   </Paragraphs>
@@ -4540,7 +4583,7 @@
                         </TextRun>
                       </TextRuns>
                       <Style>
-                        <TextAlign>Left</TextAlign>
+                        <TextAlign>Center</TextAlign>
                       </Style>
                     </Paragraph>
                   </Paragraphs>
@@ -4595,7 +4638,7 @@
                         </TextRun>
                       </TextRuns>
                       <Style>
-                        <TextAlign>Left</TextAlign>
+                        <TextAlign>Center</TextAlign>
                       </Style>
                     </Paragraph>
                   </Paragraphs>
@@ -5956,6 +5999,21 @@ End Function
         </Field>
         <Field Name="InvoiceNoBarode">
           <DataField>InvoiceNoBarode</DataField>
+        </Field>
+        <Field Name="SLType">
+          <DataField>SLType</DataField>
+        </Field>
+        <Field Name="TotalCube">
+          <DataField>TotalCube</DataField>
+        </Field>
+        <Field Name="TotalCubeFormat">
+          <DataField>TotalCubeFormat</DataField>
+        </Field>
+        <Field Name="TotalWeight">
+          <DataField>TotalWeight</DataField>
+        </Field>
+        <Field Name="TotalWeightFormat">
+          <DataField>TotalWeightFormat</DataField>
         </Field>
       </Fields>
       <Query>

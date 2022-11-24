@@ -1600,7 +1600,13 @@
                                 <Paragraph>
                                   <TextRuns>
                                     <TextRun>
-                                      <Value>=Fields!Unit_of_Measure.Value</Value>
+                                      <Value>CS</Value>
+                                      <Style>
+                                        <FontSize>8pt</FontSize>
+                                      </Style>
+                                    </TextRun>
+                                    <TextRun>
+                                      <Value>=Fields!ItemCasePack.Value</Value>
                                       <Style>
                                         <FontSize>8pt</FontSize>
                                       </Style>
@@ -3217,7 +3223,6 @@
                                 <PaddingBottom>0.5pt</PaddingBottom>
                               </Style>
                             </Textbox>
-                            <rd:Selected>true</rd:Selected>
                           </CellContents>
                         </TablixCell>
                       </TablixCells>
@@ -4341,7 +4346,7 @@
                         </TextRun>
                       </TextRuns>
                       <Style>
-                        <TextAlign>Left</TextAlign>
+                        <TextAlign>Center</TextAlign>
                       </Style>
                     </Paragraph>
                   </Paragraphs>
@@ -4518,7 +4523,7 @@
                         </TextRun>
                       </TextRuns>
                       <Style>
-                        <TextAlign>Left</TextAlign>
+                        <TextAlign>Center</TextAlign>
                       </Style>
                     </Paragraph>
                   </Paragraphs>
@@ -4553,7 +4558,7 @@
                         </TextRun>
                       </TextRuns>
                       <Style>
-                        <TextAlign>Left</TextAlign>
+                        <TextAlign>Center</TextAlign>
                       </Style>
                     </Paragraph>
                   </Paragraphs>
@@ -5281,6 +5286,76 @@
                 <PaddingBottom>0.5pt</PaddingBottom>
               </Style>
             </Textbox>
+            <Textbox Name="Textbox84">
+              <CanGrow>true</CanGrow>
+              <KeepTogether>true</KeepTogether>
+              <Paragraphs>
+                <Paragraph>
+                  <TextRuns>
+                    <TextRun>
+                      <Value>=Fields!CompanyInfoAdd6.Value</Value>
+                      <Style>
+                        <FontSize>8pt</FontSize>
+                      </Style>
+                    </TextRun>
+                  </TextRuns>
+                  <Style>
+                    <TextAlign>Left</TextAlign>
+                  </Style>
+                </Paragraph>
+              </Paragraphs>
+              <rd:DefaultName>Textbox1</rd:DefaultName>
+              <Top>3.00453cm</Top>
+              <Left>5.07191cm</Left>
+              <Height>0.52062cm</Height>
+              <Width>5.65182cm</Width>
+              <ZIndex>21</ZIndex>
+              <Style>
+                <Border>
+                  <Style>None</Style>
+                </Border>
+                <VerticalAlign>Top</VerticalAlign>
+                <PaddingLeft>0.5pt</PaddingLeft>
+                <PaddingRight>0.5pt</PaddingRight>
+                <PaddingTop>0.5pt</PaddingTop>
+                <PaddingBottom>0.5pt</PaddingBottom>
+              </Style>
+            </Textbox>
+            <Textbox Name="Textbox85">
+              <CanGrow>true</CanGrow>
+              <KeepTogether>true</KeepTogether>
+              <Paragraphs>
+                <Paragraph>
+                  <TextRuns>
+                    <TextRun>
+                      <Value>=Fields!CompanyInfoAdd7.Value</Value>
+                      <Style>
+                        <FontSize>8pt</FontSize>
+                      </Style>
+                    </TextRun>
+                  </TextRuns>
+                  <Style>
+                    <TextAlign>Left</TextAlign>
+                  </Style>
+                </Paragraph>
+              </Paragraphs>
+              <rd:DefaultName>Textbox1</rd:DefaultName>
+              <Top>3.52515cm</Top>
+              <Left>5.07192cm</Left>
+              <Height>0.52062cm</Height>
+              <Width>5.65182cm</Width>
+              <ZIndex>22</ZIndex>
+              <Style>
+                <Border>
+                  <Style>None</Style>
+                </Border>
+                <VerticalAlign>Top</VerticalAlign>
+                <PaddingLeft>0.5pt</PaddingLeft>
+                <PaddingRight>0.5pt</PaddingRight>
+                <PaddingTop>0.5pt</PaddingTop>
+                <PaddingBottom>0.5pt</PaddingBottom>
+              </Style>
+            </Textbox>
           </ReportItems>
           <Style>
             <Border>
@@ -5806,6 +5881,12 @@ End Function
         <Field Name="CompanyInfoAdd5">
           <DataField>CompanyInfoAdd5</DataField>
         </Field>
+        <Field Name="CompanyInfoAdd6">
+          <DataField>CompanyInfoAdd6</DataField>
+        </Field>
+        <Field Name="CompanyInfoAdd7">
+          <DataField>CompanyInfoAdd7</DataField>
+        </Field>
         <Field Name="BillTo1">
           <DataField>BillTo1</DataField>
         </Field>
@@ -5946,6 +6027,12 @@ End Function
         </Field>
         <Field Name="QtycasepackFormat">
           <DataField>QtycasepackFormat</DataField>
+        </Field>
+        <Field Name="ItemCasePack">
+          <DataField>ItemCasePack</DataField>
+        </Field>
+        <Field Name="ItemCasePackFormat">
+          <DataField>ItemCasePackFormat</DataField>
         </Field>
         <Field Name="OrderQty">
           <DataField>OrderQty</DataField>

@@ -25,6 +25,9 @@ report 50009 "Pro Forma Invoice"
             { }
             column(CompanyInfoAdd5; CompanyInfoAdd[5])
             { }
+            column(CompanyInfoAdd6; CompanyInfoAdd[6])
+            { }
+            column(CompanyInfoAdd7; CompanyInfoAdd[7]) { }
             column(BillTo1; BillTo[1])
             { }
             column(BillTo2; BillTo[2])
@@ -104,6 +107,7 @@ report 50009 "Pro Forma Invoice"
                 { }
                 column(Qtycasepack; Qtycasepack)
                 { }
+                column(ItemCasePack; ItemCasePack) { }
                 column(OrderQty; OrderQty)
                 { }
                 column(NoofRows; NoofRows)
@@ -133,6 +137,7 @@ report 50009 "Pro Forma Invoice"
                     //     CheckNonInventoryItem := True;
                     BOQtycasepack := 0;
                     Qtycasepack := 0;
+                    ItemCasePack := 0;
                     BOQty := 0;
                     OrderQty := 0;
                     Clear(ItemUOM);
@@ -159,6 +164,7 @@ report 50009 "Pro Forma Invoice"
                     Item_L.reset;
                     If Item_L.Get("No.") then begin
                         If Item_L."Case Pack" <> 0 then begin
+                            ItemCasePack := Item_L."Case Pack";
                             If OrderQty <> 0 then
                                 Qtycasepack := OrderQty / Item_L."Case Pack";
                             IF BOQty <> 0 then
@@ -256,6 +262,8 @@ report 50009 "Pro Forma Invoice"
                 CompanyInfoAdd[3] := CompanyInfo.Address;
                 CompanyInfoAdd[4] := CompanyInfo."Address 2";
                 CompanyInfoAdd[5] := CompanyInfo.City + ', ' + CompanyInfo.County + ' ' + CompanyInfo."Post Code";
+                CompanyInfoAdd[6] := CompanyInfo."Phone No.";
+                CompanyInfoAdd[7] := CompanyInfo."Fax No.";
                 CompressArray(CompanyInfoAdd);
             end;
         }
@@ -311,9 +319,10 @@ report 50009 "Pro Forma Invoice"
         BillTo: array[6] of Text;
         ShipTo: array[6] of Text;
         CompanyInfo: Record "Company Information";
-        CompanyInfoAdd: array[5] of Text;
+        CompanyInfoAdd: array[7] of Text;
         Qtycasepack: Decimal;
         BOQtycasepack: Decimal;
+        ItemCasePack: Decimal;
         OrderQty: Decimal;
         BOQty: Decimal;
         ItemUOM: Text;

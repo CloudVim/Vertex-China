@@ -23,6 +23,10 @@ report 50001 "PackingSlip"
             { }
             column(CompanyInfoAdd5; CompanyInfoAdd[5])
             { }
+            column(CompanyInfoAdd6; CompanyInfoAdd[6])
+            { }
+            column(CompanyInfoAdd7; CompanyInfoAdd[7])
+            { }
             column(BillTo1; BillTo[1])
             { }
             column(BillTo2; BillTo[2])
@@ -242,6 +246,8 @@ report 50001 "PackingSlip"
                 CompanyInfoAdd[3] := CompanyInfo.Address;
                 CompanyInfoAdd[4] := CompanyInfo."Address 2";
                 CompanyInfoAdd[5] := CompanyInfo.City + ', ' + CompanyInfo.County + ' ' + CompanyInfo."Post Code";
+                CompanyInfoAdd[6] := CompanyInfo."Phone No.";
+                CompanyInfoAdd[7] := CompanyInfo."Fax No.";
                 CompressArray(CompanyInfoAdd);
             end;
         }
@@ -290,7 +296,7 @@ report 50001 "PackingSlip"
         BillTo: array[6] of Text;
         ShipTo: array[6] of Text;
         CompanyInfo: Record "Company Information";
-        CompanyInfoAdd: array[5] of Text;
+        CompanyInfoAdd: array[7] of Text;
         Qtycasepack: Decimal;
         BOQtycasepack: Decimal;
         ItemCasePack: Decimal;
