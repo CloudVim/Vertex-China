@@ -1286,7 +1286,7 @@ Cstr(fields!VendorInvoiceNo.Value)</Value>
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>=(Fields!Quantity_PurchaseLine.Value/Fields!Item_CasePack.Value)</Value>
+                                  <Value>=Fields!TTLCS.Value</Value>
                                   <Style>
                                     <FontFamily>Segoe UI</FontFamily>
                                     <FontSize>8pt</FontSize>
