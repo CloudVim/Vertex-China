@@ -806,16 +806,16 @@
                       <Width>0.70031cm</Width>
                     </TablixColumn>
                     <TablixColumn>
-                      <Width>5.13748cm</Width>
+                      <Width>6.15524cm</Width>
                     </TablixColumn>
                     <TablixColumn>
-                      <Width>1.92555cm</Width>
+                      <Width>1.38439cm</Width>
                     </TablixColumn>
                     <TablixColumn>
                       <Width>1.43758cm</Width>
                     </TablixColumn>
                     <TablixColumn>
-                      <Width>1.66296cm</Width>
+                      <Width>1.50386cm</Width>
                     </TablixColumn>
                     <TablixColumn>
                       <Width>1.67232cm</Width>
@@ -827,7 +827,7 @@
                       <Width>1.41912cm</Width>
                     </TablixColumn>
                     <TablixColumn>
-                      <Width>2.16521cm</Width>
+                      <Width>1.84771cm</Width>
                     </TablixColumn>
                     <TablixColumn>
                       <Width>1.77328cm</Width>
@@ -1458,7 +1458,7 @@
                                       <Value>=Fields!OrderQty.Value</Value>
                                       <Style>
                                         <FontSize>8pt</FontSize>
-                                        <Format>0.00;(0.00);''</Format>
+                                        <Format>0;(0);''</Format>
                                       </Style>
                                     </TextRun>
                                   </TextRuns>
@@ -1495,7 +1495,7 @@
                                       <Value>=Fields!OrderQty.Value-Fields!BOQty.Value</Value>
                                       <Style>
                                         <FontSize>8pt</FontSize>
-                                        <Format>0.00;(0.00);''</Format>
+                                        <Format>0;(0);''</Format>
                                       </Style>
                                     </TextRun>
                                   </TextRuns>
@@ -1532,7 +1532,7 @@
                                       <Value>=Fields!BOQty.Value</Value>
                                       <Style>
                                         <FontSize>8pt</FontSize>
-                                        <Format>0.00;(0.00);''</Format>
+                                        <Format>0;(0);''</Format>
                                       </Style>
                                     </TextRun>
                                   </TextRuns>
@@ -1814,7 +1814,7 @@
                                       <Value>=Fields!Qtycasepack.Value</Value>
                                       <Style>
                                         <FontSize>8pt</FontSize>
-                                        <Format>0.00;(0.00);''</Format>
+                                        <Format>0;(0);''</Format>
                                       </Style>
                                     </TextRun>
                                   </TextRuns>
@@ -1851,7 +1851,7 @@
                                       <Value>=Fields!Qtycasepack.Value-Fields!BOQtycasepack.Value</Value>
                                       <Style>
                                         <FontSize>8pt</FontSize>
-                                        <Format>0.00;(0.00);''</Format>
+                                        <Format>0;(0);''</Format>
                                       </Style>
                                     </TextRun>
                                   </TextRuns>
@@ -1888,7 +1888,7 @@
                                       <Value>=Fields!BOQtycasepack.Value</Value>
                                       <Style>
                                         <FontSize>8pt</FontSize>
-                                        <Format>0.00;(0.00);''</Format>
+                                        <Format>0;(0);''</Format>
                                       </Style>
                                     </TextRun>
                                   </TextRuns>
@@ -2507,7 +2507,7 @@
                                       <Value>=Sum(Fields!BOQty.Value)</Value>
                                       <Style>
                                         <FontSize>8pt</FontSize>
-                                        <Format>0.00;(0.00)</Format>
+                                        <Format>0;(0)</Format>
                                       </Style>
                                     </TextRun>
                                   </TextRuns>
@@ -2803,7 +2803,7 @@
                                       <Value>=Sum(Fields!BOQtycasepack.Value)</Value>
                                       <Style>
                                         <FontSize>8pt</FontSize>
-                                        <Format>0.00;(0.00)</Format>
+                                        <Format>0;(0)</Format>
                                       </Style>
                                     </TextRun>
                                   </TextRuns>
