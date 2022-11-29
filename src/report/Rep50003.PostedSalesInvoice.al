@@ -84,9 +84,9 @@ report 50003 "PostedSalesInvoice"
                 { }
                 column(Quantity; Quantity)
                 { }
-                column(Unit_of_Measure; "Unit of Measure")
+                column(Unit_of_Measure; UnitofMeasure)
                 { }
-                column(Unit_Price; UnitPrice)
+                column(Unit_Price; "Unit Price")//UnitPrice)
                 { }
                 column(Line_Discount__; "Line Discount %")
                 { }
@@ -128,6 +128,7 @@ report 50003 "PostedSalesInvoice"
                     TotalWeight := 0;
                     CLear(SLType);
                     Clear(ItemUOM);
+                    Clear(UnitofMeasure);
                     SalesLine_L.Reset();
                     SalesLine_L.SetRange("Document No.", "Order No.");
                     SalesLine_L.SetRange("Line No.", "Order Line No.");
@@ -138,11 +139,16 @@ report 50003 "PostedSalesInvoice"
                             If Item_L1.Type <> Item_L1.Type::Inventory then begin
                                 BOQty := 0;
                                 OrderQty := 0;
-                                UnitPrice := 0;
-                                NetAmount := 0;
+                                Clear(ItemUOM);
+                                //UnitPrice := 0;
+                                NetAmount := SalesLineArchive_L.Amount;
+                                Clear(UnitofMeasure);
                             end Else Begin
                                 NetAmount := SalesLine_L.Amount;
-                                UnitPrice := SalesLine_L."Unit Price";
+                                //UnitPrice := SalesLine_L."Unit Price";
+                                UnitofMeasure := SalesLine_L."Unit of Measure";
+                                If Item_L1."Case Pack" <> 0 then
+                                    ItemUOM := Item_L1."Base Unit of Measure";
                                 TotalCube := Item_L1."Unit Volume" * SalesInvoiceLine.Quantity;
                                 TotalWeight := Item_L1."Gross Weight" * SalesInvoiceLine.Quantity;
                                 BOQty := SalesLine_L.Quantity - SalesLine_L."Quantity Shipped";
@@ -162,11 +168,16 @@ report 50003 "PostedSalesInvoice"
                                 If Item_L1.Type <> Item_L1.Type::Inventory then begin
                                     BOQty := 0;
                                     OrderQty := 0;
-                                    UnitPrice := 0;
-                                    NetAmount := 0;
+                                    Clear(ItemUOM);
+                                    //UnitPrice := 0;
+                                    Clear(UnitofMeasure);
+                                    NetAmount := SalesLineArchive_L.Amount;
                                 end else Begin
                                     NetAmount := SalesLineArchive_L.Amount;
-                                    UnitPrice := SalesLineArchive_L."Unit Price";
+                                    UnitofMeasure := SalesLineArchive_L."Unit of Measure";
+                                    If Item_L1."Case Pack" <> 0 then
+                                        ItemUOM := Item_L1."Base Unit of Measure";
+                                    //UnitPrice := SalesLineArchive_L."Unit Price";
                                     TotalCube := Item_L1."Unit Volume" * SalesInvoiceLine.Quantity;
                                     TotalWeight := Item_L1."Gross Weight" * SalesInvoiceLine.Quantity;
                                     BOQty := SalesLineArchive_L.Quantity - SalesLineArchive_L."Quantity Shipped";
@@ -182,7 +193,7 @@ report 50003 "PostedSalesInvoice"
                                 Qtycasepack := OrderQty / Item_L."Case Pack";
                             IF BOQty <> 0 then
                                 BOQtycasepack := BOQty / Item_L."Case Pack";
-                            ItemUOM := Item_L."Base Unit of Measure";
+                            //ItemUOM := Item_L."Base Unit of Measure";//AGT_DS_11292022   Used this field on afterget record
                         end;
                     end;
 
@@ -325,4 +336,5 @@ report 50003 "PostedSalesInvoice"
         TotalWeight: Decimal;
         UnitPrice: Decimal;
         NetAmount: Decimal;
+        UnitofMeasure: Text[50];
 }
