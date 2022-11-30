@@ -138,7 +138,9 @@ report 50007 "PickInstruction_CBR"
                     OrderQty := 0;
                     Clear(ItemUOM);
                     If Type <> Type::" " then
-                        NoofRows += 1;
+                        If Item_L1.Get("No.") then//
+                            If Item_L1.Type <> Item_L1.Type::"Non-Inventory" then//AGT_DS_113022 No of row was not comming properly because the user change the requirment
+                                NoofRows += 1;
                     SalesLine_L.Reset();
                     SalesLine_L.SetRange("Document No.", "Document No.");
                     SalesLine_L.SetRange("Line No.", "Line No.");

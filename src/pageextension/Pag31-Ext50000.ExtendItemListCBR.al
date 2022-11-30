@@ -35,14 +35,17 @@ pageextension 50000 "ExtendItemList_CBR" extends "Item List" //31
             {
                 ApplicationArea = All;
                 Caption = 'Qty Available';
+                DecimalPlaces = 0 : 0;
             }
             field("Qty. on Sales Order"; Rec."Qty. on Sales Order")
             {
                 ApplicationArea = ALL;
+                DecimalPlaces = 0 : 0;
             }
             field("Qty. on Purch. Order"; Rec."Qty. on Purch. Order")
             {
                 ApplicationArea = ALL;
+                DecimalPlaces = 0 : 0;
             }
         }
 

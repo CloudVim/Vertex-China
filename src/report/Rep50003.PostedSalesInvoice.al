@@ -149,7 +149,10 @@ report 50003 "PostedSalesInvoice"
                                 UnitofMeasure := SalesLine_L."Unit of Measure";
                                 If Item_L1."Case Pack" <> 0 then
                                     ItemUOM := Item_L1."Base Unit of Measure";
-                                TotalCube := Item_L1."Unit Volume" * SalesInvoiceLine.Quantity;
+                                If Item_L1."Unit Volume" <> 0 then
+                                    TotalCube := Item_L1."Unit Volume" * SalesInvoiceLine.Quantity
+                                Else
+                                    TotalCube := SalesInvoiceLine.Quantity;
                                 TotalWeight := Item_L1."Gross Weight" * SalesInvoiceLine.Quantity;
                                 BOQty := SalesLine_L.Quantity - SalesLine_L."Quantity Shipped";
                                 OrderQty := SalesLine_L.Quantity;
@@ -178,7 +181,10 @@ report 50003 "PostedSalesInvoice"
                                     If Item_L1."Case Pack" <> 0 then
                                         ItemUOM := Item_L1."Base Unit of Measure";
                                     //UnitPrice := SalesLineArchive_L."Unit Price";
-                                    TotalCube := Item_L1."Unit Volume" * SalesInvoiceLine.Quantity;
+                                    If Item_L1."Unit Volume" <> 0 then
+                                        TotalCube := Item_L1."Unit Volume" * SalesInvoiceLine.Quantity
+                                    else
+                                        TotalCube := SalesInvoiceLine.Quantity;
                                     TotalWeight := Item_L1."Gross Weight" * SalesInvoiceLine.Quantity;
                                     BOQty := SalesLineArchive_L.Quantity - SalesLineArchive_L."Quantity Shipped";
                                     OrderQty := SalesLineArchive_L.Quantity;

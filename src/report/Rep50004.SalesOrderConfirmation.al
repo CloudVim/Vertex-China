@@ -137,7 +137,9 @@ report 50004 "SalesOrderConfirmation"
                     OrderQty := 0;
                     Clear(ItemUOM);
                     If Type <> Type::" " then
-                        NoofRows += 1;
+                        If Item_L1.Get("No.") then//
+                            If Item_L1.Type <> Item_L1.Type::Service then//AGT_DS_113022 No of row was not comming properly because the user change the requirment
+                                NoofRows += 1;
 
                     SalesLine_L.Reset();
                     SalesLine_L.SetRange("Document No.", "Document No.");
@@ -175,7 +177,7 @@ report 50004 "SalesOrderConfirmation"
                     If Type = Type::Item then begin
                         If Item_L.get("No.") then begin
                             If Item_L."Unit Volume" <> 0 then
-                                CubeAmount := Quantity * "Unit Volume"
+                                CubeAmount := Quantity * Item_L."Unit Volume"
                             else
                                 CubeAmount := Quantity;
 
