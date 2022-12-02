@@ -174,17 +174,18 @@ report 50007 "PickInstruction_CBR"
                     CubeAmount := 0;
                     LBSWeight := 0;
                     If Type = Type::Item then begin
-                        If Item_L.get("No.") then begin
-                            If Item_L."Unit Volume" <> 0 then
-                                CubeAmount := Quantity * Item_L."Unit Volume"
-                            else
-                                CubeAmount := Quantity;
+                        If Item_L.get("No.") then
+                            If Item_L.Type = Item_L1.Type::Inventory then begin
+                                If Item_L."Unit Volume" <> 0 then
+                                    CubeAmount := Quantity * Item_L."Unit Volume"
+                                else
+                                    CubeAmount := Quantity;
 
-                            If Item_L."Gross Weight" <> 0 then
-                                LBSWeight := Quantity * Item_L."Gross Weight"
-                            Else
-                                LBSWeight := Quantity;
-                        end;
+                                If Item_L."Gross Weight" <> 0 then
+                                    LBSWeight := Quantity * Item_L."Gross Weight"
+                                Else
+                                    LBSWeight := Quantity;
+                            end;
                     end
 
                     //AGT_DS

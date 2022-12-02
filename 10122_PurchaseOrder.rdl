@@ -793,7 +793,7 @@ Cstr(fields!VendorInvoiceNo.Value)</Value>
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>DZ/CS</Value>
+                                  <Value>DZ-CS</Value>
                                   <Style>
                                     <FontFamily>Segoe UI</FontFamily>
                                     <FontSize>8pt</FontSize>
@@ -824,7 +824,7 @@ Cstr(fields!VendorInvoiceNo.Value)</Value>
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>=Fields!QuantityCaption.Value</Value>
+                                  <Value>TTL DZ</Value>
                                   <Style>
                                     <FontFamily>Segoe UI</FontFamily>
                                     <FontSize>8pt</FontSize>
@@ -839,6 +839,9 @@ Cstr(fields!VendorInvoiceNo.Value)</Value>
                           </Paragraphs>
                           <rd:DefaultName>textbox8</rd:DefaultName>
                           <Style>
+                            <Border>
+                              <Style>None</Style>
+                            </Border>
                             <BackgroundColor>White</BackgroundColor>
                             <VerticalAlign>Bottom</VerticalAlign>
                             <PaddingLeft>5pt</PaddingLeft>

@@ -1391,9 +1391,10 @@
                                 <Paragraph>
                                   <TextRuns>
                                     <TextRun>
-                                      <Value>=RowNumber(Nothing)</Value>
+                                      <Value>=Fields!NoofRows.Value</Value>
                                       <Style>
                                         <FontSize>8pt</FontSize>
+                                        <Format>0;(0);''</Format>
                                       </Style>
                                     </TextRun>
                                   </TextRuns>
@@ -2405,9 +2406,10 @@
                                 <Paragraph>
                                   <TextRuns>
                                     <TextRun>
-                                      <Value>=Fields!NoofRows.Value</Value>
+                                      <Value>=Fields!TotalNoofRows.Value</Value>
                                       <Style>
                                         <FontSize>8pt</FontSize>
+                                        <Format>0;(0);''</Format>
                                       </Style>
                                     </TextRun>
                                   </TextRuns>
@@ -3940,7 +3942,11 @@
                         <TablixMember>
                           <Group Name="Details" />
                           <TablixMembers>
-                            <TablixMember />
+                            <TablixMember>
+                              <Visibility>
+                                <Hidden>=IIF(Fields!ItemNo.Value&lt;&gt;"",false,true)</Hidden>
+                              </Visibility>
+                            </TablixMember>
                             <TablixMember />
                           </TablixMembers>
                         </TablixMember>
@@ -5331,6 +5337,76 @@
                 <PaddingBottom>0.5pt</PaddingBottom>
               </Style>
             </Textbox>
+            <Textbox Name="Textbox84">
+              <CanGrow>true</CanGrow>
+              <KeepTogether>true</KeepTogether>
+              <Paragraphs>
+                <Paragraph>
+                  <TextRuns>
+                    <TextRun>
+                      <Value>=Fields!CompanyInfoAdd6.Value</Value>
+                      <Style>
+                        <FontSize>8pt</FontSize>
+                      </Style>
+                    </TextRun>
+                  </TextRuns>
+                  <Style>
+                    <TextAlign>Left</TextAlign>
+                  </Style>
+                </Paragraph>
+              </Paragraphs>
+              <rd:DefaultName>Textbox1</rd:DefaultName>
+              <Top>3.0139cm</Top>
+              <Left>5.07191cm</Left>
+              <Height>0.52062cm</Height>
+              <Width>5.65182cm</Width>
+              <ZIndex>21</ZIndex>
+              <Style>
+                <Border>
+                  <Style>None</Style>
+                </Border>
+                <VerticalAlign>Top</VerticalAlign>
+                <PaddingLeft>0.5pt</PaddingLeft>
+                <PaddingRight>0.5pt</PaddingRight>
+                <PaddingTop>0.5pt</PaddingTop>
+                <PaddingBottom>0.5pt</PaddingBottom>
+              </Style>
+            </Textbox>
+            <Textbox Name="Textbox85">
+              <CanGrow>true</CanGrow>
+              <KeepTogether>true</KeepTogether>
+              <Paragraphs>
+                <Paragraph>
+                  <TextRuns>
+                    <TextRun>
+                      <Value>=Fields!CompanyInfoAdd7.Value</Value>
+                      <Style>
+                        <FontSize>8pt</FontSize>
+                      </Style>
+                    </TextRun>
+                  </TextRuns>
+                  <Style>
+                    <TextAlign>Left</TextAlign>
+                  </Style>
+                </Paragraph>
+              </Paragraphs>
+              <rd:DefaultName>Textbox1</rd:DefaultName>
+              <Top>3.5698cm</Top>
+              <Left>5.07191cm</Left>
+              <Height>0.52062cm</Height>
+              <Width>5.65182cm</Width>
+              <ZIndex>22</ZIndex>
+              <Style>
+                <Border>
+                  <Style>None</Style>
+                </Border>
+                <VerticalAlign>Top</VerticalAlign>
+                <PaddingLeft>0.5pt</PaddingLeft>
+                <PaddingRight>0.5pt</PaddingRight>
+                <PaddingTop>0.5pt</PaddingTop>
+                <PaddingBottom>0.5pt</PaddingBottom>
+              </Style>
+            </Textbox>
           </ReportItems>
           <Style>
             <Border>
@@ -5856,6 +5932,12 @@ End Function
         <Field Name="CompanyInfoAdd5">
           <DataField>CompanyInfoAdd5</DataField>
         </Field>
+        <Field Name="CompanyInfoAdd6">
+          <DataField>CompanyInfoAdd6</DataField>
+        </Field>
+        <Field Name="CompanyInfoAdd7">
+          <DataField>CompanyInfoAdd7</DataField>
+        </Field>
         <Field Name="BillTo1">
           <DataField>BillTo1</DataField>
         </Field>
@@ -5996,6 +6078,9 @@ End Function
         </Field>
         <Field Name="NoofRows">
           <DataField>NoofRows</DataField>
+        </Field>
+        <Field Name="TotalNoofRows">
+          <DataField>TotalNoofRows</DataField>
         </Field>
         <Field Name="InvoiceNoBarode">
           <DataField>InvoiceNoBarode</DataField>

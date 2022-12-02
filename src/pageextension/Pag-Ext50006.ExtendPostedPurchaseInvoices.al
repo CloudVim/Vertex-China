@@ -1,5 +1,6 @@
 pageextension 50006 "ExtendPostedPurchaseInvoices" extends "Posted Purchase Invoices"
 {
+
     actions
     {
         addafter("&Invoice")
@@ -16,5 +17,6 @@ pageextension 50006 "ExtendPostedPurchaseInvoices" extends "Posted Purchase Invo
             }
         }
     }
-    var myInt: Integer;
+    var
+        myInt: Integer;
 }

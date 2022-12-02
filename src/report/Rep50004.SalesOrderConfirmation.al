@@ -25,6 +25,8 @@ report 50004 "SalesOrderConfirmation"
             { }
             column(CompanyInfoAdd5; CompanyInfoAdd[5])
             { }
+            column(CompanyInfoAdd6; CompanyInfoAdd[6]) { }
+            column(CompanyInfoAdd7; CompanyInfoAdd[7]) { }
             column(BillTo1; BillTo[1])
             { }
             column(BillTo2; BillTo[2])
@@ -95,8 +97,7 @@ report 50004 "SalesOrderConfirmation"
                 column(Line_Discount__; "Line Discount %")
                 { }
                 column(UnitPriceafterDiscount; "CBR_Unit Price Line Discount") { }
-                column(Amount;
-                Amount)
+                column(Amount; NetAmount)
                 { }
                 column(BOQtycasepack; BOQtycasepack)
                 { }
@@ -114,11 +115,11 @@ report 50004 "SalesOrderConfirmation"
 
                 column(InvoiceNoBarode; InvoiceNoBarode)
                 { }
-                column(LBSWeight; LBSWeight)
-                { }
-                column(CubeAmount; CubeAmount)
-                { }
                 column(CheckNonInventoryItem; CheckNonInventoryItem) { }
+                column(TotalCube; TotalCube) { }
+                column(TotalWeight; TotalWeight) { }
+                column(SLType; Type) { }
+
                 trigger OnAfterGetRecord()
                 var
                     SalesLine_L: Record "Sales Line";
@@ -127,68 +128,153 @@ report 50004 "SalesOrderConfirmation"
                     Item_L: Record Item;
                     Item_L1: Record Item;
                 begin
-                    CheckNonInventoryItem := false;
-                    If Item_L1.Get("No.") then
-                        If Item_L1.Type = Item_L1.Type::Service then //AGT_DS_10202022 First we are using Non inventory now we are using Service
-                            CheckNonInventoryItem := True;
+                    // CheckNonInventoryItem := false;
+                    // If Item_L1.Get("No.") then
+                    //     If Item_L1.Type = Item_L1.Type::Service then //AGT_DS_10202022 First we are using Non inventory now we are using Service
+                    //         CheckNonInventoryItem := True;
+                    // BOQtycasepack := 0;
+                    // Qtycasepack := 0;
+                    // BOQty := 0;
+                    // OrderQty := 0;
+                    // Clear(ItemUOM);
+                    // If Type <> Type::" " then
+                    //     If Item_L1.Get("No.") then//
+                    //         If Item_L1.Type <> Item_L1.Type::Service then//AGT_DS_113022 No of row was not comming properly because the user change the requirment
+                    //             NoofRows += 1;
+
+                    // SalesLine_L.Reset();
+                    // SalesLine_L.SetRange("Document No.", "Document No.");
+                    // SalesLine_L.SetRange("Line No.", "Line No.");
+                    // If SalesLine_L.FindFirst() then begin
+                    //     BOQty := SalesLine_L.Quantity - SalesLine_L."Quantity Shipped";
+                    //     OrderQty := SalesLine_L.Quantity;
+                    // end else begin
+                    //     SalesLineArchive_L.Reset();
+                    //     SalesLineArchive_L.SetRange("Document Type", SalesLineArchive_L."Document Type"::Order);
+                    //     SalesLineArchive_L.SetRange("Document No.", "Document No.");
+                    //     SalesLineArchive_L.SetRange("Line No.", "Line No.");
+                    //     SalesLineArchive_L.SetRange("No.", "No.");
+                    //     If SalesLineArchive_L.FindFirst() then begin
+                    //         BOQty := SalesLineArchive_L.Quantity - SalesLineArchive_L."Quantity Shipped";
+                    //         OrderQty := SalesLineArchive_L.Quantity;
+                    //     end;
+                    // end;
+                    // Item_L.reset;
+                    // ItemCasePack := 0;
+                    // If Item_L.Get("No.") then begin
+                    //     ItemCasePack := Item_L."Case Pack";
+                    //     If Item_L."Case Pack" <> 0 then begin
+                    //         If OrderQty <> 0 then
+                    //             Qtycasepack := OrderQty / Item_L."Case Pack";
+                    //         IF BOQty <> 0 then
+                    //             BOQtycasepack := BOQty / Item_L."Case Pack";
+                    //         ItemUOM := Item_L."Base Unit of Measure";
+                    //     end;
+                    // end;
+                    //AGT_DS
+
+                    // CubeAmount := 0;
+                    // LBSWeight := 0;
+                    // If Type = Type::Item then begin
+                    //     If Item_L.get("No.") then begin
+                    //         If Item_L."Unit Volume" <> 0 then
+                    //             CubeAmount := Quantity * Item_L."Unit Volume"
+                    //         else
+                    //             CubeAmount := Quantity;
+
+                    //         If Item_L."Gross Weight" <> 0 then
+                    //             LBSWeight := Quantity * Item_L."Gross Weight"
+                    //         Else
+                    //             LBSWeight := Quantity;
+                    //     end;
+                    // end
+
+                    //AGT_DS
+                    NetAmount := 0;
                     BOQtycasepack := 0;
                     Qtycasepack := 0;
                     BOQty := 0;
                     OrderQty := 0;
+                    TotalCube := 0;
+                    TotalWeight := 0;
                     Clear(ItemUOM);
+                    Clear(UnitofMeasure);
                     If Type <> Type::" " then
-                        If Item_L1.Get("No.") then//
-                            If Item_L1.Type <> Item_L1.Type::Service then//AGT_DS_113022 No of row was not comming properly because the user change the requirment
-                                NoofRows += 1;
-
-                    SalesLine_L.Reset();
-                    SalesLine_L.SetRange("Document No.", "Document No.");
-                    SalesLine_L.SetRange("Line No.", "Line No.");
-                    If SalesLine_L.FindFirst() then begin
-                        BOQty := SalesLine_L.Quantity - SalesLine_L."Quantity Shipped";
-                        OrderQty := SalesLine_L.Quantity;
+                        NoofRows += 1;
+                    If SalesLine_L.get("Document Type", "Document No.", "Line No.") then begin
+                        // SLType := Format(SalesLine_L.Type);
+                        Item_L1.Reset();
+                        If Item_L1.Get(SalesLine_L."No.") then begin
+                            If Item_L1.Type <> Item_L1.Type::Inventory then begin
+                                BOQty := 0;
+                                OrderQty := 0;
+                                Clear(ItemUOM);
+                                NetAmount := SalesLine_L.Amount;
+                                Clear(UnitofMeasure);
+                            end Else Begin
+                                NetAmount := SalesLine_L.Amount;
+                                UnitofMeasure := SalesLine_L."Unit of Measure";
+                                If Item_L1."Case Pack" <> 0 then
+                                    ItemUOM := Item_L1."Base Unit of Measure";
+                                If Item_L1."Unit Volume" <> 0 then
+                                    TotalCube := Item_L1."Unit Volume" * SalesLine_L.Quantity
+                                Else
+                                    TotalCube := SalesLine_L.Quantity;
+                                If Item_L1."Gross Weight" <> 0 then
+                                    TotalWeight := Item_L1."Gross Weight" * SalesLine_L.Quantity
+                                else
+                                    TotalWeight := SalesLine_L.Quantity;
+                                BOQty := SalesLine_L.Quantity - SalesLine_L."Quantity Shipped";
+                                OrderQty := SalesLine_L.Quantity;
+                            End;
+                        end;
                     end else begin
                         SalesLineArchive_L.Reset();
                         SalesLineArchive_L.SetRange("Document Type", SalesLineArchive_L."Document Type"::Order);
                         SalesLineArchive_L.SetRange("Document No.", "Document No.");
                         SalesLineArchive_L.SetRange("Line No.", "Line No.");
-                        SalesLineArchive_L.SetRange("No.", "No.");
+                        //SalesLineArchive_L.SetRange("No.", "No.");
                         If SalesLineArchive_L.FindFirst() then begin
-                            BOQty := SalesLineArchive_L.Quantity - SalesLineArchive_L."Quantity Shipped";
-                            OrderQty := SalesLineArchive_L.Quantity;
+                            //SLType := Format(SalesLineArchive_L.Type);
+                            Item_L1.Reset();
+                            IF Item_L1.Get(SalesLineArchive_L."No.") then begin
+                                If Item_L1.Type <> Item_L1.Type::Inventory then begin
+                                    BOQty := 0;
+                                    OrderQty := 0;
+                                    Clear(ItemUOM);
+                                    Clear(UnitofMeasure);
+                                    NetAmount := SalesLineArchive_L.Amount;
+                                end else Begin
+                                    NetAmount := SalesLineArchive_L.Amount;
+                                    UnitofMeasure := SalesLineArchive_L."Unit of Measure";
+                                    If Item_L1."Case Pack" <> 0 then
+                                        ItemUOM := Item_L1."Base Unit of Measure";
+                                    If Item_L1."Unit Volume" <> 0 then
+                                        TotalCube := Item_L1."Unit Volume" * SalesLineArchive_L.Quantity
+                                    else
+                                        TotalCube := SalesLineArchive_L.Quantity;
+                                    If Item_L1."Gross Weight" <> 0 then
+                                        TotalWeight := Item_L1."Gross Weight" * SalesLineArchive_L.Quantity
+                                    else
+                                        TotalWeight := Item_L1."Gross Weight" * SalesLineArchive_L.Quantity;
+                                    BOQty := SalesLineArchive_L.Quantity - SalesLineArchive_L."Quantity Shipped";
+                                    OrderQty := SalesLineArchive_L.Quantity;
+                                End;
+                            end
                         end;
                     end;
                     Item_L.reset;
-                    ItemCasePack := 0;
                     If Item_L.Get("No.") then begin
-                        ItemCasePack := Item_L."Case Pack";
                         If Item_L."Case Pack" <> 0 then begin
+                            ItemCasePack := Item_L."Case Pack";
                             If OrderQty <> 0 then
                                 Qtycasepack := OrderQty / Item_L."Case Pack";
                             IF BOQty <> 0 then
                                 BOQtycasepack := BOQty / Item_L."Case Pack";
-                            ItemUOM := Item_L."Base Unit of Measure";
+                            //ItemUOM := Item_L."Base Unit of Measure";//AGT_DS_11292022   Used this field on afterget record
                         end;
                     end;
-                    //AGT_DS
 
-                    CubeAmount := 0;
-                    LBSWeight := 0;
-                    If Type = Type::Item then begin
-                        If Item_L.get("No.") then begin
-                            If Item_L."Unit Volume" <> 0 then
-                                CubeAmount := Quantity * Item_L."Unit Volume"
-                            else
-                                CubeAmount := Quantity;
-
-                            If Item_L."Gross Weight" <> 0 then
-                                LBSWeight := Quantity * Item_L."Gross Weight"
-                            Else
-                                LBSWeight := Quantity;
-                        end;
-                    end
-
-                    //AGT_DS
                 end;
 
                 trigger OnPreDataItem()
@@ -204,9 +290,7 @@ report 50004 "SalesOrderConfirmation"
                     SalesLine_L1.SetFilter(Type, '<>%1', Type::" ");
                     If SalesLine_L1.FindSet() then
                         repeat
-                            If Item_L1.Get(SalesLine_L1."No.") then
-                                If Item_L1.Type <> Item_L1.Type::Service then//Change NonInventory 11032022
-                                    TotalNoofRows += 1;
+                            TotalNoofRows += 1;
                         Until SalesLine_L1.Next() = 0;
                 end;
 
@@ -262,6 +346,8 @@ report 50004 "SalesOrderConfirmation"
                 CompanyInfoAdd[3] := CompanyInfo.Address;
                 CompanyInfoAdd[4] := CompanyInfo."Address 2";
                 CompanyInfoAdd[5] := CompanyInfo.City + ', ' + CompanyInfo.County + ' ' + CompanyInfo."Post Code";
+                CompanyInfoAdd[6] := CompanyInfo."Phone No.";
+                CompanyInfoAdd[7] := CompanyInfo."Fax No.";
                 CompressArray(CompanyInfoAdd);
             end;
         }
@@ -303,6 +389,7 @@ report 50004 "SalesOrderConfirmation"
         TotalCubesCaption = 'Total Cubes';
         TotalWeightCaption = 'Total Weight';
         CashDiscountCaption = 'Cash Discount';
+
     }
     trigger OnPreReport()
     var
@@ -317,7 +404,7 @@ report 50004 "SalesOrderConfirmation"
         BillTo: array[6] of Text;
         ShipTo: array[6] of Text;
         CompanyInfo: Record "Company Information";
-        CompanyInfoAdd: array[5] of Text;
+        CompanyInfoAdd: array[7] of Text;
         Qtycasepack: Decimal;
         BOQtycasepack: Decimal;
         OrderQty: Decimal;
@@ -327,10 +414,12 @@ report 50004 "SalesOrderConfirmation"
         NoofRows: Integer;
         TotalNoofRows: Integer;
         InvoiceNoBarode: Text;
-        LBSWeight: Decimal;
-        CubeAmount: Decimal;
         Location_G: Record Location;
         CheckNonInventoryItem: Boolean;
         PaymentTermsDesription: Text;
         ItemCasePack: Integer;
+        NetAmount: Decimal;
+        UnitofMeasure: Text[50];
+        TotalCube: Decimal;
+        TotalWeight: Decimal;
 }

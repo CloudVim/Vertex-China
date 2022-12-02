@@ -24,6 +24,8 @@ report 50003 "PostedSalesInvoice"
             { }
             column(CompanyInfoAdd5; CompanyInfoAdd[5])
             { }
+            column(CompanyInfoAdd6; CompanyInfoAdd[6]) { }
+            column(CompanyInfoAdd7; CompanyInfoAdd[7]) { }
             column(BillTo1; BillTo[1])
             { }
             column(BillTo2; BillTo[2])
@@ -50,7 +52,7 @@ report 50003 "PostedSalesInvoice"
             { }
             column(Payment_Terms_Code; "Payment Terms Code")
             { }
-            column(Order_No_; "Order No.")
+            column(Order_No_; "External Document No.")//"Order No."//AGT_DS_12022022_As per mentioned By taylor
             { }
             column(Order_Date; "Order Date")
             { }
@@ -76,7 +78,7 @@ report 50003 "PostedSalesInvoice"
             {
                 DataItemLink = "Document No." = FIELD("No.");
                 DataItemLinkReference = SalesInvoiceHeader;
-                DataItemTableView = SORTING("Document No.", "Line No.");
+                DataItemTableView = SORTING("Document No.", "No.", "Line No.");
 
                 column(ItemNo; "No.")
                 { }
@@ -104,6 +106,8 @@ report 50003 "PostedSalesInvoice"
                 { }
                 column(NoofRows; NoofRows)
                 { }
+                column(TotalNoofRows; TotalNoofRows)
+                { }
                 column(InvoiceNoBarode; InvoiceNoBarode)
                 { }
                 column(SLType; SLType) { }
@@ -118,8 +122,6 @@ report 50003 "PostedSalesInvoice"
                 begin
                     UnitPrice := 0;
                     NetAmount := 0;
-                    NoofRows := 0;
-                    NoofRows := Count;
                     BOQtycasepack := 0;
                     Qtycasepack := 0;
                     BOQty := 0;
@@ -129,6 +131,8 @@ report 50003 "PostedSalesInvoice"
                     CLear(SLType);
                     Clear(ItemUOM);
                     Clear(UnitofMeasure);
+                    If Type <> Type::" " then
+                        NoofRows += 1;
                     SalesLine_L.Reset();
                     SalesLine_L.SetRange("Document No.", "Order No.");
                     SalesLine_L.SetRange("Line No.", "Order Line No.");
@@ -141,7 +145,7 @@ report 50003 "PostedSalesInvoice"
                                 OrderQty := 0;
                                 Clear(ItemUOM);
                                 //UnitPrice := 0;
-                                NetAmount := SalesLineArchive_L.Amount;
+                                NetAmount := SalesLine_L.Amount;
                                 Clear(UnitofMeasure);
                             end Else Begin
                                 NetAmount := SalesLine_L.Amount;
@@ -153,7 +157,10 @@ report 50003 "PostedSalesInvoice"
                                     TotalCube := Item_L1."Unit Volume" * SalesInvoiceLine.Quantity
                                 Else
                                     TotalCube := SalesInvoiceLine.Quantity;
-                                TotalWeight := Item_L1."Gross Weight" * SalesInvoiceLine.Quantity;
+                                If Item_L1."Gross Weight" <> 0 then
+                                    TotalWeight := Item_L1."Gross Weight" * SalesInvoiceLine.Quantity
+                                else
+                                    TotalWeight := SalesInvoiceLine.Quantity;
                                 BOQty := SalesLine_L.Quantity - SalesLine_L."Quantity Shipped";
                                 OrderQty := SalesLine_L.Quantity;
                             End;
@@ -185,7 +192,10 @@ report 50003 "PostedSalesInvoice"
                                         TotalCube := Item_L1."Unit Volume" * SalesInvoiceLine.Quantity
                                     else
                                         TotalCube := SalesInvoiceLine.Quantity;
-                                    TotalWeight := Item_L1."Gross Weight" * SalesInvoiceLine.Quantity;
+                                    If Item_L1."Gross Weight" <> 0 then
+                                        TotalWeight := Item_L1."Gross Weight" * SalesInvoiceLine.Quantity
+                                    else
+                                        TotalWeight := SalesInvoiceLine.Quantity;
                                     BOQty := SalesLineArchive_L.Quantity - SalesLineArchive_L."Quantity Shipped";
                                     OrderQty := SalesLineArchive_L.Quantity;
                                 End;
@@ -204,6 +214,24 @@ report 50003 "PostedSalesInvoice"
                     end;
 
                 end;
+
+                trigger OnPreDataItem()
+                Var
+                    SalesInvLine_L1: Record "Sales Invoice Line";
+                    Item_L1: Record Item;
+                begin
+                    NoofRows := 0;
+                    TotalNoofRows := 0;
+                    SalesInvLine_L1.Reset();
+                    //SalesInvLine_L1.SetRange("Document Type", SalesHeader."Document Type");
+                    SalesInvLine_L1.SetRange("Document No.", SalesInvoiceHeader."No.");
+                    SalesInvLine_L1.SetFilter(Type, '<>%1', Type::" ");
+                    If SalesInvLine_L1.FindSet() then
+                        repeat
+                            TotalNoofRows += 1;
+                        Until SalesInvLine_L1.Next() = 0;
+                end;
+
 
             }
             trigger OnAfterGetRecord()
@@ -255,6 +283,8 @@ report 50003 "PostedSalesInvoice"
                 CompanyInfoAdd[3] := CompanyInfo.Address;
                 CompanyInfoAdd[4] := CompanyInfo."Address 2";
                 CompanyInfoAdd[5] := CompanyInfo.City + ' ' + CompanyInfo.County + ' ' + CompanyInfo."Post Code";
+                CompanyInfoAdd[6] := CompanyInfo."Phone No.";
+                CompanyInfoAdd[7] := CompanyInfo."Fax No.";
                 CompressArray(CompanyInfoAdd);
             end;
         }
@@ -328,7 +358,7 @@ report 50003 "PostedSalesInvoice"
         BillTo: array[6] of Text;
         ShipTo: array[6] of Text;
         CompanyInfo: Record "Company Information";
-        CompanyInfoAdd: array[5] of Text;
+        CompanyInfoAdd: array[7] of Text;
         Qtycasepack: Decimal;
         BOQtycasepack: Decimal;
         OrderQty: Decimal;
@@ -336,6 +366,7 @@ report 50003 "PostedSalesInvoice"
         ItemUOM: Text;
         Paymenttermdiscount: Decimal;
         NoofRows: Integer;
+        TotalNoofRows: Integer;
         InvoiceNoBarode: Text;
         SLType: Text;
         TotalCube: Decimal;
