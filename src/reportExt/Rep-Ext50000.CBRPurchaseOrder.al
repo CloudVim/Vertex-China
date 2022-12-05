@@ -2,12 +2,25 @@ reportextension 50000 "CBR_PurchaseOrder" extends "Purchase Order"
 {
     dataset
     {
+        add("Purchase Header")
+        {
+            column(Work_Description; WorkDesc) { }
+        }
         add("Purchase Line")
         {
 
             column(Item_Factory; Item_L.Factory) { }
             column(Item_CasePack; CasePack_G) { }
             column(TTLCS; TTLCS) { }
+        }
+        modify("Purchase Header")
+        {
+            trigger OnAfterAfterGetRecord()
+            var
+                myInt: Integer;
+            begin
+                WorkDesc := GetWorkDescription()
+            end;
         }
         modify("Purchase Line")
         {
@@ -25,8 +38,10 @@ reportextension 50000 "CBR_PurchaseOrder" extends "Purchase Order"
         }
     }
 
+
     var
         Item_L: Record Item;
         CasePack_G: Integer;
         TTLCS: Decimal;
+        WorkDesc: Text;
 }
