@@ -112,6 +112,10 @@ report 50004 "SalesOrderConfirmation"
                 { }
                 column(NoofRows; NoofRows)
                 { }
+                //AGT_YK_12072022
+                column(UOMVisible; UOMVisible)
+                { }
+                //AGT_YK_12072022
 
                 column(InvoiceNoBarode; InvoiceNoBarode)
                 { }
@@ -265,6 +269,12 @@ report 50004 "SalesOrderConfirmation"
                     end;
                     Item_L.reset;
                     If Item_L.Get("No.") then begin
+                        //AGT_YK_12072022
+                        if Item_L.Type <> Item_L.Type::Inventory then
+                            UOMVisible := true
+                        else
+                            UOMVisible := false;
+                        //AGT_YK_12072022
                         If Item_L."Case Pack" <> 0 then begin
                             ItemCasePack := Item_L."Case Pack";
                             If OrderQty <> 0 then
@@ -422,4 +432,5 @@ report 50004 "SalesOrderConfirmation"
         UnitofMeasure: Text[50];
         TotalCube: Decimal;
         TotalWeight: Decimal;
+        UOMVisible: Boolean;//AGT_YK_12072022
 }

@@ -74,6 +74,7 @@ report 50003 "PostedSalesInvoice"
             { }
             column(Posting_Date; "Posting Date")
             { }
+            column(Package_Tracking_No_; "Package Tracking No.") { }
             dataitem(SalesInvoiceLine; "Sales Invoice Line")
             {
                 DataItemLink = "Document No." = FIELD("No.");

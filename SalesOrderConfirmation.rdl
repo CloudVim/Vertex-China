@@ -1471,7 +1471,7 @@
                                 <Paragraph>
                                   <TextRuns>
                                     <TextRun>
-                                      <Value>=Fields!Unit_of_Measure.Value</Value>
+                                      <Value>=IIF(Fields!UOMVisible.Value,"", Fields!Unit_of_Measure.Value)</Value>
                                       <Style>
                                         <FontSize>8pt</FontSize>
                                       </Style>
@@ -1507,7 +1507,7 @@
                                 <Paragraph>
                                   <TextRuns>
                                     <TextRun>
-                                      <Value>=Fields!Unit_of_Measure.Value</Value>
+                                      <Value>=IIF(Fields!UOMVisible.Value,"", Fields!Unit_of_Measure.Value)</Value>
                                       <Style>
                                         <FontSize>8pt</FontSize>
                                       </Style>
@@ -1796,13 +1796,13 @@
                                 <Paragraph>
                                   <TextRuns>
                                     <TextRun>
-                                      <Value>CS</Value>
+                                      <Value>=IIF(Fields!UOMVisible.Value,"","CS")</Value>
                                       <Style>
                                         <FontSize>8pt</FontSize>
                                       </Style>
                                     </TextRun>
                                     <TextRun>
-                                      <Value>=Fields!ItemCasePack.Value</Value>
+                                      <Value>=IIF(Fields!UOMVisible.Value,"",Fields!ItemCasePack.Value)</Value>
                                       <Style>
                                         <FontSize>8pt</FontSize>
                                       </Style>
@@ -5774,6 +5774,9 @@ End Function
         </Field>
         <Field Name="NoofRows">
           <DataField>NoofRows</DataField>
+        </Field>
+        <Field Name="UOMVisible">
+          <DataField>UOMVisible</DataField>
         </Field>
         <Field Name="InvoiceNoBarode">
           <DataField>InvoiceNoBarode</DataField>
