@@ -13,6 +13,21 @@ pageextension 50010 "PostedSalesInvoice_Ext" extends "Posted Sales Invoice"
 
     actions
     {
+        addafter("S&end")
+        {
+            action(Itemusagebylocation)
+            {
+                ApplicationArea = Basic, Suite;
+                Caption = 'Item usage by location';
+                Image = PrintReport;
+                Promoted = true;
+                PromotedCategory = Process;
+                RunObject = report "ItemSales  by Location";
+                Ellipsis = true;
+            }
+
+
+        }
         // Add changes to page actions here
     }
 

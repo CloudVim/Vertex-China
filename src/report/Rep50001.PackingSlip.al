@@ -258,7 +258,6 @@ report 50001 "PackingSlip"
 
     labels
     {
-
         UPCCaption = 'UPC';
         InvoiceDateInvoiceCaption = 'ORDER DATE';
         ORDERNOCaption = 'ORDER NO.';

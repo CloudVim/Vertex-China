@@ -27,6 +27,25 @@ pageextension 50005 "ExtendPostedSalesInvoices" extends "Posted Sales Invoices"
                 PromotedCategory = Process;
             }
         }
+
+
+        addafter(AttachAsPDF)
+        {
+            action(Itemusagebylocation)
+            {
+                ApplicationArea = Basic, Suite;
+                Caption = 'Item usage by location';
+                RunObject = report "ItemSales  by Location";
+                Image = PrintReport;
+                Promoted = true;
+                PromotedIsBig = true;
+                PromotedCategory = Process;
+                Ellipsis = true;
+            }
+
+
+        }
+        // Add changes to page actions here
     }
     var
         myInt: Integer;
