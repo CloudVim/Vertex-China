@@ -2,7 +2,7 @@
   "id": "878d0d0f-1288-45cc-a17a-35ed3ebe63d2",
   "name": "Vertex China",
   "publisher": "CBR Technology Corp.",
-  "version": "20.0.0.39",
+  "version": "20.0.0.40",
   "brief": "",
   "description": "",
   "privacyStatement": "",
@@ -22,5 +22,5 @@
   ],
   "contextSensitiveHelpUrl": "https://VertexChina.com/help/",
   "showMyCode": false,
-  "runtime": "8.0"
+  "runtime": "10.0"
 }
