@@ -102,7 +102,7 @@ report 50012 "Copy Transfer Document"
     begin
         TransferHeader_L.Reset();
         TransferHeader_L.SetFilter("No.", '<>%1', TransferHeader."No.");
-        TransferHeader_L.SetRange("Transfer-from Code", TransferHeader."Transfer-from Code");
+        //TransferHeader_L.SetRange("Transfer-from Code", TransferHeader."Transfer-from Code");
         If TransferHeader_L.FindSet() then
             if PAGE.RunModal(5742, TransferHeader_L) = ACTION::LookupOK then
                 FromDocNo := TransferHeader_L."No.";
@@ -113,7 +113,7 @@ report 50012 "Copy Transfer Document"
         TransferShipmentHeader_L: Record "Transfer Shipment Header";
     begin
         TransferShipmentHeader_L.Reset();
-        TransferShipmentHeader_L.SetRange("Transfer-from Code", TransferHeader."Transfer-from Code");
+        //TransferShipmentHeader_L.SetRange("Transfer-from Code", TransferHeader."Transfer-from Code");
         If TransferShipmentHeader_L.FindSet() then
             if PAGE.RunModal(5752, TransferShipmentHeader_L) = ACTION::LookupOK then
                 FromDocNo := TransferShipmentHeader_L."No.";
@@ -124,7 +124,7 @@ report 50012 "Copy Transfer Document"
         TransferReceiptHeader_L: Record "Transfer Receipt Header";
     begin
         TransferReceiptHeader_L.Reset();
-        TransferReceiptHeader_L.SetRange("Transfer-from Code", TransferHeader."Transfer-from Code");
+        //TransferReceiptHeader_L.SetRange("Transfer-from Code", TransferHeader."Transfer-from Code");
         If TransferReceiptHeader_L.FindSet() then
             if PAGE.RunModal(5753, TransferReceiptHeader_L) = ACTION::LookupOK then
                 FromDocNo := TransferReceiptHeader_L."No.";
