@@ -97,6 +97,19 @@ pageextension 50002 "ExtendSalesOrderSubform_CBR" extends "Sales Order Subform" 
                 ToolTip = 'Specifies the value of the Unit Price Line Discount field.';
             }
         }
+        // modify("No.")//AGT_DS_011223
+        // {
+        //     trigger OnAfterValidate()
+        //     var
+        //         Item_L: Record Item;
+        //     begin
+        //         If Item_L.Get("No.") then
+        //             If Item_L."Sales Unit of Measure" <> 'DZ' Then begin
+        //                 Item_L."Stockout Warning" := Item_L."Stockout Warning"::No;
+        //                 Item_L.Modify()
+        //             end;
+        //     end;
+        // }
     }
     // trigger OnAfterGetRecord()
     // begin

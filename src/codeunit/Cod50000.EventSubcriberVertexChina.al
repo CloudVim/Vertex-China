@@ -22,4 +22,13 @@ codeunit 50000 "EventSubcriber_VertexChina"
         SalesHeader."Ship-to E-Mail" := ShipToAddress."E-Mail";
     end;
 
+    [EventSubscriber(ObjectType::Codeunit, Codeunit::"Item-Check Avail.", 'OnBeforeCreateAndSendNotification', '', false, false)]
+
+    local procedure OnBeforeCreateAndSendNotification(UnitOfMeasureCode: Code[20]; var IsHandled: Boolean);
+    Var
+    Begin
+        IF UnitOfMeasureCode <> 'DZ' then
+            IsHandled := true;
+    End;
+
 }

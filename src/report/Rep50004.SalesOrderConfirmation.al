@@ -82,7 +82,7 @@ report 50004 "SalesOrderConfirmation"
             {
                 DataItemLink = "Document No." = FIELD("No.");
                 DataItemLinkReference = SalesHeader;
-                DataItemTableView = SORTING("Document Type", "Document No.", "No.", "Line No.");
+                DataItemTableView = SORTING("Document Type", "Document No.", Type, "Line No.");
 
                 column(ItemNo; "No.")
                 { }
@@ -132,68 +132,6 @@ report 50004 "SalesOrderConfirmation"
                     Item_L: Record Item;
                     Item_L1: Record Item;
                 begin
-                    // CheckNonInventoryItem := false;
-                    // If Item_L1.Get("No.") then
-                    //     If Item_L1.Type = Item_L1.Type::Service then //AGT_DS_10202022 First we are using Non inventory now we are using Service
-                    //         CheckNonInventoryItem := True;
-                    // BOQtycasepack := 0;
-                    // Qtycasepack := 0;
-                    // BOQty := 0;
-                    // OrderQty := 0;
-                    // Clear(ItemUOM);
-                    // If Type <> Type::" " then
-                    //     If Item_L1.Get("No.") then//
-                    //         If Item_L1.Type <> Item_L1.Type::Service then//AGT_DS_113022 No of row was not comming properly because the user change the requirment
-                    //             NoofRows += 1;
-
-                    // SalesLine_L.Reset();
-                    // SalesLine_L.SetRange("Document No.", "Document No.");
-                    // SalesLine_L.SetRange("Line No.", "Line No.");
-                    // If SalesLine_L.FindFirst() then begin
-                    //     BOQty := SalesLine_L.Quantity - SalesLine_L."Quantity Shipped";
-                    //     OrderQty := SalesLine_L.Quantity;
-                    // end else begin
-                    //     SalesLineArchive_L.Reset();
-                    //     SalesLineArchive_L.SetRange("Document Type", SalesLineArchive_L."Document Type"::Order);
-                    //     SalesLineArchive_L.SetRange("Document No.", "Document No.");
-                    //     SalesLineArchive_L.SetRange("Line No.", "Line No.");
-                    //     SalesLineArchive_L.SetRange("No.", "No.");
-                    //     If SalesLineArchive_L.FindFirst() then begin
-                    //         BOQty := SalesLineArchive_L.Quantity - SalesLineArchive_L."Quantity Shipped";
-                    //         OrderQty := SalesLineArchive_L.Quantity;
-                    //     end;
-                    // end;
-                    // Item_L.reset;
-                    // ItemCasePack := 0;
-                    // If Item_L.Get("No.") then begin
-                    //     ItemCasePack := Item_L."Case Pack";
-                    //     If Item_L."Case Pack" <> 0 then begin
-                    //         If OrderQty <> 0 then
-                    //             Qtycasepack := OrderQty / Item_L."Case Pack";
-                    //         IF BOQty <> 0 then
-                    //             BOQtycasepack := BOQty / Item_L."Case Pack";
-                    //         ItemUOM := Item_L."Base Unit of Measure";
-                    //     end;
-                    // end;
-                    //AGT_DS
-
-                    // CubeAmount := 0;
-                    // LBSWeight := 0;
-                    // If Type = Type::Item then begin
-                    //     If Item_L.get("No.") then begin
-                    //         If Item_L."Unit Volume" <> 0 then
-                    //             CubeAmount := Quantity * Item_L."Unit Volume"
-                    //         else
-                    //             CubeAmount := Quantity;
-
-                    //         If Item_L."Gross Weight" <> 0 then
-                    //             LBSWeight := Quantity * Item_L."Gross Weight"
-                    //         Else
-                    //             LBSWeight := Quantity;
-                    //     end;
-                    // end
-
-                    //AGT_DS
                     NetAmount := 0;
                     BOQtycasepack := 0;
                     Qtycasepack := 0;
@@ -237,9 +175,7 @@ report 50004 "SalesOrderConfirmation"
                         SalesLineArchive_L.SetRange("Document Type", SalesLineArchive_L."Document Type"::Order);
                         SalesLineArchive_L.SetRange("Document No.", "Document No.");
                         SalesLineArchive_L.SetRange("Line No.", "Line No.");
-                        //SalesLineArchive_L.SetRange("No.", "No.");
                         If SalesLineArchive_L.FindFirst() then begin
-                            //SLType := Format(SalesLineArchive_L.Type);
                             Item_L1.Reset();
                             IF Item_L1.Get(SalesLineArchive_L."No.") then begin
                                 If Item_L1.Type <> Item_L1.Type::Inventory then begin
