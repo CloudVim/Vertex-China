@@ -43,11 +43,6 @@ tableextension 50003 "ExtendSalesHeader_CBR" extends "Sales Header"
                         Rec."Commission Rate" := Cust."Commission Rate";
             end;
         }
-        field(50005; "PO Number"; Code[20])
-        {
-            DataClassification = CustomerContent;
-            Caption = 'PO Number';
-        }
     }
     var
         myInt: Integer;

@@ -1,5 +1,6 @@
 pageextension 50008 "ExtendSalesOrder_CBR" extends "Sales Order"
 {
+
     layout
     {
         addafter("External Document No.")
@@ -15,14 +16,6 @@ pageextension 50008 "ExtendSalesOrder_CBR" extends "Sales Order"
             field("Commission Rate"; Rec."Commission Rate")
             {
                 ApplicationArea = All;
-            }
-        }
-        addafter("External Document No.")
-        {
-            field("PO Number"; Rec."PO Number")
-            {
-                ApplicationArea = All;
-                Caption = 'PO Number';
             }
         }
     }
@@ -95,12 +88,20 @@ pageextension 50008 "ExtendSalesOrder_CBR" extends "Sales Order"
                 ApplicationArea = All;
                 Caption = 'Auto Assign Item Tracking Lot';
                 Image = Track;
+                Promoted = true;
+                PromotedCategory = Category7;
                 trigger OnAction()
                 begin
                     InsertTrackingLines();
                 end;
             }
         }
+        // addafter(GetRecurringSalesLines_Promoted)
+        // {
+
+        //     actionref(asd; "Vertex_Auto Assign Item Tracking")
+        //     { }
+        // }
     }
     var
         ShowMessage: Boolean;
@@ -206,16 +207,8 @@ pageextension 50008 "ExtendSalesOrder_CBR" extends "Sales Order"
         TotalILEQty := 0;
         ReserveQty := 0;
 
-        if SalesHeader."PO Number" <> '' then begin
-            PostedPurchaseRecpt.Reset();
-            PostedPurchaseRecpt.SetRange("Order No.", SalesHeader."PO Number");
-            if PostedPurchaseRecpt.FindFirst() then
-                POAvailable := true;
-        end;
 
         ItemLedgerEntry.RESET;
-        if POAvailable then
-            ItemLedgerEntry.SetRange("Document No.", PostedPurchaseRecpt."No.");
         ItemLedgerEntry.SETRANGE("Item No.", SalesLine."No.");
         ItemLedgerEntry.SetRange("Location Code", SalesLine."Location Code");
         ItemLedgerEntry.SETFILTER("Remaining Quantity", '>%1', 0);
@@ -243,8 +236,6 @@ pageextension 50008 "ExtendSalesOrder_CBR" extends "Sales Order"
         //AGT
         ItemLedgerEntry.RESET;
         ItemLedgerEntry.SETCURRENTKEY("Expiration Date");
-        if POAvailable then
-            ItemLedgerEntry.SetRange("Document No.", PostedPurchaseRecpt."No.");
         ItemLedgerEntry.SETRANGE("Item No.", SalesLine."No.");
         ItemLedgerEntry.SetRange("Location Code", SalesLine."Location Code");
         ItemLedgerEntry.SETFILTER("Remaining Quantity", '>%1', 0);
@@ -258,6 +249,7 @@ pageextension 50008 "ExtendSalesOrder_CBR" extends "Sales Order"
                     ILE1.SETCURRENTKEY(ILE1."Expiration Date");
                     ILE1.SETRANGE("Item No.", SalesLine."No.");
                     ILE1.SETRANGE("Lot No.", ItemLedgerEntry."Lot No.");
+                    ile1.SetRange("Location Code", ItemLedgerEntry."Location Code");
                     ILE1.SETFILTER("Remaining Quantity", '>%1', 0);
                     IF ILE1.FINDFIRST THEN BEGIN
                         ILE1.CALCSUMS("Remaining Quantity");
