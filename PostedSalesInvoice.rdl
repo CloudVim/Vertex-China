@@ -809,7 +809,7 @@
                       <Width>6.15524cm</Width>
                     </TablixColumn>
                     <TablixColumn>
-                      <Width>1.38439cm</Width>
+                      <Width>1.63759cm</Width>
                     </TablixColumn>
                     <TablixColumn>
                       <Width>1.43758cm</Width>
@@ -827,7 +827,7 @@
                       <Width>1.41912cm</Width>
                     </TablixColumn>
                     <TablixColumn>
-                      <Width>1.84771cm</Width>
+                      <Width>1.59451cm</Width>
                     </TablixColumn>
                     <TablixColumn>
                       <Width>1.77328cm</Width>
@@ -1008,7 +1008,7 @@
                                 <Paragraph>
                                   <TextRuns>
                                     <TextRun>
-                                      <Value>=Parameters!BOCaption.Value</Value>
+                                      <Value>=Parameters!ShippedCaption.Value</Value>
                                       <Style>
                                         <FontSize>8pt</FontSize>
                                       </Style>
@@ -1062,7 +1062,7 @@
                                 <Paragraph>
                                   <TextRuns>
                                     <TextRun>
-                                      <Value>=Parameters!ShippedCaption.Value</Value>
+                                      <Value>=Parameters!BOCaption.Value</Value>
                                       <Style>
                                         <FontSize>8pt</FontSize>
                                       </Style>
@@ -1923,7 +1923,7 @@
                                 <Paragraph>
                                   <TextRuns>
                                     <TextRun>
-                                      <Value>=Fields!ItemUOM.Value</Value>
+                                      <Value>=Fields!ItemCasePack.Value</Value>
                                       <Style>
                                         <FontSize>8pt</FontSize>
                                       </Style>
@@ -1935,6 +1935,9 @@
                                 </Paragraph>
                               </Paragraphs>
                               <rd:DefaultName>Textbox92</rd:DefaultName>
+                              <Visibility>
+                                <Hidden>=IIF(Fields!ItemCasePack.Value&lt;&gt;"",false,true)</Hidden>
+                              </Visibility>
                               <Style>
                                 <Border>
                                   <Style>None</Style>
@@ -4163,7 +4166,7 @@
       <Width>19.67284cm</Width>
       <Page>
         <PageHeader>
-          <Height>8.79391cm</Height>
+          <Height>10.55889cm</Height>
           <PrintOnFirstPage>true</PrintOnFirstPage>
           <PrintOnLastPage>true</PrintOnLastPage>
           <ReportItems>
@@ -4637,7 +4640,7 @@
                     <Paragraph>
                       <TextRuns>
                         <TextRun>
-                          <Value>=Fields!Order_No_.Value</Value>
+                          <Value>=Fields!External_Document_No_.Value</Value>
                           <Style>
                             <FontSize>8pt</FontSize>
                           </Style>
@@ -4665,11 +4668,82 @@
                     <PaddingBottom>0.5pt</PaddingBottom>
                   </Style>
                 </Textbox>
+                <Textbox Name="Textbox86">
+                  <CanGrow>true</CanGrow>
+                  <KeepTogether>true</KeepTogether>
+                  <Paragraphs>
+                    <Paragraph>
+                      <TextRuns>
+                        <TextRun>
+                          <Value>Order No.</Value>
+                          <Style>
+                            <FontSize>8pt</FontSize>
+                            <Format>d</Format>
+                          </Style>
+                        </TextRun>
+                      </TextRuns>
+                      <Style>
+                        <TextAlign>Center</TextAlign>
+                      </Style>
+                    </Paragraph>
+                  </Paragraphs>
+                  <rd:DefaultName>Textbox1</rd:DefaultName>
+                  <Top>2.1354cm</Top>
+                  <Left>0.02646cm</Left>
+                  <Height>0.52062cm</Height>
+                  <Width>7.52433cm</Width>
+                  <ZIndex>12</ZIndex>
+                  <Style>
+                    <Border>
+                      <Style>Solid</Style>
+                    </Border>
+                    <VerticalAlign>Top</VerticalAlign>
+                    <PaddingLeft>1.5pt</PaddingLeft>
+                    <PaddingRight>0.5pt</PaddingRight>
+                    <PaddingTop>0.5pt</PaddingTop>
+                    <PaddingBottom>0.5pt</PaddingBottom>
+                  </Style>
+                </Textbox>
+                <Textbox Name="Textbox97">
+                  <CanGrow>true</CanGrow>
+                  <KeepTogether>true</KeepTogether>
+                  <Paragraphs>
+                    <Paragraph>
+                      <TextRuns>
+                        <TextRun>
+                          <Value>=Fields!Order_No_.Value</Value>
+                          <Style>
+                            <FontSize>8pt</FontSize>
+                          </Style>
+                        </TextRun>
+                      </TextRuns>
+                      <Style>
+                        <TextAlign>Center</TextAlign>
+                      </Style>
+                    </Paragraph>
+                  </Paragraphs>
+                  <rd:DefaultName>Textbox1</rd:DefaultName>
+                  <Top>2.65602cm</Top>
+                  <Left>0.02646cm</Left>
+                  <Height>0.52062cm</Height>
+                  <Width>7.52433cm</Width>
+                  <ZIndex>13</ZIndex>
+                  <Style>
+                    <Border>
+                      <Style>Solid</Style>
+                    </Border>
+                    <VerticalAlign>Top</VerticalAlign>
+                    <PaddingLeft>1.5pt</PaddingLeft>
+                    <PaddingRight>0.5pt</PaddingRight>
+                    <PaddingTop>0.5pt</PaddingTop>
+                    <PaddingBottom>0.5pt</PaddingBottom>
+                  </Style>
+                </Textbox>
               </ReportItems>
               <KeepTogether>true</KeepTogether>
               <Top>2.43099cm</Top>
               <Left>11.93472cm</Left>
-              <Height>2.16185cm</Height>
+              <Height>3.17664cm</Height>
               <Width>7.59292cm</Width>
               <ZIndex>1</ZIndex>
               <Style>
@@ -4698,8 +4772,8 @@
                 </Paragraph>
               </Paragraphs>
               <rd:DefaultName>Textbox1</rd:DefaultName>
-              <Top>4.89544cm</Top>
-              <Left>11.96118cm</Left>
+              <Top>6.45648cm</Top>
+              <Left>11.91905cm</Left>
               <Height>0.83812cm</Height>
               <Width>7.56646cm</Width>
               <ZIndex>2</ZIndex>
@@ -4733,8 +4807,8 @@
                 </Paragraph>
               </Paragraphs>
               <rd:DefaultName>Textbox1</rd:DefaultName>
-              <Top>6.95119cm</Top>
-              <Left>11.15896cm</Left>
+              <Top>8.51223cm</Top>
+              <Left>11.11683cm</Left>
               <Height>0.52062cm</Height>
               <Width>7.02765cm</Width>
               <ZIndex>3</ZIndex>
@@ -4768,8 +4842,8 @@
                 </Paragraph>
               </Paragraphs>
               <rd:DefaultName>Textbox1</rd:DefaultName>
-              <Top>6.43057cm</Top>
-              <Left>11.15896cm</Left>
+              <Top>7.99161cm</Top>
+              <Left>11.11683cm</Left>
               <Height>0.52062cm</Height>
               <Width>7.02765cm</Width>
               <ZIndex>4</ZIndex>
@@ -4809,8 +4883,8 @@
                 </Paragraph>
               </Paragraphs>
               <rd:DefaultName>Textbox1</rd:DefaultName>
-              <Top>5.90995cm</Top>
-              <Left>11.15896cm</Left>
+              <Top>7.47099cm</Top>
+              <Left>11.11683cm</Left>
               <Height>0.52062cm</Height>
               <Width>7.02765cm</Width>
               <ZIndex>5</ZIndex>
@@ -4844,8 +4918,8 @@
                 </Paragraph>
               </Paragraphs>
               <rd:DefaultName>Textbox1</rd:DefaultName>
-              <Top>5.90995cm</Top>
-              <Left>9.63791cm</Left>
+              <Top>7.47099cm</Top>
+              <Left>9.59578cm</Left>
               <Height>0.52062cm</Height>
               <Width>1.41521cm</Width>
               <ZIndex>6</ZIndex>
@@ -4879,8 +4953,8 @@
                 </Paragraph>
               </Paragraphs>
               <rd:DefaultName>Textbox1</rd:DefaultName>
-              <Top>6.95119cm</Top>
-              <Left>1.70193cm</Left>
+              <Top>8.51223cm</Top>
+              <Left>1.6598cm</Left>
               <Height>0.52062cm</Height>
               <Width>7.02765cm</Width>
               <ZIndex>7</ZIndex>
@@ -4914,8 +4988,8 @@
                 </Paragraph>
               </Paragraphs>
               <rd:DefaultName>Textbox1</rd:DefaultName>
-              <Top>6.43057cm</Top>
-              <Left>1.70193cm</Left>
+              <Top>7.99161cm</Top>
+              <Left>1.6598cm</Left>
               <Height>0.52062cm</Height>
               <Width>7.02765cm</Width>
               <ZIndex>8</ZIndex>
@@ -4955,8 +5029,8 @@
                 </Paragraph>
               </Paragraphs>
               <rd:DefaultName>Textbox1</rd:DefaultName>
-              <Top>5.90995cm</Top>
-              <Left>1.70193cm</Left>
+              <Top>7.47099cm</Top>
+              <Left>1.6598cm</Left>
               <Height>0.52062cm</Height>
               <Width>7.02765cm</Width>
               <ZIndex>9</ZIndex>
@@ -4990,8 +5064,8 @@
                 </Paragraph>
               </Paragraphs>
               <rd:DefaultName>Textbox1</rd:DefaultName>
-              <Top>5.90995cm</Top>
-              <Left>0.18089cm</Left>
+              <Top>7.47099cm</Top>
+              <Left>0.13876cm</Left>
               <Height>0.52062cm</Height>
               <Width>1.41521cm</Width>
               <ZIndex>10</ZIndex>
@@ -5025,8 +5099,8 @@
                 </Paragraph>
               </Paragraphs>
               <rd:DefaultName>Textbox1</rd:DefaultName>
-              <Top>5.21294cm</Top>
-              <Left>1.70193cm</Left>
+              <Top>6.77398cm</Top>
+              <Left>1.6598cm</Left>
               <Height>0.52062cm</Height>
               <Width>7.02765cm</Width>
               <ZIndex>11</ZIndex>
@@ -5060,8 +5134,8 @@
                 </Paragraph>
               </Paragraphs>
               <rd:DefaultName>Textbox1</rd:DefaultName>
-              <Top>5.21294cm</Top>
-              <Left>0.18089cm</Left>
+              <Top>6.77398cm</Top>
+              <Left>0.13876cm</Left>
               <Height>0.52062cm</Height>
               <Width>1.41521cm</Width>
               <ZIndex>12</ZIndex>
@@ -5286,8 +5360,8 @@
                 </Paragraph>
               </Paragraphs>
               <rd:DefaultName>Textbox1</rd:DefaultName>
-              <Top>7.47181cm</Top>
-              <Left>1.70193cm</Left>
+              <Top>9.03285cm</Top>
+              <Left>1.6598cm</Left>
               <Height>0.52062cm</Height>
               <Width>7.02765cm</Width>
               <ZIndex>19</ZIndex>
@@ -5321,8 +5395,8 @@
                 </Paragraph>
               </Paragraphs>
               <rd:DefaultName>Textbox1</rd:DefaultName>
-              <Top>7.47181cm</Top>
-              <Left>11.15896cm</Left>
+              <Top>9.03285cm</Top>
+              <Left>11.11683cm</Left>
               <Height>0.52062cm</Height>
               <Width>7.02765cm</Width>
               <ZIndex>20</ZIndex>
@@ -5977,6 +6051,9 @@ End Function
         <Field Name="Payment_Terms_Code">
           <DataField>Payment_Terms_Code</DataField>
         </Field>
+        <Field Name="External_Document_No_">
+          <DataField>External_Document_No_</DataField>
+        </Field>
         <Field Name="Order_No_">
           <DataField>Order_No_</DataField>
         </Field>
@@ -6102,6 +6179,9 @@ End Function
         </Field>
         <Field Name="TotalWeightFormat">
           <DataField>TotalWeightFormat</DataField>
+        </Field>
+        <Field Name="ItemCasePack">
+          <DataField>ItemCasePack</DataField>
         </Field>
       </Fields>
       <Query>

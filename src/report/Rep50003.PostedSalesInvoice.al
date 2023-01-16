@@ -52,7 +52,9 @@ report 50003 "PostedSalesInvoice"
             { }
             column(Payment_Terms_Code; "Payment Terms Code")
             { }
-            column(Order_No_; "External Document No.")//"Order No."//AGT_DS_12022022_As per mentioned By taylor
+            column(External_Document_No_; "External Document No.")//"Order No."//AGT_DS_12022022_As per mentioned By taylor
+            { }
+            column(Order_No_; "Order No.")
             { }
             column(Order_Date; "Order Date")
             { }
@@ -114,6 +116,7 @@ report 50003 "PostedSalesInvoice"
                 column(SLType; SLType) { }
                 column(TotalCube; TotalCube) { }
                 column(TotalWeight; TotalWeight) { }
+                column(ItemCasePack; ItemCasePack) { }
                 trigger OnAfterGetRecord()
                 var
                     SalesLine_L: Record "Sales Line";
@@ -132,6 +135,7 @@ report 50003 "PostedSalesInvoice"
                     CLear(SLType);
                     Clear(ItemUOM);
                     Clear(UnitofMeasure);
+                    Clear(ItemCasePack);
                     If Type <> Type::" " then
                         NoofRows += 1;
                     SalesLine_L.Reset();
@@ -206,6 +210,7 @@ report 50003 "PostedSalesInvoice"
                     Item_L.reset;
                     If Item_L.Get("No.") then begin
                         If Item_L."Case Pack" <> 0 then begin
+                            ItemCasePack := 'CS' + Format(Item_L."Case Pack");
                             If OrderQty <> 0 then
                                 Qtycasepack := OrderQty / Item_L."Case Pack";
                             IF BOQty <> 0 then
@@ -375,4 +380,5 @@ report 50003 "PostedSalesInvoice"
         UnitPrice: Decimal;
         NetAmount: Decimal;
         UnitofMeasure: Text[50];
+        ItemCasePack: Text;
 }

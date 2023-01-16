@@ -1,7 +1,25 @@
 pageextension 50018 "CBR_TransferOrder" extends "Transfer Order"
 {
     layout
-    { }
+    {
+        addbefore("Shipment Date")
+        {
+            field("Total Qty."; Rec."Total Qty.")
+            {
+                ApplicationArea = All;
+                ToolTip = 'Specifies the value of the Total Qty. field.';
+            }
+        }
+        addafter("In-Transit Code")
+        {
+
+            field("Reference No."; Rec."Reference No.")
+            {
+                ApplicationArea = All;
+                ToolTip = 'Specifies the value of the Reference No. field.';
+            }
+        }
+    }
 
     actions
     {//AGT_DS_010522

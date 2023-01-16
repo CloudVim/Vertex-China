@@ -11,6 +11,16 @@ pageextension 50005 "ExtendPostedSalesInvoices" extends "Posted Sales Invoices"
                 ToolTip = 'Specifies the value of the Commission Rate field.';
             }
         }
+        addafter("Sell-to Customer Name")
+        {
+
+            field("CBR Customer Price Group"; Rec."CBR Customer Price Group")
+            {
+                Caption = 'Customer Price Group';
+                ApplicationArea = All;
+                ToolTip = 'Specifies the value of the Customer Price Group field.';
+            }
+        }
     }
     actions
     {
