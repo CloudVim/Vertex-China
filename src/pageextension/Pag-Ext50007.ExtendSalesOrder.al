@@ -116,6 +116,22 @@ pageextension 50007 "ExtendSalesOrder" extends "Sales Order List"
                     Report.Run(50002, true, false, salesHeader);
                 end;
             }
+            action(SentEmail)
+            {
+                ApplicationArea = Basic, Suite;
+                Caption = 'SentEMail';
+                Image = PrintReport;
+                Promoted = true;
+                PromotedCategory = Category8;
+                Ellipsis = true;
+
+                trigger OnAction()
+                var
+                    SendMail: Codeunit SendMail;
+                begin
+                    SendMail.Run();
+                end;
+            }
         }
     }
     var
