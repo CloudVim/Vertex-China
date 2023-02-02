@@ -1,1 +1,1 @@
-﻿{"Added":[],"Modified":[],"Removed":[]}
+﻿{"Added":[],"Modified":[{"Id":50001,"Kind":11,"Name":"SendMail","PackagePath":"/src/src/codeunit/Cod50001.SendMail.al"},{"Id":50007,"Kind":16,"Name":"ExtendSalesOrder","PackagePath":"/src/src/pageextension/Pag-Ext50007.ExtendSalesOrder.al"}],"Removed":[]}
