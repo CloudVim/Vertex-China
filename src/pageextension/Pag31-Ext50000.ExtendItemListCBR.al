@@ -65,6 +65,17 @@ pageextension 50000 "ExtendItemList_CBR" extends "Item List" //31
                 RunObject = page "Inventory Planning";
             }
         }
+        addafter(Inventory)
+        {
+            action(ItemUsageReport)
+            {
+                ApplicationArea = All;
+                Caption = 'Item Usage Report';
+                Image = Report;
+                RunObject = report "Item Usage Location";
+
+            }
+        }
     }
     trigger OnAfterGetRecord()
     var
