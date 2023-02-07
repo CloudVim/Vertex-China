@@ -1342,7 +1342,7 @@
                                 <Border>
                                   <Style>None</Style>
                                 </Border>
-                                <VerticalAlign>Middle</VerticalAlign>
+                                <VerticalAlign>Top</VerticalAlign>
                                 <PaddingLeft>0.5pt</PaddingLeft>
                                 <PaddingRight>0.5pt</PaddingRight>
                                 <PaddingTop>2pt</PaddingTop>
@@ -1611,7 +1611,7 @@
                       </TablixCells>
                     </TablixRow>
                     <TablixRow>
-                      <Height>0.57354cm</Height>
+                      <Height>0.99687cm</Height>
                       <TablixCells>
                         <TablixCell>
                           <CellContents>
@@ -1667,10 +1667,10 @@
                                 <Border>
                                   <Style>None</Style>
                                 </Border>
-                                <VerticalAlign>Middle</VerticalAlign>
+                                <VerticalAlign>Top</VerticalAlign>
                                 <PaddingLeft>0.5pt</PaddingLeft>
                                 <PaddingRight>0.5pt</PaddingRight>
-                                <PaddingTop>0.5pt</PaddingTop>
+                                <PaddingTop>2pt</PaddingTop>
                                 <PaddingBottom>0.5pt</PaddingBottom>
                               </Style>
                             </Textbox>
@@ -3637,7 +3637,7 @@
                 </TablixRowHierarchy>
                 <Top>1.64371cm</Top>
                 <Left>0.01323cm</Left>
-                <Height>4.55333cm</Height>
+                <Height>4.97666cm</Height>
                 <Width>19.34674cm</Width>
                 <ZIndex>1</ZIndex>
                 <Style>
@@ -3796,7 +3796,7 @@
                     <TablixMember />
                   </TablixMembers>
                 </TablixRowHierarchy>
-                <Top>6.35552cm</Top>
+                <Top>6.67302cm</Top>
                 <Left>0cm</Left>
                 <Height>0.52062cm</Height>
                 <Width>16.24916cm</Width>
@@ -3811,7 +3811,7 @@
             <KeepTogether>true</KeepTogether>
             <Top>0cm</Top>
             <Left>0.13876cm</Left>
-            <Height>6.87614cm</Height>
+            <Height>7.19364cm</Height>
             <Width>19.38887cm</Width>
             <Style>
               <Border>
@@ -3820,7 +3820,7 @@
             </Style>
           </Rectangle>
         </ReportItems>
-        <Height>6.87614cm</Height>
+        <Height>7.19364cm</Height>
         <Style />
       </Body>
       <Width>19.67284cm</Width>

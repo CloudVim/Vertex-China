@@ -11,58 +11,6 @@
       <rd:DataSourceID>070cc3ea-2682-4459-92c7-a832857967ba</rd:DataSourceID>
     </DataSource>
   </DataSources>
-  <DataSets>
-    <DataSet Name="DataSet_Result">
-      <Query>
-        <DataSourceName>DataSource</DataSourceName>
-        <CommandText />
-      </Query>
-      <Fields>
-        <Field Name="ItemNo">
-          <DataField>ItemNo</DataField>
-        </Field>
-        <Field Name="Description">
-          <DataField>Description</DataField>
-        </Field>
-        <Field Name="LocationCode">
-          <DataField>LocationCode</DataField>
-        </Field>
-        <Field Name="QtyInHand_G">
-          <DataField>QtyInHand_G</DataField>
-        </Field>
-        <Field Name="QtyInHand_GFormat">
-          <DataField>QtyInHand_GFormat</DataField>
-        </Field>
-        <Field Name="QtyReserved_G">
-          <DataField>QtyReserved_G</DataField>
-        </Field>
-        <Field Name="QtyReserved_GFormat">
-          <DataField>QtyReserved_GFormat</DataField>
-        </Field>
-        <Field Name="CompanyInformation_Name">
-          <DataField>CompanyInformation_Name</DataField>
-        </Field>
-        <Field Name="QtyInTrans_G">
-          <DataField>QtyInTrans_G</DataField>
-        </Field>
-        <Field Name="QtyInTrans_GFormat">
-          <DataField>QtyInTrans_GFormat</DataField>
-        </Field>
-        <Field Name="QtyCommit_G">
-          <DataField>QtyCommit_G</DataField>
-        </Field>
-        <Field Name="QtyCommit_GFormat">
-          <DataField>QtyCommit_GFormat</DataField>
-        </Field>
-        <Field Name="QtyOnOrder_G">
-          <DataField>QtyOnOrder_G</DataField>
-        </Field>
-        <Field Name="QtyOnOrder_GFormat">
-          <DataField>QtyOnOrder_GFormat</DataField>
-        </Field>
-      </Fields>
-    </DataSet>
-  </DataSets>
   <ReportSections>
     <ReportSection>
       <Body>
@@ -74,22 +22,25 @@
                   <Width>0.91458in</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>1.7963in</Width>
+                  <Width>0.84883in</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>1in</Width>
+                  <Width>1.28588in</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>1in</Width>
+                  <Width>0.92708in</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>1in</Width>
+                  <Width>0.92708in</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>1in</Width>
+                  <Width>0.92708in</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>1in</Width>
+                  <Width>0.92708in</Width>
+                </TablixColumn>
+                <TablixColumn>
+                  <Width>0.92708in</Width>
                 </TablixColumn>
               </TablixColumns>
               <TablixRows>
@@ -105,7 +56,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>Item No</Value>
+                                  <Value>Prod</Value>
                                   <Style>
                                     <FontFamily>Segoe UI</FontFamily>
                                     <FontSize>11pt</FontSize>
@@ -120,6 +71,44 @@
                             </Paragraph>
                           </Paragraphs>
                           <rd:DefaultName>Textbox66</rd:DefaultName>
+                          <Style>
+                            <Border>
+                              <Style>None</Style>
+                            </Border>
+                            <BackgroundColor>White</BackgroundColor>
+                            <VerticalAlign>Top</VerticalAlign>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                            <PaddingBottom>2pt</PaddingBottom>
+                          </Style>
+                        </Textbox>
+                      </CellContents>
+                    </TablixCell>
+                    <TablixCell>
+                      <CellContents>
+                        <Textbox Name="Textbox8">
+                          <CanGrow>true</CanGrow>
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value>ProdLine</Value>
+                                  <Style>
+                                    <FontFamily>Segoe UI</FontFamily>
+                                    <FontSize>11pt</FontSize>
+                                    <FontWeight>Bold</FontWeight>
+                                    <Color>#666666</Color>
+                                  </Style>
+                                </TextRun>
+                              </TextRuns>
+                              <Style>
+                                <TextAlign>Left</TextAlign>
+                              </Style>
+                            </Paragraph>
+                          </Paragraphs>
+                          <rd:DefaultName>Textbox8</rd:DefaultName>
                           <Style>
                             <Border>
                               <Style>None</Style>
@@ -376,7 +365,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>=Fields!ItemNo.Value</Value>
+                                  <Value />
                                   <Style>
                                     <FontFamily>Segoe UI</FontFamily>
                                     <FontSize>9pt</FontSize>
@@ -407,14 +396,14 @@
                     </TablixCell>
                     <TablixCell>
                       <CellContents>
-                        <Textbox Name="LocationCode2">
+                        <Textbox Name="Textbox9">
                           <CanGrow>true</CanGrow>
                           <KeepTogether>true</KeepTogether>
                           <Paragraphs>
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>=Fields!LocationCode.Value</Value>
+                                  <Value />
                                   <Style>
                                     <FontFamily>Segoe UI</FontFamily>
                                     <FontSize>9pt</FontSize>
@@ -428,7 +417,45 @@
                               </Style>
                             </Paragraph>
                           </Paragraphs>
-                          <rd:DefaultName>LocationCode1</rd:DefaultName>
+                          <rd:DefaultName>Textbox9</rd:DefaultName>
+                          <Style>
+                            <Border>
+                              <Style>None</Style>
+                            </Border>
+                            <BackgroundColor>White</BackgroundColor>
+                            <VerticalAlign>Bottom</VerticalAlign>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                            <PaddingBottom>2pt</PaddingBottom>
+                          </Style>
+                        </Textbox>
+                      </CellContents>
+                    </TablixCell>
+                    <TablixCell>
+                      <CellContents>
+                        <Textbox Name="Textbox2">
+                          <CanGrow>true</CanGrow>
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value />
+                                  <Style>
+                                    <FontFamily>Segoe UI</FontFamily>
+                                    <FontSize>9pt</FontSize>
+                                    <FontWeight>Normal</FontWeight>
+                                    <Color>#333333</Color>
+                                  </Style>
+                                </TextRun>
+                              </TextRuns>
+                              <Style>
+                                <TextAlign>Left</TextAlign>
+                              </Style>
+                            </Paragraph>
+                          </Paragraphs>
+                          <rd:DefaultName>Textbox2</rd:DefaultName>
                           <Style>
                             <Border>
                               <Style>None</Style>
@@ -650,6 +677,44 @@
                               <TextRuns>
                                 <TextRun>
                                   <Value>=Fields!ItemNo.Value</Value>
+                                  <Style>
+                                    <FontFamily>Segoe UI</FontFamily>
+                                    <FontSize>9pt</FontSize>
+                                    <FontWeight>Normal</FontWeight>
+                                    <Color>#333333</Color>
+                                  </Style>
+                                </TextRun>
+                              </TextRuns>
+                              <Style>
+                                <TextAlign>Left</TextAlign>
+                              </Style>
+                            </Paragraph>
+                          </Paragraphs>
+                          <rd:DefaultName>ItemNo1</rd:DefaultName>
+                          <Style>
+                            <Border>
+                              <Style>None</Style>
+                            </Border>
+                            <BackgroundColor>White</BackgroundColor>
+                            <VerticalAlign>Bottom</VerticalAlign>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                            <PaddingBottom>2pt</PaddingBottom>
+                          </Style>
+                        </Textbox>
+                      </CellContents>
+                    </TablixCell>
+                    <TablixCell>
+                      <CellContents>
+                        <Textbox Name="ItemNo4">
+                          <CanGrow>true</CanGrow>
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value>=Fields!Item_Category_Code.Value</Value>
                                   <Style>
                                     <FontFamily>Segoe UI</FontFamily>
                                     <FontSize>9pt</FontSize>
@@ -922,6 +987,7 @@
                 <TablixMember />
                 <TablixMember />
                 <TablixMember />
+                <TablixMember />
               </TablixMembers>
             </TablixColumnHierarchy>
             <TablixRowHierarchy>
@@ -967,7 +1033,7 @@
               </TablixMembers>
             </TablixRowHierarchy>
             <Height>0.75in</Height>
-            <Width>7.71088in</Width>
+            <Width>7.6847in</Width>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -978,7 +1044,7 @@
         <Height>6.86328cm</Height>
         <Style />
       </Body>
-      <Width>19.85434cm</Width>
+      <Width>19.83668cm</Width>
       <Page>
         <PageHeader>
           <Height>1.85209cm</Height>
@@ -1027,7 +1093,7 @@
               </Paragraphs>
               <rd:DefaultName>Textbox19</rd:DefaultName>
               <Top>0.20937in</Top>
-              <Left>6.47709in</Left>
+              <Left>6.45091in</Left>
               <Height>0.125in</Height>
               <Width>1.23379in</Width>
               <Style>
@@ -1087,7 +1153,7 @@
                 </Paragraph>
               </Paragraphs>
               <Top>0.03033in</Top>
-              <Left>5.68332in</Left>
+              <Left>5.65714in</Left>
               <Height>0.16654in</Height>
               <Width>2.02756in</Width>
               <ZIndex>2</ZIndex>
@@ -1115,7 +1181,7 @@
                 </Paragraph>
               </Paragraphs>
               <Top>0.36215in</Top>
-              <Left>5.68332in</Left>
+              <Left>5.65714in</Left>
               <Height>0.16654in</Height>
               <Width>2.02756in</Width>
               <ZIndex>3</ZIndex>
@@ -1130,23 +1196,17 @@
             </Border>
           </Style>
         </PageHeader>
-        <PageHeight>21cm</PageHeight>
-        <PageWidth>29.7cm</PageWidth>
-        <LeftMargin>0.635cm</LeftMargin>
-        <RightMargin>0.635cm</RightMargin>
-        <TopMargin>0.635cm</TopMargin>
-        <BottomMargin>0.635cm</BottomMargin>
+        <PageHeight>29.7cm</PageHeight>
+        <PageWidth>21cm</PageWidth>
+        <LeftMargin>0.5cm</LeftMargin>
+        <RightMargin>0.5cm</RightMargin>
+        <TopMargin>0.5cm</TopMargin>
+        <BottomMargin>0.5cm</BottomMargin>
         <ColumnSpacing>1.27cm</ColumnSpacing>
         <Style />
       </Page>
     </ReportSection>
   </ReportSections>
-  <ReportParametersLayout>
-    <GridLayoutDefinition>
-      <NumberOfColumns>4</NumberOfColumns>
-      <NumberOfRows>2</NumberOfRows>
-    </GridLayoutDefinition>
-  </ReportParametersLayout>
   <Code>Public Function BlankZero(ByVal Value As Decimal)
     if Value = 0 then
         Return ""
@@ -1186,4 +1246,59 @@ End Function
   <ConsumeContainerWhitespace>true</ConsumeContainerWhitespace>
   <rd:ReportUnitType>Cm</rd:ReportUnitType>
   <rd:ReportID>0eeb6585-38ae-40f1-885b-8d50088d51b4</rd:ReportID>
+  <DataSets>
+    <DataSet Name="DataSet_Result">
+      <Fields>
+        <Field Name="ItemNo">
+          <DataField>ItemNo</DataField>
+        </Field>
+        <Field Name="Item_Category_Code">
+          <DataField>Item_Category_Code</DataField>
+        </Field>
+        <Field Name="Description">
+          <DataField>Description</DataField>
+        </Field>
+        <Field Name="LocationCode">
+          <DataField>LocationCode</DataField>
+        </Field>
+        <Field Name="QtyInHand_G">
+          <DataField>QtyInHand_G</DataField>
+        </Field>
+        <Field Name="QtyInHand_GFormat">
+          <DataField>QtyInHand_GFormat</DataField>
+        </Field>
+        <Field Name="QtyReserved_G">
+          <DataField>QtyReserved_G</DataField>
+        </Field>
+        <Field Name="QtyReserved_GFormat">
+          <DataField>QtyReserved_GFormat</DataField>
+        </Field>
+        <Field Name="CompanyInformation_Name">
+          <DataField>CompanyInformation_Name</DataField>
+        </Field>
+        <Field Name="QtyInTrans_G">
+          <DataField>QtyInTrans_G</DataField>
+        </Field>
+        <Field Name="QtyInTrans_GFormat">
+          <DataField>QtyInTrans_GFormat</DataField>
+        </Field>
+        <Field Name="QtyCommit_G">
+          <DataField>QtyCommit_G</DataField>
+        </Field>
+        <Field Name="QtyCommit_GFormat">
+          <DataField>QtyCommit_GFormat</DataField>
+        </Field>
+        <Field Name="QtyOnOrder_G">
+          <DataField>QtyOnOrder_G</DataField>
+        </Field>
+        <Field Name="QtyOnOrder_GFormat">
+          <DataField>QtyOnOrder_GFormat</DataField>
+        </Field>
+      </Fields>
+      <Query>
+        <DataSourceName>DataSource</DataSourceName>
+        <CommandText />
+      </Query>
+    </DataSet>
+  </DataSets>
 </Report>

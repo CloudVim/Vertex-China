@@ -11,7 +11,9 @@ report 50013 "Item Usage Location"
         dataitem(Item; Item)
         {
             RequestFilterFields = "No.";
-            dataitem("Item Ledger Entry"; "Item Ledger Entry")
+
+            dataitem("Item Ledger Entry";
+            "Item Ledger Entry")
             {
                 DataItemLink = "Item No." = field("No.");
                 DataItemTableView = SORTING("Item No.", "Location Code")
@@ -20,6 +22,7 @@ report 50013 "Item Usage Location"
                 column(ItemNo; "Item No.")
                 {
                 }
+                column(Item_Category_Code; "Item Category Code") { }
                 column(Description; Description)
                 {
                 }
@@ -158,6 +161,8 @@ report 50013 "Item Usage Location"
     Begin
         //QtyCommit_G := 0;
         SalesLine_L.Reset();
+        SalesLine_L.SetCurrentKey("Document Type", "No.", "Location Code");
+        SalesLine_L.SetRange("Document Type", SalesLine_L."Document Type"::Order);
         SalesLine_L.SetRange("No.", Item_L."No.");
         SalesLine_L.SetFilter("Location Code", '%1|%2|%3', '333', '666-333', 'OW-333');
         SalesLine_L.CalcSums("Outstanding Quantity");
@@ -174,6 +179,8 @@ report 50013 "Item Usage Location"
     Begin
         //QtyCommit_G := 0;
         SalesLine_L.Reset();
+        SalesLine_L.SetCurrentKey("Document Type", "No.", "Location Code");
+        SalesLine_L.SetRange("Document Type", SalesLine_L."Document Type"::Order);
         SalesLine_L.SetRange("No.", Item_L."No.");
         SalesLine_L.SetFilter("Location Code", '%1|%2|%3', '888', '666-888', 'OW-888');
         SalesLine_L.CalcSums("Outstanding Quantity");
@@ -189,6 +196,8 @@ report 50013 "Item Usage Location"
     Begin
         //QtyCommit_G := 0;
         PurchaseLine_L.Reset();
+        PurchaseLine_L.SetCurrentKey("Document Type", "No.", "Location Code");
+        PurchaseLine_L.SetRange("Document Type", PurchaseLine_L."Document Type"::Order);
         PurchaseLine_L.SetRange("No.", Item_L."No.");
         PurchaseLine_L.SetFilter("Location Code", '%1|%2|%3', '333', '666-333', 'OW-333');
         PurchaseLine_L.CalcSums("Outstanding Quantity");
@@ -205,6 +214,8 @@ report 50013 "Item Usage Location"
     Begin
         //QtyCommit_G := 0;
         PurchaseLine_L.Reset();
+        PurchaseLine_L.SetCurrentKey("Document Type", "No.", "Location Code");
+        PurchaseLine_L.SetRange("Document Type", PurchaseLine_L."Document Type"::Order);
         PurchaseLine_L.SetRange("No.", Item_L."No.");
         PurchaseLine_L.SetFilter("Location Code", '%1|%2|%3', '888', '666-888', 'OW-888');
         PurchaseLine_L.CalcSums("Outstanding Quantity");

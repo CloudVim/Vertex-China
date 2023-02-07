@@ -806,13 +806,13 @@
                       <Width>0.70031cm</Width>
                     </TablixColumn>
                     <TablixColumn>
-                      <Width>6.15524cm</Width>
+                      <Width>6.8555cm</Width>
                     </TablixColumn>
                     <TablixColumn>
-                      <Width>1.63759cm</Width>
+                      <Width>1.22599cm</Width>
                     </TablixColumn>
                     <TablixColumn>
-                      <Width>1.43758cm</Width>
+                      <Width>1.14892cm</Width>
                     </TablixColumn>
                     <TablixColumn>
                       <Width>1.50386cm</Width>
@@ -997,116 +997,11 @@
                                 <PaddingBottom>0.5pt</PaddingBottom>
                               </Style>
                             </Textbox>
+                            <ColSpan>3</ColSpan>
                           </CellContents>
                         </TablixCell>
-                        <TablixCell>
-                          <CellContents>
-                            <Textbox Name="Textbox76">
-                              <CanGrow>true</CanGrow>
-                              <KeepTogether>true</KeepTogether>
-                              <Paragraphs>
-                                <Paragraph>
-                                  <TextRuns>
-                                    <TextRun>
-                                      <Value>=Parameters!ShippedCaption.Value</Value>
-                                      <Style>
-                                        <FontSize>8pt</FontSize>
-                                      </Style>
-                                    </TextRun>
-                                  </TextRuns>
-                                  <Style>
-                                    <TextAlign>Center</TextAlign>
-                                  </Style>
-                                </Paragraph>
-                              </Paragraphs>
-                              <rd:DefaultName>Textbox76</rd:DefaultName>
-                              <Style>
-                                <Border>
-                                  <Style>Solid</Style>
-                                </Border>
-                                <TopBorder>
-                                  <Color>Black</Color>
-                                  <Style>Solid</Style>
-                                  <Width>1pt</Width>
-                                </TopBorder>
-                                <BottomBorder>
-                                  <Color>Black</Color>
-                                  <Style>Solid</Style>
-                                  <Width>1pt</Width>
-                                </BottomBorder>
-                                <LeftBorder>
-                                  <Color>Black</Color>
-                                  <Style>Solid</Style>
-                                  <Width>1pt</Width>
-                                </LeftBorder>
-                                <RightBorder>
-                                  <Color>Black</Color>
-                                  <Style>Solid</Style>
-                                  <Width>1pt</Width>
-                                </RightBorder>
-                                <VerticalAlign>Top</VerticalAlign>
-                                <PaddingLeft>0.5pt</PaddingLeft>
-                                <PaddingRight>0.5pt</PaddingRight>
-                                <PaddingTop>0.5pt</PaddingTop>
-                                <PaddingBottom>0.5pt</PaddingBottom>
-                              </Style>
-                            </Textbox>
-                          </CellContents>
-                        </TablixCell>
-                        <TablixCell>
-                          <CellContents>
-                            <Textbox Name="Textbox78">
-                              <CanGrow>true</CanGrow>
-                              <KeepTogether>true</KeepTogether>
-                              <Paragraphs>
-                                <Paragraph>
-                                  <TextRuns>
-                                    <TextRun>
-                                      <Value>=Parameters!BOCaption.Value</Value>
-                                      <Style>
-                                        <FontSize>8pt</FontSize>
-                                      </Style>
-                                    </TextRun>
-                                  </TextRuns>
-                                  <Style>
-                                    <TextAlign>Center</TextAlign>
-                                  </Style>
-                                </Paragraph>
-                              </Paragraphs>
-                              <rd:DefaultName>Textbox78</rd:DefaultName>
-                              <Style>
-                                <Border>
-                                  <Style>Solid</Style>
-                                </Border>
-                                <TopBorder>
-                                  <Color>Black</Color>
-                                  <Style>Solid</Style>
-                                  <Width>1pt</Width>
-                                </TopBorder>
-                                <BottomBorder>
-                                  <Color>Black</Color>
-                                  <Style>Solid</Style>
-                                  <Width>1pt</Width>
-                                </BottomBorder>
-                                <LeftBorder>
-                                  <Color>Black</Color>
-                                  <Style>Solid</Style>
-                                  <Width>1pt</Width>
-                                </LeftBorder>
-                                <RightBorder>
-                                  <Color>Black</Color>
-                                  <Style>Solid</Style>
-                                  <Width>1pt</Width>
-                                </RightBorder>
-                                <VerticalAlign>Top</VerticalAlign>
-                                <PaddingLeft>0.5pt</PaddingLeft>
-                                <PaddingRight>0.5pt</PaddingRight>
-                                <PaddingTop>0.5pt</PaddingTop>
-                                <PaddingBottom>0.5pt</PaddingBottom>
-                              </Style>
-                            </Textbox>
-                          </CellContents>
-                        </TablixCell>
+                        <TablixCell />
+                        <TablixCell />
                         <TablixCell>
                           <CellContents>
                             <Textbox Name="Textbox74">
@@ -1441,7 +1336,7 @@
                                 </Border>
                                 <PaddingLeft>0.5pt</PaddingLeft>
                                 <PaddingRight>0.5pt</PaddingRight>
-                                <PaddingTop>0.5pt</PaddingTop>
+                                <PaddingTop>1pt</PaddingTop>
                                 <PaddingBottom>0.5pt</PaddingBottom>
                               </Style>
                             </Textbox>
@@ -1477,87 +1372,16 @@
                                   <Style>None</Style>
                                 </Border>
                                 <PaddingLeft>0.5pt</PaddingLeft>
-                                <PaddingRight>0.5pt</PaddingRight>
+                                <PaddingRight>1pt</PaddingRight>
                                 <PaddingTop>0.5pt</PaddingTop>
                                 <PaddingBottom>0.5pt</PaddingBottom>
                               </Style>
                             </Textbox>
+                            <ColSpan>3</ColSpan>
                           </CellContents>
                         </TablixCell>
-                        <TablixCell>
-                          <CellContents>
-                            <Textbox Name="Textbox77">
-                              <CanGrow>true</CanGrow>
-                              <KeepTogether>true</KeepTogether>
-                              <Paragraphs>
-                                <Paragraph>
-                                  <TextRuns>
-                                    <TextRun>
-                                      <Value>=Fields!OrderQty.Value-Fields!BOQty.Value</Value>
-                                      <Style>
-                                        <FontSize>8pt</FontSize>
-                                        <Format>0;(0);''</Format>
-                                      </Style>
-                                    </TextRun>
-                                  </TextRuns>
-                                  <Style>
-                                    <TextAlign>Right</TextAlign>
-                                  </Style>
-                                </Paragraph>
-                              </Paragraphs>
-                              <rd:DefaultName>Textbox77</rd:DefaultName>
-                              <Visibility>
-                                <Hidden>=IIF(Fields!SLType.Value&lt;&gt;" " ,False,true)</Hidden>
-                              </Visibility>
-                              <Style>
-                                <Border>
-                                  <Style>None</Style>
-                                </Border>
-                                <PaddingLeft>0.5pt</PaddingLeft>
-                                <PaddingRight>0.5pt</PaddingRight>
-                                <PaddingTop>0.5pt</PaddingTop>
-                                <PaddingBottom>0.5pt</PaddingBottom>
-                              </Style>
-                            </Textbox>
-                          </CellContents>
-                        </TablixCell>
-                        <TablixCell>
-                          <CellContents>
-                            <Textbox Name="Textbox79">
-                              <CanGrow>true</CanGrow>
-                              <KeepTogether>true</KeepTogether>
-                              <Paragraphs>
-                                <Paragraph>
-                                  <TextRuns>
-                                    <TextRun>
-                                      <Value>=Fields!BOQty.Value</Value>
-                                      <Style>
-                                        <FontSize>8pt</FontSize>
-                                        <Format>0;(0);''</Format>
-                                      </Style>
-                                    </TextRun>
-                                  </TextRuns>
-                                  <Style>
-                                    <TextAlign>Right</TextAlign>
-                                  </Style>
-                                </Paragraph>
-                              </Paragraphs>
-                              <rd:DefaultName>Textbox79</rd:DefaultName>
-                              <Visibility>
-                                <Hidden>=IIF(Fields!SLType.Value&lt;&gt;" " ,False,true)</Hidden>
-                              </Visibility>
-                              <Style>
-                                <Border>
-                                  <Style>None</Style>
-                                </Border>
-                                <PaddingLeft>0.5pt</PaddingLeft>
-                                <PaddingRight>2pt</PaddingRight>
-                                <PaddingTop>0.5pt</PaddingTop>
-                                <PaddingBottom>0.5pt</PaddingBottom>
-                              </Style>
-                            </Textbox>
-                          </CellContents>
-                        </TablixCell>
+                        <TablixCell />
+                        <TablixCell />
                         <TablixCell>
                           <CellContents>
                             <Textbox Name="Textbox75">
@@ -1739,7 +1563,7 @@
                       </TablixCells>
                     </TablixRow>
                     <TablixRow>
-                      <Height>0.44125cm</Height>
+                      <Height>0.97042cm</Height>
                       <TablixCells>
                         <TablixCell>
                           <CellContents>
@@ -1797,7 +1621,7 @@
                                 </Border>
                                 <PaddingLeft>0.5pt</PaddingLeft>
                                 <PaddingRight>0.5pt</PaddingRight>
-                                <PaddingTop>0.5pt</PaddingTop>
+                                <PaddingTop>2pt</PaddingTop>
                                 <PaddingBottom>0.5pt</PaddingBottom>
                               </Style>
                             </Textbox>
@@ -1833,87 +1657,17 @@
                                   <Style>None</Style>
                                 </Border>
                                 <PaddingLeft>0.5pt</PaddingLeft>
-                                <PaddingRight>0.5pt</PaddingRight>
+                                <PaddingRight>1pt</PaddingRight>
                                 <PaddingTop>0.5pt</PaddingTop>
                                 <PaddingBottom>0.5pt</PaddingBottom>
                               </Style>
                             </Textbox>
+                            <ColSpan>3</ColSpan>
+                            <rd:Selected>true</rd:Selected>
                           </CellContents>
                         </TablixCell>
-                        <TablixCell>
-                          <CellContents>
-                            <Textbox Name="Textbox90">
-                              <CanGrow>true</CanGrow>
-                              <KeepTogether>true</KeepTogether>
-                              <Paragraphs>
-                                <Paragraph>
-                                  <TextRuns>
-                                    <TextRun>
-                                      <Value>=Fields!Qtycasepack.Value-Fields!BOQtycasepack.Value</Value>
-                                      <Style>
-                                        <FontSize>8pt</FontSize>
-                                        <Format>0;(0);''</Format>
-                                      </Style>
-                                    </TextRun>
-                                  </TextRuns>
-                                  <Style>
-                                    <TextAlign>Right</TextAlign>
-                                  </Style>
-                                </Paragraph>
-                              </Paragraphs>
-                              <rd:DefaultName>Textbox90</rd:DefaultName>
-                              <Visibility>
-                                <Hidden>=IIF(Fields!SLType.Value&lt;&gt;" " ,False,true)</Hidden>
-                              </Visibility>
-                              <Style>
-                                <Border>
-                                  <Style>None</Style>
-                                </Border>
-                                <PaddingLeft>0.5pt</PaddingLeft>
-                                <PaddingRight>0.5pt</PaddingRight>
-                                <PaddingTop>0.5pt</PaddingTop>
-                                <PaddingBottom>0.5pt</PaddingBottom>
-                              </Style>
-                            </Textbox>
-                          </CellContents>
-                        </TablixCell>
-                        <TablixCell>
-                          <CellContents>
-                            <Textbox Name="Textbox91">
-                              <CanGrow>true</CanGrow>
-                              <KeepTogether>true</KeepTogether>
-                              <Paragraphs>
-                                <Paragraph>
-                                  <TextRuns>
-                                    <TextRun>
-                                      <Value>=Fields!BOQtycasepack.Value</Value>
-                                      <Style>
-                                        <FontSize>8pt</FontSize>
-                                        <Format>0;(0);''</Format>
-                                      </Style>
-                                    </TextRun>
-                                  </TextRuns>
-                                  <Style>
-                                    <TextAlign>Right</TextAlign>
-                                  </Style>
-                                </Paragraph>
-                              </Paragraphs>
-                              <rd:DefaultName>Textbox91</rd:DefaultName>
-                              <Visibility>
-                                <Hidden>=IIF(Fields!SLType.Value&lt;&gt;" " ,False,true)</Hidden>
-                              </Visibility>
-                              <Style>
-                                <Border>
-                                  <Style>None</Style>
-                                </Border>
-                                <PaddingLeft>0.5pt</PaddingLeft>
-                                <PaddingRight>2pt</PaddingRight>
-                                <PaddingTop>0.5pt</PaddingTop>
-                                <PaddingBottom>0.5pt</PaddingBottom>
-                              </Style>
-                            </Textbox>
-                          </CellContents>
-                        </TablixCell>
+                        <TablixCell />
+                        <TablixCell />
                         <TablixCell>
                           <CellContents>
                             <Textbox Name="Textbox92">
@@ -2083,7 +1837,7 @@
                       </TablixCells>
                     </TablixRow>
                     <TablixRow>
-                      <Height>0.6cm</Height>
+                      <Height>0.52063cm</Height>
                       <TablixCells>
                         <TablixCell>
                           <CellContents>
@@ -3977,7 +3731,7 @@
                 </TablixRowHierarchy>
                 <Top>1.64371cm</Top>
                 <Left>0.01323cm</Left>
-                <Height>4.28875cm</Height>
+                <Height>4.73855cm</Height>
                 <Width>19.34674cm</Width>
                 <ZIndex>1</ZIndex>
                 <Style>
@@ -4136,7 +3890,7 @@
                     <TablixMember />
                   </TablixMembers>
                 </TablixRowHierarchy>
-                <Top>6.03802cm</Top>
+                <Top>6.48808cm</Top>
                 <Left>0cm</Left>
                 <Height>0.52062cm</Height>
                 <Width>16.24916cm</Width>
@@ -4151,7 +3905,7 @@
             <KeepTogether>true</KeepTogether>
             <Top>0cm</Top>
             <Left>0.13876cm</Left>
-            <Height>6.70681cm</Height>
+            <Height>7.19364cm</Height>
             <Width>19.38887cm</Width>
             <Style>
               <Border>
@@ -4160,7 +3914,7 @@
             </Style>
           </Rectangle>
         </ReportItems>
-        <Height>6.70681cm</Height>
+        <Height>7.19364cm</Height>
         <Style />
       </Body>
       <Width>19.67284cm</Width>

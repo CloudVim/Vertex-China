@@ -69,7 +69,7 @@ report 50007 "PickInstruction_CBR"
             // { }
             column(Shipment_Method_Code; "Shipment Method Code")
             { }
-            column(Shipping_Agent_Code; "Shipping Agent Code")
+            column(Shipping_Agent_Code; AgentName_G)
             { }
             column(Invoice_Discount_Amount; "Invoice Discount Amount")
             { }
@@ -237,6 +237,11 @@ report 50007 "PickInstruction_CBR"
                 InvoiceNoBarode := BarcodeFontProvider.EncodeFont(BarcodeString, BarcodeSymbology);
 
                 if Location_G.Get("Location Code") then;
+                //........vin...//
+                Clear(AgentName_G);
+                if ShippingAgent_G.Get("Shipping Agent Code") then begin
+                    AgentName_G := ShippingAgent_G.Name;
+                end;
             end;
 
 
@@ -313,4 +318,6 @@ report 50007 "PickInstruction_CBR"
         CubeAmount: Decimal;
         Location_G: Record Location;
         CheckNonInventoryItem: Boolean;
+        ShippingAgent_G: Record "Shipping Agent";
+        AgentName_G: Text;
 }

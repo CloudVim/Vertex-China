@@ -91,7 +91,7 @@ report 50003 "PostedSalesInvoice"
                 { }
                 column(Unit_of_Measure; UnitofMeasure)
                 { }
-                column(Unit_Price; "Unit Price")//UnitPrice)
+                column(Unit_Price; UnitPrice)//"Unit Price")//UnitPrice)
                 { }
                 column(Line_Discount__; "Line Discount %")
                 { }
@@ -136,89 +136,102 @@ report 50003 "PostedSalesInvoice"
                     Clear(ItemUOM);
                     Clear(UnitofMeasure);
                     Clear(ItemCasePack);
-                    If Type <> Type::" " then
-                        NoofRows += 1;
-                    SalesLine_L.Reset();
-                    SalesLine_L.SetRange("Document No.", "Order No.");
-                    SalesLine_L.SetRange("Line No.", "Order Line No.");
-                    If SalesLine_L.FindFirst() then begin
-                        SLType := Format(SalesLine_L.Type);
-                        Item_L1.Reset();
-                        If Item_L1.Get(SalesLine_L."No.") then begin
-                            If Item_L1.Type <> Item_L1.Type::Inventory then begin
-                                BOQty := 0;
-                                OrderQty := 0;
-                                Clear(ItemUOM);
-                                //UnitPrice := 0;
-                                NetAmount := SalesLine_L.Amount;
-                                Clear(UnitofMeasure);
-                            end Else Begin
-                                NetAmount := SalesLine_L.Amount;
-                                //UnitPrice := SalesLine_L."Unit Price";
-                                UnitofMeasure := SalesLine_L."Unit of Measure";
-                                If Item_L1."Case Pack" <> 0 then
-                                    ItemUOM := Item_L1."Base Unit of Measure";
-                                If Item_L1."Unit Volume" <> 0 then
-                                    TotalCube := Item_L1."Unit Volume" * SalesInvoiceLine.Quantity
-                                Else
-                                    TotalCube := SalesInvoiceLine.Quantity;
-                                If Item_L1."Gross Weight" <> 0 then
-                                    TotalWeight := Item_L1."Gross Weight" * SalesInvoiceLine.Quantity
-                                else
-                                    TotalWeight := SalesInvoiceLine.Quantity;
-                                BOQty := SalesLine_L.Quantity - SalesLine_L."Quantity Shipped";
-                                OrderQty := SalesLine_L.Quantity;
-                            End;
-                        end;
-                    end else begin
-                        SalesLineArchive_L.Reset();
-                        SalesLineArchive_L.SetRange("Document Type", SalesLineArchive_L."Document Type"::Order);
-                        SalesLineArchive_L.SetRange("Document No.", "Order No.");
-                        SalesLineArchive_L.SetRange("Line No.", "Line No.");
-                        SalesLineArchive_L.SetRange("No.", "No.");
-                        If SalesLineArchive_L.FindFirst() then begin
-                            SLType := Format(SalesLineArchive_L.Type);
+                    If (Quantity = 0) ANd (Type = Type::Item) Then Begin
+                        CurrReport.Skip();
+                    End else begin
+                        If Type <> Type::" " then
+                            NoofRows += 1;
+                        SalesLine_L.Reset();
+                        SalesLine_L.SetRange("Document No.", "Order No.");
+                        SalesLine_L.SetRange("Line No.", "Order Line No.");
+                        SalesLine_L.SetFilter(Quantity, '<>%1', 0);
+                        If SalesLine_L.FindFirst() then begin
+                            SLType := Format(SalesLine_L.Type);
                             Item_L1.Reset();
-                            IF Item_L1.Get(SalesLineArchive_L."No.") then begin
+                            If Item_L1.Get(SalesLine_L."No.") then begin
                                 If Item_L1.Type <> Item_L1.Type::Inventory then begin
                                     BOQty := 0;
                                     OrderQty := 0;
                                     Clear(ItemUOM);
-                                    //UnitPrice := 0;
+                                    Clear(ItemNo);//AGT_DS_020723
+                                    Clear(ItemDescription);//AGT_DS_020723
+                                    UnitPrice := 0;//AGT_DS_020723
+                                    NetAmount := SalesLine_L.Amount;
                                     Clear(UnitofMeasure);
-                                    NetAmount := SalesLineArchive_L.Amount;
-                                end else Begin
-                                    NetAmount := SalesLineArchive_L.Amount;
-                                    UnitofMeasure := SalesLineArchive_L."Unit of Measure";
+                                end Else Begin
+                                    NetAmount := SalesLine_L.Amount;
+                                    UnitPrice := "Unit Price"; //AGT_DS_020723
+                                    UnitofMeasure := SalesLine_L."Unit of Measure";
                                     If Item_L1."Case Pack" <> 0 then
                                         ItemUOM := Item_L1."Base Unit of Measure";
-                                    //UnitPrice := SalesLineArchive_L."Unit Price";
                                     If Item_L1."Unit Volume" <> 0 then
                                         TotalCube := Item_L1."Unit Volume" * SalesInvoiceLine.Quantity
-                                    else
+                                    Else
                                         TotalCube := SalesInvoiceLine.Quantity;
                                     If Item_L1."Gross Weight" <> 0 then
                                         TotalWeight := Item_L1."Gross Weight" * SalesInvoiceLine.Quantity
                                     else
                                         TotalWeight := SalesInvoiceLine.Quantity;
-                                    BOQty := SalesLineArchive_L.Quantity - SalesLineArchive_L."Quantity Shipped";
-                                    OrderQty := SalesLineArchive_L.Quantity;
+                                    BOQty := SalesLine_L.Quantity - SalesLine_L."Quantity Shipped";
+                                    OrderQty := SalesLine_L.Quantity;
+                                    ItemNo := "No."; //AGT_DS_020723
+                                    ItemDescription := Description //AGT_DS_020723
                                 End;
-                            end
+                            end;
+                        end else begin
+                            SalesLineArchive_L.Reset();
+                            SalesLineArchive_L.SetRange("Document Type", SalesLineArchive_L."Document Type"::Order);
+                            SalesLineArchive_L.SetRange("Document No.", "Order No.");
+                            SalesLineArchive_L.SetRange("Line No.", "Line No.");
+                            SalesLineArchive_L.SetRange("No.", "No.");
+                            SalesLine_L.SetFilter(Quantity, '<>%1', 0);//AGt_DS020723
+                            If SalesLineArchive_L.FindFirst() then begin
+                                SLType := Format(SalesLineArchive_L.Type);
+                                Item_L1.Reset();
+                                IF Item_L1.Get(SalesLineArchive_L."No.") then begin
+                                    If Item_L1.Type <> Item_L1.Type::Inventory then begin
+                                        BOQty := 0;
+                                        OrderQty := 0;
+                                        Clear(ItemUOM);
+                                        Clear(ItemNo);//AGT_DS_020723
+                                        Clear(ItemDescription);//AGT_DS_020723
+                                        UnitPrice := 0;//AGT_DS_020723
+                                        Clear(UnitofMeasure);
+                                        NetAmount := SalesLineArchive_L.Amount;
+                                    end else Begin
+                                        NetAmount := SalesLineArchive_L.Amount;
+                                        UnitofMeasure := SalesLineArchive_L."Unit of Measure";
+                                        If Item_L1."Case Pack" <> 0 then
+                                            ItemUOM := Item_L1."Base Unit of Measure";
+                                        UnitPrice := "Unit Price";//AGT_DS_020723
+                                        If Item_L1."Unit Volume" <> 0 then
+                                            TotalCube := Item_L1."Unit Volume" * SalesInvoiceLine.Quantity
+                                        else
+                                            TotalCube := SalesInvoiceLine.Quantity;
+                                        If Item_L1."Gross Weight" <> 0 then
+                                            TotalWeight := Item_L1."Gross Weight" * SalesInvoiceLine.Quantity
+                                        else
+                                            TotalWeight := SalesInvoiceLine.Quantity;
+                                        BOQty := SalesLineArchive_L.Quantity - SalesLineArchive_L."Quantity Shipped";
+                                        OrderQty := SalesLineArchive_L.Quantity;
+                                        ItemNo := "No."; //AGT_DS_020723
+                                        ItemDescription := Description //AGT_DS_020723
+                                    End;
+                                end
+                            end;
                         end;
-                    end;
-                    Item_L.reset;
-                    If Item_L.Get("No.") then begin
-                        If Item_L."Case Pack" <> 0 then begin
-                            ItemCasePack := 'CS' + Format(Item_L."Case Pack");
-                            If OrderQty <> 0 then
-                                Qtycasepack := OrderQty / Item_L."Case Pack";
-                            IF BOQty <> 0 then
-                                BOQtycasepack := BOQty / Item_L."Case Pack";
-                            //ItemUOM := Item_L."Base Unit of Measure";//AGT_DS_11292022   Used this field on afterget record
+                        Item_L.reset;
+                        If Item_L.Get("No.") then begin
+                            If Item_L."Case Pack" <> 0 then begin
+                                ItemCasePack := 'CS' + Format(Item_L."Case Pack");
+                                If OrderQty <> 0 then
+                                    Qtycasepack := OrderQty / Item_L."Case Pack";
+                                IF BOQty <> 0 then
+                                    BOQtycasepack := BOQty / Item_L."Case Pack";
+                                //ItemUOM := Item_L."Base Unit of Measure";//AGT_DS_11292022   Used this field on afterget record
+                            end;
                         end;
-                    end;
-
+                    End
                 end;
 
                 trigger OnPreDataItem()
@@ -381,4 +394,6 @@ report 50003 "PostedSalesInvoice"
         NetAmount: Decimal;
         UnitofMeasure: Text[50];
         ItemCasePack: Text;
+        ItemDescription: Text;
+        ItemNo: Text;
 }

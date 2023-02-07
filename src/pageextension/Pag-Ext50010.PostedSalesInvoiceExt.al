@@ -20,8 +20,7 @@ pageextension 50010 "PostedSalesInvoice_Ext" extends "Posted Sales Invoice"
                 ApplicationArea = Basic, Suite;
                 Caption = 'Item usage by location';
                 Image = PrintReport;
-                Promoted = true;
-                PromotedCategory = Process;
+                //Promoted = true;
                 RunObject = report "ItemSales  by Location";
                 Ellipsis = true;
             }
