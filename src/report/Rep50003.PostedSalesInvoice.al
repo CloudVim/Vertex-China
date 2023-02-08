@@ -174,8 +174,8 @@ report 50003 "PostedSalesInvoice"
                                         TotalWeight := SalesInvoiceLine.Quantity;
                                     BOQty := SalesLine_L.Quantity - SalesLine_L."Quantity Shipped";
                                     OrderQty := SalesLine_L.Quantity;
-                                    ItemNo := "No."; //AGT_DS_020723
-                                    ItemDescription := Description //AGT_DS_020723
+                                    // ItemNo := "No."; //AGT_DS_020723
+                                    // ItemDescription := Description //AGT_DS_020723
                                 End;
                             end;
                         end else begin
@@ -214,8 +214,8 @@ report 50003 "PostedSalesInvoice"
                                             TotalWeight := SalesInvoiceLine.Quantity;
                                         BOQty := SalesLineArchive_L.Quantity - SalesLineArchive_L."Quantity Shipped";
                                         OrderQty := SalesLineArchive_L.Quantity;
-                                        ItemNo := "No."; //AGT_DS_020723
-                                        ItemDescription := Description //AGT_DS_020723
+                                        // ItemNo := "No."; //AGT_DS_020723
+                                        // ItemDescription := Description //AGT_DS_020723
                                     End;
                                 end
                             end;

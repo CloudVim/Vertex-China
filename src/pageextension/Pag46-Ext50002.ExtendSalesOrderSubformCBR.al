@@ -44,7 +44,7 @@ pageextension 50002 "ExtendSalesOrderSubform_CBR" extends "Sales Order Subform" 
                     if RecItem."Case Pack" <> 0 then begin
                         CaseQty := Rec.Quantity / RecItem."Case Pack";
                         iF (CaseQty MOD 1) <> 0 then
-                            Error('The Quantity is out of case pack. Please correct. ')
+                            Error('The Quantity on sales line is out of case pack. Please correct. ')
                         else
                             Rec."No. of Cases" := Rec.Quantity / RecItem."Case Pack";
                         Rec.Modify();
@@ -80,7 +80,7 @@ pageextension 50002 "ExtendSalesOrderSubform_CBR" extends "Sales Order Subform" 
                     if RecItem1."Case Pack" <> 0 then begin
                         CaseQty1 := Rec."Qty. to Ship" / RecItem1."Case Pack";
                         iF (CaseQty1 MOD 1) <> 0 then
-                            Error('The Quantity to Ship is out of case pack. Please correct. ')
+                            Error('The Quantity of sales Line to Ship is out of case pack. Please correct. ')
                         else
                             Rec."No. of Cases Ship" := Rec."Qty. to Ship" / RecItem1."Case Pack";
                         Rec.Modify();

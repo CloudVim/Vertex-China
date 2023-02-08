@@ -12,6 +12,7 @@ report 50013 "Item Usage Location"
         {
             RequestFilterFields = "No.";
 
+            column(Factory; Factory) { }
             dataitem("Item Ledger Entry";
             "Item Ledger Entry")
             {
@@ -38,6 +39,7 @@ report 50013 "Item Usage Location"
                 column(QtyInTrans_G; QtyInTrans_G) { }
                 column(QtyCommit_G; QtyCommit_G) { }
                 column(QtyOnOrder_G; QtyOnOrder_G) { }
+                column(AvgSales_G; AvgSales_G) { }
                 trigger OnPreDataItem()
                 var
                 //ILE
@@ -80,12 +82,19 @@ report 50013 "Item Usage Location"
                             QtyInTrans_G := "Remaining Quantity";
 
                     QtyCommit_G := 0;
-                    If locationCode = '333' then
+                    AvgSales_G := 0;
+                    If locationCode = '333' then begin
                         If not SalesLine_333 then
                             GetsalesLine333(Item);
-                    If locationCode = '888' then
+                        IF not AVGSalesLine_333 then
+                            GetPostedsalesLine333(Item);
+                    end;
+                    If locationCode = '888' then begin
                         If not SalesLine_888 then
                             GetsalesLine888(Item);
+                        If Not AVGSalesLine_888 then
+                            GetPostedsalesLine888(Item);
+                    end;
 
                     QtyOnOrder_G := 0;
                     If locationCode = '333' then
@@ -104,6 +113,8 @@ report 50013 "Item Usage Location"
                 SalesLine_888 := false;
                 PurchaseLine_333 := false;
                 PurchaseLine_888 := false;
+                AVGSalesLine_333 := false;
+                AVGSalesLine_888 := false;
             end;
         }
     }
@@ -148,12 +159,15 @@ report 50013 "Item Usage Location"
         QtyReserved_G: Decimal;
         QtyCommit_G: Decimal;
         QtyOnOrder_G: Decimal;
+        AvgSales_G: Decimal;
         locationCode: Text;
         LocationCodeReserved: Text;
         SalesLine_333: Boolean;
         SalesLine_888: Boolean;
         PurchaseLine_333: Boolean;
         PurchaseLine_888: Boolean;
+        AVGSalesLine_333: Boolean;
+        AVGSalesLine_888: Boolean;
 
     local procedure GetsalesLine333(var Item_L: Record Item)
     var
@@ -222,6 +236,48 @@ report 50013 "Item Usage Location"
         If not PurchaseLine_L.IsEmpty then begin
             QtyOnOrder_G := PurchaseLine_L."Outstanding Quantity";
             PurchaseLine_888 := true;
+        end;
+    End;
+
+    local procedure GetPostedsalesLine333(var Item_L: Record Item)
+    var
+        SalesInvLine_L: Record "Sales Invoice Line";
+        StartDate: Date;
+    Begin
+        //QtyCommit_G := 0;
+        StartDate := 0D;
+        StartDate := CalcDate('-6M', WorkDate());
+        SalesInvLine_L.Reset();
+        SalesInvLine_L.SetCurrentKey("No.", "Location Code");
+        SalesInvLine_L.SetRange("No.", Item_L."No.");
+        SalesInvLine_L.SetFilter("Location Code", '%1|%2|%3', '333', '666-333', 'OW-333');
+        SalesInvLine_L.SetFilter("Posting Date", '%1..%2', StartDate, WorkDate());
+        SalesInvLine_L.CalcSums(Quantity);
+        If not SalesInvLine_L.IsEmpty then begin
+            If SalesInvLine_L.Quantity <> 0 then
+                AvgSales_G := SalesInvLine_L.Quantity / 6;
+            AVGSalesLine_333 := true;
+        end;
+    End;
+
+    local procedure GetPostedsalesLine888(var Item_L: Record Item)
+    var
+        SalesInvLine_L: Record "Sales Invoice Line";
+        StartDate: Date;
+    Begin
+        //QtyCommit_G := 0;
+        StartDate := 0D;
+        StartDate := CalcDate('-6M', WorkDate());
+        SalesInvLine_L.Reset();
+        SalesInvLine_L.SetCurrentKey("No.", "Location Code");
+        SalesInvLine_L.SetRange("No.", Item_L."No.");
+        SalesInvLine_L.SetFilter("Location Code", '%1|%2|%3', '888', '666-888', 'OW-888');
+        SalesInvLine_L.SetFilter("Posting Date", '%1..%2', StartDate, WorkDate());
+        SalesInvLine_L.CalcSums(Quantity);
+        If not SalesInvLine_L.IsEmpty then begin
+            If SalesInvLine_L.Quantity <> 0 then
+                AvgSales_G := SalesInvLine_L.Quantity / 6;
+            AVGSalesLine_888 := true;
         end;
     End;
 }
