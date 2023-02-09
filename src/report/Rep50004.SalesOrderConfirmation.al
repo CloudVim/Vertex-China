@@ -97,6 +97,7 @@ report 50004 "SalesOrderConfirmation"
                 column(Line_Discount__; "Line Discount %")
                 { }
                 column(UnitPriceafterDiscount; "CBR_Unit Price Line Discount") { }
+                column(CBRUnitPrice; CBRUnitPrice) { }//AGT.YK.090223++
                 column(Amount; NetAmount)
                 { }
                 column(BOQtycasepack; BOQtycasepack)
@@ -168,6 +169,10 @@ report 50004 "SalesOrderConfirmation"
                                     TotalWeight := SalesLine_L.Quantity;
                                 BOQty := SalesLine_L.Quantity - SalesLine_L."Quantity Shipped";
                                 OrderQty := SalesLine_L.Quantity;
+                                //AGT.YK.090223++
+                                CBRUnitPrice := SalesLine_L."Unit Price";
+                                // CBRUnitPrice := SalesLine_L."CBR_Unit Price Line Discount"; 
+                                //AGT.YK.090223++
                             End;
                         end;
                     end else begin
@@ -369,4 +374,6 @@ report 50004 "SalesOrderConfirmation"
         TotalCube: Decimal;
         TotalWeight: Decimal;
         UOMVisible: Boolean;//AGT_YK_12072022
+        CBRUnitPrice: Decimal;//AGT.YK.090223
+
 }

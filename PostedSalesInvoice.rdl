@@ -1663,7 +1663,6 @@
                               </Style>
                             </Textbox>
                             <ColSpan>3</ColSpan>
-                            <rd:Selected>true</rd:Selected>
                           </CellContents>
                         </TablixCell>
                         <TablixCell />
@@ -3699,11 +3698,7 @@
                         <TablixMember>
                           <Group Name="Details" />
                           <TablixMembers>
-                            <TablixMember>
-                              <Visibility>
-                                <Hidden>=IIF(Fields!ItemNo.Value&lt;&gt;"",false,true)</Hidden>
-                              </Visibility>
-                            </TablixMember>
+                            <TablixMember />
                             <TablixMember />
                           </TablixMembers>
                         </TablixMember>
@@ -5882,6 +5877,12 @@ End Function
         </Field>
         <Field Name="AmountFormat">
           <DataField>AmountFormat</DataField>
+        </Field>
+        <Field Name="FrtAmount">
+          <DataField>FrtAmount</DataField>
+        </Field>
+        <Field Name="FrtAmountFormat">
+          <DataField>FrtAmountFormat</DataField>
         </Field>
         <Field Name="BOQtycasepack">
           <DataField>BOQtycasepack</DataField>

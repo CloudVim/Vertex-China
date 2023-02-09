@@ -41,7 +41,7 @@ pageextension 50002 "ExtendSalesOrderSubform_CBR" extends "Sales Order Subform" 
                 CurrPage.Update(false);
                 clear(CaseQty);
                 If RecItem.Get(Rec."No.") then begin
-                    if RecItem."Case Pack" <> 0 then begin
+                    if (RecItem."Case Pack" <> 0) and (rec."Unit of Measure Code" = 'DZ') then begin  //AGT.YK.090223 added UOM condition
                         CaseQty := Rec.Quantity / RecItem."Case Pack";
                         iF (CaseQty MOD 1) <> 0 then
                             Error('The Quantity on sales line is out of case pack. Please correct. ')
@@ -77,7 +77,7 @@ pageextension 50002 "ExtendSalesOrderSubform_CBR" extends "Sales Order Subform" 
             begin
                 clear(CaseQty1);
                 If RecItem1.Get(Rec."No.") then begin
-                    if RecItem1."Case Pack" <> 0 then begin
+                    if (RecItem1."Case Pack" <> 0) and (rec."Unit of Measure Code" = 'DZ') then begin//AGT.SS
                         CaseQty1 := Rec."Qty. to Ship" / RecItem1."Case Pack";
                         iF (CaseQty1 MOD 1) <> 0 then
                             Error('The Quantity of sales Line to Ship is out of case pack. Please correct. ')

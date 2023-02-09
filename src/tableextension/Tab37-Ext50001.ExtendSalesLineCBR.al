@@ -109,7 +109,10 @@ tableextension 50001 "ExtendSalesLine_CBR" extends "Sales Line" //37
                 //AGT_YK_200922++
                 if (Rec."Document Type" = Rec."Document Type"::Quote) OR (Rec."Document Type" = Rec."Document Type"::Order) then begin
                     if ItemL.Get(Rec."No.") then
-                        Rec."Case Pack" := ItemL."Case Pack";
+                        if ItemL."Base Unit of Measure" = 'DZ' then //AGT.YK.090223
+                            Rec."Case Pack" := ItemL."Case Pack"
+                        else//AGT.YK.090223
+                            Rec."Case Pack" := 1;//AGT.YK.090223
                 end;
                 //AGT_YK_200922--
             end;

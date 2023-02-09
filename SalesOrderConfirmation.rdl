@@ -1543,7 +1543,7 @@
                                 <Paragraph>
                                   <TextRuns>
                                     <TextRun>
-                                      <Value>=Fields!UnitPriceafterDiscount.Value</Value>
+                                      <Value>=Fields!CBRUnitPrice.Value</Value>
                                       <Style>
                                         <FontSize>8pt</FontSize>
                                         <Format>0.00;(0.00);''</Format>
@@ -5735,6 +5735,12 @@ End Function
         </Field>
         <Field Name="UnitPriceafterDiscountFormat">
           <DataField>UnitPriceafterDiscountFormat</DataField>
+        </Field>
+        <Field Name="CBRUnitPrice">
+          <DataField>CBRUnitPrice</DataField>
+        </Field>
+        <Field Name="CBRUnitPriceFormat">
+          <DataField>CBRUnitPriceFormat</DataField>
         </Field>
         <Field Name="Amount">
           <DataField>Amount</DataField>

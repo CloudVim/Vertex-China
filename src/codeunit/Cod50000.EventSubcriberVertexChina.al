@@ -31,4 +31,48 @@ codeunit 50000 "EventSubcriber_VertexChina"
             IsHandled := true;
     End;
 
+    //AGT.YK.090223++
+    [EventSubscriber(ObjectType::Table, Database::"Sales Line", 'OnAfterValidateEvent', 'Quantity', False, False)]
+    local procedure OnAfterValidateEvent_SalesLineQty(var Rec: Record "Sales Line"; var xRec: Record "Sales Line")
+    var
+    begin
+        UpdateCasePackQty(Rec);
+    end;
+
+    [EventSubscriber(ObjectType::Table, Database::"Sales Line", 'OnAfterValidateEvent', 'Unit of Measure Code', False, False)]
+    local procedure OnAfterValidateEvent_SalesLineUOM(var Rec: Record "Sales Line"; var xRec: Record "Sales Line")
+    var
+    begin
+        UpdateCasePackQty(Rec);
+    end;
+
+    local procedure UpdateCasePackQty(var Rec: Record "Sales Line")
+    var
+        RecItem1: Record Item;
+    begin
+        If RecItem1.Get(Rec."No.") then begin
+            if (RecItem1."Case Pack" > 0) and (rec."Unit of Measure Code" = 'DZ') then
+                Rec."Case Pack" := RecItem1."Case Pack"
+            else
+                if rec."Unit of Measure Code" = 'EA' then
+                    Rec."Case Pack" := 1;
+        end;
+    end;
+
+    [EventSubscriber(ObjectType::Table, Database::"Sales Line", 'OnAfterValidateEvent', 'Unit Price', False, False)]
+    local procedure OnAfterValidateEvent_SalesLineUnitPrice(var Rec: Record "Sales Line"; var xRec: Record "Sales Line")
+    var
+        SalesLine: Record "Sales Line";
+    begin
+        SalesLine.UpdateTotalWeightForOrder(Rec);
+    end;
+
+    [EventSubscriber(ObjectType::Table, Database::"Sales Line", 'OnAfterValidateEvent', 'Line Discount %', False, False)]
+    local procedure OnAfterValidateEvent_SalesLineDiscout(var Rec: Record "Sales Line"; var xRec: Record "Sales Line")
+    var
+        SalesLine: Record "Sales Line";
+    begin
+        SalesLine.UpdateTotalWeightForOrder(Rec);
+    end;
+    //AGT.YK.090223--
 }
