@@ -286,7 +286,7 @@ report 50003 "PostedSalesInvoice"
                         // end;
                         Item_L.reset;
                         If Item_L.Get("No.") then begin
-                            If Item_L."Case Pack" <> 0 then begin
+                            If (Item_L."Case Pack" <> 0) and (Item_L.Type = Item_L.Type::Inventory) then begin //AGT.YK.100223 Added the second condtion
                                 ItemCasePack := 'CS' + Format(Item_L."Case Pack");
                                 If OrderQty <> 0 then
                                     Qtycasepack := OrderQty / Item_L."Case Pack";

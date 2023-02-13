@@ -806,7 +806,7 @@
                       <Width>0.70031cm</Width>
                     </TablixColumn>
                     <TablixColumn>
-                      <Width>6.8555cm</Width>
+                      <Width>8.40956cm</Width>
                     </TablixColumn>
                     <TablixColumn>
                       <Width>1.22599cm</Width>
@@ -815,19 +815,19 @@
                       <Width>1.14892cm</Width>
                     </TablixColumn>
                     <TablixColumn>
-                      <Width>1.50386cm</Width>
+                      <Width>1.1966cm</Width>
                     </TablixColumn>
                     <TablixColumn>
-                      <Width>1.67232cm</Width>
+                      <Width>1.07232cm</Width>
                     </TablixColumn>
                     <TablixColumn>
                       <Width>1.45293cm</Width>
                     </TablixColumn>
                     <TablixColumn>
-                      <Width>1.41912cm</Width>
+                      <Width>1.07232cm</Width>
                     </TablixColumn>
                     <TablixColumn>
-                      <Width>1.59451cm</Width>
+                      <Width>1.29451cm</Width>
                     </TablixColumn>
                     <TablixColumn>
                       <Width>1.77328cm</Width>
@@ -882,7 +882,7 @@
                                   <Style>Solid</Style>
                                   <Width>1pt</Width>
                                 </RightBorder>
-                                <VerticalAlign>Top</VerticalAlign>
+                                <VerticalAlign>Middle</VerticalAlign>
                                 <PaddingLeft>0.5pt</PaddingLeft>
                                 <PaddingRight>0.5pt</PaddingRight>
                                 <PaddingTop>0.5pt</PaddingTop>
@@ -936,7 +936,7 @@
                                   <Style>Solid</Style>
                                   <Width>1pt</Width>
                                 </RightBorder>
-                                <VerticalAlign>Top</VerticalAlign>
+                                <VerticalAlign>Middle</VerticalAlign>
                                 <PaddingLeft>0.5pt</PaddingLeft>
                                 <PaddingRight>0.5pt</PaddingRight>
                                 <PaddingTop>0.5pt</PaddingTop>
@@ -990,7 +990,7 @@
                                   <Style>Solid</Style>
                                   <Width>1pt</Width>
                                 </RightBorder>
-                                <VerticalAlign>Top</VerticalAlign>
+                                <VerticalAlign>Middle</VerticalAlign>
                                 <PaddingLeft>0.5pt</PaddingLeft>
                                 <PaddingRight>0.5pt</PaddingRight>
                                 <PaddingTop>0.5pt</PaddingTop>
@@ -1047,7 +1047,7 @@
                                   <Style>Solid</Style>
                                   <Width>1pt</Width>
                                 </RightBorder>
-                                <VerticalAlign>Top</VerticalAlign>
+                                <VerticalAlign>Middle</VerticalAlign>
                                 <PaddingLeft>0.5pt</PaddingLeft>
                                 <PaddingRight>0.5pt</PaddingRight>
                                 <PaddingTop>0.5pt</PaddingTop>
@@ -1101,7 +1101,7 @@
                                   <Style>Solid</Style>
                                   <Width>1pt</Width>
                                 </RightBorder>
-                                <VerticalAlign>Top</VerticalAlign>
+                                <VerticalAlign>Middle</VerticalAlign>
                                 <PaddingLeft>0.5pt</PaddingLeft>
                                 <PaddingRight>0.5pt</PaddingRight>
                                 <PaddingTop>0.5pt</PaddingTop>
@@ -1155,7 +1155,7 @@
                                   <Style>Solid</Style>
                                   <Width>1pt</Width>
                                 </RightBorder>
-                                <VerticalAlign>Top</VerticalAlign>
+                                <VerticalAlign>Middle</VerticalAlign>
                                 <PaddingLeft>0.5pt</PaddingLeft>
                                 <PaddingRight>0.5pt</PaddingRight>
                                 <PaddingTop>0.5pt</PaddingTop>
@@ -1209,7 +1209,7 @@
                                   <Style>Solid</Style>
                                   <Width>1pt</Width>
                                 </RightBorder>
-                                <VerticalAlign>Top</VerticalAlign>
+                                <VerticalAlign>Middle</VerticalAlign>
                                 <PaddingLeft>0.5pt</PaddingLeft>
                                 <PaddingRight>0.5pt</PaddingRight>
                                 <PaddingTop>0.5pt</PaddingTop>
@@ -1263,7 +1263,7 @@
                                   <Style>Solid</Style>
                                   <Width>1pt</Width>
                                 </RightBorder>
-                                <VerticalAlign>Top</VerticalAlign>
+                                <VerticalAlign>Middle</VerticalAlign>
                                 <PaddingLeft>0.5pt</PaddingLeft>
                                 <PaddingRight>0.5pt</PaddingRight>
                                 <PaddingTop>0.5pt</PaddingTop>
@@ -1403,6 +1403,9 @@
                                 </Paragraph>
                               </Paragraphs>
                               <rd:DefaultName>Textbox75</rd:DefaultName>
+                              <Visibility>
+                                <Hidden>=IIF(Fields!SLType.Value&lt;&gt;" " ,False,true)</Hidden>
+                              </Visibility>
                               <Style>
                                 <Border>
                                   <Style>None</Style>
@@ -1563,7 +1566,7 @@
                       </TablixCells>
                     </TablixRow>
                     <TablixRow>
-                      <Height>0.97042cm</Height>
+                      <Height>0.6882cm</Height>
                       <TablixCells>
                         <TablixCell>
                           <CellContents>
@@ -1836,7 +1839,7 @@
                       </TablixCells>
                     </TablixRow>
                     <TablixRow>
-                      <Height>0.52063cm</Height>
+                      <Height>0.32063cm</Height>
                       <TablixCells>
                         <TablixCell>
                           <CellContents>
@@ -3340,7 +3343,7 @@
                       </TablixCells>
                     </TablixRow>
                     <TablixRow>
-                      <Height>0.6cm</Height>
+                      <Height>0.4cm</Height>
                       <TablixCells>
                         <TablixCell>
                           <CellContents>
@@ -3698,7 +3701,11 @@
                         <TablixMember>
                           <Group Name="Details" />
                           <TablixMembers>
-                            <TablixMember />
+                            <TablixMember>
+                              <Visibility>
+                                <Hidden>=IIF(Fields!ItemNo.Value="",True,False)</Hidden>
+                              </Visibility>
+                            </TablixMember>
                             <TablixMember />
                           </TablixMembers>
                         </TablixMember>
@@ -3726,7 +3733,7 @@
                 </TablixRowHierarchy>
                 <Top>1.64371cm</Top>
                 <Left>0.01323cm</Left>
-                <Height>4.73855cm</Height>
+                <Height>4.05633cm</Height>
                 <Width>19.34674cm</Width>
                 <ZIndex>1</ZIndex>
                 <Style>
@@ -3885,7 +3892,7 @@
                     <TablixMember />
                   </TablixMembers>
                 </TablixRowHierarchy>
-                <Top>6.48808cm</Top>
+                <Top>5.78958cm</Top>
                 <Left>0cm</Left>
                 <Height>0.52062cm</Height>
                 <Width>16.24916cm</Width>
@@ -3900,8 +3907,8 @@
             <KeepTogether>true</KeepTogether>
             <Top>0cm</Top>
             <Left>0.13876cm</Left>
-            <Height>7.19364cm</Height>
-            <Width>19.38887cm</Width>
+            <Height>6.3102cm</Height>
+            <Width>19.66723cm</Width>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -3909,10 +3916,10 @@
             </Style>
           </Rectangle>
         </ReportItems>
-        <Height>7.19364cm</Height>
+        <Height>6.3102cm</Height>
         <Style />
       </Body>
-      <Width>19.67284cm</Width>
+      <Width>19.80599cm</Width>
       <Page>
         <PageHeader>
           <Height>10.55889cm</Height>

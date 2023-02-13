@@ -25,6 +25,10 @@ tableextension 50010 "CBR_SalesShipmentLine" extends "Sales Shipment Line"
             Editable = false;
 
         }
+        field(50017; CasestoShip; Decimal)
+        {
+            DataClassification = ToBeClassified;
+        }
     }
 
     var

@@ -33,6 +33,11 @@ tableextension 50002 "ExtendPostedSalesLine_CBR" extends "Sales Invoice Line" //
             Caption = 'Unit Price Line Discount';
             Editable = false;
         }
+        field(50017; CasestoShip; Decimal)
+        {
+            DataClassification = ToBeClassified;
+        }
+
 
     }
     var

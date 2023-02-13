@@ -81,6 +81,11 @@ tableextension 50001 "ExtendSalesLine_CBR" extends "Sales Line" //37
             Editable = false;
 
         }
+        field(50017; CasestoShip; Decimal)
+        {
+            Caption = 'Cases To Ship';
+            DataClassification = ToBeClassified;
+        }
         modify("Line Discount %")
         {
             trigger OnAfterValidate()

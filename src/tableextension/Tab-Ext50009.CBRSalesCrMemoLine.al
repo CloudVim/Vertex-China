@@ -17,6 +17,10 @@ tableextension 50009 "CBR_SalesCrMemoLine" extends "Sales Cr.Memo Line"
             Editable = false;
 
         }
+        field(50017; CasestoShip; Decimal)
+        {
+            DataClassification = ToBeClassified;
+        }
     }
 
     var

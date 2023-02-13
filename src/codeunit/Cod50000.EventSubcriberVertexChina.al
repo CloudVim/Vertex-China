@@ -75,4 +75,35 @@ codeunit 50000 "EventSubcriber_VertexChina"
         SalesLine.UpdateTotalWeightForOrder(Rec);
     end;
     //AGT.YK.090223--
+    //AGT_DS_130223++
+    [EventSubscriber(ObjectType::Table, Database::"Sales Line", 'OnAfterValidateEvent', 'Qty. to Ship', False, False)]
+    local procedure OnAfterValidateEvent_QtyToShip(var Rec: Record "Sales Line"; var xRec: Record "Sales Line")
+    var
+        Item_L: Record Item;
+    begin
+        If (Rec."Qty. to Ship" <> 0) and (Rec.Type = Rec.Type::Item) then
+            If Item_L.Get(Rec."No.") then
+                if Item_L."Case Pack" > 0 then
+                    Rec.CasestoShip := Rec."Qty. to Ship" / Item_L."Case Pack";
+    end;
+
+    [EventSubscriber(ObjectType::Page, Page::"Sales Order List", 'OnOpenPageEvent', '', False, False)]
+    local procedure OnOpenPageEvent_SalesOrderList(var Rec: Record "Sales Header")
+    var
+        Item_L: Record Item;
+        SalesLine_L: Record "Sales Line";
+    begin
+        SalesLine_L.Reset();
+        SalesLine_L.SetFilter(CasestoShip, '=%1', 0);
+        If SalesLine_L.FindSet() then
+            repeat
+                If (SalesLine_L."Qty. to Ship" <> 0) and (SalesLine_L.Type = SalesLine_L.Type::Item) then
+                    If Item_L.Get(SalesLine_L."No.") then
+                        if Item_L."Case Pack" > 0 then begin
+                            SalesLine_L.CasestoShip := SalesLine_L."Qty. to Ship" / Item_L."Case Pack";
+                            SalesLine_L.Modify();
+                        end;
+            Until SalesLine_L.Next() = 0;
+    end;
+    //AGT_DS_130223--
 }

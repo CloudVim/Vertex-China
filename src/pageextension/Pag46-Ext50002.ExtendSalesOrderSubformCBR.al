@@ -30,6 +30,15 @@ pageextension 50002 "ExtendSalesOrderSubform_CBR" extends "Sales Order Subform" 
             }
         }
         //AGT_YK_200922--
+        addafter("Qty. to Ship")
+        {
+
+            field(CasestoShip; Rec.CasestoShip)
+            {
+                ApplicationArea = All;
+                ToolTip = 'Specifies the value of the CasestoShip field.';
+            }
+        }
         modify(Quantity)
         {
             trigger OnAfterValidate()
