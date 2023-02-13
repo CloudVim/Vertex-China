@@ -140,13 +140,13 @@ report 50003 "PostedSalesInvoice"
                     Clear(ItemUOM);
                     Clear(UnitofMeasure);
                     Clear(ItemCasePack);
-                    SalesInvLineLoc.Reset();
-                    SalesInvLineLoc.SetRange("Document No.", SalesInvoiceLine."Document No.");
-                    SalesInvLineLoc.SetFilter("No.", '%1', 'ZZZ-*');
-                    if SalesInvLineLoc.FindSet() then
-                        repeat
-                            FrtAmount := SalesInvLineLoc.Amount;
-                        until SalesInvLineLoc.Next() = 0;
+                    // SalesInvLineLoc.Reset();
+                    // SalesInvLineLoc.SetRange("Document No.", SalesInvoiceLine."Document No.");
+                    // SalesInvLineLoc.SetFilter("No.", '%1', 'ZZZ-*');
+                    // if SalesInvLineLoc.FindSet() then
+                    //     repeat
+                    //         FrtAmount := SalesInvLineLoc.Amount;
+                    //     until SalesInvLineLoc.Next() = 0;
 
 
                     If (Quantity = 0) ANd (Type = Type::Item) Then Begin
