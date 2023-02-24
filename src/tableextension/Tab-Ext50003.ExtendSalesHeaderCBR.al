@@ -43,6 +43,13 @@ tableextension 50003 "ExtendSalesHeader_CBR" extends "Sales Header"
                         Rec."Commission Rate" := Cust."Commission Rate";
             end;
         }
+
+        field(50005; Stage; Text[15])
+        {
+            DataClassification = ToBeClassified;
+            Caption = 'Stage';
+            Editable = false;
+        }
     }
     var
         myInt: Integer;

@@ -258,6 +258,18 @@ report 50001 "PackingSlip"
                 CompanyInfoAdd[7] := CompanyInfo."Fax No.";
                 CompressArray(CompanyInfoAdd);
             end;
+
+            trigger OnPostDataItem()
+            var
+                SalesHeader_L: Record "Sales Header";
+            begin
+
+                If SalesHeader_L.get(SalesHeader."Document Type", SalesHeader."No.") then
+                    If (SalesHeader_L.Stage = 'Ordered') Or (SalesHeader_L.Stage = 'Picked') Or (SalesHeader_L.Stage = '') then begin
+                        SalesHeader_L.Stage := 'Shipped';
+                        SalesHeader_L.Modify();
+                    end;
+            end;
         }
     }
 

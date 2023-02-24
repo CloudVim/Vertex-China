@@ -14,7 +14,14 @@ pageextension 50007 "ExtendSalesOrder" extends "Sales Order List"
                 ApplicationArea = All;
                 ToolTip = 'Specifies the value of the Commission Rate field.';
             }
-
+        }
+        addafter(Status)
+        {
+            field(Stage; Rec.Stage)
+            {
+                ApplicationArea = all;
+                Caption = 'Stage';
+            }
         }
     }
     actions

@@ -18,6 +18,14 @@ pageextension 50008 "ExtendSalesOrder_CBR" extends "Sales Order"
                 ApplicationArea = All;
             }
         }
+        addafter(Status)
+        {
+            field(Stage; Rec.Stage)
+            {
+                ApplicationArea = all;
+                Caption = 'Stage';
+            }
+        }
     }
     actions
     {
