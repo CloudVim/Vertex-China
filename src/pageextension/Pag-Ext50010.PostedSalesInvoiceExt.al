@@ -12,7 +12,7 @@ pageextension 50010 "PostedSalesInvoice_Ext" extends "Posted Sales Invoice"
     }
 
     actions
-    {
+    {//AGT_DS_022823 Commemt the report as discussed by christoph
         addafter("S&end")
         {
             action(Itemusagebylocation)
@@ -21,11 +21,9 @@ pageextension 50010 "PostedSalesInvoice_Ext" extends "Posted Sales Invoice"
                 Caption = 'Item usage by location';
                 Image = PrintReport;
                 //Promoted = true;
-                RunObject = report "ItemSales  by Location";
+                RunObject = report "Item Usage Location";
                 Ellipsis = true;
             }
-
-
         }
         // Add changes to page actions here
     }

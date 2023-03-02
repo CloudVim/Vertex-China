@@ -40,13 +40,12 @@ pageextension 50005 "ExtendPostedSalesInvoices" extends "Posted Sales Invoices"
 
 
         addafter(AttachAsPDF)
-        {
+        {//AGT_DS_022823 Commemt the report as discussed by christoph
             action(Itemusagebylocation)
             {
                 ApplicationArea = Basic, Suite;
                 Caption = 'Item usage by location';
-                RunObject = report "ItemSales  by Location";
-                Image = PrintReport;
+                RunObject = report "Item Usage Location";
                 Promoted = true;
                 PromotedIsBig = true;
                 PromotedCategory = Process;
@@ -55,7 +54,6 @@ pageextension 50005 "ExtendPostedSalesInvoices" extends "Posted Sales Invoices"
 
 
         }
-        // Add changes to page actions here
     }
     var
         myInt: Integer;

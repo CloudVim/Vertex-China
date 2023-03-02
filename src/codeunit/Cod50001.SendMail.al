@@ -42,7 +42,7 @@ codeunit 50001 "SendMail"
                 end;
                 EmailMessage.create(SendToList, 'Daily Invoicing Report ', Body, TRUE, SendToCcList, SendToBccList);
                 tmpBlob.CreateOutStream(OutStr);
-                Report.SaveAs(Report::"Daily Invoicing Report", '', ReportFormat::Excel, OutStr);
+                Report.SaveAs(Report::"CBR Daily Invoicing Report", '', ReportFormat::Excel, OutStr);
                 tmpBlob.CreateInStream(InStr);
                 EmailMessage.AddAttachment('Daily Invoicing Report.Xlsx', 'Xlsx', InStr);
                 Email.Send(EmailMessage)
