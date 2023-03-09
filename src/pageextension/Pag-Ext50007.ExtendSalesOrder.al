@@ -23,6 +23,12 @@ pageextension 50007 "ExtendSalesOrder" extends "Sales Order List"
                 Caption = 'Stage';
             }
         }
+        //..AGT_VS_070323++  
+        modify("External Document No.")
+        {
+            Caption = 'P.O. Number';
+        }
+        //..AGT_VS_070323--
     }
     actions
     {

@@ -186,7 +186,7 @@ report 50014 "CBR Daily Invoicing Report"
                     if UseCurrency then
                         SetRange("Currency Code", TempCurrency.Code);
 
-                    SetRange("Posting Date", Today);
+                    SetRange("Posting Date", Today);//AGT_DS_030923
                 end;
             }
             dataitem("Sales Cr.Memo Header"; "Sales Cr.Memo Header")
@@ -310,7 +310,7 @@ report 50014 "CBR Daily Invoicing Report"
 
                 trigger OnPreDataItem()
                 begin
-                    SetRange("Posting Date", Today);
+                    SetRange("Posting Date", Today);//AGT_DS_030923 
 
                     if IncludeCreditMemos then begin
                         if UseCurrency then

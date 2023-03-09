@@ -68,7 +68,7 @@ report 50003 "PostedSalesInvoice"
             { }
             column(Shipment_Method_Code; "Shipment Method Code")
             { }
-            column(Shipping_Agent_Code; "Shipping Agent Code")
+            column(Shipping_Agent_Code; ShippingAgentName)
             { }
             column(Invoice_Discount_Amount; "Invoice Discount Amount")
             { }
@@ -323,13 +323,19 @@ report 50003 "PostedSalesInvoice"
                 BarcodeSymbology: Enum "Barcode Symbology";
                 BarcodeFontProvider: Interface "Barcode Font Provider";
                 BarcodeString: Code[30];
+                ShipAgent_L: Record "Shipping Agent";
             begin
                 Clear(BillTo);
                 Clear(ShipTo);
                 Clear(InvoiceNoBarode);
+                Clear(ShippingAgentName);
+
+                //AGT_VS_030723++
+                if ShipAgent_L.Get("Shipping Agent Code") then
+                    ShippingAgentName := ShipAgent_L.Name;
+                //AGT_VS_030723--
+
                 BillTo[1] := "Bill-to Name";
-                // BillTo[2] := "Bill-to Name 2";
-                // BillTo[3] := "Bill-to Contact";
                 BillTo[2] := "Bill-to Address";
                 BillTo[3] := "Bill-to Address 2";
                 BillTo[4] := "Bill-to City" + ', ' + "Bill-to County" + ' ' + "Bill-to Post Code";
@@ -427,6 +433,7 @@ report 50003 "PostedSalesInvoice"
         TotalCubesCaption = 'Total Cubes';
         TotalWeightCaption = 'Total Weight';
         CashDiscountCaption = 'Cash Discount';
+
     }
     trigger OnPreReport()
     var
@@ -461,4 +468,5 @@ report 50003 "PostedSalesInvoice"
         ItemCasePack: Text;
         ItemDescription: Text;
         ItemNo: Text;
+        ShippingAgentName: Text;
 }

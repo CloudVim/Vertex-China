@@ -52,14 +52,18 @@ report 50013 "Item Usage Location"
                 var
                 begin
 
-                    If "Location Code" = '333' then
+                    If "Location Code" = '333' then begin
                         QtyInHand_333 += "Remaining Quantity";
+                        Avrg6Mnthon333 := GetTotalCostforlast6Month("Item Ledger Entry"."Item No.", '333');
+                    end;
 
                     If "Location Code" = '666' then
                         QtyInHand_666 += "Remaining Quantity";
 
-                    If "Location Code" = '888' then
+                    If "Location Code" = '888' then begin
                         QtyInHand_888 += "Remaining Quantity";
+                        Avrg6Mnthon333 := GetTotalCostforlast6Month("Item Ledger Entry"."Item No.", '888');
+                    end;
 
                     //QtyInTrans = Qt on water //AGT_DS_021723
                     If "Location Code" = 'OW-333' then
@@ -135,6 +139,8 @@ report 50013 "Item Usage Location"
         SalesLine_888: Boolean;
         PurchaseLine_1: Boolean;
         AVGSalesLine_1: Boolean;
+        Avrg6Mnthon333: Decimal;
+        Avrg6Mnthon888: Decimal;
 
 
     local procedure GetsalesLine_333(var Item_L: Record Item)
@@ -205,5 +211,23 @@ report 50013 "Item Usage Location"
             AVGSalesLine_1 := true;
         end;
     End;
+
+    procedure GetTotalCostforlast6Month(ItemNo: Code[20]; locationcode: Code[20]) TotCost: Decimal
+    var
+        ILE: Record "Item Ledger Entry";
+        FromFilter: Date;
+    begin
+        FromFilter := CalcDate('CM-1M', WORKDATE); // Initialize the from date from current date - 6M
+        ILE.Reset();
+        ILE.SetRange("Item No.", ItemNo);
+        ILE.SetRange("Location Code", locationcode);
+        ILE.SetFilter(ILE."Posting Date", '%1..%2', FromFilter, WorkDate());
+        IF ILE.FindSet() then
+            repeat
+                Totcost += ILE."Cost Amount (Actual)";
+            until ILE.Next() = 0;
+        exit(TotCost)
+
+    end;
 }
 

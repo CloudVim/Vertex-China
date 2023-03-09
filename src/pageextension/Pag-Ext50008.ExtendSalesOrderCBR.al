@@ -26,6 +26,17 @@ pageextension 50008 "ExtendSalesOrder_CBR" extends "Sales Order"
                 Caption = 'Stage';
             }
         }
+        //..AGT_VS_070323++  
+        modify("External Document No.")
+        {
+            Caption = 'P.O. Number';
+        }
+        addbefore("Combine Shipments")
+        {
+            field("Weight To Ship"; Rec."Weight To Ship")
+            { ApplicationArea = all; Caption = 'Weight To Ship'; }
+        }
+        //..AGT_VS_070323--
     }
     actions
     {

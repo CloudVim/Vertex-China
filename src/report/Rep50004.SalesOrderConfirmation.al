@@ -67,7 +67,7 @@ report 50004 "SalesOrderConfirmation"
             { }
             column(Shipment_Method_Code; "Shipment Method Code")
             { }
-            column(Shipping_Agent_Code; "Shipping Agent Code")
+            column(Shipping_Agent_Code; ShippingAgentName)////AGT_VS_030723 Based on the new requirement on trello
             { }
             column(Invoice_Discount_Amount; "Invoice Discount Amount")
             { }
@@ -142,6 +142,7 @@ report 50004 "SalesOrderConfirmation"
                     TotalWeight := 0;
                     Clear(ItemUOM);
                     Clear(UnitofMeasure);
+                    Clear(CBRUnitPrice);
                     If Type <> Type::" " then
                         NoofRows += 1;
                     If SalesLine_L.get("Document Type", "Document No.", "Line No.") then begin
@@ -170,7 +171,7 @@ report 50004 "SalesOrderConfirmation"
                                 BOQty := SalesLine_L.Quantity - SalesLine_L."Quantity Shipped";
                                 OrderQty := SalesLine_L.Quantity;
                                 //AGT.YK.090223++
-                                CBRUnitPrice := SalesLine_L."Unit Price";
+                                CBRUnitPrice := SalesLine_L."CBR_Unit Price Line Discount";
                                 // CBRUnitPrice := SalesLine_L."CBR_Unit Price Line Discount"; 
                                 //AGT.YK.090223++
                             End;
@@ -252,13 +253,17 @@ report 50004 "SalesOrderConfirmation"
                 BarcodeSymbology: Enum "Barcode Symbology";
                 BarcodeFontProvider: Interface "Barcode Font Provider";
                 BarcodeString: Code[30];
+                ShipAgent_L: Record "Shipping Agent";
             begin
+                Clear(ShippingAgentName);
                 Clear(BillTo);
                 Clear(ShipTo);
                 Clear(InvoiceNoBarode);
+                //AGT_VS_030723++
+                if ShipAgent_L.Get("Shipping Agent Code") then
+                    ShippingAgentName := ShipAgent_L.Name;
+                //AGT_VS_030723--
                 BillTo[1] := "Bill-to Name";
-                // BillTo[2] := "Bill-to Name 2";
-                // BillTo[3] := "Bill-to Contact";
                 BillTo[2] := "Bill-to Address";
                 BillTo[3] := "Bill-to Address 2";
                 BillTo[4] := "Bill-to City" + ', ' + "Bill-to County" + ' ' + "Bill-to Post Code";
@@ -387,5 +392,6 @@ report 50004 "SalesOrderConfirmation"
         TotalWeight: Decimal;
         UOMVisible: Boolean;//AGT_YK_12072022
         CBRUnitPrice: Decimal;//AGT.YK.090223
+        ShippingAgentName: Text;//AGT_VS_030723
 
 }

@@ -837,7 +837,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value />
+                                  <Value>=Fields!TotalCaseQty.Value</Value>
                                   <Style>
                                     <FontSize>8pt</FontSize>
                                   </Style>
@@ -849,6 +849,9 @@
                             </Paragraph>
                           </Paragraphs>
                           <rd:DefaultName>Textbox146</rd:DefaultName>
+                          <Visibility>
+                            <Hidden>true</Hidden>
+                          </Visibility>
                           <Style>
                             <Border>
                               <Style>None</Style>
@@ -1390,9 +1393,10 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value />
+                                  <Value>=Sum(Fields!Qtycasepack.Value)</Value>
                                   <Style>
                                     <FontSize>8pt</FontSize>
+                                    <Format>0.00;(0.00)</Format>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
@@ -1519,7 +1523,7 @@
                     </TablixCell>
                     <TablixCell>
                       <CellContents>
-                        <Textbox Name="Textbox71">
+                        <Textbox Name="Textbox32">
                           <CanGrow>true</CanGrow>
                           <KeepTogether>true</KeepTogether>
                           <Paragraphs>
@@ -1537,7 +1541,7 @@
                               </Style>
                             </Paragraph>
                           </Paragraphs>
-                          <rd:DefaultName>Textbox71</rd:DefaultName>
+                          <rd:DefaultName>Textbox32</rd:DefaultName>
                           <Style>
                             <Border>
                               <Style>None</Style>
@@ -3615,9 +3619,10 @@
                     <Paragraph>
                       <TextRuns>
                         <TextRun>
-                          <Value />
+                          <Value>=ReportItems!Textbox146.Value</Value>
                           <Style>
                             <FontSize>8pt</FontSize>
+                            <Format>0.00;(0.00)</Format>
                           </Style>
                         </TextRun>
                       </TextRuns>
@@ -5289,6 +5294,12 @@ End Function
         </Field>
         <Field Name="CheckNonInventoryItem">
           <DataField>CheckNonInventoryItem</DataField>
+        </Field>
+        <Field Name="TotalCaseQty">
+          <DataField>TotalCaseQty</DataField>
+        </Field>
+        <Field Name="TotalCaseQtyFormat">
+          <DataField>TotalCaseQtyFormat</DataField>
         </Field>
       </Fields>
       <Query>

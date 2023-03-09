@@ -855,7 +855,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value />
+                                  <Value>=Fields!TotalCaseQty.Value</Value>
                                   <Style>
                                     <FontSize>8pt</FontSize>
                                   </Style>
@@ -867,6 +867,9 @@
                             </Paragraph>
                           </Paragraphs>
                           <rd:DefaultName>Textbox146</rd:DefaultName>
+                          <Visibility>
+                            <Hidden>true</Hidden>
+                          </Visibility>
                           <Style>
                             <Border>
                               <Style>None</Style>
@@ -3615,7 +3618,7 @@
                     <Paragraph>
                       <TextRuns>
                         <TextRun>
-                          <Value />
+                          <Value>=ReportItems!Textbox146.Value</Value>
                           <Style>
                             <FontSize>8pt</FontSize>
                           </Style>
@@ -5306,6 +5309,12 @@ End Function
         </Field>
         <Field Name="CheckNonInventoryItem">
           <DataField>CheckNonInventoryItem</DataField>
+        </Field>
+        <Field Name="TotalCaseQty">
+          <DataField>TotalCaseQty</DataField>
+        </Field>
+        <Field Name="TotalCaseQtyFormat">
+          <DataField>TotalCaseQtyFormat</DataField>
         </Field>
         <Field Name="Bin_Code">
           <DataField>Bin_Code</DataField>

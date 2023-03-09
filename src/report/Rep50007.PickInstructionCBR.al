@@ -119,6 +119,8 @@ report 50007 "PickInstruction_CBR"
                 column(CubeAmount; CubeAmount)
                 { }
                 column(CheckNonInventoryItem; CheckNonInventoryItem) { }
+                column(TotalCaseQty; TotalCaseQty) { }
+
                 column(Bin_Code; "Bin Code") { }
                 trigger OnAfterGetRecord()
                 var
@@ -126,6 +128,7 @@ report 50007 "PickInstruction_CBR"
                     SalesLineArchive_L: Record "Sales Line Archive";
                     Item_L: Record Item;
                     Item_L1: Record Item;
+                    ItemV: Record Item;
                 begin
                     CheckNonInventoryItem := false;
                     If Item_L1.Get("No.") then
@@ -167,6 +170,13 @@ report 50007 "PickInstruction_CBR"
                             IF BOQty <> 0 then
                                 BOQtycasepack := BOQty / Item_L."Case Pack";
                             ItemUOM := Item_L."Base Unit of Measure";
+
+                            // AGT_VS_030923++   
+                            if ItemV.Get(Item_L."No.") then begin
+                                if ItemV.Type = ItemV.type::Inventory then
+                                    TotalCaseQty += Qtycasepack;
+                            end;
+                            // AGT_VS_030923--
                         end;
                     end;
                     //AGT_DS
@@ -196,6 +206,7 @@ report 50007 "PickInstruction_CBR"
                     myInt: Integer;
                 begin
                     NoofRows := 0;
+                    TotalCaseQty := 0;
                 end;
 
             }
@@ -331,4 +342,5 @@ report 50007 "PickInstruction_CBR"
         CheckNonInventoryItem: Boolean;
         ShippingAgent_G: Record "Shipping Agent";
         AgentName_G: Text;
+        TotalCaseQty: Decimal;
 }
