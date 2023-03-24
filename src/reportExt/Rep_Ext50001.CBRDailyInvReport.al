@@ -1,5 +1,6 @@
 reportextension 50001 "DailyInvoicingReportExt" extends "Daily Invoicing Report"
 {
+    RDLCLayout = './DailyInvoicingReportExt.rdl';
     dataset
     {
         add("Sales Invoice Header")

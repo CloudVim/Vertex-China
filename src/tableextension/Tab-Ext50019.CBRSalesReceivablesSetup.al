@@ -6,6 +6,11 @@ tableextension 50019 "CBR_SalesReceivablesSetup" extends "Sales & Receivables Se
         {
             DataClassification = ToBeClassified;
         }
+
+        field(50001; AutoSendSalesInvoice_Email; Boolean)
+        {
+            DataClassification = ToBeClassified;
+        }
     }
 
     var

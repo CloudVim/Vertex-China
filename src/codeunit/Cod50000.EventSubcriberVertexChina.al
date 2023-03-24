@@ -106,4 +106,68 @@ codeunit 50000 "EventSubcriber_VertexChina"
             Until SalesLine_L.Next() = 0;
     end;
     //AGT_DS_130223--
+
+    //AGT_VS_150323++
+    [EventSubscriber(ObjectType::Codeunit, Codeunit::"Sales-Post", 'OnAfterPostSalesDoc', '', false, false)]
+    local procedure OnAfterPostSalesDoc(SalesInvHdrNo: Code[20])
+    var
+        Cust: Record Customer;
+        // SMTPMail: Codeunit "SMTP Mail";
+        EmailMessage: Codeunit "Email Message";
+        ReportSelections: Record "Report Selections";
+        FileName: Text;
+        RecRef: RecordRef;
+        XmlParameters: Text;
+        EmailOutStream: OutStream;
+        EmailInStream: InStream;
+        // SMTPMailSetup: Record "SMTP Mail Setup";
+        EmailMsg: Codeunit "Email Message";
+        Email: Codeunit Email;
+        SendtoList: Text;
+        // SendToList: List of [Text];
+        Body: Text;
+        TempBlob: Codeunit "Temp Blob";
+        Rec: Record "Sales Invoice Header";
+        SalesInvHeader: Record "Sales Invoice Header";
+        EmailSetupErr: Label 'There is no email setup in Customer card for the customer = %1';
+        ConfirmMsg: Label 'Customer is set to receive sales invoice in Excel, Do you want to Send Sales Invoice in Excel?';
+
+        TempEmailItem: Record "Email Item" temporary;
+        EmailScenario: Enum "Email Scenario";
+        SalesReceiveSetup: Record "Sales & Receivables Setup";
+    begin
+        if SalesReceiveSetup.Get() then
+            if NOT SalesReceiveSetup.AutoSendSalesInvoice_Email then
+                exit;
+        if NOt SalesInvHeader.get(SalesInvHdrNo) then
+            exit;
+        IF NOT Cust.get(SalesInvHeader."Sell-to Customer No.") then
+            EXIT;
+        IF Cust."E-Mail" = '' then
+            exit;
+
+        Rec := SalesInvHeader;
+        Rec.SetRecFilter;
+        RecRef.open(Database::"Sales Invoice Header");
+        RecRef.SetView(Rec.GetView);
+        RecRef.SetTable(Rec);
+
+        FileName := 'SalesInvoice-' + SalesInvHeader."No." + '_' + FORMAT(WORKDATE, 6, '<Day,2><Month,2><Year,2>') + '_' + 'Customer - ' + SalesInvHeader."Sell-to Customer No." + '.pdf';
+
+        TempBlob.CreateInStream(EmailInStream, TextEncoding::UTF8);
+        TempBlob.CREATEOUTSTREAM(EmailOutStream, TextEncoding::UTF8);
+        ReportSelections.RESET;
+        ReportSelections.SETRANGE(Usage, ReportSelections.Usage::"S.Invoice");
+        ReportSelections.FINDFIRST;
+        ReportSelections.TestField("Report ID");
+        IF REPORT.SaveAs(ReportSelections."Report ID", XMLParameters, ReportFormat::Pdf, EmailOutStream, RecRef) THEN BEGIN
+            SendtoList := Cust."E-Mail";
+            Body := 'Please find your sales invoice. This is auto generated email. Please do not reply. <br>';
+            EmailMessage.Create(SendtoList, 'Sales Invoice' + '_' + SalesInvHeader."No.", Body);
+            EmailMessage.AddAttachment(FileName, 'PDF', EmailInStream);
+            IF Email.Send(EmailMessage) then
+                Message('Email has been sent to customer email id  : %1', Cust."E-Mail");
+        END;
+    END;
+    //AGT_VS_150323--
 }

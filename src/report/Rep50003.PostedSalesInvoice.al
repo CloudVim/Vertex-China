@@ -81,7 +81,7 @@ report 50003 "PostedSalesInvoice"
             {
                 DataItemLink = "Document No." = FIELD("No.");
                 DataItemLinkReference = SalesInvoiceHeader;
-                DataItemTableView = SORTING("Document No.", "No.", "Line No.");
+                //AGT_VS_302323       //DataItemTableView = SORTING("Document No.", "No.", "Line No.");
 
                 column(ItemNo; "No.")
                 { }

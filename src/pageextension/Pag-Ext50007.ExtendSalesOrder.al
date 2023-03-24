@@ -129,22 +129,68 @@ pageextension 50007 "ExtendSalesOrder" extends "Sales Order List"
                     Report.Run(50002, true, false, salesHeader);
                 end;
             }
-            // action(SentEmail)
-            // {
-            //     ApplicationArea = Basic, Suite;
-            //     Caption = 'SentEMail';
-            //     Image = PrintReport;
-            //     Promoted = true;
-            //     PromotedCategory = Category8;
-            //     Ellipsis = true;
 
-            //     trigger OnAction()
-            //     var
-            //         SendMail: Codeunit SendMail;
-            //     begin
-            //         SendMail.Run();
-            //     end;
-            // }
+            //AGT_VS_03132023++
+            action("Batch Print Confirmation")
+            {
+                ApplicationArea = Basic, Suite;
+                Caption = 'Batch Print Confirmation';
+                Image = Print;
+                Promoted = true;
+                PromotedCategory = Category8;
+                Ellipsis = true;
+
+                trigger OnAction()
+                var
+                    SalesHeaderVar: Record "Sales Header";
+                    ReportPrintConfirmation: Report SalesOrderConfirmation;
+                begin
+                    SalesHeaderVar.Reset();
+                    CurrPage.SetSelectionFilter(SalesHeaderVar);
+                    Report.Run(50004, true, false, SalesHeaderVar);
+                end;
+            }
+
+            action("Batch Work Order")
+            {
+                ApplicationArea = Basic, Suite;
+                Caption = 'Batch Work Order';
+                Image = Print;
+                Promoted = true;
+                PromotedCategory = Category8;
+                Ellipsis = true;
+
+                trigger OnAction()
+                var
+                    SalesHeaderVar: Record "Sales Header";
+                    ReportWorkOrder: Report PackingSlip;
+                begin
+                    SalesHeaderVar.Reset();
+                    CurrPage.SetSelectionFilter(SalesHeaderVar);
+                    Report.Run(50001, true, false, SalesHeaderVar);
+                end;
+            }
+
+            action("Batch Pick Instruction")
+            {
+                ApplicationArea = Basic, Suite;
+                Caption = 'Batch Pick Instruction';
+                Image = Print;
+                Promoted = true;
+                PromotedCategory = Category8;
+                Ellipsis = true;
+
+                trigger OnAction()
+                var
+                    SalesHeaderVar: Record "Sales Header";
+                    ReportPickInstruction: Report PickInstruction_CBR;
+                begin
+                    SalesHeaderVar.Reset();
+                    CurrPage.SetSelectionFilter(SalesHeaderVar);
+                    Report.Run(50007, true, false, SalesHeaderVar);
+                end;
+            }
+
         }
     }
     var

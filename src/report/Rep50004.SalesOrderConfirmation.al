@@ -104,9 +104,14 @@ report 50004 "SalesOrderConfirmation"
                 { }
                 column(BOQty; BOQty)
                 { }
+                column(QtyShipped; QtyShipped)  //AGT_VS_032223
+                { }
                 column(ItemUOM; ItemUOM)
                 { }
                 column(Qtycasepack; Qtycasepack)
+                { }
+
+                column(QtyShippedCasepack; QtyShippedCasepack)  //AGT_VS_032223
                 { }
                 column(ItemCasePack; ItemCasePack) { }
                 column(OrderQty; OrderQty)
@@ -135,8 +140,10 @@ report 50004 "SalesOrderConfirmation"
                 begin
                     NetAmount := 0;
                     BOQtycasepack := 0;
+                    QtyShippedCasepack := 0;  //AGT_VS_032223
                     Qtycasepack := 0;
                     BOQty := 0;
+                    QtyShipped := 0;  //AGT_VS_032223
                     OrderQty := 0;
                     TotalCube := 0;
                     TotalWeight := 0;
@@ -151,6 +158,7 @@ report 50004 "SalesOrderConfirmation"
                         If Item_L1.Get(SalesLine_L."No.") then begin
                             If Item_L1.Type <> Item_L1.Type::Inventory then begin
                                 BOQty := 0;
+                                QtyShipped := 0;  //AGT_VS_032223
                                 OrderQty := 0;
                                 Clear(ItemUOM);
                                 NetAmount := SalesLine_L.Amount;
@@ -168,7 +176,11 @@ report 50004 "SalesOrderConfirmation"
                                     TotalWeight := Item_L1."Gross Weight" * SalesLine_L.Quantity
                                 else
                                     TotalWeight := SalesLine_L.Quantity;
-                                BOQty := SalesLine_L.Quantity - SalesLine_L."Quantity Shipped";
+                                //AGT_VS_032223++   //BOQty := SalesLine_L.Quantity - SalesLine_L."Quantity Shipped";
+                                BOQty := SalesLine_L.Quantity - SalesLine_L."Qty. to Ship";
+                                QtyShipped := SalesLine."Qty. to Ship";
+                                //  AGT_VS_032223--
+
                                 OrderQty := SalesLine_L.Quantity;
                                 //AGT.YK.090223++
                                 CBRUnitPrice := SalesLine_L."CBR_Unit Price Line Discount";
@@ -186,6 +198,7 @@ report 50004 "SalesOrderConfirmation"
                             IF Item_L1.Get(SalesLineArchive_L."No.") then begin
                                 If Item_L1.Type <> Item_L1.Type::Inventory then begin
                                     BOQty := 0;
+                                    QtyShipped := 0; //AGT_VS_032223
                                     OrderQty := 0;
                                     Clear(ItemUOM);
                                     Clear(UnitofMeasure);
@@ -203,7 +216,10 @@ report 50004 "SalesOrderConfirmation"
                                         TotalWeight := Item_L1."Gross Weight" * SalesLineArchive_L.Quantity
                                     else
                                         TotalWeight := Item_L1."Gross Weight" * SalesLineArchive_L.Quantity;
-                                    BOQty := SalesLineArchive_L.Quantity - SalesLineArchive_L."Quantity Shipped";
+                                    //AGT_VS_032223++       // BOQty := SalesLineArchive_L.Quantity - SalesLineArchive_L."Quantity Shipped";
+                                    BOQty := SalesLineArchive_L.Quantity - SalesLineArchive_L."Qty. to Ship";
+                                    QtyShipped := SalesLineArchive_L."Qty. to Ship";
+                                    //AGT_VS_032223++ 
                                     OrderQty := SalesLineArchive_L.Quantity;
                                 End;
                             end
@@ -217,15 +233,28 @@ report 50004 "SalesOrderConfirmation"
                         else
                             UOMVisible := false;
                         //AGT_YK_12072022
+
                         If Item_L."Case Pack" <> 0 then begin
                             ItemCasePack := Item_L."Case Pack";
-                            If OrderQty <> 0 then
+
+                            If OrderQty <> 0 then begin
                                 Qtycasepack := OrderQty / Item_L."Case Pack";
-                            IF BOQty <> 0 then
-                                BOQtycasepack := BOQty / Item_L."Case Pack";
-                            //ItemUOM := Item_L."Base Unit of Measure";//AGT_DS_11292022   Used this field on afterget record
+                                //IF BOQty <> 0 then begin ....//AGT_VS_032223
+                                BOQtycasepack := "Qty. to Ship" / Item_L."Case Pack"; //BOQty / Item_L."Case Pack";//AGT_VS_032323 As per discussion with Subheshi changed the logic
+                                                                                      //AGT_VS_032223
+                                                                                      // QtyShippedCasepack := "Qty. to Ship" / Item_L."Case Pack";  //AGT_VS_032223++ 
+                                                                                      //ItemUOM := Item_L."Base Unit of Measure";//AGT_DS_11292022   Used this field on afterget record
+                            end;
                         end;
                     end;
+
+                    //AGT_VS_031723++
+                    if (type = Type::Item) then
+                        if Quantity = "Quantity Shipped" then begin
+                            if Quantity = "Quantity Invoiced" then
+                                CurrReport.Skip();
+                        end;
+                    //AGT_VS_031723--
 
                 end;
 
@@ -393,5 +422,6 @@ report 50004 "SalesOrderConfirmation"
         UOMVisible: Boolean;//AGT_YK_12072022
         CBRUnitPrice: Decimal;//AGT.YK.090223
         ShippingAgentName: Text;//AGT_VS_030723
-
+        QtyShipped: Decimal;  //AGT_VS_032223
+        QtyShippedCasepack: decimal;
 }

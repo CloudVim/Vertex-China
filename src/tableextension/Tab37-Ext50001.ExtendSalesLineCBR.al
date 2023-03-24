@@ -172,6 +172,13 @@ tableextension 50001 "ExtendSalesLine_CBR" extends "Sales Line" //37
             recSalesLine."CBR_Unit Price Line Discount" := recSalesLine."Unit Price";
         //AGT-SS 11-Aug-22--
         //AGT-DS 10192022--
+
+        //AGT_VS_032323++
+        if RecSalesLine."Unit of Measure Code" = 'EA' then begin
+            RecSalesLine."Line Discount %" := 0;
+            RecSalesLine."CBR_Unit Price Line Discount" := 0;
+            //AGT_VS_032323--
+        end;
     end;
 
     var

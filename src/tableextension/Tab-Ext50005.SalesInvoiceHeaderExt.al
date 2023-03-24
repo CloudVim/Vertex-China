@@ -19,6 +19,16 @@ tableextension 50005 "SalesInvoiceHeader_Ext" extends "Sales Invoice Header"
             Editable = false;
             //CalcFormula = Sum("Sales Line"."Net Weight" WHERE("Document Type" = FILTER(Order), "Document No." = FIELD("No."), Type = FILTER(Item), "No." = FILTER(<> 'ZZ*')));
         }
+        //AGT_VS_032223++
+        field(50007; "Customer E-Mail"; Text[100])
+        {
+            FieldClass = FlowField;
+            Caption = 'Customer E-Mail';
+            Editable = false;
+            CalcFormula = Lookup(Customer."E-Mail" WHERE("No." = field("Sell-to Customer No.")));
+
+        }
+        //AGT_VS_032223--
     }
 
     var

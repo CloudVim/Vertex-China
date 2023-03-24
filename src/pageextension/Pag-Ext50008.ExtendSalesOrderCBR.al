@@ -338,6 +338,10 @@ pageextension 50008 "ExtendSalesOrder_CBR" extends "Sales Order"
         ReservEntry.Validate("Shipment Date", SalesLine."Shipment Date");
         ReservEntry.Validate(Positive, false);
         ReservEntry.Validate("Item Tracking", ReservEntry."Item Tracking"::"Lot No.");
+        ReservEntry.Binding := 0;
+        ReservEntry."Expected Receipt Date" := 0D;
+        ReservEntry."Planning Flexibility" := ReservEntry."Planning Flexibility"::Unlimited;
+        ReservEntry."Disallow Cancellation" := false;
         if ReservEntry.Insert() then
             ShowMessage := true;
     end;

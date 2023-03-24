@@ -20,6 +20,15 @@ pageextension 50005 "ExtendPostedSalesInvoices" extends "Posted Sales Invoices"
                 ApplicationArea = All;
                 ToolTip = 'Specifies the value of the Customer Price Group field.';
             }
+            //AGT_VS_032223++
+            field("Customer E-Mail"; rec."Customer E-Mail")
+            {
+                ApplicationArea = all;
+                Caption = 'Customer E-Mail';
+                ToolTip = 'Specifies Customer Email address';
+            }
+            //AGT_VS_032223--
+
         }
     }
     actions
@@ -52,6 +61,27 @@ pageextension 50005 "ExtendPostedSalesInvoices" extends "Posted Sales Invoices"
                 Ellipsis = true;
             }
 
+            //AGT_VS_031823++
+            action("Batch PostedSalesInvReport")
+            {
+                ApplicationArea = Basic, Suite;
+                Caption = 'Batch Posted Sales Invoice';
+                Image = Print;
+                Promoted = true;
+                PromotedCategory = Category7;
+                Ellipsis = true;
+
+                trigger OnAction()
+                var
+                    SalesInvHeaderVar: Record "Sales Invoice Header";
+                    ReportPrintConfirmation: Report PostedSalesInvoice;
+                begin
+                    SalesInvHeaderVar.Reset();
+                    CurrPage.SetSelectionFilter(SalesInvHeaderVar);
+                    Report.Run(50003, true, false, SalesInvHeaderVar);
+                end;
+            }
+            //AGT_VS_031823--
 
         }
     }

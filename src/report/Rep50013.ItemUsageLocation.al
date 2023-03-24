@@ -36,6 +36,8 @@ report 50013 "Item Usage Location"
                 column(QtyCommit_888; QtyCommit_888) { }
                 column(QtyOnOrder_G; QtyOnOrder_G) { }
                 column(AvgSales_G; AvgSales_G) { }
+                column(Avrg6Mnthon333; Avrg6Mnthon333) { }
+                column(Avrg6Mnthon888; Avrg6Mnthon888) { }
                 trigger OnPreDataItem()
                 var
                 begin
@@ -62,7 +64,7 @@ report 50013 "Item Usage Location"
 
                     If "Location Code" = '888' then begin
                         QtyInHand_888 += "Remaining Quantity";
-                        Avrg6Mnthon333 := GetTotalCostforlast6Month("Item Ledger Entry"."Item No.", '888');
+                        Avrg6Mnthon888 := GetTotalCostforlast6Month("Item Ledger Entry"."Item No.", '888');
                     end;
 
                     //QtyInTrans = Qt on water //AGT_DS_021723
@@ -212,22 +214,42 @@ report 50013 "Item Usage Location"
         end;
     End;
 
+    // procedure GetTotalCostforlast6Month(ItemNo: Code[20]; locationcode: Code[20]) TotCost: Decimal
+    // var
+    //     ILE: Record "Item Ledger Entry";
+    //     FromFilter: Date;
+    // begin
+    //     FromFilter := CalcDate('CM-1M', WORKDATE); // Initialize the from date from current date - 6M
+    //     ILE.Reset();
+    //     ILE.SetRange("Item No.", ItemNo);
+    //     ILE.SetRange("Location Code", locationcode);
+    //     ILE.SetFilter(ILE."Posting Date", '%1..%2', FromFilter, WorkDate());
+    //     IF ILE.FindSet() then
+    //         repeat
+    //             Totcost += ILE."Cost Amount (Actual)";
+    //         until ILE.Next() = 0;
+    //     exit(TotCost)
+
+    // end;
+
     procedure GetTotalCostforlast6Month(ItemNo: Code[20]; locationcode: Code[20]) TotCost: Decimal
     var
         ILE: Record "Item Ledger Entry";
         FromFilter: Date;
     begin
-        FromFilter := CalcDate('CM-1M', WORKDATE); // Initialize the from date from current date - 6M
+        FromFilter := CalcDate('-6M', WorkDate()); // Initialize the from date from current date - 6M
         ILE.Reset();
         ILE.SetRange("Item No.", ItemNo);
         ILE.SetRange("Location Code", locationcode);
         ILE.SetFilter(ILE."Posting Date", '%1..%2', FromFilter, WorkDate());
         IF ILE.FindSet() then
             repeat
-                Totcost += ILE."Cost Amount (Actual)";
+                ILE.CalcFields("Cost Amount (Actual)");
+                Totcost += ILE."Cost Amount (Actual)" / 6;
             until ILE.Next() = 0;
         exit(TotCost)
 
     end;
+
 }
 
