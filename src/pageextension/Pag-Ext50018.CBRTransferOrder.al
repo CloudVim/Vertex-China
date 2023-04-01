@@ -109,7 +109,7 @@ pageextension 50018 "CBR_TransferOrder" extends "Transfer Order"
 
     local procedure AutoFillTrackingLines(TransferLine: Record "Transfer Line"; var ErrorTable: Record "Error Message" temporary): Boolean
     var
-        AvablSerialQty: Decimal;
+        AvablLotQty: Decimal;
         ReservEntry: Record "Reservation Entry";
         ItemLedgerEntry: Record "Item Ledger Entry";
         ILE1: Record "Item Ledger Entry";
@@ -119,20 +119,20 @@ pageextension 50018 "CBR_TransferOrder" extends "Transfer Order"
         ReserveQty: Decimal;
         recTransferLine: Record "Assembly Line";
         QtytoAssign: Decimal;
-        CasePackQty: Decimal;
+
         ItemRec: Record Item;
         CurrLotNo: Code[20];
         ILERemainingQty: Decimal;
         TransHead_L: Record "Transfer Header";
-        SerialQty: Decimal;
+        LotQty: Decimal;
         TotAvaliable: Decimal;
     begin
         //CBR_SS 0913-1 <<
         TotalILEQty := 0;
         ReserveQty := 0;
-        SerialQty := 0;
+        LotQty := 0;
         TotAvaliable := 0;
-
+        // Below function is to calculate the total ILE quantity avaliable for the selected items
         If TransHead_L.Get(TransferLine."Document No.") then;
         ItemLedgerEntry.Reset;
         ItemLedgerEntry.SetRange("Item No.", TransferLine."Item No.");
@@ -142,7 +142,7 @@ pageextension 50018 "CBR_TransferOrder" extends "Transfer Order"
             ItemLedgerEntry.CalcSums("Remaining Quantity");
             TotalILEQty := ItemLedgerEntry."Remaining Quantity";
         end;
-
+        //Below code is to check if there is any reservation exist for the selected item
         ReservEntry.Reset;
         ReservEntry.SetRange("Item No.", TransferLine."Item No.");
         ReservEntry.SetFilter("Location Code", '%1|%2', TransHead_L."Transfer-from Code", TransHead_L."Transfer-to Code");
@@ -152,19 +152,12 @@ pageextension 50018 "CBR_TransferOrder" extends "Transfer Order"
             repeat
                 ReserveQty += ReservEntry."Quantity (Base)";
             until ReservEntry.Next = 0;
-        //-362
+
         CurrLotNo := '';
-        // AGT_DS_122122++Subhash++
-        // ReservEntry.Reset();
-        // if ReservEntry.FindLast() then
-        //     lastentryNo := ReservEntry."Entry No.";
-        //  AGT_DS_122122--Subhash--
-
         RequiredTransferLineQty := TransferLine."Qty. to Ship (Base)";
-
         TotAvaliable := TotalILEQty + ReserveQty;
 
-        IF TransferLine."Qty. to Ship (Base)" < TotAvaliable THEN BEGIN
+        IF TransferLine."Qty. to Ship (Base)" <= TotAvaliable THEN BEGIN
             ItemLedgerEntry.Reset;
             ItemLedgerEntry.SetCurrentKey("Expiration Date");
             ItemLedgerEntry.SetRange("Item No.", TransferLine."Item No.");
@@ -172,7 +165,7 @@ pageextension 50018 "CBR_TransferOrder" extends "Transfer Order"
             ItemLedgerEntry.SetFilter("Remaining Quantity", '>%1', 0);
             if ItemLedgerEntry.FindSet then
                 repeat
-                    AvablSerialQty := 0;
+                    AvablLotQty := 0;
                     ILERemainingQty := 0;
                     if (CurrLotNo <> ItemLedgerEntry."Lot No.") then begin  // Only trigger once for each Lot from the ILE
                         ILE1.Reset;
@@ -184,30 +177,29 @@ pageextension 50018 "CBR_TransferOrder" extends "Transfer Order"
                             ILE1.SetRange("Lot No.", ItemLedgerEntry."Lot No.");
 
                         ILE1.SetFilter("Remaining Quantity", '>%1', 0);
+
                         if ILE1.FindFirst then begin
                             ILE1.CalcSums("Remaining Quantity");
-                            SerialQty := GetReservationQty1(TransferLine, ILE1);
-                            AvablSerialQty := ILE1."Remaining Quantity" + SerialQty;  // Get the total avaliable quantity
-                            IF AvablSerialQty > 0 THEN begin  // If avaliable quantity is not zero
+                            LotQty := GetReservationQty1(TransferLine, ILE1);
+                            AvablLotQty := ILE1."Remaining Quantity" + LotQty;  // Get the total avaliable quantity
+
+                            IF AvablLotQty > 0 THEN begin  // If avaliable quantity is not zero
                                 ItemRec.Get(ILE1."Item No.");
-
-                                if RequiredTransferLineQty > AvablSerialQty then begin
-                                    QtytoAssign := AvablSerialQty;
-
+                                if RequiredTransferLineQty > AvablLotQty then begin
+                                    QtytoAssign := AvablLotQty;
                                     CBRCreateReservationEntry(ReservEntry, ILE1, TransferLine, QtytoAssign);
                                     //CreateReservEntry.CreateEntry(TransferLine."No.", ILE1."Variant Code", TransferLine."Location Code", '', 0D, 0D, 0, ReservEntry."Reservation Status"::Surplus);
                                 end;
-                                if RequiredTransferLineQty <= AvablSerialQty then begin
+                                if RequiredTransferLineQty <= AvablLotQty then begin
                                     QtytoAssign := RequiredTransferLineQty;
                                     CBRCreateReservationEntry(ReservEntry, ILE1, TransferLine, QtytoAssign);
                                     exit;
                                 end;
-
                                 //Reduce the required qty after the previous allocation ++
-                                if RequiredTransferLineQty > AvablSerialQty then
-                                    RequiredTransferLineQty := RequiredTransferLineQty - AvablSerialQty
+                                if RequiredTransferLineQty > AvablLotQty then
+                                    RequiredTransferLineQty := RequiredTransferLineQty - AvablLotQty
                                 else
-                                    RequiredTransferLineQty := AvablSerialQty;
+                                    RequiredTransferLineQty := AvablLotQty;
                             end;// If avaliable quantity is not zero or negative
                         end;
                     end;
@@ -233,11 +225,7 @@ pageextension 50018 "CBR_TransferOrder" extends "Transfer Order"
         ReservEntry.SetRange("Location Code", TransferHeader_L."Transfer-from Code");
         ReservEntry.SetRange("Source Type", 5741);
         ReservEntry.SetRange("Source Subtype", 0);
-        //ReservEntry.SETRANGE("Lot No.", ILE."Lot No.");
-        if ILE."Lot No." <> '' then
-            ReservEntry.SetRange("Lot No.", ILE."Lot No.");
-        if ILE."Serial No." <> '' then
-            ReservEntry.SetRange("Serial No.", ILE."Serial No.");
+        ReservEntry.SETRANGE("Lot No.", ILE."Lot No.");
         if ReservEntry.FindSet then
             repeat
                 ReservationQty += ReservEntry."Quantity (Base)";

@@ -19,12 +19,12 @@
             <TablixBody>
               <TablixColumns>
                 <TablixColumn>
-                  <Width>19.73687cm</Width>
+                  <Width>19.779cm</Width>
                 </TablixColumn>
               </TablixColumns>
               <TablixRows>
                 <TablixRow>
-                  <Height>4.1491cm</Height>
+                  <Height>4.58153cm</Height>
                   <TablixCells>
                     <TablixCell>
                       <CellContents>
@@ -2595,9 +2595,6 @@
                                               </Paragraph>
                                             </Paragraphs>
                                             <rd:DefaultName>Textbox102</rd:DefaultName>
-                                            <Visibility>
-                                              <Hidden>=Code.SetData(Cstr(Fields!Posting_Date.Value) + Chr(177) + Cstr(Fields!InvoiceNo.Value) + Chr(177) + Cstr(Fields!Order_Date.Value) + Chr(177) + Cstr(Fields!External_Document_No_.Value) + Chr(177) + Cstr(Fields!Order_No_.Value) + Chr(177) + Cstr(Fields!Sell_to_Customer_No_.Value) + Chr(177) + Cstr(Fields!BillTo1.Value) + Chr(177) + Cstr(Fields!BillTo2.Value) + Chr(177) + Cstr(Fields!BillTo3.Value) + Chr(177) + Cstr(Fields!BillTo4.Value) + Chr(177) + Cstr(Fields!InvoiceNoBarode.Value) + Chr(177) + Cstr(Fields!ShipTo1.Value) + Chr(177) + Cstr(Fields!ShipTo2.Value) + Chr(177) + Cstr(Fields!ShipTo3.Value) + Chr(177) + Cstr(Fields!ShipTo4.Value) + Chr(177) + Cstr(Fields!User_ID.Value) + Chr(177) + Cstr(Fields!Package_Tracking_No_.Value) + Chr(177) + Cstr(Fields!Salesperson_Code.Value) + Chr(177) + Cstr(Fields!Shipment_Method_Code.Value) + Chr(177) + Cstr(Fields!Shipping_Agent_Code.Value) + Chr(177) + Cstr(Fields!Shipment_Date.Value) + Chr(177) + Cstr(Fields!Payment_Terms_Code.Value), 1)</Hidden>
-                                            </Visibility>
                                             <Style>
                                               <Border>
                                                 <Style>None</Style>
@@ -2629,9 +2626,6 @@
                                               </Paragraph>
                                             </Paragraphs>
                                             <rd:DefaultName>Textbox103</rd:DefaultName>
-                                            <Visibility>
-                                              <Hidden>=Code.SetData(Cstr(Fields!Paymenttermdiscount.Value), 2)</Hidden>
-                                            </Visibility>
                                             <Style>
                                               <Border>
                                                 <Style>None</Style>
@@ -2928,6 +2922,9 @@
                                       <GroupExpressions>
                                         <GroupExpression>=Fields!InvoiceNo.Value</GroupExpression>
                                       </GroupExpressions>
+                                      <PageBreak>
+                                        <BreakLocation>Between</BreakLocation>
+                                      </PageBreak>
                                     </Group>
                                     <SortExpressions>
                                       <SortExpression>
@@ -2965,7 +2962,7 @@
                                   <TablixMember />
                                 </TablixMembers>
                               </TablixRowHierarchy>
-                              <Top>0.09277cm</Top>
+                              <Top>0.24799cm</Top>
                               <Left>0cm</Left>
                               <Height>4.05633cm</Height>
                               <Width>19.73687cm</Width>
@@ -2995,6 +2992,72 @@
                                 </RightBorder>
                               </Style>
                             </Tablix>
+                            <Textbox Name="Textbox29">
+                              <CanGrow>true</CanGrow>
+                              <KeepTogether>true</KeepTogether>
+                              <Paragraphs>
+                                <Paragraph>
+                                  <TextRuns>
+                                    <TextRun>
+                                      <Value />
+                                      <Style />
+                                    </TextRun>
+                                  </TextRuns>
+                                  <Style />
+                                </Paragraph>
+                              </Paragraphs>
+                              <rd:DefaultName>Textbox29</rd:DefaultName>
+                              <Top>4.32549cm</Top>
+                              <Left>0.61419cm</Left>
+                              <Height>0.25604cm</Height>
+                              <Width>2.5cm</Width>
+                              <ZIndex>1</ZIndex>
+                              <Visibility>
+                                <Hidden>=Code.SetData(Cstr(Fields!Posting_Date.Value) + Chr(177) + Cstr(Fields!InvoiceNo.Value) + Chr(177) + Cstr(Fields!Order_Date.Value) + Chr(177) + Cstr(Fields!External_Document_No_.Value) + Chr(177) + Cstr(Fields!Order_No_.Value) + Chr(177) + Cstr(Fields!Sell_to_Customer_No_.Value) + Chr(177) + Cstr(Fields!BillTo1.Value) + Chr(177) + Cstr(Fields!BillTo2.Value) + Chr(177) + Cstr(Fields!BillTo3.Value) + Chr(177) + Cstr(Fields!BillTo4.Value) + Chr(177) + Cstr(Fields!InvoiceNoBarode.Value) + Chr(177) + Cstr(Fields!ShipTo1.Value) + Chr(177) + Cstr(Fields!ShipTo2.Value) + Chr(177) + Cstr(Fields!ShipTo3.Value) + Chr(177) + Cstr(Fields!ShipTo4.Value) + Chr(177) + Cstr(Fields!User_ID.Value) + Chr(177) + Cstr(Fields!Package_Tracking_No_.Value) + Chr(177) + Cstr(Fields!Salesperson_Code.Value) + Chr(177) + Cstr(Fields!Shipment_Method_Code.Value) + Chr(177) + Cstr(Fields!Shipping_Agent_Code.Value) + Chr(177) + Cstr(Fields!Shipment_Date.Value) + Chr(177) + Cstr(Fields!Payment_Terms_Code.Value), 1)</Hidden>
+                              </Visibility>
+                              <Style>
+                                <Border>
+                                  <Style>None</Style>
+                                </Border>
+                                <PaddingLeft>2pt</PaddingLeft>
+                                <PaddingRight>2pt</PaddingRight>
+                                <PaddingTop>2pt</PaddingTop>
+                                <PaddingBottom>2pt</PaddingBottom>
+                              </Style>
+                            </Textbox>
+                            <Textbox Name="Textbox31">
+                              <CanGrow>true</CanGrow>
+                              <KeepTogether>true</KeepTogether>
+                              <Paragraphs>
+                                <Paragraph>
+                                  <TextRuns>
+                                    <TextRun>
+                                      <Value />
+                                      <Style />
+                                    </TextRun>
+                                  </TextRuns>
+                                  <Style />
+                                </Paragraph>
+                              </Paragraphs>
+                              <rd:DefaultName>Textbox31</rd:DefaultName>
+                              <Top>4.29021cm</Top>
+                              <Left>3.39972cm</Left>
+                              <Height>0.29132cm</Height>
+                              <Width>2.5cm</Width>
+                              <ZIndex>2</ZIndex>
+                              <Visibility>
+                                <Hidden>=Code.SetData(Cstr(Fields!Paymenttermdiscount.Value), 2)</Hidden>
+                              </Visibility>
+                              <Style>
+                                <Border>
+                                  <Style>None</Style>
+                                </Border>
+                                <PaddingLeft>2pt</PaddingLeft>
+                                <PaddingRight>2pt</PaddingRight>
+                                <PaddingTop>2pt</PaddingTop>
+                                <PaddingBottom>2pt</PaddingBottom>
+                              </Style>
+                            </Textbox>
                           </ReportItems>
                           <KeepTogether>true</KeepTogether>
                           <Style>
@@ -3025,13 +3088,19 @@
                       <BreakLocation>Between</BreakLocation>
                     </PageBreak>
                   </Group>
+                  <SortExpressions>
+                    <SortExpression>
+                      <Value>=Fields!InvoiceNo.Value</Value>
+                      <Direction>Descending</Direction>
+                    </SortExpression>
+                  </SortExpressions>
                 </TablixMember>
               </TablixMembers>
             </TablixRowHierarchy>
-            <Top>0.17639cm</Top>
-            <Left>0.18089cm</Left>
-            <Height>4.1491cm</Height>
-            <Width>19.73687cm</Width>
+            <Top>0cm</Top>
+            <Left>0.09525cm</Left>
+            <Height>4.58153cm</Height>
+            <Width>19.779cm</Width>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -3039,10 +3108,10 @@
             </Style>
           </Tablix>
         </ReportItems>
-        <Height>4.32549cm</Height>
+        <Height>4.90785cm</Height>
         <Style />
       </Body>
-      <Width>19.91776cm</Width>
+      <Width>19.95989cm</Width>
       <Page>
         <PageHeader>
           <Height>11.886cm</Height>
@@ -5113,7 +5182,7 @@
           </Style>
         </PageHeader>
         <PageFooter>
-          <Height>0.77639cm</Height>
+          <Height>1.06743cm</Height>
           <PrintOnFirstPage>true</PrintOnFirstPage>
           <PrintOnLastPage>true</PrintOnLastPage>
           <ReportItems>
@@ -5676,45 +5745,7 @@
       </CellDefinitions>
     </GridLayoutDefinition>
   </ReportParametersLayout>
-  <Code>Shared Data1 as Object
-Shared Data2 as Object
-Shared Data3 as Object
-Shared Data4 as Object 
-
-Public Function GetData(Num as Integer, Group as integer) as Object
-if Group = 1 then
-   Return Cstr(Choose(Num, Split(Cstr(Data1),Chr(177))))
-End If
-if Group = 2 then
-   Return Cstr(Choose(Num, Split(Cstr(Data2),Chr(177))))
-End If 
-if Group = 3 then
-   Return Cstr(Choose(Num, Split(Cstr(Data3),Chr(177))))
-End If 
-if Group = 4 then
-   Return Cstr(Choose(Num, Split(Cstr(Data4),Chr(177))))
-End If
-End Function
-
-Public Function SetData(NewData as Object,Group as integer)
-  If Group = 1 and NewData &gt; "" Then
-      Data1 = NewData
-  End If  
-  If Group = 2 and NewData &gt; "" Then
-      Data2 = NewData
-  End If  
-  If Group = 3 and NewData &gt; "" Then
-      Data3 = NewData
-  End If   
-  If Group = 4 and NewData &gt; "" Then
-      Data4 = NewData
-  End If   
-
-  Return True
-End Function
-
-
-Public Function BlankZero(ByVal Value As Decimal)
+  <Code>Public Function BlankZero(ByVal Value As Decimal)
     if Value = 0 then
         Return ""
     end if
@@ -5747,6 +5778,109 @@ Public Function BlankNegAndZero(ByVal Value As Decimal)
         Return ""
     end if
     Return Value
+End Function
+
+REM Reset Page Number:
+
+Shared offset as Integer
+Shared newPage as Object
+Shared currentgroup1 as Object
+Shared currentgroup2 as Object
+Shared currentgroup3 as Object
+
+Public Function GetGroupPageNumber(NewPage as Boolean, pagenumber as Integer) as Object
+  If NewPage
+    offset = pagenumber - 1
+  End If
+  Return pagenumber - offset
+End Function
+
+Public Function IsNewPage(group1 as Object, group2 as Object, group3 as Object) As Boolean
+newPage = FALSE
+If Not (group1 = currentgroup1)
+    newPage = TRUE
+    currentgroup1 = group1
+    currentgroup2 = group2
+    currentgroup3 = group3
+     ELSE 
+      If Not (group2 = currentgroup2)
+        newPage = TRUE 
+        currentgroup2 = group2
+        currentgroup3 = group3
+        ELSE
+          If Not (group3 = currentgroup3)
+          newPage = TRUE 
+          currentgroup3 = group3
+         End If
+     End If
+  End If
+Return newPage
+End Function
+
+Shared Data1 as Object
+Shared Data2 as Object
+Shared Data3 as Object
+
+Public Function GetData(Num as Integer, Group as integer) as Object
+if Group = 1 then
+   Return Cstr(Choose(Num, Split(Cstr(Data1),Chr(177))))
+End If
+
+if Group = 2 then
+   Return Cstr(Choose(Num, Split(Cstr(Data2),Chr(177))))
+End If
+
+if Group = 3 then
+   Return Cstr(Choose(Num, Split(Cstr(Data3),Chr(177))))
+End If
+End Function
+
+Public Function SetData(NewData as Object,Group as integer)
+  If Group = 1 and NewData &lt;&gt; "" Then
+      Data1 = NewData
+  End If
+
+  If Group = 2 and NewData &lt;&gt; "" Then
+      Data2 = NewData
+  End If
+
+  If Group = 3 and NewData &lt;&gt; "" Then
+      Data3 = NewData
+  End If
+  Return True
+End Function
+
+Shared PictureData1 as Object
+Shared PictureData2 as Object
+Shared PictureData3 as Object
+
+Public Function GetPicture(Group as integer) as Object
+if Group = 1 then
+   Return PictureData1
+End If
+
+if Group = 2 then
+   Return PictureData2
+End If
+
+if Group = 3 then
+   Return PictureData3
+End If
+End Function
+
+Public Function SetPicture(NewData as Object,Group as integer)
+  If Group = 1 and NewData &gt; "" Then
+      PictureData1 = NewData
+  End If
+
+  If Group = 2 and NewData &gt; "" Then
+      PictureData2 = NewData
+  End If
+
+  If Group = 3 and NewData &gt; "" Then
+      PictureData3 = NewData
+  End If
+  Return True
 End Function
 </Code>
   <Language>=User!Language</Language>

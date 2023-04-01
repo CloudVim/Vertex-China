@@ -183,8 +183,15 @@ report 50004 "SalesOrderConfirmation"
 
                                 OrderQty := SalesLine_L.Quantity;
                                 //AGT.YK.090223++
-                                CBRUnitPrice := SalesLine_L."CBR_Unit Price Line Discount";
-                                // CBRUnitPrice := SalesLine_L."CBR_Unit Price Line Discount"; 
+                                // CBRUnitPrice := SalesLine_L."CBR_Unit Price Line Discount";
+                                //AGT_VS_032823++
+                                if (SalesLine_L."Line Discount %" > 0) AND (SalesLine_L."Unit Price" > 0) then
+                                    CBRUnitPrice := SalesLine_L."Unit Price" - (SalesLine_L."Unit Price" * SalesLine_L."Line Discount %") / 100;
+
+                                if SalesLine_L."Line Discount %" = 0 then
+                                    CBRUnitPrice := SalesLine_L."Unit Price";
+                                //AGT_VS_032823--
+                                //CBRUnitPrice := SalesLine_L."CBR_Unit Price Line Discount";
                                 //AGT.YK.090223++
                             End;
                         end;

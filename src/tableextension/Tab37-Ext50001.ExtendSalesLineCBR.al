@@ -175,6 +175,7 @@ tableextension 50001 "ExtendSalesLine_CBR" extends "Sales Line" //37
 
         //AGT_VS_032323++
         if RecSalesLine."Unit of Measure Code" = 'EA' then begin
+            RecSalesLine."Unit Price" := 0;
             RecSalesLine."Line Discount %" := 0;
             RecSalesLine."CBR_Unit Price Line Discount" := 0;
             //AGT_VS_032323--
